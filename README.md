@@ -9,19 +9,19 @@ based around npm eco-system and standard OSS packages.
 
 ## Features
 
-- Bundling & Minification of WebIDE Features.
+- **Bundling & Minification** of WebIDE Features.
   * Mainly using [require.js optimizer](http://requirejs.org/docs/optimization.html).
 
-- Testing.
+- **Testing.
   * Using [Karma Test runner](https://github.com/karma-runner/karma)
   * And our home brewed APIs which allow programmatic access to the WebIDE Services (a.k.a Service Test Framework).
   
-- Local development server for static resources.
+- **Local development server** for static resources.
   * Fast feedback loops.
   * Also run the bundled version of your feature locally.
   * Using [Connect](https://github.com/senchalabs/connect) Node.js middleware layer.
   
-- Local Di instance Life Cycle.
+- **Local Di(backend)** instance Life Cycle.
   * Download/Start/Stop.
   * This currently has only very limited capabilities (no builders/runners support).
   * Local DI jar is **not** yet available outside SAP. 
