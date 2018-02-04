@@ -1,7 +1,7 @@
 # webide-client-tools
 
 
-### Description
+## Description
 
 Tools & Dev-Flows for developing client side features/extensions for the [SAP WebIDE](https://www.sap.com/germany/developer/topics/sap-webide.html).
 based around npm eco-system and standard OSS packages.
@@ -12,7 +12,7 @@ based around npm eco-system and standard OSS packages.
 - **Bundling & Minification** of WebIDE Features.
   * Mainly using [require.js optimizer](http://requirejs.org/docs/optimization.html).
 
-- **Testing.
+- **Testing**.
   * Using [Karma Test runner](https://github.com/karma-runner/karma)
   * And our home brewed APIs which allow programmatic access to the WebIDE Services (a.k.a Service Test Framework).
   
