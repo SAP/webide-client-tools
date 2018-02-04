@@ -45,7 +45,7 @@ based around npm eco-system and standard OSS packages.
 
 ## Support
 
-Please open [**issues**](https://github.com/SAP/webide-client-tools/) on github to obtain support.
+Please open [**issues**](https://github.com/SAP/webide-client-tools/issues) on github to obtain support.
 
 
 ## Contributing
