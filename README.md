@@ -56,7 +56,7 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md).
 ## Limitations
 
 There are peer-dependencies for the **usage** of this library which are still in the process
-of becoming available outside SAP. 
+of becoming available outside SAP corporate network. 
 
 The major one is the webide itself, without it is not possible to run feature tests or the local dev-server.
 And the minor one being the local env DI backend, without it the tests are limited to
