@@ -1,0 +1,28 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.common.ui5librarymetadatahanaprovider",
+	"description": "The UI5 Library Meatadata from HANA Plugin",
+	
+	"requires": {
+		"services": [
+			"ui5librarymetadata",
+			"log"
+		]
+	},
+	"provides": {
+		"services": {
+			"ui5librarymetadatahanaprovider": {
+				"implements": "sap.watt.common.service.ide.UI5LibraryMetadataProvider",
+				"module":  "sap.watt.saptoolsets.ui5.common.ui5librarymetadatahanaprovider/service/UI5LibraryMetadataHanaProvider"
+			}
+		}
+	},
+	"configures": {
+		"services": {
+			"ui5librarymetadata:providers": [{
+				"service": "@ui5librarymetadatahanaprovider",
+				"serverType": ["xs2"]
+			}]
+		}
+	}
+	
+}

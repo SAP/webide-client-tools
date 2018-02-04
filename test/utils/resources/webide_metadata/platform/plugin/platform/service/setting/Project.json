@@ -1,0 +1,66 @@
+{
+	"name" : "sap.watt.common.service.setting.Project",
+	"description" : "The project setting interface",
+	"methods" : {
+	    "setProjectSettings" : {
+			"params" : [{
+				"name" : "sSettingName",
+				"type" : "string"
+			},
+			{
+				"name" : "oSettings",
+				"type" : "object"
+			},
+			{
+				"name" : "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}] 
+		},
+		"getProjectSettings" : {
+			"params" : [{
+				"name" : "sSettingName",
+				"type" : "string"
+			},
+			{
+				"name" : "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}],
+			"returns" : "object"
+		},
+		"set" : {
+			"params" : [{
+				"name" : "oService",
+				"type" : "object"
+			},
+			{
+				"name" : "vSettings",
+				"type" : "object"
+			},
+			{
+				"name" : "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}] 
+		},
+		"get" : {
+			"params" : [{
+				"name" : "oService",
+				"type" : "object"
+			},
+			{
+				"name" : "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document",
+				"optional" : true
+			}],
+			"returns" : "object"
+		}
+	},
+	"configurationProperties" : {
+		"dao" : {
+			"type" : {
+				"id":"string",
+				"service":"sap.watt.common.service.remote.ProjectSettingsDAO"
+			},
+			"multiple" : false
+		}
+	}
+}

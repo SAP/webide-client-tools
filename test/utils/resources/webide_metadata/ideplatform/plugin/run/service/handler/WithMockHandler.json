@@ -1,0 +1,7 @@
+{
+	"name": "sap.watt.ideplatform.plugin.run.service.WithMockHandler",
+	"description": "UI Handler interface for the run with mock section",
+	"methods": {
+		"updateCB":{}
+	}
+}

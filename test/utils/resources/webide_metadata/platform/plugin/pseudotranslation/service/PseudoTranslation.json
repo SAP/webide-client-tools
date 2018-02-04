@@ -1,0 +1,41 @@
+{
+	"name" : "sap.watt.uitools.plugin.pseudotranslation.service.PseudoTranslation",
+	"description" : "Pseudo Translation service",
+	"methods" : {
+		"generatePseudoProperties" : {
+		    "description" : "Generate a pseudo properties file in same folder as the provided developer properties file",
+			"params" :[
+	            	{
+	                	"name" : "oDocument", 
+	                	"type": "sap.watt.common.plugin.document.Document",
+	                	"description" : "oDocument object of the developer properties file",
+	                	"optional" : false
+	                }
+	               ],
+			"returns" : "object"	           
+	     },
+	     "generatePseudoPropertiesProject" : {
+	        "description" : "Recursively generate pseudo properties file for each developer properties found under given folder",
+			"params" :[
+	            	{
+	                	"name" : "oFolder", 
+	                	"type": "sap.watt.common.plugin.document.Document",
+	                	"description" : "oFolder object (oDocument type)",
+	                	"optional" : false
+	                }
+	               ]
+	     },
+	     "is2QEnabled" : {
+	         "description" : "Checks if 2Q is enabled for a specific project. A project is considered 2Q enabled if set in project.json translation.supportedLanguages contains en_us_sappsd",
+			"params" :[
+	            	{
+	                	"name" : "oDocument", 
+	                	"type": "sap.watt.common.plugin.document.Document",
+	                	"description" : "Document of Web IDE inside some project",
+	                	"optional" : false
+	                }
+	               ],
+			"returns" : "boolean"
+	     }
+	}
+}

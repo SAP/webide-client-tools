@@ -1,0 +1,8 @@
+{
+	"name": "sap.watt.ideplatform.plugin.run.service.PreviewHandler",
+	"description": "UI Handler interface for the run with/without preview section",
+	"methods": {
+		"updatePreviewSelected":{},
+		"onIconPressed":{}
+	}
+}

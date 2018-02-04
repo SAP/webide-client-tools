@@ -1,0 +1,102 @@
+{
+	"name" : "sap.watt.uitools.plugin.servicecatalog.service.Catalog",
+	"description" : "The service catalog interface",
+	"extends" : ["sap.watt.common.service.ui.Part", "sap.watt.common.service.selection.Provider"],
+	"configurationProperties" : {
+		"contextMenu" : {
+			"type" : "string",
+			"multiple" : false
+		}
+	},
+	"methods" : {
+		"getCatalog" : {
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			},
+			"description" : "This method returns a catalog tree based on the given destination.",
+			"params" : [{
+				"name" : "oConnection" ,
+				"type" :  "object",
+				"description" : "connection data object"
+			}],
+			"returns" : "object"
+		},
+		"cleanSelection":{
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			},
+			"description" : "This method removes the selection from the catalog tree ant collapses it."
+		},
+		"cleanGrid":{
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			}
+		},
+		"setSelectedNode":{
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			},
+			"description" : "This method sets the selected node of the tree to be the given node.",
+			"params" : [{
+				"name" : "oSelection",
+				"type" : "object",
+				"description" : "selected node of the tree"
+			}]
+		},
+		"setServiceContext":{
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			},
+			"description" : "This method sets the context in which this service runs on.",
+			"params" : [{
+				"name" : "oContext",
+				"type" : "object",
+				"description" : "current context"
+			}]
+		},
+		"populateConnections":{
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			},
+			"description" : "This method populates the destinations.",
+			"params" : [{
+				"name" : "oListControl",
+				"type" : "object",
+				"description" : "ui list control object"
+			},{
+				"name" : "iDataConnectionType",
+				"type": "number",
+				"description" : "number of data connection types"
+			}]
+		},
+		"getServiceConnectionData":{
+			"deprecated" : {
+				"description" : "catalog service is deprecated, use the serviceDiscovery service"
+			},
+			"description" : "This method gets service destination data according to connection and URL.",
+			"params" : [{
+				"name" : "oConnection",
+				"type" : "object",
+				"description" : "connection data object"
+			},{
+				"name" : "sURL",
+				"type" : "string",
+				"description" : "connection URL"
+			}]
+		}
+	},
+	"events" : {
+		"requestSent" : {
+			"description" : "This event is fired when the catalog sents a request to some data source"
+		},
+		"requestCompleted" : {
+			"description" : "This event is fired when the catalog receives a response from the data source"
+		},
+		"serviceSelectionCompleted" : {
+			"description" : "This event is fired when a service in the catalog is selected and validated"
+		},
+		"validateNextSent" : {
+			"description" : "This event is fired when a service in the catalog is selected to Enable/Disable Next button"
+		}
+	}
+}

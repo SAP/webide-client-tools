@@ -1,0 +1,20 @@
+{
+    "name": "sap.watt.ideplatform.heliumwsmapping.service.WorkspaceMapping",
+    "description": "Interface for Helium WorkspaceMapping",
+    "methods": {
+        "getHeliumWorkspaceMapping": {
+        	"params": [
+                {
+                    "name": "oDocument",
+                    "type": "object",
+                    "description": "File or Folder or Project Document"
+                }
+            ],
+            "returns": {
+                "type": "string",
+                "description": "Helium Workspace mapping"
+            },
+            "description": "Returns Helium workspace mapping string"
+        }
+    }
+}

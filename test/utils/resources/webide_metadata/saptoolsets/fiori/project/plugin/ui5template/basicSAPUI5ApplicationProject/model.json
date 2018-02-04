@@ -1,0 +1,10 @@
+{
+	"neoapp" : {
+		"welcomeFile": "/webapp/index.html",
+		"sendWelcomeFileRedirect": true
+	},
+	
+	"Import" : ["ui5template.basicSAPUI5ApplicationProjectCommon"]
+
+	
+}

@@ -1,0 +1,15 @@
+{
+	"name" : "sap.watt.uitools.plugin.fiorilaunchpad.services.FlpConfig",
+	"description" : "The FlpConfig persistence service interface",
+	"methods" : {
+		"loadConfig" : {
+			"params" : [{"name" : "oDocument", "type": "object"}],
+			"returns" : "object"
+		},
+		"saveConfig" : {
+			"params" : [{"name" : "flpConfig", "type": "object"},
+			             {"name" : "oDucument", "type": "object"}],
+			"returns" : "object"
+		}
+	}
+}

@@ -1,0 +1,18 @@
+{
+	"name": "sap.watt.ideplatform.di.hcp.feature",
+	"title": "Web IDE with DI on HCP - ideplatform layer",
+	"version": "1.0.0",
+	"description": "Web IDE with DI on HCP - ideplatform layer",
+
+	"bundledFeatures": {
+		"sap.watt.ideplatform.di.feature" : "file:package.json",
+		"sap.watt.platform.hcp.feature" : "file:../../platform/hcp/package.json",
+		"sap.watt.ideplatform.di.hidden.feature" : "file:{hidden_features}package-hidden.json"
+	},
+	
+	"bundledPlugins" : {
+		"sap.watt.ideplatform.che.gruntbuild" : "file:plugin/gruntbuild",
+		"sap.watt.ideplatform.welcomescreen" : "file:../plugin/welcomescreen"
+	}
+	
+}

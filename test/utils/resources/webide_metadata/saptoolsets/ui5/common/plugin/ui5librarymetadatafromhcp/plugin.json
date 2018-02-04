@@ -1,0 +1,28 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.common.ui5librarymetadatafromhcp",
+	"description": "The UI5 Library Meatadata from HCP Plugin",
+	
+	"requires": {
+		"services": [
+			"ui5librarymetadata",
+			"log"
+		]
+	},
+	"provides": {
+		"services": {
+			"ui5librarymetadatafromhcp": {
+				"implements": "sap.watt.common.service.ide.UI5LibraryMetadataProvider",
+				"module":  "sap.watt.saptoolsets.ui5.common.ui5librarymetadatafromhcp/service/UI5LibraryMetadataFromHcp"
+			}
+		}
+	},
+	"configures": {
+		"services": {
+			"ui5librarymetadata:providers": [{
+				"service": "@ui5librarymetadatafromhcp",
+				"serverType": ["hcproxy", "local_hcproxy"]
+			}]
+		}
+	}
+	
+}

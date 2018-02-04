@@ -1,0 +1,58 @@
+{
+	"name": "sap.watt.common.plugin.adt.compatibility.service.AdtUriTemplate",
+	"description": "The interface for URI templates according to RFC 6570 (see http://tools.ietf.org/html/rfc6570). ADT URI template is used as the interface for template links in a collection member of the ADT discovery.",
+	"methods": {
+		"containsVariable": {
+			"description": "The method returns true if the URI template contains a variable with the given variableName, else it returns false. In case of an error from parsing the template string an exception is thrown: one error object { message, stack } with detail information concerning the error.",
+			"params": [
+				{
+					"name": "variableName",
+					"type": "string",
+					"description": "The name of the variable.",
+					"optional": false
+				}
+			],
+			"returns": {
+				"type": "boolean",
+				"description": "Returns true in case the URI template contains the variable, else it returns false."
+			}
+		},
+		"set": {
+			"description": "The method sets the value for the given variable. This variable value is used by the expand-process for the URI template. See method expand. The method returns the URI template, so that chained statements are possible, e.g.: uriTemplate.set(\"var1\", \"value 1\").set(\"var2\", \"value_2\"); Remarks: The format of the variable names and values (including rules for the encoding) is defined in RFC6570 (see http://tools.ietf.org/html/rfc6570). Some examples for variable values in JavaScript: (a) simple value: string, e.g. \"value\", (b) list value: array of values, e.g. [\"red\", \"green\", \"blue\"], (c) keys value: associative array (JavaScript object), e.g. { \"semi\": \";\", \"dot\": \".\", \"comma\": \",\"}",
+			"params": [
+				{
+					"name": "variableName",
+					"type": "string",
+					"description": "The name of the variable.",
+					"optional": false
+				},
+				{
+					"name": "value",
+					"type": "string",
+					"description": "The variable value.",
+					"optional": false
+				}
+			],
+			"returns": {
+				"type": "sap.watt.common.plugin.adt.compatibility.service.AdtUriTemplate",
+				"description": "The URI template."
+			}
+		},
+		"expand": {
+			"description": "The method expands the URI template using the set variable values (see method set). The expand process is defined in RFC6570 (see http://tools.ietf.org/html/rfc6570). Example: URI template string: \"/sap/bc/adt/docu/abap/langu{?format,language,uri}\"  with simple variable values: format = \"eclipse\", language= \"EN\", uri=\"/sap/bc/adt/oo/classes/cl_ris_adt_res_app/source/main#start=51,8\", The expanded URI template string: \"/sap/bc/adt/docu/abap/langu?format=eclipse&language=EN&uri=%2Fsap%2Fbc%2Fadt%2Foo%2Fclasses%2Fcl_ris_adt_res_app%2Fsource%2Fmain%23start%3D51%2C8\". In case of an error from parsing the template string or from variable expansion an exception is thrown: one error object { message, stack } with detail information concerning the error.",
+			"params": [ ],
+			"returns": {
+				"type": "string",
+				"description": "The expanded URI template string."
+			}
+		},
+		"getTemplate": {
+			"description": "The method returns the template string.",
+			"params": [ ],
+			"returns": {
+				"type": "string",
+				"description": "The URI template string."
+			}
+		}
+	}
+}

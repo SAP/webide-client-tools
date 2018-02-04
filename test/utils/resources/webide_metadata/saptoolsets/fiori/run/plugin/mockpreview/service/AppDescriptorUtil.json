@@ -1,0 +1,41 @@
+{
+	"name" : "sap.watt.common.plugin.preview.service.AppDescriptorUtil",
+	"description" : "Util for reading data from manifest.json ",
+	"methods" : {
+	    
+		"getMetadataPath" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description": "any document object in project"
+			}],
+			"returns" : "string"
+		},
+		"getServiceUri" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description": "any document object in project"
+			}],
+			"returns" : "string"
+		},
+		
+		"getAnnotations" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description": "any document object in project"
+			}],
+			"returns" : "object"
+		},
+		
+		"getAppNamespace": {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description": "any document object in project"
+			}],
+			"returns" : "string"
+		}
+	} 
+}

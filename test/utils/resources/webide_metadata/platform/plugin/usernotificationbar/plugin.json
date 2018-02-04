@@ -1,0 +1,33 @@
+{
+	"name": "sap.watt.platform.usernotificationbar",
+	"description": "The User Notification Bar Plugin",
+
+	"requires": {
+		"services": [
+			"command",
+			"resource"
+		]
+	},
+
+	"provides" : {
+	
+		"services": {
+			
+			"usernotificationbar": {
+				"implements" : "sap.watt.common.service.ui.UserNotificationBar",
+				"module" : "sap.watt.platform.usernotificationbar/service/UserNotificationBar"
+			}
+			
+		}
+		
+	},
+	
+	"configures": {
+		"services": {
+			"usernotificationbar:styles": [
+				{ "uri" : "sap.watt.platform.usernotificationbar/css/userNotificationBar.css" }
+			]
+		}
+	}
+
+}

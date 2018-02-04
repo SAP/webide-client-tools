@@ -1,0 +1,76 @@
+{
+	"name": "sap.watt.platform.resourceindex",
+	"description": "The Indexing Plugin",
+	"i18n": "sap.watt.platform.resourceindex/i18n/i18n",
+
+	"requires": {
+		"services": [
+            "document",
+            "command",
+            "commandGroup",
+            "log",
+            "repositorybrowser",
+            "perspective",
+            "filesystem.documentProvider",
+            "usagemonitoring",
+            "filefilter",
+			"tipsandtricks",
+			"tipsandtricksviewsfactory"
+        ]
+	},
+
+	"provides": {
+
+		"services": {
+			"resourceindex": {
+				"implements": "sap.watt.common.service.resourceindex.Index",
+				"module": "sap.watt.platform.resourceindex/service/Index"
+			}
+		}
+	},
+
+	"configures": {
+
+		"services": {
+
+			"command:commands": [
+				{
+					"id": "resourceindex.resourcelist",
+					"icon": "open_resource",
+					"label": "{i18n>resource_list_title}",
+					"service": "sap.watt.platform.resourceindex/command/ResourceList",
+					"type": "action",
+					"keyBinding": "mod+shift+r"
+                }
+            ],
+
+			"commandGroup:items": [
+				{
+					"parent": "search.fileFindReplace",
+					"command": "resourceindex.resourcelist",
+					"prio": 15
+                },
+                { "parent" : "repositorybrowserToolbar", "command": "resourceindex.resourcelist", "prio": 40 }
+            ],
+			"usagemonitoring:reportParams": [
+				{
+					"components": ["search_resource", "project_count"],
+					"eventTypes": ["open", "count"]
+            }],
+
+			"tipsandtricks:tips": [
+				{
+					"id": "sap.watt.platform.resourceindex.OpenResourceTip",
+					"service": "sap.watt.platform.resourceindex/tips/OpenResourceTip",
+					"available": true
+				}
+			]
+		}
+	},
+
+	"subscribes": {
+		"document:deleted": "resourceindex:onDocumentDeleted",
+		"document:created": "resourceindex:onDocumentCreated",
+		"filefilter:hiddenChanged": "resourceindex:onHiddenChanged"
+	}
+}

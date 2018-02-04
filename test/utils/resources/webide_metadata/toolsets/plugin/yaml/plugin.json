@@ -1,0 +1,36 @@
+{
+	"name": "sap.watt.toolsets.yaml",
+	"description": "The XML CodeCompletion Plugin",
+	"i18n": "sap.watt.toolsets.yaml/i18n/i18n",
+	"requires": {
+		"services": [
+			"basevalidator",
+			"document",
+			"log",
+			"projectType"
+		]
+	},
+	"provides": {
+		"services": {
+			"yamlValidator": {
+				"implements": "sap.watt.toolsets.plugin.yaml.service.yamlValidator",
+				"module": "sap.watt.toolsets.yaml/service/YAMLValidator"
+			}
+		},
+		"interfaces": {
+			"sap.watt.toolsets.plugin.yaml.service.yamlValidator": "sap.watt.toolsets.yaml/service/YAMLValidator"
+		}
+	},
+	"configures": {
+		"services": {
+			"basevalidator:validator" : [
+				{
+					"validatorName": "{i18n>validator_name}",
+					"fileExtension": ["yaml"],
+					"syncExec": true,
+					"service": "@yamlValidator"
+				}
+			]
+		}
+	}
+}

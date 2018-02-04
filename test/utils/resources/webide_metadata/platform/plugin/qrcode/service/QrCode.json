@@ -1,0 +1,28 @@
+{
+	"name" : "sap.watt.common.plugin.qrcode.service.QrCode",
+	"description" : "The QrCode interface",
+	"methods" : {
+		"getQrCodeControl" : {
+			"params" : [{
+				"name" : "sString",
+				"type" : "string"
+				},
+				{
+				"name" : "bIsUrl",
+				"type" : "boolean"
+			}],
+			"returns" : "[object]"
+		},
+		"getQrCode" : {
+			"params" : [{
+				"name" : "sString",
+				"type" : "string"
+				},
+				{
+				"name" : "bIsUrl",
+				"type" : "boolean"
+			}],
+			"returns" : "[object]"
+		}
+	}
+}

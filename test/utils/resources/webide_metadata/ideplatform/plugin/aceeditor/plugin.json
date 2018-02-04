@@ -1,0 +1,700 @@
+{
+	"name":"sap.watt.ideplatform.aceeditor",
+	"description":"The ACE Editor Plugin",
+	"i18n" : "sap.watt.ideplatform.aceeditor/i18n/i18n",
+	
+	"requires":{
+		"services":[
+			"editor",
+			"command",
+			"commandGroup",
+			"preferences",
+			"resource",
+			"usernotification",
+			"userpreference",
+			"content",
+			"contextMenu",
+			"selection",
+			"focus",
+			"tipsandtricks",
+			"tipsandtricksviewsfactory",
+			"usagemonitoring"
+		]
+		
+	},
+
+	"provides":{
+		"services":{
+			"aceEditorFactory":{
+				"implements": "Factory",
+				"module": "sap.watt.ideplatform.aceeditor/service/EditorFactory"
+			},
+			"aceeditor":{
+				"implements": "sap.watt.common.plugin.aceeditor.service.Editor",
+				"module": "sap.watt.ideplatform.aceeditor/service/EditorImpl"
+			},
+			"gotoline":{
+				"implements": "sap.watt.ideplatform.plugin.aceeditor.service.GoToLine",
+				"module": "sap.watt.ideplatform.aceeditor/service/GoToLine"
+			},
+			"aceeditor.config": {
+				"implements": "sap.watt.common.plugin.aceeditor.service.EditorConfig",
+				"module" : "sap.watt.ideplatform.aceeditor/service/EditorConfig"
+			}			
+		},
+
+		"interfaces" : {
+			"sap.watt.common.plugin.aceeditor.service.Editor" : "sap.watt.ideplatform.aceeditor/service/Editor",
+			"sap.watt.ideplatform.plugin.aceeditor.service.GoToLine" : "sap.watt.ideplatform.aceeditor/service/GoToLine",
+			"sap.watt.common.plugin.aceeditor.service.EditorConfig" : "sap.watt.ideplatform.aceeditor/service/EditorConfig"
+		}
+	},
+	"configures":{
+		"services":{			 
+			"aceeditor:todoTag" : "// TODO: ",
+			"aceeditor.config:styles" : [
+				{
+					"uri" : "sap.watt.ideplatform.aceeditor/css/editorsetting.css"
+				}
+			],
+			 "usagemonitoring:reportParams": [
+        	{
+            	"components": ["GoToLine"],
+            	"eventTypes": ["gotoline"]
+            }],
+			"editor:editors":[
+				{
+					"contentType" : "sap.watt.ideplatform.contentType.text",
+					"service":"@aceeditor",
+					"name":"Code Editor",
+					"id":"ace",
+					"isDefault": true
+				}
+				
+			],
+			"commandGroup:groups": [
+			   
+				{ "id" : "commonContextMenu"},
+				{ "id" : "commentContextMenu"},
+				{ "id" : "editor.undoRedo"},
+				{ "id" : "commonGutterContextMenu"},
+			    { "id" : "commonGutterExpandContextMenu"},
+			    { "id" : "jsonGutterContextMenu"},
+			    { "id" : "cssGutterContextMenu"},
+			    { "id" : "htmlGutterContextMenu"}
+				],
+
+			"command:commands":[								
+				{
+					"id" : "editor.find",
+					"label" : "{i18n>command_find}",
+					"keyBinding": "mod+f",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/Find"
+				},
+				{
+					"id" : "editor.gotoline",
+					"label" : "{i18n>command_gotoline}",
+					"keyBinding": "mod+l",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/GoToLine"
+				},
+				{
+					"id" : "editor.findandreplace",
+					"label" : "{i18n>command_findandreplace}",
+					"keyBinding": "mod+h",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/FindAndReplace"
+				},
+				{
+					"id" : "editor.linecomment",
+					"label" : "{i18n>command_linecomment}",
+					"keyBinding": "mod+/",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/Comment"					
+				},
+				{
+					"id" : "editor.blockcomment",
+					"label" : "{i18n>command_blockcomment}",
+					"keyBinding": "mod+shift+/",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/BlockComment"					
+				},
+				{
+					"id" : "editor.showinvisibles",
+					"label" : "{i18n>command_showinvisibles}",
+					"keyBinding": "mod+i",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/Invisibles"					
+				},
+				{
+					"id" : "editor.todo",
+					"label" : "{i18n>command_addtodo}",
+					"keyBinding": "mod+alt+t",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/Todo"					
+				},
+				{
+					"id" : "editor.indent",
+					"label" : "{i18n>command_indent}",
+					"keyBinding": "tab",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/Indent",				
+					"value":"indent"
+				},
+				{
+					"id" : "editor.outdent",
+					"label" : "{i18n>command_outdent}",
+					"keyBinding": "shift+tab",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/Outdent",
+					"value":"outdent"
+				},
+				{
+					"id" : "editor.movelinesup",
+					"label" : "{i18n>command_movelinesup}",
+					"keyBinding": "alt+up",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/MoveLinesUp",
+					"value":"movelinesup"
+				},
+				{
+					"id" : "editor.movelinesdown",
+					"label" : "{i18n>command_movelinesdown}",
+					"keyBinding": "alt+down",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/MoveLinesDown",
+					"value":"movelinesdown"
+				},
+				{
+					"id" : "editor.copylinesup",
+					"label" : "{i18n>command_copylinesup}",
+					"keyBinding": "alt+shift+up",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/CopyLinesUp",
+					"value":"copylinesup"
+				},
+				{
+					"id" : "editor.copylinesdown",
+					"label" : "{i18n>command_copylinesdown}",
+					"keyBinding": "alt+shift+down",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/CopyLinesDown",
+					"value":"copylinesdown"
+				},
+				{
+					"id" : "editor.expandAll",
+					"label" : "{i18n>command_expandall}",
+					"keyBinding": "alt+shift+f2",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/ExpandAll"					
+				},
+				{
+					"id" : "editor.collapseAll",
+					"label" : "{i18n>command_collapseall}",
+					"keyBinding": "mod+alt+f2",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.aceeditor/command/CollapseAll",
+					"value":"collapseall"
+				}
+			],
+			
+			"commandGroup:items" : [
+                 {
+                	"parent": "search.fileFindReplace",
+                	"command": "editor.find",
+                	"prio": 10
+                },
+				{
+					"parent": "codeSymbol",
+					"command": "editor.find",
+					"prio": 1
+				},
+				{
+					"parent": "codeSymbol",
+					"command": "editor.findandreplace",
+					"prio": 2
+				},
+				{
+					"parent": "codeSymbol",
+					"command": "editor.gotoline",
+					"prio": 3
+				},
+				{
+                	"parent": "search.fileFindReplace",
+                	"command": "editor.findandreplace",
+                	"prio": 11
+                },				
+				{
+					"parent":"edit.editor.comment",
+					"command":"editor.linecomment",
+					"prio" : 90
+				},
+				{
+					"parent":"edit.editor.comment",
+					"command":"editor.blockcomment",
+					"prio" : 100
+				},
+				{
+					"parent":"edit.editor.comment",
+					"command":"editor.todo",
+					"prio" : 120
+				},		
+				{
+					"parent":"edit.editor",
+					"command":"editor.showinvisibles",
+					"prio" : 0
+				},						
+				{
+					"parent":"edit.editor.line",
+					"command":"editor.indent",
+					"prio" : 130
+				},
+				{
+					"parent":"edit.editor.line",
+					"command":"editor.outdent",
+					"prio" : 130
+				},				
+				{
+					"parent":"edit.editor.line",
+					"command":"editor.movelinesup",
+					"prio" : 140
+				},
+				{
+					"parent":"edit.editor.line",
+					"command":"editor.movelinesdown",
+					"prio" : 150
+				},
+				{
+					"parent":"edit.editor.line",
+					"command":"editor.copylinesup",
+					"prio" : 160
+				},
+				{
+					"parent":"edit.editor.line",
+					"command":"editor.copylinesdown",
+					"prio" : 170
+				},
+				{
+				    "parent": "editor.undoRedo",
+                    "command": "content.undo",
+                    "prio": 0
+                }, {
+                    "parent": "editor.undoRedo",
+                    "command": "content.redo",
+                    "prio": 10
+                }, 
+				{
+					"parent":"commentContextMenu",
+					"command":"editor.linecomment",
+					"prio" : 0
+				},
+				{
+					"parent":"commentContextMenu",
+					"command":"editor.blockcomment",
+					"prio" : 10
+				},
+				{
+					"parent":"commonContextMenu",
+					"group":"editor.undoRedo",
+					"type":"inline",					
+					"prio" : 0
+				},
+				{
+					"parent":"commonGutterContextMenu",
+					"group":"commonGutterExpandContextMenu",
+					"type":"inline",					
+					"prio" : 0
+				},
+				{
+					"parent":"commonGutterExpandContextMenu",
+					"command":"editor.expandAll",
+					"prio" : 10
+				},
+				{
+					"parent":"commonGutterExpandContextMenu",
+					"command":"editor.collapseAll",
+					"prio" : 20
+				},
+				{
+					"parent":"jsonGutterContextMenu",
+					"group":"commonGutterContextMenu",
+					"type":"inline",					
+					"prio" : 0
+				},
+				{
+					"parent":"cssGutterContextMenu",
+					"group":"commonGutterContextMenu",
+					"type":"inline",					
+					"prio" : 0
+				},
+				{
+					"parent":"htmlGutterContextMenu",
+					"group":"commonGutterContextMenu",
+					"type":"inline",					
+					"prio" : 0
+				}
+			],
+			"aceeditor.config:preferenceService" : {
+				"service" : "@preferences",
+				"node" : "sap.watt.common.plugin.aceeditor"
+			},
+			
+			"aceeditor:modes":[
+				{
+					"type":"abap",
+					"description":"ABAP",
+					"extension":"abap"
+				},
+				{
+					"type":"asciidoc",
+					"description":"AsciiDoc",
+					"extension":"asciidoc"
+				},
+				{
+					"type":"c9search",
+					"description":"C9Search",
+					"extension":"c9search_results"
+				},
+				{
+					"type":"coffee",
+					"description":"CoffeeScript",
+					"extension":"^Cakefile|coffee|cf"
+				},
+				{
+					"type":"coldfusion",
+					"description":"ColdFusion",
+					"extension":"cfm"
+				},
+				{
+					"type":"csharp",
+					"description":"C#",
+					"extension":"cs"
+				},
+				{
+					"type":"css",
+					"description":"CSS",
+					"extension":"css"
+				},
+				{
+					"type":"curly",
+					"description":"Curly",
+					"extension":"curly"
+				},
+				{
+					"type":"dart",
+					"description":"Dart",
+					"extension":"dart"
+				},
+				{
+					"type":"diff",
+					"description":"Diff",
+					"extension":"diff|patch"
+				},
+				{
+					"type":"dot",
+					"description":"Dot",
+					"extension":"dot"
+				},
+				{
+					"type":"glsl",
+					"description":"Glsl",
+					"extension":"glsl|frag|vert"
+				},
+				{
+					"type":"golang",
+					"description":"Go",
+					"extension":"go"
+				},
+				{
+					"type":"groovy",
+					"description":"Groovy",
+					"extension":"groovy"
+				},
+				{
+					"type":"haxe",
+					"description":"haXe",
+					"extension":"hx"
+				},
+				{
+					"type":"haml",
+					"description":"HAML",
+					"extension":"haml"
+				},
+				{
+					"type":"html",
+					"description":"HTML",
+					"extension":"htm|html|xhtml"
+				},
+				{
+					"type":"c_cpp",
+					"description":"C/C++",
+					"extension":"c|cc|cpp|cxx|h|hh|hpp"
+				},
+				{
+					"type":"clojure",
+					"description":"Clojure",
+					"extension":"clj"
+				},
+				{
+					"type":"jade",
+					"description":"Jade",
+					"extension":"jade"
+				},
+				{
+					"type":"java",
+					"description":"Java",
+					"extension":"java"
+				},
+				{
+					"type":"jsp",
+					"description":"JSP",
+					"extension":"jsp"
+				},
+				{
+					"type":"javascript",
+					"description":"JavaScript",
+					"extension":"js|xsjs|xsjslib|xsaccess|xsapp|xscfunc|xsws|xsprivileges"
+				},
+				{
+					"type":"json",
+					"description":"JSON",
+					"extension":"json|ideextension|ideconfig|rtideconfig|change"
+				},
+				{
+					"type":"jsx",
+					"description":"JSX",
+					"extension":"jsx"
+				},
+				{
+					"type":"latex",
+					"description":"LaTeX",
+					"extension":"latex|tex|ltx|bib"
+				},
+				{
+					"type":"less",
+					"description":"LESS",
+					"extension":"less"
+				},
+				{
+					"type":"lisp",
+					"description":"Lisp",
+					"extension":"lisp|scm|rkt"
+				},
+				{
+					"type":"liquid",
+					"description":"Liquid",
+					"extension":"liquid"
+				},
+				{
+					"type":"lua",
+					"description":"Lua",
+					"extension":"lua"
+				},
+				{
+					"type":"luapage",
+					"description":"LuaPage",
+					"extension":"lp"
+				},
+				{
+					"type":"lucene",
+					"description":"Lucene",
+					"extension":"lucene"
+				},
+				{
+					"type":"makefile",
+					"description":"Makefile",
+					"extension":"^GNUmakefile|^makefile|^Makefile|^OCamlMakefile|make"
+				},
+				{
+					"type":"markdown",
+					"description":"Markdown",
+					"extension":"md|markdown"
+				},
+				{
+					"type":"objectivec",
+					"description":"Objective-C",
+					"extension":"m"
+				},
+				{
+					"type":"ocaml",
+					"description":"OCaml",
+					"extension":"ml|mli"
+				},
+				{
+					"type":"perl",
+					"description":"Perl",
+					"extension":"pl|pm"
+				},
+				{
+					"type":"pgsql",
+					"description":"pgSQL",
+					"extension":"pgsql"
+				},
+				{
+					"type":"php",
+					"description":"PHP",
+					"extension":"php|phtml"
+				},
+				{
+					"type":"powershell",
+					"description":"Powershell",
+					"extension":"ps1"
+				},
+				{
+					"type":"python",
+					"description":"Python",
+					"extension":"py"
+				},
+				{
+					"type":"r",
+					"description":"R",
+					"extension":"r"
+				},
+				{
+					"type":"rdoc",
+					"description":"RDoc",
+					"extension":"Rd"
+				},
+				{
+					"type":"rhtml",
+					"description":"RHTML",
+					"extension":"Rhtml"
+				},
+				{
+					"type":"ruby",
+					"description":"Ruby",
+					"extension":"ru|gemspec|rake|rb"
+				},
+				{
+					"type":"scad",
+					"description":"OpenSCAD",
+					"extension":"scad"
+				},
+				{
+					"type":"scala",
+					"description":"Scala",
+					"extension":"scala"
+				},
+				{
+					"type":"scss",
+					"description":"SCSS",
+					"extension":"scss|sass"
+				},
+				{
+					"type":"sh",
+					"description":"SH",
+					"extension":"sh|bash|bat"
+				},
+				{
+					"type":"sql",
+					"description":"pgSQL",
+					"extension":"pgsql"
+				},
+				{
+					"type":"stylus",
+					"description":"Stylus",
+					"extension":"styl|stylus"
+				},
+				{
+					"type":"svg",
+					"description":"SVG",
+					"extension":"svg"
+				},
+				{
+					"type":"tcl",
+					"description":"Tcl",
+					"extension":"tcl"
+				},
+				{
+					"type":"tex",
+					"description":"Tex",
+					"extension":"tex"
+				},
+				{
+					"type":"text",
+					"description":"Text",
+					"extension":"txt|text"
+				},
+				{
+					"type":"textile",
+					"description":"Textile",
+					"extension":"textile"
+				},
+				{
+					"type":"typescript",
+					"description":"Typescript",
+					"extension":"typescript|ts|str"
+				},
+				{
+					"type":"vbscript",
+					"description":"VBScript",
+					"extension":"vbs"
+				},
+				{
+					"type":"xml",
+					"description":"XML",
+					"extension":"xml|rdf|rss|wsdl|xslt|atom|mathml|mml|xul|xbl|xsl"
+				},
+				{
+					"type":"xquery",
+					"description":"XQuery",
+					"extension":"xq"
+				},
+				{
+					"type":"yaml",
+					"description":"YAML",
+					"extension":"yaml"
+				},
+				{
+					"type":"image",
+					"description":"Image",
+					"extension":"gif|png|jpg|ico"
+				}		
+			],
+			
+			"userpreference:plugins" : [
+				{
+					"id": "editor",
+					"name" : "Code Editor",
+					"title" : "Code Editor",
+					"description" : " ",
+					"service": "@aceeditor.config"
+				}
+			],
+
+			"aceeditor:editorGutterContextMenu":[
+        		{
+					"extension" : "json",
+					"menuGroup" : "jsonGutterContextMenu"
+				},
+        		{
+					"extension" : "css",
+					"menuGroup" : "cssGutterContextMenu"
+				},
+				{
+					"extension" : "html",
+					"menuGroup" : "htmlGutterContextMenu"
+				}
+			],
+
+			"tipsandtricks:tips": [
+				{
+					"id": "sap.watt.ideplatform.aceeditor.MoveLinesUpDown",
+					"service": "sap.watt.ideplatform.aceeditor/tips/MoveLinesUpDownTip",
+					"available": true
+				},
+				{
+					"id": "sap.watt.ideplatform.aceeditor.AutoSave",
+					"service": "sap.watt.ideplatform.aceeditor/tips/AutoSaveTip",
+					"available": true
+				}
+			]
+		}
+		
+	},
+	"subscribes":{
+	
+	}
+	
+}

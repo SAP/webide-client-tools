@@ -1,0 +1,74 @@
+{
+	"name" : "sap.watt.common.service.registry.Editor",
+	"description" : "The edtior registry service interface",
+	"configurationProperties" : {
+		"editors" : {
+			"type" : {
+				"contentType": "[string]",
+				"fileExtension" : "[string]",
+				"service" : "sap.watt.common.service.editor.Editor",
+				"isDefault": "boolean",
+				"name": "string",
+				"id": "string"
+			},
+			"multiple" : true
+		},
+		"defaultEditors" : {
+			"type" : {
+				"contentTypeId": "string",
+				"extention": "string",
+				"editorId": "string"
+			},
+			"multiple" : true
+		}
+	},
+	"methods" : {
+		"getDefaultEditor" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object"
+			}],
+			"returns" : "object"
+		},
+		
+		"getConfiguredEditors":{
+			"returns": {
+				"type": "[object]",
+				"description": "stack of all config editors"
+			}
+		},
+		"getDefaultEditorForContentType": {
+			"params" : [{
+                "name" : "sContentTypeId",
+                "type" : "string"
+            }],
+            "returns" : "[object]"
+		},
+		
+        "getSpecificEditor" : {
+            "params" : [{
+                "name" : "oDocument",
+                "type" : "object"
+            },{
+                "name" : "sEditorId",
+                "type" : "string"
+            }],
+            "returns" : "object"
+        },
+        
+        "getAllEditors" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object"
+			}],
+			"returns" : "[object]"
+		},
+
+		"getIntellisence" : {
+			"returns" : "object"
+		},
+		"getContentStatus" : {
+			"returns" : "object" 
+		}
+	}
+}

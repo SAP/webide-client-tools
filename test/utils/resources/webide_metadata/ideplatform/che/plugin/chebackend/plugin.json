@@ -1,0 +1,159 @@
+{
+  "name": "sap.watt.ideplatform.che.chebackend",
+  "module": "sap.watt.ideplatform.che.chebackend/Plugin",
+  "description": "The Che Backend Plugin",
+  "i18n": "sap.watt.ideplatform.che.chebackend/i18n/i18n",
+  "requires": {
+    "services": [
+      "document",
+      "filesystem.documentProvider",
+      "filefilter",
+      "log",
+      "preferences",
+      "projectType",
+      "buildRegistry",
+      "runRegistry",
+      "setting.project",
+      "setting.user",
+      "repositorybrowser",
+      "selection",
+      "mtafoldertoprojectconvertor.validation",
+      "issues",
+      "messageBus",
+      "runconsole",
+      "destination"
+    ]
+  },
+  "provides": {
+    "services": {
+      "chebackend.fileDAO": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/File",
+        "implements": "sap.watt.common.service.remote.ProjectDAO"
+      },
+      "gitFileDAO": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/GitFileDAO",
+        "implements": "sap.watt.common.service.remote.FileDAO"
+      },
+      "system": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/System",
+        "implements": "sap.watt.common.service.remote.System"
+      },
+      "git": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/GitService",
+        "implements": "sap.watt.common.service.remote.Git"
+      },
+      "chebackend.build": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/Build",
+        "implements": "sap.watt.common.service.remote.Build"
+      },
+      "chebackend.HANAInfoStorageService": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/HANAInfoStorageService",
+        "implements": "sap.watt.uitools.chebackend.service.HANAInfoStorageService"
+      },
+      "chebackend.XS2ServicesDAO": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/XS2ServicesDAO",
+        "implements": "sap.watt.uitools.chebackend.service.XS2ServicesDAO"
+      },
+      "chebackend.WorkspaceSettings": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/WorkspaceSettings",
+        "implements": "sap.watt.uitools.chebackend.service.WorkspaceSettings"
+      },
+      "chebackend.run": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/Run",
+        "implements": "sap.watt.common.service.remote.Run"
+      },
+      "codeValidationDAO": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/CodeValidation",
+        "implements": "sap.watt.common.service.remote.CodeValidationDAO"
+      },
+      "chebackend.Mta": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/Mta",
+        "implements": "sap.watt.ideplatform.che.plugin.chebackend.service.Mta"
+      }
+    },
+    "interfaces": {
+      "sap.watt.uitools.chebackend.service.XS2ServicesDAO": "sap.watt.ideplatform.che.chebackend/service/XS2ServicesDAO",
+      "sap.watt.uitools.chebackend.service.HANAInfoStorageService": "sap.watt.ideplatform.che.chebackend/service/HANAInfoStorageService",
+      "sap.watt.uitools.chebackend.service.WorkspaceSettings": "sap.watt.ideplatform.che.chebackend/service/WorkspaceSettings"
+    }
+  },
+  "configures": {
+    "services": {
+      "filefilter:alwaysHidden": [
+        {
+          "regExps": [
+            "(/.git/)",
+            "(/.git)$"
+          ]
+        }
+      ],
+      "filefilter:defaultHidden": [
+        {
+          "regExps": [
+            "/{1}(.gitignore)$",
+            "(/\\.)"
+          ]
+        }
+      ],
+      "filesystem.documentProvider:dao": [
+        {
+          "id": "workspace",
+          "service": "@chebackend.fileDAO"
+        },
+        {
+          "id": "gitFileDao",
+          "service": "@gitFileDAO"
+        }
+      ],
+      "preferences:dao": {
+        "module": "sap.watt.ideplatform.che.chebackend/service/Preferences"
+      },
+      "buildRegistry:setBuild": [
+        {
+          "service": "@chebackend.build"
+        }
+      ],
+      "projectType:dao": {
+        "service": "sap.watt.ideplatform.che.chebackend/service/ProjectTypeDAO"
+      },
+      "runRegistry:setRun": [
+        {
+          "service": "@chebackend.run"
+        }
+      ],
+      "runconsole:setRunprogress": [
+        {
+          "service": "@chebackend.run"
+        }
+      ],
+      "setting.project:dao": {
+        "service": "sap.watt.ideplatform.che.chebackend/service/ProjectSettingsDAO"
+      },
+      "setting.user:dao": {
+        "service": "sap.watt.ideplatform.che.chebackend/service/UserSettingsDAO"
+      }
+    }
+  },
+  "subscribes": {
+    "system:loggedIn": "chebackend.fileDAO:onLogIn",
+    "core:started": "onAfterCoreStarted",
+    "git:rebaseInteractiveFinished": [
+      "gitFileDAO:refresh",
+      "gitFileDAO:updateWorkspace"
+    ],
+    "git:cherryPickResolved": "gitFileDAO:refresh",
+    "git:mergeResolved": "gitFileDAO:refresh",
+    "git:pullFinished": "gitFileDAO:updateWorkspace",
+    "git:pushFinished": "gitFileDAO:updateWorkspace",
+    "git:mergeFinished": "gitFileDAO:updateWorkspace",
+    "git:rebaseFinished": "gitFileDAO:updateWorkspace",
+    "git:cherryPickFinished": "gitFileDAO:updateWorkspace",
+    "git:CheckoutBranch": "gitFileDAO:updateWorkspace",
+    "git:resetFinished": "gitFileDAO:updateWorkspace",
+    "git:revertFinished": "gitFileDAO:updateWorkspace",
+    "git:discardFinished": "gitFileDAO:updateWorkspace",
+    "git:stashFinished": "gitFileDAO:updateWorkspace",
+    "git:useStashFinished": "gitFileDAO:updateWorkspace",
+    "messageBus:connectionClosed": "chebackend.run:onMessageBusConnectionClosed"
+  }
+}

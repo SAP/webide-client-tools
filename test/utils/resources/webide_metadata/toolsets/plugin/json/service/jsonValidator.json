@@ -1,0 +1,20 @@
+{
+	"name": "sap.watt.common.json.jsonValidator",
+	"description": "The JSON Validator interface",
+	"extends" : ["sap.watt.common.service.editor.PortableValidator"],
+	"configurationProperties" : {
+	    "jsonValidatorSchema": {
+	        "type" : {
+                    
+                        "projectType":"string", 
+                        "fileNames":"[string]",
+                        "schema":"sap.watt.common.basevalidator.validatorSchema"
+                    
+	        },
+	        "multiple" : true
+	    }
+	    
+	},
+	"methods": {},
+	"events" : {}
+}

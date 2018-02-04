@@ -1,0 +1,16 @@
+{
+    "name": "sap.watt.uitools.plugin.mtafoldertoprojectconvertor.service.Validation",
+    "description": "MTA Service Validation Interface",
+    "methods": {
+     	"isConvertable": {
+     		"params": [
+     		 	{
+					"name" : "oDocument",
+					"type" : "object",
+					"description" : "document"
+                }
+     		],
+     		"returns": "boolean"
+    	}
+     }
+} 

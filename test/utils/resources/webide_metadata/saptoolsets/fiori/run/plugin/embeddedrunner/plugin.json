@@ -1,0 +1,94 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.embeddedrunner",
+	"description": "Embedded Mode runner plugin",
+	"i18n": "sap.watt.saptoolsets.fiori.run.embeddedrunner/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"run",
+			"filesystem.documentProvider",
+			"setting.project",
+			"log",
+			"deployment",
+			"neoapp",
+			"beautifier",
+			"fiorilaunchpad",
+			"hcpauthentication",
+			"runconfig.urlparameters",
+			"ui5projecthandler",
+			"embeddedrunnerutil",
+			"abaprepository",
+			"discovery",
+			"runconfigerrorhandler",
+			"usagemonitoring",
+			"system",
+                  	"destination",
+			"runinnewprocess",
+			"heliumPreviewAdapter",
+			"reuselibsextension",
+			"ideurlparameters",
+			"componentpreloadextension"
+		]
+	},
+	"provides": {
+		"services": {
+			"EmbeddedRunner": {
+				"implements": "sap.watt.common.plugin.run.service.runner",
+				"module": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunner"
+			},
+			"embeddedrunnerconfigui": {
+				"implements": "sap.watt.uitools.plugin.embeddedrunner.service.EmbeddedRunnerUiHandler",
+				"module": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerUiHandler"
+			},
+			"embeddedrunnerutil": {
+				"implements": "sap.watt.uitools.plugin.embeddedrunner.service.EmbeddedRunnerUtil",
+				"module": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerUtil"
+			},
+			"embeddedrunnerruntime": {
+				"implements": "sap.watt.saptoolsets.fiori.run.embeddedrunner.EmbeddedRunnerRuntime",
+				"module": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerRuntime"
+			},
+			"embeddedrunnerruntimeHCP": {
+				"implements": "sap.watt.saptoolsets.fiori.run.embeddedrunner.EmbeddedRunnerRuntimeLocation",
+				"module": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerRuntimeHCP"
+			},
+			"embeddedrunnerruntimeABAP": {
+				"implements": "sap.watt.saptoolsets.fiori.run.embeddedrunner.EmbeddedRunnerRuntimeLocation",
+				"module": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerRuntimeABAP"
+			}
+		},
+		"interfaces": {
+			"sap.watt.uitools.plugin.embeddedrunner.service.EmbeddedRunnerUiHandler": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerUiHandler",
+			"sap.watt.uitools.plugin.embeddedrunner.service.EmbeddedRunnerUtil": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerUtil",
+			"sap.watt.saptoolsets.fiori.run.embeddedrunner.EmbeddedRunnerRuntime": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerRuntime",
+			"sap.watt.saptoolsets.fiori.run.embeddedrunner.EmbeddedRunnerRuntimeLocation": "sap.watt.saptoolsets.fiori.run.embeddedrunner/service/EmbeddedRunnerRuntimeLocation"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"run:runners": [{
+				"id": "embeddedrunner",
+				"service": "@EmbeddedRunner",
+				"displayName": "{i18n>lbl_run_sap_embedded}",
+				"projectTypesIds": ["sap.watt.uitools.ide.fiori"],
+				"windowTarget": "fiori_preview",
+				"fileTypes": ["Component.js", "*fiorisandboxconfig*.json"],
+				"internalOnly": true,
+				"appCacheBuster": false
+			}],
+			"embeddedrunnerconfigui:styles": [{
+				"uri": "sap.watt.uitools.commonrunners/css/uiValidation.css"
+			}, {
+				"uri": "sap.watt.ideplatform.run/css/runConfigurationsStyles.css"
+			}],
+			"usagemonitoring:reportParams": [{
+				"components": ["runner"],
+				"eventTypes": ["embedded", "url_parameters"]
+			}]
+		}
+	},
+	"subscribes": {
+
+	}
+}

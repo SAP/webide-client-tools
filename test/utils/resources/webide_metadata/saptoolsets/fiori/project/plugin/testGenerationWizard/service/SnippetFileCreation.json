@@ -1,0 +1,33 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.project.testGenerationWizard.service.SnippetFileCreation",
+	"description": "The test snippet file creation service",
+	"methods": {
+		"createSnippetFile": {
+			"description": "Create new file under the selected folder"
+		},
+		"openNewFile": {
+			"description": "Open the new document created"
+		},
+		"snippetFileOpen": {
+			"description": "Open the document created"
+		},
+		"isCommandEnabled": {
+			"description": "This method clears the global in this service",
+			"returns": {
+				"description": "object with document and boolean",
+				"type": "object"
+			}
+		},
+		"clearInternalData": {
+			"description": "This method clears the globals in this service"
+		},
+
+		"getCurrentFolderDocument": {
+			"description": "Get current selected folder document",
+			"returns": {
+				"type": "object",
+				"description": "The selected folder document"
+			}
+		}
+	}
+}

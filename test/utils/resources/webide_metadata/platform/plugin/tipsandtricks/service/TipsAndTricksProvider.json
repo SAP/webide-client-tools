@@ -1,0 +1,22 @@
+{
+	"name" : "sap.watt.platform.tipsandtricks.service.TipsAndTricksProvider",
+	"description" : "The interface that each plugin configuration of the tips and tricks manager must implement",
+	"methods" : {
+		"getView" : {
+			"description": "Returns a view that will be the content of the tips and tricks dialog when the current tip is shown",
+			"params" : [],
+			"returns" : {
+				"type" : "object",
+				"description" : "An instance of sap.ui.core.mvc.View"
+			}
+		},
+		"isAvailable" : {
+			"description": "Decides if the tip is to be shown or not",
+			"params" : [],
+			"returns" : {
+				"type" : "boolean",
+				"description" : "true if the tip should be available in the tips and tricks dialog"
+			}
+		}
+	}
+}

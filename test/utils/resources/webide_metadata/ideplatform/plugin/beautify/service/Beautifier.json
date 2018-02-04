@@ -1,0 +1,25 @@
+{
+  "name": "sap.watt.common.beautify.beautifier",
+  "extends": [],
+  "methods": {
+	"beautify": {
+	  "description": "Execution of beautifier on the content",
+	  "params": [
+		{
+		  "name": "content",
+		  "type": "string",
+		  "description": "The content to beautify"
+		},
+		{
+		  "name": "settings",
+		  "type": "object",
+		  "description": "Configured Settings for the beautifier execution"
+		}
+	  ],
+	  "returns": {
+		"type": "string",
+		"description": "The beautified content"
+	  }
+	}
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"name": "sap.watt.common.service.remote.PreferencesWrapper",
+	"description": "A wrapper for the connected preferences dao service. If none is configured it is a noop operation",
+	"extends" : "sap.watt.common.service.remote.Preferences",
+		
+	"configurationProperties" : {
+		"dao" : {
+			"type" : "sap.watt.common.service.remote.Preferences",
+			"multiple" : false
+		}
+	}
+}

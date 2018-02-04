@@ -1,0 +1,139 @@
+{
+	"name": "sap.watt.common.builder.service.Builder",
+	"description": "The build interface",
+	"methods": {
+		"build": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				},
+			  	{
+                    "name": "oBuildOptions",
+                    "type": "object",
+                    "description": "Build options"
+			  	}
+			]
+		},
+		"triggerErrorMessagePopup":{
+			"params": [
+				{
+					"name": "oError",
+					"type": "object",
+					"description": "The error thrown"
+				},
+				{
+					"name": "sProjectName",
+					"type": "string",
+					"description": "The project name for which the error was thrown"
+				}
+			]
+		},
+		"isBuildSupported": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "boolean",
+			"description": "True if this project supports build"
+		},
+		"isBuildRequired": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "boolean",
+			"description": "True if this project requires a new build"
+		},
+		"getTargetFolder": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "object",
+			"description": "The target folder document"
+		},
+		"getSourceFolder": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "object",
+			"description": "The source folder document"
+		},
+		"getTargetFolderByProjectSettings": {
+			"params": [
+				{
+					"name": "oProjectSettings",
+					"type": "object",
+					"description": "The project settings from .project.json"
+				}
+			],
+			"returns": "string",
+			"description": "Get the target folder as defined in the project settings. Return null if there is no target folder"
+		},
+		"isBuildConfigurationSupported": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "boolean",
+			"description": "True if this project supports build configuration"
+		},
+		"getBuildConfigurationUI": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "object",
+			"description": "The build configuration UI for this project"
+		},
+		"getBuildConfigurationTitle": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "object",
+					"description": "The project to be built"
+				}
+			],
+			"returns": "string",
+			"description": "The title for the build configuration UI"
+		}
+	},
+	"configurationProperties": {
+		"projectTypes": {
+			"type": {
+				"projectTypeId": "string",
+				"buildService": "sap.watt.common.builder.service.BuildService",
+				"buildConfigurationService": "sap.watt.common.builder.service.BuildConfigurationService"
+			},
+			"multiple": true
+		},
+		"styles": {
+			"type": [{
+				"uri": "string",
+				"type": "string"
+			}],
+			"multiple": false
+		}
+	}
+}

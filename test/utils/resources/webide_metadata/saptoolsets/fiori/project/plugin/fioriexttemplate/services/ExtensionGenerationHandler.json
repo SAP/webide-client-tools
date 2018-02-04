@@ -1,0 +1,7 @@
+{
+	"name" : "sap.watt.uitools.plugin.fioriexttemplate.services.ExtensionGenerationHandler",
+	
+	"description" : "This service contains the event handler for the generation:generated event that is thrown after any generation. This handler handles all the events related to the extensions and the extension project. The event handler. The handler function is not public and therefore doesn't exist here.",
+
+	"methods" : {}
+}

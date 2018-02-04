@@ -1,0 +1,19 @@
+{
+	"name" : "sap.watt.uitools.plugin.fioriexttemplate.services.ParentCode",
+	"description" : "The ParentCode service interface",
+	"extends" : ["sap.watt.common.service.editor.Editor"]	,	
+	"methods" : {
+	     "readOnly" : {
+			"params" : [{
+					"name" : "oDocument" ,
+					"type" :  "object"
+				},
+				{
+					"name" : "sContent" ,
+					"type" :  "string",
+                    "description": "The content to be displayed"
+				}],
+				 "description": "The method opens the compare editor with a single non editable document"	           
+	     }
+	}
+}

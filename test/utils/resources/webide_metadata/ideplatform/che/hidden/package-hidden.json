@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.ideplatform.di.hidden.feature",
+	"title" : "Web IDE with DI - ideplatform layer - hidden features",
+	"version" : "1.0.0",
+	"description" : "Web IDE with DI - ideplatform layer - hidden features",
+
+
+	"bundledPlugins" : {
+		"sap.watt.ideplatform.che.mtaproject" : "file:../plugin/mtaproject",
+		"sap.watt.ideplatform.che.hcpprojectspace" : "file:../plugin/hcpprojectspace"	
+	}
+
+}

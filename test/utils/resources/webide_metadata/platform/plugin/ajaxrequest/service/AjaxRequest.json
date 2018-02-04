@@ -1,0 +1,30 @@
+{
+	"name": "sap.watt.common.plugin.ajaxrequest.service.AjaxRequest",
+	"description": "Ajax Request interface",
+	"methods": {
+		"createClient": {
+			"description": "Create a new instance of the AJAX client",
+			"params": [
+				{
+					"name": "sTokenUrl",
+					"type": "string",
+					"description": "An available URL to fetch a fresh CSRF token from"
+				},
+				{
+					"name": "mDefaultHeaders",
+					"type": "object",
+					"description": "The default headers to be used with all outgoing calls unless specified"
+				},
+				{
+					"name": "oAuthentication",
+					"type": "object",
+					"description": "Contains the authentication type and the appropriate credentials, currently only Basic Auth is supported"
+				}
+			],
+			"returns": {
+				"type": "object",
+				"description": "a new configured AJAX client instance"
+			}
+		}
+	}
+}

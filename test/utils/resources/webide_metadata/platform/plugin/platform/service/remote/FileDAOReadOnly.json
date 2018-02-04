@@ -1,0 +1,266 @@
+{
+	"name": "sap.watt.common.service.remote.FileDAOReadOnly",
+	"description": "The file remote service interface. It contains the static methods to create and retrieve file specific documents and serves as file and folder type adapter",
+	
+	"events" : {
+        "externalChanged" : {
+            "description" : "Thrown if workspace got externally changed.",
+            "params" : [
+                {
+                    "name": "oDocument",
+                    "description" : "If available the root folder of content that has been changed.",
+                    "type" : "object",
+                    "optional" : true
+                }
+            ]            
+        }       
+    },
+	"methods": {
+		"getRoot": {
+			"description" : "Gets the workspace root folder document",
+			"params": [
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"description" : "The Data Access Object to use"
+				},
+				{ 
+					"name" : "sVersion",
+					"type" : "string",
+					"description" : "The version to provide"
+				}
+			],
+			"returns": {
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Folder document of the workspace root folder"
+				}
+		},
+		"readFileMetadata": {
+			"description" : "Gets the file metadata",
+			"returns": {
+					"type" : {
+						"sETag" : {
+							"type" : "string",
+							"description" : "The ETag of the file"
+							}
+						},
+					"description" : "Metadata (ETag) of the file"
+				}
+		},
+		"exportZip": {
+			"description" : "Exports a folder content as zip",
+			"params": [
+				{ 
+					"name" : "oFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Folder document of the folder which should be exported"
+				}
+			],
+			"returns": {
+					"type" : "object",
+					"description" : "A zip containing the content of the folder as zip"
+				}
+		},
+		"search": {
+			"description" : "Search for files",
+			"params": [
+				{ 
+					"name" : "oInputObject",
+					"type" : {
+						"sSearchTerm" : {
+							"type" : "string",
+							"description" : "The search term"
+							},
+						"bContentSearch" : {
+							"type" : "boolean",
+							"optional" : true,
+							"description" : "Search should be done on content level (if not provided it is on file names)"
+							},
+						"oFolderDocument" : {
+							"type" : "sap.watt.common.plugin.document.Document",
+							"optional" : true,
+							"description" : "Search should be done on this folder (if not provided a global search in all folders of the workspace is done)"
+							},
+						"sFolderName" : {
+							"type" : "string",
+							"optional" : true,
+							"description" : "Search should be done on this folder (if not provided a global search in all folders of the workspace is done)"
+							},
+						"sFileType" : {
+							"type" : "string",
+							"optional" : true,
+							"description" : "Search should be done on the specified type of files (if not provided a global search in all files is done)"
+							},
+						"nStart" : {
+							"type" : "number",
+							"optional" : true,
+							"description" : "Skip first n result files (for pagination)"
+							},
+						"nRows" : {
+							"type" : "number",
+							"optional" : true,
+							"description" : "Number of files expected to be returner (for pagination)"
+							}
+						},
+					"description" : "The input object"
+				},
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"description" : "The Data Access Object to use"
+				}
+			],
+			"returns": {
+					"type" : "[sap.watt.common.plugin.document.Document]",
+					"description" : "Array of file entries containing all matching files"
+				}
+		},
+		"getDocument": {
+			"description" : "Finds an object (file/folder) by an absolute path",
+			"params": [
+				{ 
+					"name" : "sPath",
+					"type" : "string",
+					"description" : "Absolute path of the object (file/folder)"
+				},
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"description" : "The Data Access Object to use"
+				},
+				{ 
+					"name" : "sVersion",
+					"type" : "string",
+					"description" : "The version to provide"
+				}
+			],
+			"returns": {
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The file or folder document of the found file/folder"
+				}
+		},
+		
+		"getCurrentMetadata": {
+			"description" : "Gets the direct and recursive children metadata content of a folder",
+			"params": [
+				{ 
+					"name" : "oFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Folder document of the folder (never be null)"
+				},
+				{ 
+                    "name" : "bRecursive",
+                    "type" : "boolean",
+                    "description" : "true - all folder children metadata (recursivly), false - only direct children metadata"
+                },
+                { 
+                    "name" : "bForce",
+                    "type" : "boolean",
+                    "description" : "true - executes network call to server, false - returns metadata from cache"
+                },
+                { 
+                    "name" : "oFilterOptions",
+                    "type" : "object",
+                    "optional" : true,
+                    "description" : "options to filter returned metadata"
+                }
+			],
+			"returns": {
+					"type" : "object",
+					"description" : "Array of file and folder children metadata in the folder"
+			}
+		},
+		
+		"getFolderContent": {
+			"description" : "Gets the direct content of a folder",
+			"params": [
+				{ 
+					"name" : "oFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Folder document of the folder (never be null)"
+				},
+				{ 
+                    "name" : "bUseRaw",
+                    "type" : "boolean",
+                    "description" : "Skips the mapping/creation of the orion children to documents and returns the raw JSON structure."
+                }
+			],
+			"returns": {
+					"type" : "[sap.watt.common.plugin.document.Document]",
+					"description" : "Array of file and folder entries in the folder"
+			}
+		},
+		"getVersions":{
+			"description" : "Returns the available versions for a document",
+			"params": [
+				{ 
+					"name" : "oDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The document for which the version should be provided"
+				},
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"description" : "The Data Access Object to use"
+				}
+			],
+			"returns": {
+					"type" : "[sap.watt.common.plugin.document.Document]",
+					"description" : "The documents for each version"
+				}
+		},
+		"getVersion":{
+			"description" : "Returns the specified version for a document",
+			"params": [
+				{ 
+					"name" : "oDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The document for which the version should be provided"
+				},
+				{ 
+					"name" : "sVersion",
+					"type" : "string",
+					"description" : "The version to provide"
+				},
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"description" : "The Data Access Object to use"
+				}
+			],
+			"returns": {
+					"type" : "[sap.watt.common.plugin.document.Document]",
+					"description" : "The documents for each version"
+				}
+		},
+		"load": {
+			"description" : "Loads a file document content",
+			"params": [
+				{ 
+					"name" : "oFileDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "File document"
+				}
+			]
+		},
+		"objectExists": {
+			"description" : "Checks whether an object (file/folder) exists",
+			"params": [
+				{ 
+					"name" : "oParentDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Parent folder document of the folder in which the check should be performed (never be null)"
+				},
+				{ 
+					"name" : "sRelativePath",
+					"type" : "string",
+					"description" : "The path relative to the parent document to the object (file/folder name) (never be null)"
+				}
+			],
+			"returns": {
+					"type" : "boolean",
+					"description" : "true if the object exists, false if the object does not exist"
+				}
+		}
+	}
+}

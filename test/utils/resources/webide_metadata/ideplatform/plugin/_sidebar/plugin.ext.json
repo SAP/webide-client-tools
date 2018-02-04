@@ -1,0 +1,31 @@
+{	
+	"name" : "sap.watt.ideplatform.sidebar",
+
+	"requires" : {
+		"services": [
+			"resource",
+			"selection"
+		]
+	},
+	
+	"provides" : {
+		"services": 
+			{
+				"leftsidebar" : {
+					"implements": "sap.watt.common.service.ui.Sidebar",
+					"module": "sap.watt.platform.sidebar/service/Sidebar"
+				},
+				"rightsidebar" : {
+					"implements": "sap.watt.common.service.ui.Sidebar",
+					"module": "sap.watt.platform.sidebar/service/Sidebar",
+					"configuration" : {
+
+					}
+				}
+			}
+	},
+	
+	"subscribes": {
+		"command:invalidated": ["leftsidebar:onInvalidated", "rightsidebar:onInvalidated"]
+	}
+}

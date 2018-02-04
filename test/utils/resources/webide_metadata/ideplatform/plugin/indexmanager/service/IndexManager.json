@@ -1,0 +1,85 @@
+{
+	"name" : "sap.watt.common.plugin.indexmanager.service.IndexManager",
+	"description" : "The IndexManager interface",
+	"extends" : [ "sap.watt.common.service.search.ContextSearch" ],
+	"methods" : {
+		"getDependentIndexes": {
+			"params":[
+				{
+					 "name"		: "docFullPath",
+					 "type"		: "string",
+					 "description": "the full path of the current editing document"
+				},
+				{
+					"name"		: "astRoot",
+					 "type"		: "object",
+					 "description": "the ast tree of the current editing document"
+				},
+				{
+					"name"		: "cOffset",
+					 "type"		: "number",
+					 "description": "Cursor offset relative to source file start"
+				}				
+			],
+			"returns"		: {
+				"type" : "[object]",
+				"description"	: "Array of dependent index json object for given document" 
+			},
+			"description"	: "Get the array of dependent index json object for given document" 
+		},
+		"getDependentModules": {
+			"params": [
+				{
+					"name": "sDocumentPath",
+					"type": "string",
+					"description": "the document path that other modules depend on"
+		        }
+		      ],
+			"returns": {
+				"type" : "[object]",
+				"description": "An array of dependent modules"
+			},
+			"description": "Get all the dependent modules"
+		},
+		"getUI5ProjectInfo" : {
+			"params": [
+				{
+					"name": "sDocumentPath",
+					"type": "string",
+					"description": "The current document path"
+		        }
+		     ],
+			"returns": "object"
+		},
+		"getProjectModules" : {
+			"params": [
+				{
+					"name": "sDocumentPath",
+					"type": "string",
+					"description": "The current document path"
+		        }
+		     ],
+			"returns": "object"
+		}
+		
+	},
+	"events" : {},
+	"configurationProperties" : {
+		"dependencies" : {
+			"type" : {
+				"category" : "string",
+				"identifier" : "string",
+				"scope": {
+					"type": "string",
+					"description": "Indicates whether dependencies are loaded to global or module scope",
+					"optional": "true"
+				}
+			},
+			"multiple" : true
+		},
+		"summaryFromMetaProvider": {
+			"type" : "sap.watt.common.service.ide.SummaryFromMetaProvider",
+			"multiple" : false
+		}
+	}
+}

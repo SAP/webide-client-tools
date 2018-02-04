@@ -1,0 +1,25 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.reuselibsutil",
+	"description": "reuse libraries util plugin",
+
+	"requires": {
+		"services": [
+			"libraryDiscovery"
+		]
+	}, 
+	"provides": {
+		"services": {
+			"reuseLibsUtil": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.handler.ReuseLibsUtil",
+				"module": "sap.watt.saptoolsets.fiori.run.reuselibsutil/service/ReuseLibsUtil"
+			}
+		}
+	},
+	
+ 	"configures" : {
+
+	},
+	"subscribes": {
+	
+	}
+}

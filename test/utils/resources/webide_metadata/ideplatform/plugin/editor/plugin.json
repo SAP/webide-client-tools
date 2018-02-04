@@ -1,0 +1,56 @@
+{
+
+	"name": "sap.watt.ideplatform.editor",
+	"description": "The Editor Registry Plugin.",
+	"i18n": "sap.watt.ideplatform.editor/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"content",
+			"contenttypemanager",
+			"userpreference",
+			"preferences",
+			"selection",
+			"usagemonitoring",
+			"document"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"editor": {
+				"implements": "sap.watt.common.service.registry.Editor",
+				"module": "sap.watt.ideplatform.editor/service/Editor"
+			},
+			"contenttypeeditorui": {
+				"implements": "sap.watt.ideplatform.plugin.editor.service.ContentTypeUi",
+				"module": "sap.watt.ideplatform.editor/service/ContentTypeUi"
+			}
+		},
+		"interfaces": {
+			"sap.watt.ideplatform.plugin.editor.service.ContentTypeUi": "sap.watt.ideplatform.editor/service/ContentTypeUi"
+		}
+	},
+
+	"configures": {
+
+		"services": {
+			"content:editorProvider": "@editor",
+
+			"userpreference:plugins": [{
+				"id": "contentType",
+				"name": "Default Editors",
+				"title": "Default Editors",
+				"description": "Select the default editor for each content type ",
+				"service": "@contenttypeeditorui"
+			}],
+			
+			"usagemonitoring:reportParams": [
+				{
+					"components": ["editor"],
+					"eventTypes": ["defaultEditorChange"]
+				}]
+			
+		}
+	}
+}

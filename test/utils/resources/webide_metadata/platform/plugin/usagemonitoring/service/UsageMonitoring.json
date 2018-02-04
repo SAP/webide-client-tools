@@ -1,0 +1,56 @@
+{
+	"name": "sap.watt.platform.usagemonitoring.UsageMonitoring",
+	"description": "The usage monitoring interface",
+
+	"configurationProperties": {
+		"service": {
+			"type": "sap.watt.platform.usagemonitoring.UsageMonitoring",
+			"multiple": false
+		},
+		"reportParams": {
+			"type": {
+				"components": "[string]",
+				"eventTypes": "[string]"
+			},
+			"multiple": true
+		}
+	},
+
+	"methods": {
+	    "startPerf":{
+	   "description": "Report start performance measurement for usage analytics of sEventComponent & sEventType",
+			"params": [
+			    {
+					"name": "sEventComponent",
+					"type": "string",
+					"description": "The event component. (e.g. W5G, TEMPLATE, EDITOR)"
+                },
+				{
+					"name": "sEventType",
+					"type": "string",
+					"description": "The type of the event. (e.g. Search)"
+                }
+            ]
+	    },
+		"report": {
+			"description": "Report on custom event provided service",
+			"params": [
+			    {
+					"name": "sEventComponent",
+					"type": "string",
+					"description": "The event component. (e.g. W5G, TEMPLATE, EDITOR)"
+                },
+				{
+					"name": "sEventType",
+					"type": "string",
+					"description": "The type of the event. (e.g. Search)"
+                },
+				{
+					"name": "sEventValue",
+					"type": "string",
+					"description": "The value of the event. (e.g. Project Name)"
+                }
+            ]
+		}
+	}
+}

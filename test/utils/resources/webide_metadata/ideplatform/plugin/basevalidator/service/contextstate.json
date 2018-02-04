@@ -1,0 +1,9 @@
+{
+	"name": "sap.watt.ideplatform.basevalidator.contextstate",
+	"description": "The contextstate interface",
+	"methods": {
+		"getContextState": {
+			"returns": "object"
+		}
+	}
+}

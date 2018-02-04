@@ -1,0 +1,19 @@
+{
+    "name": "sap.watt.saptoolsets.fiori.abap.adt.compatibility",
+    "description": "The plugin providing discovery services for ABAP remote servers",
+    "provides": {
+        "services": {
+            "adtDiscoveryFactory": {
+                "version": "0.0.1",
+                "implements": "sap.watt.common.plugin.adt.compatibility.service.AdtDiscoveryFactory",
+                "module": "sap.watt.saptoolsets.fiori.abap.adt.compatibility/service/AdtDiscoveryWrapper"
+            }
+        },
+        "interfaces": {
+            "sap.watt.common.plugin.adt.compatibility.service.AdtDiscoveryFactory": "sap.watt.saptoolsets.fiori.abap.adt.compatibility/service/AdtDiscoveryFactory",
+            "sap.watt.common.plugin.adt.compatibility.service.AdtDiscovery": "sap.watt.saptoolsets.fiori.abap.adt.compatibility/service/AdtDiscovery",
+            "sap.watt.common.plugin.adt.compatibility.service.AdtDiscoveryCollectionMember": "sap.watt.saptoolsets.fiori.abap.adt.compatibility/service/AdtDiscoveryCollectionMember",
+			"sap.watt.common.plugin.adt.compatibility.service.AdtUriTemplate": "sap.watt.saptoolsets.fiori.abap.adt.compatibility/service/AdtUriTemplate"
+        }
+    }
+}

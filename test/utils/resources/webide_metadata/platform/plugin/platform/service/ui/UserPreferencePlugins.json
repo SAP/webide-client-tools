@@ -1,0 +1,38 @@
+{
+	"name" : "sap.watt.common.service.ui.UserPreferencePlugins",
+	"extends" : "sap.watt.common.service.ui.Part",
+	"description": "The interface for right side user preference pane",	
+
+	"configurationProperties" : {
+		"defaultService" : {
+			"type" : "string",
+			"multiple" : false
+		},
+		"views" : {
+			"type" : [{
+				"id":"string",
+				"group" : "string",
+				"name":"string",
+				"service":"sap.watt.common.service.ui.Part"
+			}],
+			"multiple" : true
+		}
+	},
+
+	"methods" : {
+	},
+
+	"events" : {
+        "userPreferencePluginApplied": {
+        	"description" : "Notification about the Apply button was pressed.",
+        	"params" : [{
+				"name": "id",
+				"type" : "string"
+			}]  
+        },
+        "userPreferencePluginCancelled": {
+        	"description" : "Notification about the Cancel button was pressed.",
+        	"params" : []  
+        }
+	}
+}

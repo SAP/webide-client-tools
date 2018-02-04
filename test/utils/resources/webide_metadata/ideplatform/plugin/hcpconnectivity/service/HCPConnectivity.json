@@ -1,0 +1,472 @@
+{
+	"name": "sap.watt.uitools.plugin.hcpconnectivity.service.HCPConnectivity",
+	"description": "HCP Connectivity plug-in interface",
+	"methods": {
+		"getSubscriptions": {
+			"description": "Get Subscriptions list",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "resetBackEndSession",
+				"type": "boolean",
+				"description": "States if the session should be reset"
+			}],
+			"returns": {
+				"type": "[object]",
+				"description": "List of Subscriptions"
+			}
+		},
+		"getIsSAPIdP" : {
+			"description": "Check whether an SAP IdP is used",
+			"returns": {
+				"type": "boolean",
+				"description": "Whether an SAP IdP is used or not"
+			}
+		},
+		"getHCPAccounts": {
+			"description": "Get HCP accounts list",
+			"params": [{
+				"name": "sMember",
+				"type": "string",
+				"description": "This is the i/c user for example"
+			}, {
+				"name": "sUsername",
+				"type": "string",
+				"description": "This is the email"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			},{
+				"name": "sDefaultAccount",
+				"type": "string",
+				"description": "The default account",
+				"optional": true
+			}],
+			"returns": {
+				"type": "[object]",
+				"description": "List of Accounts. Each account contains the Account Name and the Display Name."
+			}
+		},
+		"isWelcomeFileExistOnHCP": {
+			"description": "Checks if welcome file exist in the deployed application on HCP",
+			"params": [{
+				"name": "sUsername",
+				"type": "string",
+				"description": "This is the email"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sAppName",
+				"type": "string"
+			},{
+				"name": "sWelcomeFilePath",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "State if the welcome file exist on HCP"
+			}
+		},
+		"getHCPAppNameFromGitRepository": {
+			"description": "Retrieves the application name using the git remote URL",
+			"params": [{
+				"name": "oProjectDocument",
+				"type": "object",
+				"description": "The project document"
+			}, {
+				"name": "sUsername",
+				"type": "string",
+				"description": "This is the email"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The application name"
+			}
+		},
+		"getHCPAccountFromGitRepository": {
+			"description": "Retrieves the account from the git repository remote",
+			"params": [{
+				"name": "oProjectDocument",
+				"type": "object",
+				"description": "The project document"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The account"
+			}
+		},
+		"getApps": {
+			"description": "Get Applications list",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "resetBackEndSession",
+				"type": "boolean",
+				"description": "States if the session should be reset"
+			}],
+			"returns": {
+				"type": "[object]",
+				"description": "List of Applications"
+			}
+		},
+		"getLandscapeDomain": {
+			"description": "Get Landscape Domain",
+			"params": [],
+			"returns": {
+				"type": "string",
+				"description": "Landscape Domain"
+			}
+		},
+		"getHCPDefaultAccount": {
+			"description": "Get HCP application name",
+			"params": [],
+			"returns": {
+				"type": "string",
+				"description": "HCP default Account name"
+			}
+		},
+		"createApp": {
+			"description": "Create Application",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}, {
+				"name": "sRepositoryNameOnHCP",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application"
+			}
+		},
+		"getAppInfo": {
+			"description": "get Application information",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application information"
+			}
+		},
+		"getAppCommits": {
+			"description": "get Application commits",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}],
+			"returns": {
+				"type": "[object]",
+				"description": "Application commits"
+			}
+		},
+		"getAppVersions": {
+			"description": "get Application versions",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}],
+			"returns": {
+				"type": "[object]",
+				"description": "Application versions"
+			}
+		},
+		"createAppVersion": {
+			"description": "set Application version",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}, {
+				"name": "commitId",
+				"type": "string",
+				"description": "Commit Id"
+			}, {
+				"name": "sVersion",
+				"type": "string",
+				"description": "Version"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application version"
+			}
+		},
+		"deploy": {
+			"description": "deploy application content",
+			"params": [{
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}, {
+				"name": "sVersion",
+				"type": "string",
+				"description": "Version"
+			}, {
+				"name": "oContent",
+				"type": "object",
+				"description": "Application Content Zip"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application version"
+			}
+		},
+		"activateApp": {
+			"description": "set Application version active",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}, {
+				"name": "sVersion",
+				"type": "string",
+				"description": "Version"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application"
+			}
+		},
+		"startApp": {
+			"description": "Start Application",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application"
+			}
+		},
+		"restartApp": {
+			"description": "Restart Application",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			}, {
+				"name": "appName",
+				"type": "string",
+				"description": "Application Name"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application"
+			}
+		},
+		"openCockpit": {
+			"params": [{
+				"name": "oWindow",
+				"type": "object",
+				"description": "The target window in which the cockpit will open"
+			}]
+		},
+		"getLinkToCockPit": {
+			"description": "Returns a string of the link to the SAP HANA Cloud Platform cockpit",
+			"params": [{
+				"name": "sAccount",
+				"type": "string",
+				"optional": true,
+				"description": "Optional parameter for account name"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The link to the SAP HANA Cloud Platform Cockpit"
+			}
+		},
+		"openUIThemeDesigner": {
+			"params": [{
+				"name": "oWindow",
+				"type": "object",
+				"description": "The target window in which the UI Theme Designer will open"
+			}]
+		},
+		"getLinkToUIThemeDesigner": {
+			"description": "Returns a string of the link to the SAP HANA Cloud UI Theme Designer",
+			"params": [],
+			"returns": {
+				"type": "string",
+				"description": "The link to the SAP HANA Cloud UI Theme Designer"
+			}
+		},
+		"getHCPRemoteGitURL": {
+			"description": "Given an array of Git remote objects returns the first HCP Git URL",
+			"params": [{
+				"name": "aRemotes",
+				"type": "[object]",
+				"description": "Array of remote objects, as returned by the Git service"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The URL of the remote Git repository on SAP HANA Cloud Platform"
+			}
+		},
+		"getJSZipFromHCP": {
+			"description": "Retrieves the desired resource that exists on HCP as a JS Zip object",
+			"params": [{
+				"name": "sAccount",
+				"type": "string",
+				"description": "Account"
+			},{
+				"name": "sUsername",
+				"type": "string",
+				"description": "Username"
+			},{
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			},{
+				"name": "sPath",
+				"type": "string",
+				"description": "The path suffix of the request"
+			},{
+				"name": "sResponseType",
+				"type": "string",
+				"description": "The response type, e.g. arraybuffer, blob"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "The desired resource as a JS Zip object"
+			}
+		},
+		"getBlobFromHCP": {
+			"description": "Retrieves the desired resource that exists on HCP as a Blob object",
+			"params": [{
+				"name": "sAccount",
+				"type": "string",
+				"description": "Account"
+			},{
+				"name": "sUsername",
+				"type": "string",
+				"description": "Username"
+			},{
+				"name": "sPassword",
+				"type": "string",
+				"description": "Password"
+			},{
+				"name": "sPath",
+				"type": "string",
+				"description": "The path suffix of the request"
+			},{
+				"name": "sResponseType",
+				"type": "string",
+				"description": "The response type, e.g. arraybuffer, blob"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "The desired resource as a Blob object"
+			}
+		}
+	},
+
+	"events": {}
+}

@@ -1,0 +1,48 @@
+{
+	"name" : "sap.watt.common.service.extensibility.ParentProject",
+	
+	"description" : "The extensibility ParentProject service",
+	
+	"methods" : {
+	    
+	    "getFileResourcesInfo": {
+			"params" : [{"name" : "applicationName", "type": "object"},
+						{"name" : "system", "type": "object"}],
+			"returns" : "object"		
+		},
+		
+		"geti18nFolderFiles": {
+			"params" : [{"name" : "i18nFolderPath", "type": "object"},
+						{"name" : "system", "type": "object"}],
+			"returns" : "object"		
+		},
+		
+		"getModelFolderFiles": {
+			"params" : [{"name" : "modelFolderPath", "type": "object"},
+						{"name" : "system", "type": "object"}],
+			"returns" : "object"		
+		},
+		
+		"getRuntimeDestinations": {
+			"params" : [{"name" : "system", "type": "object"},
+			            {"name" : "parentDestinations", "type": "[object]"}],
+			"returns" : "object"
+		},
+		
+		"getDocument": {
+			"params" : [{"name" : "resourcePath", "type": "string"},
+						{"name" : "resourceType", "type": "string"},
+						{"name" : "system", "type": "object"},
+						{"name" : "bBeautifyContent", "type" : "boolean", "optional": true}],
+			"returns" : "object"		
+		},
+		
+		"import": {
+			"params" : [{"name" : "applicationName", "type": "object"},
+						{"name" : "system", "type": "object"},
+						{"name" : "destinationDocument", "type": "object"},
+						{"name" : "oDiscoveryStatus", "type": "object", "optional": true}],
+			"returns" : "object"		
+		}
+	}
+}

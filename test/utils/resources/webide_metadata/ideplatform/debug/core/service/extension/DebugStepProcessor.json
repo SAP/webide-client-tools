@@ -1,0 +1,37 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.extension.DebugStepProcessor",
+  "description": "A debug step processor interface provides access to single-step functionality.",
+  "extends": [],
+  "methods": {
+    "stepOver": {
+      "description": "Steps over the statement."
+    },
+    "stepInto": {
+      "description": "Steps into the function call."
+    },
+    "stepOut": {
+      "description": "Steps out of the function call."
+    },
+    "canStepOver": {
+      "description": "Distinguishes whether step over can be processed.",
+      "returns": {
+        "type": "boolean",
+        "description": "<code>True</code> if step over can be processed, <code>false</code> otherwise."
+      }
+    },
+    "canStepInto": {
+      "description": "Distinguishes whether step into can be processed.",
+      "returns": {
+        "type": "boolean",
+        "description": "<code>True</code> if step into can be processed, <code>false</code> otherwise."
+      }
+    },
+    "canStepOut": {
+      "description": "Distinguishes whether step out can be processed.",
+      "returns": {
+        "type": "boolean",
+        "description": "<code>True</code> if step out can be processed, <code>false</code> otherwise."
+      }
+    }
+  }
+}

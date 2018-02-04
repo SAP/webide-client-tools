@@ -1,0 +1,29 @@
+{
+	"name" : "sap.watt.uitools.plugin.river.service.csdlParser",
+	"description" : "River CSDL parser",
+	"methods" : {
+		"parse" : {
+			"description" : "Returns a River AST Library object from OData metadata",
+			"params" : [	
+				{
+					"name" : "oMetadataXML",
+					"type" : "object",
+					"description" : "XML OData metadata",
+					"optional" : false
+				},
+				{
+					"name" : "sApplicationName",
+					"type" : "string",
+					"description" : "Application Name"
+				},
+				{
+					"name" : "sFileUri",
+					"type" : "string",
+					"description" : "File URI"
+				}
+			],
+			"returns" : "object"
+		}
+	}
+
+}

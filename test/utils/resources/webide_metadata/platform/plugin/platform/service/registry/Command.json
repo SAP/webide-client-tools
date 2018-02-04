@@ -1,0 +1,106 @@
+{
+	"name" : "sap.watt.common.service.registry.Command",
+	"description" : "The <i>command</i> service allows plugins to add commands to SAP Web IDE that enable certain actions for the application developer, such as <i>beautify</i>, <i>deploy</i>, and <i>Git commit</i>. A command is rendered in the UI as part of a command group. The <i>command</i> service implements the command pattern, and when it is triggered by a UI interaction, such as a mouse click or keyboard shortcut, it invokes the <i>execute</i> method.",
+	"visibility" : "public",
+	"configurationProperties" : {
+		"commands" : {
+			"description": "The <i>command<i> configuration object is used for creating a command in SAP Web IDE.",
+			"type" : {
+				"id": {
+					"type" : "string",
+					"description" : "The command ID is used for identifying a command on the Cloud IDE platform."
+				},
+				"service" :{
+					"type" : "sap.watt.common.service.ide.Command",
+					"description" : "Located in the command folder, each command has a service that implements the logic of the 'execute' method and additional related logic."
+				},
+				"keyBinding" : {
+					"type" : "string",
+					"description" : "Specifies keyboard shortcuts for the command."
+				},
+				"label" : {
+					"type" : "string",
+					"description" : "Specifies a label for the command; for example, a label on the Menu bar."
+				},
+				"icon" :{
+					"type" : "string",
+					"description" : "Specifies an icon for the command."
+				},
+				"iconLabel" : {
+					"type" : "string",
+					"description" : "Specifies an icon label for the command. The icon label is displayed next to the icon."
+				},
+				"available" : {
+					"type" : "boolean",
+					"description" : "Determines whether a command is available. Only available commands appear in the UI. If the <i>available</i> property is explicitly defined, the <i>isAvailable</i> method is not invoked."
+				},
+				"enabled" : {
+					"type" : "boolean",
+					"description" : "Determines whether a command is enabled. If a command is not enabled, it appears as grayed out in the UI. If the <i>enabled</i> property is explicitly defined, the <i>isEnabled</i> method is not invoked."
+				},
+				"windowTarget" : {
+					"type" : "string",
+					"description" : "Setting this property opens a window with the provided target name; this is similar to the HTML anchor <a> tag target attribute."
+				}
+			},
+			"multiple" : true,
+			"visibility" : "public"
+		},
+		"keyboardshortcutshandler" : {
+			"description": "Configure the Keyboard Shortcuts service.",
+			"type" : {
+				"service": "sap.watt.common.service.remote.KeyboardShortcuts"
+			},
+			"multiple" : false,
+			"visibility" : "hidden"
+		}
+	},
+	"methods" : {
+		"getCommand" : {
+			"description" : "Get a specific command by ID",
+			"params" : [{
+				"name" : "sCommandId",
+				"type" : "string",
+				"description": "Command ID is used for identifying a command in SAP Cloud IDE.  SAP Web IDE then uses this parameter to get the command by ID."
+
+			}],
+			"returns" : "object",
+			"visibility" : "hidden"
+		},
+		"getAllCommands" : {
+			"description" : "Get all commands",
+			"returns" : {
+				"type": "[object]",
+				"description": "Returns a map of command objects."
+			},
+			"visibility" : "hidden"
+		},
+		"filter" : {
+			"description" : "Filters all available items and returns an object that contains its enable status and the item itself.",
+			"params" : [{
+				"name" : "aItems",
+				"type" : "[object]",
+				"description": "Menu items to filter."
+			}],
+			"returns" : {
+				"type": "[object]",
+				"description": "Returns an array of menuItem objects. Each object contains enabled and item properties."
+			},
+			"visibility" : "hidden"
+		},
+		"invalidateAll" : {
+			"description" : "Invalidates all commands and forces them to recalculate their state",
+			"visibility" : "hidden"
+		}
+	},
+	
+	"events" : {
+		"invalidated" : {
+			"description" : "Event is fired when the visibility of uiPart changes or when the value is set to command. In both these cases, event is fired without waiting for the handlers to finish.",
+			"params" : [
+			   {"name" : "oCommand", "type" : "[ object ]", "description" : "Array of command objects."}
+			 ],
+			 "visibility" : "hidden"
+		}	
+	}
+}

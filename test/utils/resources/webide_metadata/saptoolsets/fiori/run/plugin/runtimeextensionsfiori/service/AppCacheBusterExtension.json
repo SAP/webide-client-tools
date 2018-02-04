@@ -1,0 +1,27 @@
+{
+  "name": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.AppCacheBusterExtension",
+  "methods": {
+    "getAppCacheBusterParameters": {
+      "description": "Returns the AppCacheBuster URL parameters needed for running an application with AppCacheBuster",
+      "params": [
+        {
+          "name": "sFilePath",
+          "type": "string",
+          "description": "File Path of the file that is being run"
+        },
+        {
+          "name": "sOffset",
+          "type": "string",
+          "description": "relative offset of the running file"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "Array of the URL parameters for for running an application with a AppCacheBuster. For example [{\"name\":\"sap-ui-appCacheBuster\", \"value\":\"../\"}]"
+      },
+      "visibility": "private"
+    }
+  },
+  "configurationProperties": {
+  }
+}

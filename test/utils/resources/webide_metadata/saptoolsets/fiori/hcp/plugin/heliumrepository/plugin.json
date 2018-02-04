@@ -1,0 +1,109 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.hcp.heliumrepository",
+	"description": "The plugin responsible for handling actions made on Helium repository",
+	"i18n" : "sap.watt.saptoolsets.fiori.hcp.heliumrepository/i18n/i18n",
+	
+	"requires": {
+		"services": [ 
+			"beautifierProcessor",
+			"command", 
+			"commandGroup",
+			"document",
+			"filesystem.documentProvider",
+			"translation",
+			"repositorybrowser",
+			"git",
+			"setting.project",
+			"parentproject",
+			"generation",
+			"selection",
+			"template",
+			"applicationsdialogservice",
+			"system",
+			"neoapp",
+			"mockpreview",
+			"log",
+			"hcpconnectivity",
+			"hcpauthentication",
+			"usernotification",
+			"perspective",
+			"progress",
+			"repositorybrowserUtils",
+			"ajaxrequest"
+		]
+	},
+	
+	"configures": {
+		"services": {
+			"command:commands" : [
+				{				
+					"id" : "repositorybrowser.importFromHelium",
+					"label": "{i18n>command_importFromHelium}",
+					"type" : "action",
+					"available" : true,
+					"service": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/command/ImportFromHelium"
+                },
+                {				
+					"id" : "repositorybrowser.importFromHeliumContextMenu",
+					"label": "{i18n>command_importFromHelium}",
+					"type" : "action",
+					"service": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/command/ImportFromHeliumContextMenu"
+                }
+			],
+			
+			"commandGroup:items": [
+				{
+                	"parent": "file.import",
+                	"command": "repositorybrowser.importFromHelium",
+                	"prio": 40
+             	},
+             	{
+                	"parent": "repositoryBrowser.import",
+                	"command": "repositorybrowser.importFromHeliumContextMenu",
+                	"prio": 40
+             	}
+			],
+			"filesystem.documentProvider:dao": [
+				{
+					"id":"heliumFileDao",
+					"service":"sap.watt.saptoolsets.fiori.hcp.heliumrepository/services/HeliumFileDAO"
+				}
+			]
+		}
+	},
+	
+	"provides": {
+		"services" : {
+			"heliumparentproject": {
+				"implements": "sap.watt.common.service.extensibility.ParentProject",
+				"module": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/services/HeliumParentProject"
+			},
+			"heliumextensionproject": {
+				"implements": "sap.watt.uitools.plugin.heliumrepository.services.HeliumExtensionProject",
+				"module": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/services/HeliumExtensionProject"
+			},
+			"applicationsdialogservice": {
+				"implements": "sap.watt.common.service.ui.Part",
+				"module": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/ui/services/ApplicationsDialogService"
+			},
+			"applicationsdialog": {
+				"implements": "sap.watt.uitools.plugin.heliumrepository.ui.dialogs.ApplicationsDialog",
+				"module": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/ui/dialogs/ApplicationsDialog"
+			},
+			"authenticationuicontainerservice": {
+				"implements": "sap.watt.common.service.ui.Part",
+				"module": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/ui/services/AuthenticationUIContainerService"
+			},
+			"authenticationuicontainer": {
+				"implements": "sap.watt.uitools.plugin.heliumrepository.ui.containers.AuthenticationUIContainer",
+				"module": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/ui/containers/AuthenticationUIContainer"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.uitools.plugin.heliumrepository.services.HeliumExtensionProject": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/services/HeliumExtensionProject",
+			"sap.watt.uitools.plugin.heliumrepository.ui.containers.AuthenticationUIContainer": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/ui/containers/AuthenticationUIContainer",
+			"sap.watt.uitools.plugin.heliumrepository.ui.dialogs.ApplicationsDialog": "sap.watt.saptoolsets.fiori.hcp.heliumrepository/ui/dialogs/ApplicationsDialog"
+		}
+	}
+}

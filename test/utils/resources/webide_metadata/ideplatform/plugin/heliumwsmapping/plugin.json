@@ -1,0 +1,23 @@
+{
+	"name": "sap.watt.ideplatform.heliumwsmapping",
+	
+	"description": "The Helium workspace mapping plugin",
+	
+	"requires": {
+		"services": [
+			
+		]
+	},
+
+	"provides": {
+		"services": {
+			"heliumwsmapping": {
+				"implements": "sap.watt.ideplatform.heliumwsmapping.service.WorkspaceMapping",
+				"module": "sap.watt.ideplatform.heliumwsmapping/service/WorkspaceMapping"
+			}
+		},
+	    "interfaces": {
+	      "sap.watt.ideplatform.heliumwsmapping.service.WorkspaceMapping": "sap.watt.ideplatform.heliumwsmapping/service/WorkspaceMapping"
+	    }
+	}
+}

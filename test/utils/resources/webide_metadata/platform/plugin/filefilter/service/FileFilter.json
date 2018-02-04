@@ -1,0 +1,120 @@
+{
+	"name" : "sap.watt.platform.filefilter.FileFilter",
+	"description" : "The files filter service interface",
+
+	"configurationProperties" : {
+		"alwaysHidden" : {
+			"type" : {
+				"regExps" : "[string]",
+				"projectTypes" : "[string]"
+			},
+			"multiple" : true
+		},
+		"defaultHidden" : {
+			"type" : {
+				"regExps" : "[string]",
+				"projectTypes" : "[string]",
+				"internalOnly": "boolean"
+			},
+			"multiple" : true
+		},
+		"neverExport" : {
+			"type" : {
+				"regExps" : "[string]"
+			},
+			"multiple" : true
+		},
+		"defaultDoNotExport" : {
+			"type" : {
+				"regExps" : "[string]"
+			},
+			"multiple" : true
+		},
+		"alwaysReadOnly" : {
+			"type" : {
+				"regExps" : "[string]"
+			},
+			"multiple" : true
+		},
+		"sourceControlIgnore" : {
+			"type" : {
+				"regExps" : "[string]"
+			},
+			"multiple" : true
+		},
+		"ignore" : {
+			"type" : {
+				"service" : "sap.watt.common.service.setting.Ignore"
+			},
+			"multiple" : false		
+		},
+		"projectTypeHandler" : {
+			"type" : {
+				"service":"sap.watt.ideplatform.plugin.projectType.service.ProjectType"
+			},
+			"multiple" : false
+		}
+	},
+
+	"methods" : {
+		"filterMetadata" : {
+			"description": "is hidden documents",
+			"params": [{ 
+				"name" : "aMetadata",
+				"description": "metadata array to filter",
+				"type" : "object"
+			},
+			{ 
+				"name" : "oFilterOptions",
+				"description": "filter to apply on a metadata array",
+				"optional" : true,
+				"type" : "object"
+			}],
+			"returns": {
+				"type" : "object",
+				"description" : "filtered metadata array"
+			}
+		},
+		"_prepareDocument" : {
+			"description": "applies filters on a document",
+			"params": [{ 
+				"name" : "oDocument",
+				"description": "document to update/prepare",
+				"type" : "sap.watt.platform.plugin.document.Document"
+			},
+			{ 
+				"name" : "oDAO",
+				"description": "dao service of the document",
+				"type" : "object"
+			}],
+			"returns": {
+				"type" : "sap.watt.platform.plugin.document.Document",
+				"description" : "document that was updated"
+			}
+		},
+		"getHiddenConfiguration" : {
+			"returns": {
+				"type" : "object",
+				"description" : "provided hide filters (always and default)"
+			}
+		},
+		"getExportConfiguration" : {
+			"returns": {
+				"type" : "object",
+				"description" : "provided export filters"
+			}
+		},
+		"getProjectTypeService" : {
+			
+		}
+	},
+	
+	"events" : {
+		"hiddenChanged" : {
+			"params" :[{
+				"name" : "hidden",
+				"type" : "boolean"
+			}]
+		}
+	}
+}

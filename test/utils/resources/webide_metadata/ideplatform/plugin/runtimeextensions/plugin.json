@@ -1,0 +1,52 @@
+{
+	"name": "sap.watt.ideplatform.runtimeextensions",
+	"description": "Plugin which supplies extension services for runners",
+	"i18n": "sap.watt.ideplatform.runtimeextensions/i18n/i18n",
+	"requires": {
+		"services": [
+			"filesystem.documentProvider",
+			"setting.project",
+			"usagemonitoring",
+			"translation",
+			"preferences",
+			"log",
+			"qrcode",
+			"usernotification"
+		]
+	},
+	"provides": {
+		"services": {
+			"runwithframenewProcess": {
+				"implements": "sap.watt.ideplatform.runtimeextensions.RunWithFrame",
+				"module": "sap.watt.ideplatform.runtimeextensions/service/RunWithFrameNewProcess"
+			},
+			"runwithframe": {
+				"implements": "sap.watt.ideplatform.runtimeextensions.RunWithFrame",
+				"module": "sap.watt.ideplatform.runtimeextensions/service/RunWithFrame"
+			},
+			"runinnewprocess": {
+				"implements": "sap.watt.ideplatform.runtimeextensions.RunInNewProcess",
+				"module": "sap.watt.ideplatform.runtimeextensions/service/RunInNewProcess"
+			},
+			"reuselibsextension": {
+				"implements": "sap.watt.ideplatform.runtimeextensions.ReuselibsExtension",
+				"module": "sap.watt.ideplatform.runtimeextensions/service/ReuselibsExtension"
+			},
+			"popupblockerdialog": {
+				"implements": "sap.watt.ideplatform.runtimeextensions.PopupBlockerDialog",
+				"module": "sap.watt.ideplatform.runtimeextensions/service/PopupBlockerDialog"
+			},
+			"ideurlparameters": {
+				"implements": "sap.watt.ideplatform.runtimeextensions.IdeUrlParameters",
+				"module": "sap.watt.ideplatform.runtimeextensions/service/IdeUrlParameters"
+			}
+		},
+		"interfaces": {
+			"sap.watt.ideplatform.runtimeextensions.RunWithFrame": "sap.watt.ideplatform.runtimeextensions/service/RunWithFrame",
+			"sap.watt.ideplatform.runtimeextensions.RunInNewProcess": "sap.watt.ideplatform.runtimeextensions/service/RunInNewProcess",
+			"sap.watt.ideplatform.runtimeextensions.ReuselibsExtension": "sap.watt.ideplatform.runtimeextensions/service/ReuselibsExtension",
+			"sap.watt.ideplatform.runtimeextensions.IdeUrlParameters": "sap.watt.ideplatform.runtimeextensions/service/IdeUrlParameters",
+			"sap.watt.ideplatform.runtimeextensions.PopupBlockerDialog": "sap.watt.ideplatform.runtimeextensions/service/PopupBlockerDialog"
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"name": "sap.watt.toolsets.javascript.jsrules",
+	"description": "The js rules from central location interface",
+	"methods": {
+		"fromHcp" : {
+			"description": "gets rules from hcp jsrules application",
+			"params" : [
+			],
+			"returns" : {
+			 	"type" : "object",
+				"description" : "object {fileName: content}"
+			}
+		}
+	},
+	"events" : {}
+}

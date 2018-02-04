@@ -1,0 +1,21 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.EditorSupport",
+  "description": "Editor related services",
+  "methods": {
+    "addMarker": {
+      "description": "",
+      "params": [
+        {
+          "name": "editor",
+          "type": "object",
+          "description": "The editor"
+        },
+        {
+          "name": "target",
+          "type": "object",
+          "description": "The navigation target object"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+	"name" : "sap.watt.common.service.ide.FileDialog",
+	"description": "The clipboard filedialog interface",
+	"methods" : {
+		"openCreateUI" : {},
+		"copyObject" : {},
+		"cancel" : {}
+	}
+}

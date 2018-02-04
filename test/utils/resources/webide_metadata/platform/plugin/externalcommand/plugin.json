@@ -1,0 +1,37 @@
+{
+	"name": "sap.watt.platform.externalcommand",
+	"i18n" : "sap.watt.platform.externalcommand/i18n/i18n",
+	"description": "The External Command Plugin",
+
+	"requires": {
+		"services": [
+			"document",
+			"filesystem.documentProvider",
+			"repositorybrowser",
+			"setting.project",
+			"usernotification",
+			"log",
+			"resource",
+			"system",
+			"perspective"
+		
+		]
+	},
+	
+	"provides": {
+		"services" : {
+			"externalcommand": {
+				"implements": "sap.watt.common.service.registry.ExternalCommand",
+				"module": "sap.watt.platform.externalcommand/service/ExternalCommand"
+			}
+		},
+		
+		"interfaces": {
+		}
+		
+	},
+		
+	"subscribes": {
+		"system:loggedIn": "externalcommand:onAfterStarted"
+	}
+}

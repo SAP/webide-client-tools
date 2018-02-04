@@ -1,0 +1,20 @@
+{
+    "name": "sap.watt.ideplatform.che.chebackend.Mta",
+    "description": "Interface for Mta related api",
+    "methods": {
+        "getProjectModules": {
+            "params": [
+                {
+					"name" : "sProjectPath",
+					"type" : "string",
+					"description" : "the project's full path"
+                }
+            ],
+			"returns": {
+				"type" : "[string]",
+				"description" : "a list of the project's modules"
+			}
+        }        
+    }
+   
+}

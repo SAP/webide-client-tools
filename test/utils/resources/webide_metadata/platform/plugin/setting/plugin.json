@@ -1,0 +1,39 @@
+{
+	
+	"name": "sap.watt.platform.setting",
+	"description": "The setting plugin",
+
+	"requires": {
+		"services": [
+			"selection",
+			"document",
+			"filefilter",
+			"filesystem.documentProvider"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"setting.project": {
+				"implements": "sap.watt.common.service.setting.Project",
+				"module":  "sap.watt.platform.setting/service/Project"
+			},
+			"setting.user": {
+				"implements": "sap.watt.common.service.setting.User",
+				"module":  "sap.watt.platform.setting/service/User"
+			}
+		}
+	},
+	
+	"configures" : {
+        "services" : {
+        	"filefilter:defaultHidden" : [{
+				"regExps": ["/{1}(.user.project.json)$"]
+        	}]
+        }
+	},
+	
+	"subscribes": {
+		"selection:changed" : ["setting.project:onSelectionChanged", "setting.user:onSelectionChanged"]
+	}
+}

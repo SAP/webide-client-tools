@@ -1,0 +1,39 @@
+{
+	"name" : "sap.watt.saptoolsets.fiori.run.plugin.commonrunners.service.SwitchBackends",
+	"description" : "Retrieve Backend Systems info ",
+	"methods" : {
+		"getBackendsInfo" : {
+			"params" : [{
+				"name": "oDocument",
+				"type": "object"
+			}],
+			"returns" : {
+				"type" : "object",
+				"description" : "returns list of backends"
+			}
+		},
+		"getExistingRunnersBackendsInfo": {
+			"params" : [{
+				"name": "oDocument",
+				"type": "object"
+			},{
+				"name" : "oConfiguration",
+				"type" : "object"
+			}],
+			"returns" : {
+				"type" : "object",
+				"description" : "returns update configuration"
+			}
+		},
+		"getChangedBackends": {
+		"params" : [{
+				"name" : "oRunConfiguration",
+				"type" : "object"
+			}],
+			"returns" : {
+				"type" : "string",
+				"description" : "string of the chosen BEs"
+			}
+		}
+	}
+}

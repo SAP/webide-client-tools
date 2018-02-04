@@ -1,0 +1,10 @@
+{
+	"name": "sap.watt.ideplatform.plugin.run.service.URLParametersValidations",
+	"description": "URL Parameters section UI Validations",
+	"methods": {
+		"validateUrlParameter": {},
+		"update": {},
+		"updateWithOutFireEvent": {},
+		"updateOnlyByFireEvent": {}
+	}
+}

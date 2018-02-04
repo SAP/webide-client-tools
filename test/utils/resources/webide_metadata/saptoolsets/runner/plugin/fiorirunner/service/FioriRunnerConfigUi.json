@@ -1,0 +1,29 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.fiorirunner.FioriRunnerConfigUi",
+	"methods": {
+		"getConfigUiContent": {
+			"description": "Add tabs to the Fiori runner run configuration UI view to be displayed in the run configuration screen",
+			"params": [
+				{
+					"name": "oDocument",
+					"type": "sap.watt.common.plugin.document.Document",
+					"description": "The file to run"
+				}
+			],
+			"returns": {
+				"type": "[object]",
+				"description": "UI elements to be display in the run configuration UI for the Fiori runner"
+			},
+			"visibility": "private"
+		}
+	},
+
+	"configurationProperties": {
+		"fiorirunneradapterdt": {
+			"type": {
+				"service": "sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterDT"
+			},
+			"multiple": false
+		}
+	}
+}

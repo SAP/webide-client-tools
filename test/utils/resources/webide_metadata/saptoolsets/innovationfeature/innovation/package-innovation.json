@@ -1,0 +1,13 @@
+{
+
+	"layer" : "SAPToolsets",
+
+	"name": "sap.watt.saptoolsets.innovation",
+	"title": "Web IDE innovation - SAPToolsets layer",
+	"version": "1.0.0",
+	"description": "Web IDE innovation - SAPToolsets layer",
+	"enabledByDefault": true,
+	"deprecatedConfigIncludes": [
+		"file:/plugins/innovationpluginrepository/config.json"
+	]
+}

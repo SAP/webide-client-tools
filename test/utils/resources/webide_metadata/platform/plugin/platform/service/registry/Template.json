@@ -1,0 +1,253 @@
+{
+	"name": "sap.watt.common.service.registry.Template",
+	"description": "The <i>template</i> registry service creates and configures a new template in SAP Web IDE.",
+	"visibility": "public",
+	"configurationProperties": {
+		"templates": {
+			"description": "The <i>templates</i> configuration object is used for creating a new template in SAP Web IDE.",
+			"visibility": "public",
+			"type": {
+				"id": {
+					"type" : "string",
+					"description" : "Identifies a template."
+				},
+				"template": {
+					"type" : "sap.watt.common.service.template.Template",
+					"description": "The path to the [TemplateName].js file, which implements the 'sap.watt.common.service.template.Template' interface for the template."
+				},
+				"name": {
+					"type" : "string",
+					"description" : "The name of the template."
+				},
+				"description": {
+					"type" : "string",
+					"description" : "The description of the template."
+				},
+				"path": {
+					"type": "string",
+					"description" : "Path to the folder that contains all the template resources, such as the 'resources.zip' file, the template class, the model and preview image files, and so on."
+				},
+				"fileName": {
+					"type": "string",
+					"description" : "The name of the .zip file containing the template resources, such as 'resources.zip'. Configure this property only for a template that provides resources."
+				},
+				"requiredTemplates": {
+					"type": "[object]",
+					"description" : "An array of the template IDs of all the templates whose resources are included in the template being developed."
+				},
+				"modelFileName": {
+					"type": "string",
+					"description" : "The name of the JSON file, such as 'model.json', that contains the template customization model to be displayed in the 'Template Customization' wizard step. This property must be provided if the <i>templateCustomizationStep</i> property is defined in the <i>wizardSteps</i> configuration of the template."
+				},
+				"runConfigurationsFileName": {
+					"type": "string",
+					"description" : "Path to the JSON file that specifies the run configurations, for example: 'runConfigurationsFileName':'runconfig.json'."
+				},
+				"modelRoot": {
+					"type": "string",
+					"description" : "The name of the main JSON key in the content of the file defined in the <i>modelFileName</i> property. This property must be provided if the <i>templateCustomizationStep</i> step is defined in the <i>wizardSteps</i> configuration of the template."
+				},
+				"icon": {
+					"type": "string",
+					"description" : "The path to the SAPUI5 icon font that is displayed as an icon for this template."
+				},
+				"category": {
+					"type": "[string]",
+					"description" : "The ID of the category to which this template belongs. For more information, see Category Configuration below."
+				},
+				"templateType": {
+					"type": "string",
+					"description" : "The template type, which can be <i>project</i>, <i>module</i> (sub project) or <i>component</i>. According to the type defined in this property, the template will be available for selection and generation in the appropriate wizard."
+				},
+				"supportedProjectTypes" : {
+					"type" : "[string]",
+					"description" : "The project types that are supported by the template. When using the <i>module</i> or <i>component</i> template types, the supported project types are then used to filter the module and components according to the selected project in the workspace."
+				},
+				"targetProjectTypes" : {
+					"type" : "[string]",
+					"description" : "The project types of the generated project."
+				},
+				"additionalData": {
+					"type": "[object]",
+					"description" : "A generic data object that can be added to a template."
+				},
+				"orderPriority": {
+					"type": "number",
+					"description": "The priority of the template. Sets the order of displayed templates."
+				},
+				"coreTemplate": {
+					"type": "boolean",
+					"description": "Determines if the template is a core or external development template."
+				},
+				"wizardSteps": {
+					"type": "[string]",
+					"description" : "An array of the names of the services wrapping the wizard steps (implementing the <i>sap.watt.common.service.ui.WizardStep</i> interface) that appear in the wizard after selecting the template."
+				},
+				"requiresNeoApp": {
+					"type": "boolean",
+					"description" : "A flag stating whether this template requires also generating a <i>neo-app.json</i> file in addition to the template artifact. Note that any project that acts as a standalone application must contain the <i>neo-app.json</i> file in order to be run correctly using SAP Web IDE."
+				},
+				"internalOnly": {
+					"type": "boolean",
+					"description" : "A flag stating whether if this template should be available only for internal stakeholders."
+				},
+				"version": {
+					"type": "string",
+					"description" : "The template version."
+				},
+				"versionLabel": {
+					"type": "string",
+					"description" : "The version description of the template."
+				},
+				"previewImage": {
+					"type": "string",
+					"description" : "The relative path within the template location, as set in the <i>path</i> property, to an image that serves as a static preview of the artifact generated from the template."
+				},
+				"requiredModules": {
+					"type": "[string]",
+					"description": "A list of SAPUI5 module paths that are loaded prior to generation."
+				},
+				"beautifyFiles": {
+					"type": "boolean",
+					"description": "Determines whether the resources will be beautified."
+				},
+				"UI5Version": {
+					"type": "string",
+					"description": "The UI5 Version used in this template's generated application"
+				}
+
+			},
+			"multiple": true
+		},
+		"categories": {
+			"description": "Defines where the templates are displayed in the template library and relevant wizard step.",
+			"visibility": "public",
+			"type": {
+				"id": {
+					"type": "string",
+					"description" : "The category unique ID."
+				},
+				"name": {
+					"type": "string",
+					"description" : "The category name."
+				},
+				"description": {
+					"type": "string",
+					"description" : "The category description."
+				}
+			},
+			"multiple": true
+		}
+	},
+	"methods": {
+		"getUI5VersionList": {
+			"description": "Retrieve all the categories.",
+			"visibility": "hidden",
+			"returns": "[object]"
+		},
+		"getTemplatesPerCategories": {
+			"description": "Retrieve all the categories.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "templateType",
+				"type": "string",
+				"description": "The type of templates to retrieve ('project' or 'component')."
+			},{
+				"name": "bIncludesFavoriteCategory",
+				"type": "boolean",
+				"optional": true,
+				"description": "If return or not Favorite Category."
+			}],
+			"returns": "[object]"
+		},
+
+		"getTemplates": {
+			"description": "Retrieve all the registered templates.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "sTemplateType",
+				"type": "string",
+				"description": "The type of templates to retrieve ('project' or 'component').",
+				"optional": true
+			}],
+			"returns": "object"
+		},
+
+		"getAllRequiredTemplates": {
+			"description": "Retrieve all the templates that are required by a given template.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "oTemplate",
+				"type": "object",
+				"description": "The template to find which other templates it requires."
+			}],
+			"returns": "[object]"
+		},
+
+		"getTemplate": {
+			"description": "Get the settings of a template with the given id.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "sTemplate",
+				"type": "string",
+				"description": "The desired template id."
+			}, {
+				"name": "sVersion",
+				"type": "string",
+				"optional": true,
+				"description": "The desired template version."
+			}],
+			"returns": "object"
+		},
+
+		"getTemplateVersions": {
+			"description": "Get the template versions of a template with the given name.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "sTemplate",
+				"type": "string",
+				"description": "The desired template id."
+			}],
+			"returns": "[object]"
+		},
+
+		"sortTemplates": {
+			"description": "Gets array of templates and sorts it according to the sort mode.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "aTemplates",
+				"type": "object",
+				"description": "The array of templates."
+			}, {
+				"name": "sSortMode",
+				"type": "string",
+				"optional": true,
+				"description": "The sort mode which can be - name, priority or recentlyUsed (default)."
+			}]
+		},
+		
+		"getCategories": {
+			"description": "Get all registered Categories which are not empty.",
+			"visibility": "hidden",
+			"returns": "[object]"
+		},
+
+		"getRegisteredCategories": {
+			"description": "Get all registered Categories.",
+			"visibility": "hidden",
+			"returns": "object"
+		},
+
+		"getCategoryById": {
+			"description": "Get the settings of a category with the given id.",
+			"visibility": "hidden",
+			"params": [{
+				"name": "sCategoryId",
+				"type": "string",
+				"description": "The desired category id."
+			}],
+			"returns": "object"
+		}
+
+	}
+}

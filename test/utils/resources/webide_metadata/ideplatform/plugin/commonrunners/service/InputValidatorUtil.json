@@ -1,0 +1,48 @@
+{
+    "name": "sap.watt.uitools.plugin.commonrunners.service.baseInputValidatorUtil",
+	"description": "Common logic to check common input fields",
+
+	"methods": {
+		"validatePath": {
+			"params": [
+			{
+			    "name": "sPath",
+			    "type": "string"
+			},
+			{
+				"name": "oDocument",
+				"type": "object"
+			},
+			{
+				"name": "aValidationRules",
+				"type": "[object]"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "validation object"
+			}
+		},
+		"validateUrlParameter": {
+			"params": [{
+				"name": "sValue",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "validation object"
+			}
+		},
+		"isConfigurationValid": {
+    		"params": [
+    			{
+    			    "name": "oConfiguration",
+    			    "type": "string"
+    			}],
+    			"returns": {
+    				"type": "boolean",
+    				"description": "Configuration state, valid or not"
+    			}    
+		}
+
+	}
+}

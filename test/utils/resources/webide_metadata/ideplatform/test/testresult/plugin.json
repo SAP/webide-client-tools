@@ -1,0 +1,166 @@
+{
+    "name": "sap.watt.ideplatform.test.testresult",
+    "description": "Provides generic testresult support",
+    "i18n": "sap.watt.ideplatform.test.testresult/i18n/i18n",
+    "version": "${plugins.version}",
+    "requires": {
+        "services": [
+            "aceeditor",
+            "command",
+            "commandGroup",
+            "content",
+            "contextMenu",
+            "document",
+            "editor",
+            "filesystem.documentProvider",
+            "filesystem.jsonProvider",
+            "log",
+            "perspective",
+            "preferences",
+            "progress",
+            "repositorybrowser",
+            "resource",
+            "selection",
+            "usernotification"
+        ]
+    },
+    "provides": {
+        "services": {
+            "test.testresult": {
+                "implements": "sap.watt.ideplatform.test.testresult.service.TestClientPart",
+                "module": "sap.watt.ideplatform.test.testresult/service/TestClientPart"
+            }
+        },
+        "interfaces": {
+            "sap.watt.ideplatform.test.testresult.service.TestClientPart": "sap.watt.ideplatform.test.testresult/service/TestClientPart",
+            "sap.watt.ideplatform.test.testresult.service.TestResultProvider": "sap.watt.ideplatform.test.testresult/service/TestResultProvider"
+        }
+    },
+    "configures": {
+        "services": {
+            "test.testresult:styles": [{
+                "uri": "sap.watt.ideplatform.test.testresult/css/testresult.css",
+                "type": "css"
+            }],
+
+            "command:commands": [{
+                "id": "sap.watt.ideplatform.test.testresult.command.deleteTestResults",
+                "label": "{i18n>command_deleteTestResults_xmit}",
+                "service": "sap.watt.ideplatform.test.testresult/command/DeleteTestResultsCommand"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.command.exportTestResults",
+                "label": "{i18n>command_exportTestResults_xmit}",
+                "service": "sap.watt.ideplatform.test.testresult/command/ExportTestResultsCommand"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.command.refreshTestResults",
+                "label": "{i18n>command_refreshTestResults_xmit}",
+                "service": "sap.watt.ideplatform.test.testresult/command/RefreshTestResultsCommand"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.command.openFile",
+                "label": "{i18n>command_openFile_xmit}",
+                "service": "sap.watt.ideplatform.test.testresult/command/OpenFileCommand"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.command.sortColumnAsc",
+                "label": "{i18n>command_sortAscending_long_xmit}",
+                "service": "sap.watt.ideplatform.test.testresult/command/SortColumnAscCommand"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.command.sortColumnDes",
+                "label": "{i18n>command_sortDescending_long_xmit}",
+                "service": "sap.watt.ideplatform.test.testresult/command/SortColumnDesCommand"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.command.testRunnerPartToggle",
+                "label": "{i18n>command_openTestResultPane_xmit}",
+                "service": {
+                    "implements": "sap.watt.common.service.ide.AbstractUIPartToggler",
+                    "module": "sap.watt.common.perspective/command/AbstractUIPartToggler",
+                    "configuration": {
+                        "id": "sap.watt.ideplatform.test.testresult.command.testRunnerPartToggle",
+                        "service": "@test.testresult",
+                        "perspective": "development"
+                    }
+                },
+                "icon": "sap-icon://x-ray",
+                "available": true,
+                "type": "boolean",
+                "value": false
+            }],
+            "commandGroup:groups": [{
+                "id": "sap.watt.ideplatform.test.testresult.cmdGroup.test"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.cmdGroup.coverage"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.cmdGroup.start"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.cmdGroup.sort"
+            }, {
+                "id": "sap.watt.ideplatform.test.testresult.cmdGroup.tools"
+            }],
+            "commandGroup:items": [{
+                "parent": "sap.watt.ideplatform.test.testresult.cmdGroup.start",
+                "type": "action",
+                "command": "sap.watt.ideplatform.test.testresult.command.openFile",
+                "prio": 2
+            }, {
+                "parent": "sap.watt.ideplatform.test.testresult.cmdGroup.sort",
+                "type": "action",
+
+                "label": "{i18n>command_sortAscending_xmit}",
+                "command": "sap.watt.ideplatform.test.testresult.command.sortColumnAsc",
+                "prio": 2
+            }, {
+                "parent": "sap.watt.ideplatform.test.testresult.cmdGroup.sort",
+                "type": "action",
+                "label": "{i18n>command_sortDescending_xmit}",
+                "command": "sap.watt.ideplatform.test.testresult.command.sortColumnDes",
+                "prio": 2
+            }, {
+                "parent": "sap.watt.ideplatform.test.testresult.cmdGroup.coverage",
+                "type": "inline",
+                "group": "sap.watt.ideplatform.test.testresult.cmdGroup.start",
+                "prio": 2
+            }, {
+                "parent": "sap.watt.ideplatform.test.testresult.cmdGroup.coverage",
+                "type": "inline",
+                "group": "sap.watt.ideplatform.test.testresult.cmdGroup.sort",
+                "prio": 2
+            }, {
+                "parent": "sap.watt.ideplatform.test.testresult.cmdGroup.test",
+                "type": "inline",
+                "group": "sap.watt.ideplatform.test.testresult.cmdGroup.start",
+                "prio": 2
+            }, {
+                "parent": "run",
+                "type": "inline",
+                "group": "sap.watt.ideplatform.test.testresult.cmdGroup.tools",
+                "prio": 100
+            }, {
+                "parent": "applicationRightSidebar",
+                "command": "sap.watt.ideplatform.test.testresult.command.testRunnerPartToggle",
+                "label": "{i18n>testResultPane_pane_xtol}",
+                "icon": "sap-icon://watt/tool-test-results",
+                "prio": 999
+            }, {
+                "parent": "view.otherPanes",
+                "type": "action",
+                "command": "sap.watt.ideplatform.test.testresult.command.testRunnerPartToggle",
+                "prio": 999
+            }],
+
+            "perspective:views": [{
+                "id": "testresult",
+                "service": "@test.testresult",
+                "cssclass": "testresultTestClient splitterContainer"
+            }],
+
+            "perspective:viewToAreaMapping" : [{
+                "view" : "testresult",
+                "perspective" : "development",
+                "area" : "right"
+            }]
+        }
+    },
+
+    "subscribes": {
+        "selection:changed": "test.testresult:onSetSelection"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "name": "sap.watt.common.plugin.run.service.configurationhelper",
+    "methods" : {
+        "saveRecentlyUsedConfigurations": {},
+		"getAllPersistedConfigurations" : {},
+		"createConfiguration" : {},
+        "writeConfigurationsToFile" : {},
+        "findRunner": {},
+        "findRunnerForDocument": {},
+        "getRunnerAndConfiguration": {},
+        "getConfigurationForRunner": {},
+        "extendRunnerConfiguration": {},
+        "generateConfigurationId":{}
+    },
+    "events": {
+        "recentConfigurationsSaved": {
+            "description": "fired whenever recent configurations save to user settings"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+	"name": "sap.watt.platform.toolbar",
+	"description": "The Toolbar Plugin",
+
+	"requires": {
+		"services": [
+			"commandGroup",
+			"command",
+			"selection",
+			"menu",
+			"usernotificationbar",
+			"perspective",
+			"resource"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"toolbarFactory" : {
+				"implements" : "sap.watt.common.service.ui.Toolbar",
+				"module" : "sap.watt.platform.toolbar/service/Toolbar",
+				"isFactory" : true
+			},
+			"toolbar": {
+				"implements" : "sap.watt.common.service.ui.Toolbar",
+				"factory" : "toolbarFactory"
+			}
+		}
+	},
+	
+	"configures" : {
+		"services": {
+			"toolbar:notificationMessagesEnabled": true	
+		}
+	},
+
+	"subscribes": {
+		"selection:changed": "toolbar:onAfterSetSelection",
+		"command:invalidated": "toolbar:onAfterSetSelection",
+		"perspective:perspectiveChanged" : "toolbar:onPerspectiveChanged"
+	}
+}

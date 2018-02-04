@@ -1,0 +1,38 @@
+{
+	"name": "sap.watt.ideplatform.projectToolBox",
+	"description": "The project tool box plugin",
+    "i18n" : "sap.watt.ideplatform.projectToolBox/i18n/i18n",
+	"requires": {
+		"services": [
+			"projectType",
+            "setting.project",
+            "projectsetting",
+            "document",
+            "resource",
+            "log",
+            "filesystem.documentProvider",
+            "usernotification",
+            "filefilter"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"projectToolBoxFactory": {
+				"implements": "sap.watt.common.plugin.projectToolBox.service.projectToolBoxFactory",
+				"module":  "sap.watt.ideplatform.projectToolBox/service/ProjectToolBoxFactoryImpl"
+			}
+		},
+        "interfaces": {
+            "sap.watt.common.plugin.projectToolBox.service.projectToolBoxFactory": "sap.watt.ideplatform.projectToolBox/service/projectToolBoxFactory"
+        }
+	},
+
+    "configures": {
+    },
+
+    "subscribes":{
+        "projectType:projectTypesUpdated":"projectToolBoxFactory:onProjectTypeUpdated"
+    }
+
+}

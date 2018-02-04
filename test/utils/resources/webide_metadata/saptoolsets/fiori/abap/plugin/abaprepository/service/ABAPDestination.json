@@ -1,0 +1,15 @@
+{
+	"name": "sap.watt.uitools.plugin.abaprepository.service.ABAPDestination",
+	"description": "The ABAP Destination service",
+	"methods": {
+		"getRestResource": {
+			"params": [
+				{
+					"name": "destination",
+					"type": "object"
+				}
+			],
+			"returns": "object"
+		}
+	}
+}

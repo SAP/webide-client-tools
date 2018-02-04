@@ -1,0 +1,10 @@
+{
+	"name" : "sap.watt.uitools.plugin.libmetaaccess.libraryMetaAccess",
+	"description" : "The Library Metadata Access interface",
+	"extends" : [
+		"sap.watt.common.plugin.intellisence.service.SDKVersion",
+		"sap.watt.common.plugin.intellisence.service.LibraryMetadataProvider"
+	],
+	"configurationProperties" : {
+	}
+}

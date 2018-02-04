@@ -1,0 +1,18 @@
+{
+	"name": "sap.watt.uitools.plugin.commonrunners.service.RunConfigErrorHandler",
+	"description": "",
+	"methods": {
+		"subscribe": {
+			"params": [{
+				"name": "oConfigurationUiElements",
+				"type": "object"
+			}]
+		},
+		"update": {
+			"params": [{
+				"name": "oControlData",
+				"type": "object"
+			}]
+		}
+	}
+}

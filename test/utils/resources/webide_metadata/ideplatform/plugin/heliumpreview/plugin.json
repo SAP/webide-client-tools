@@ -1,0 +1,41 @@
+{
+	"name": "sap.watt.ideplatform.heliumpreview",
+	
+	"description": "The helium peview adapter plugin",
+	
+	"requires": {
+		"services": [
+			"filesystem.documentProvider",
+			"setting.project",
+			"preview",
+			"usagemonitoring",
+			"reuselibsextension",
+			"log",
+			"heliumwsmapping"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"heliumPreviewAdapter": {
+				"implements": "sap.watt.common.plugin.preview.service.PreviewAdapter",
+				"module": "sap.watt.ideplatform.heliumpreview/service/HeliumPreviewAdapter"
+			}
+		}
+	},
+		
+	"configures": {
+	
+		"services": {
+			"preview:adapter":{
+				"service": "@heliumPreviewAdapter"
+			}, 
+            "usagemonitoring:reportParams": [
+            {
+                "components": ["heliumpreview"],
+                "eventTypes": ["found_in_workspace"]
+            }]
+			
+		}
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"name" : "sap.watt.common.plugin.imageviewer.service.ImageViewer",
+	"description": "The editor config interface",
+	"extends" : [
+		"sap.watt.common.service.editor.Editor"
+	]
+}

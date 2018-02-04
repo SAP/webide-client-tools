@@ -1,0 +1,38 @@
+	{
+	"name": "sap.watt.platform.keyboardshortcuts",
+
+	"description": "The Keyboard Shortcuts Plugin",
+
+	"requires": {
+		"services": [
+			"command",
+			"preferences"
+		]
+	},
+
+	"provides": {
+
+		"services": {
+			"keyboardshortcuts": {
+				"implements": "sap.watt.common.service.remote.KeyboardShortcuts",
+				"module": "sap.watt.platform.keyboardshortcuts/service/KeyboardShortcuts"
+			}
+		}
+	},
+	"subscribes": {
+		"focus:$dialogOpened": "keyboardshortcuts:onDialogOpened",
+		"focus:$dialogClosed": "keyboardshortcuts:onDialogClosed"
+	},
+
+	"configures": {
+		"services": {
+			"command:keyboardshortcutshandler": {
+				"service": "@keyboardshortcuts"
+			},
+			"keyboardshortcuts:constants": {
+				"SAPDefault": "SAPDefault"
+			}
+		}
+	}
+
+}

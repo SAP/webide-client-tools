@@ -1,0 +1,23 @@
+{
+	
+	"name": "sap.watt.platform.sidebar",
+	"description": "The Sidebar Plugin",
+
+	"requires": {
+		"services": [
+			"menu",
+			"perspective",
+			"command",
+			"commandGroup"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"sidebar" : {
+				"implements": "sap.watt.common.service.ui.Sidebar",
+				"module": "sap.watt.platform.sidebar/service/Sidebar"
+			}
+		}
+	}
+}

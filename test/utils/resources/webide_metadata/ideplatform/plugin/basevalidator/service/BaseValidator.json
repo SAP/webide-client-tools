@@ -1,0 +1,119 @@
+{
+	"name": "sap.watt.common.basevalidator.BaseValidator",
+	"description": "The BaseValidator interface",
+	"configurationProperties": {
+		"validator": {
+			"type": {
+				"validatorName": "string",
+				"fileExtension": "[string]",
+				"syncExec": "boolean",
+				"service": "sap.watt.common.service.editor.Validator",
+				"configurationService": "sap.watt.common.service.editor.ValidatorConfiguration",
+				"displayConfigurationService": "sap.watt.common.service.editor.DisplayValidatorConfiguration"
+			},
+			"multiple": true
+		}
+	},
+	"methods": {
+		"getProjectsValidatorsConfiguration": {
+			"returns": "object",
+			"params": [
+				{
+					"name": "aProjects",
+					"type": "[object]",
+					"description": "an array of projects to ge configurations for. if null, return for all workspace"
+				}
+			]
+		},
+		"getCurrentValidatorServiceProxyById": {
+			"params": [
+				{
+					"name": "serviceID",
+					"type": "string",
+					"description": "service identifier"
+				}
+			],
+			"returns": "object",
+			"description": "gets proxy object to concrete validator service"
+		},
+		"getCurrentValidatorServiceProxyByExtension": {
+			"params": [
+				{
+					"name": "fileExtension",
+					"type": "string",
+					"description": "file extension"
+				},
+				{
+					"name": "projectDoc",
+					"type": "object",
+					"description": "current project"
+				}
+			],
+			"returns": "object",
+			"description": "gets proxy object to concrete validator service"
+		},
+		"getProjectValidationConfiguration": {
+			"params": [
+				{
+					"name": "serviceID",
+					"type": "string",
+					"description": "service identifier"
+				}
+			],
+			"returns": "object",
+			"description": "returns project configurations for the service"
+		},
+		"getValidatorsList": {
+			"params": [
+				{
+					"name": "fileExtension",
+					"type": "string"
+				},
+				{
+					"name": "projectDoc",
+					"type": "object",
+					"description": "current project"
+				}
+			],
+			"returns": "string",
+			"description": "return the list of all avalable validators for specific file extension"
+		},
+		"onSelectionChanged": {
+			"description": "Handler for selection:changed event",
+			"params": [
+				{
+					"name": "oEvent",
+					"type": "object"
+				}
+			]
+		},
+		"onDocumentChanged": {
+			"description": "Handler for document:changed event",
+			"params": [
+				{
+					"name": "oEvent",
+					"type": "object"
+				}
+			]
+		},
+		"onDocumentSaved": {
+			"description": "Handler for document:saved event",
+			"params": [
+				{
+					"name": "oEvent",
+					"type": "object"
+				}
+			]
+		},
+		"validatorConfigurationsChangeHandler": {
+			"params": [
+				{
+					"name": "projectPath",
+					"type": "string",
+					"description": "current project path"
+				}
+			],
+			"description": "handles cases where configuration was saved through project settings"
+		}
+	}
+}

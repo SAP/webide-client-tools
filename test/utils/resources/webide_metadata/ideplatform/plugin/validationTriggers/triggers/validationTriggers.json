@@ -1,0 +1,17 @@
+{
+	"name": "sap.watt.ideplatform.validationTriggers.triggers",
+	"description": "All triggers which starts validation flow",
+	"methods": {
+		"onAnalyseTrigger": {},
+		"onChangeTrigger": {},
+		"onSelectionTrigger": {},
+		"onDeletionTrigger": {},
+		"onGitPrePushTrigger": {},
+		"onProblemsViewVisibilityChanged": {}
+	},
+	"events": {
+		"issuesUpdate": {
+			"description": "fired whenever any issues flow is finished"
+		}
+	}
+}

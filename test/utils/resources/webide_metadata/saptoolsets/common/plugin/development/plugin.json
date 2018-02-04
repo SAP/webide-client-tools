@@ -1,0 +1,61 @@
+{
+	"name": "sap.watt.saptoolsets.common.development",
+	"description": "The development perspective",
+	"i18n" : "sap.watt.saptoolsets.common.development/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"perspective",
+			"command",
+			"commandGroup"
+		]
+	},
+	"configures": {
+		"services": {
+			"perspective:perspectives": [
+				{"id": "development"}
+			],
+			"perspective:areas": [
+				{
+					"id": "left",
+					"position" : "1/20%",
+					"perspective":"development",
+					"view": "repositorybrowser"
+				},
+				{
+					"id": "center_top",
+					"position": "2:A",
+					"perspective":"development",
+					"view": "content"
+				},
+				{
+					"id": "center_bottom",
+					"position": "2:B/30%",
+					"perspective":"development"
+				},
+				{
+					"id": "right",
+					"position": "3/30%",
+					"perspective":"development"
+				}
+			],
+
+			"command:commands" : [
+				{
+					"id" : "tools.development",
+					"label": "{i18n>command_development}",
+					"icon" : "development",
+					"service": {
+						"implements" : "sap.watt.common.service.ide.PerspectiveSwitcher",
+						"module" : "sap.watt.common.perspective/command/PerspectiveSwitcher",
+						"configuration" : { "id" : "tools.development", "perspective" : "development"}
+					}
+				}
+			],
+
+			"commandGroup:items" : [
+				{ "parent": "tools.perspectives", "command": "tools.development", "prio": 10 }
+			]
+		}
+	}
+}

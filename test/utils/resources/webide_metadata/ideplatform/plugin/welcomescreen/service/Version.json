@@ -1,0 +1,38 @@
+{
+    "name": "sap.watt.common.welcomescreen.service.Version",
+    "description": "The service responsible for providing version information",
+    "methods": {
+        "getCurrentVersion": {
+            "params": [],
+            "returns": "string"
+        },
+        "getLastSeenVersion": {
+            "params": [],
+            "returns": "string"
+        },
+        "setLastSeenVersion": {
+            "params": [
+                {
+                    "name": "sVersion",
+                    "type": "string",
+                    "description": "The string representation of the version to be saved"
+                }
+            ]
+        },
+        "compareVersions": {
+            "params": [
+                {
+                    "name": "sVersionA",
+                    "type": "string",
+                    "description": "The string representation of the first version"
+                },
+                {
+                    "name": "sVersionB",
+                    "type": "string",
+                    "description": "The string representation of the second version"
+                }
+            ],
+            "returns": "number"
+        }
+    }
+}

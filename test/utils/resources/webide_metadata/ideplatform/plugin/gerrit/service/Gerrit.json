@@ -1,0 +1,17 @@
+{
+	"name": "sap.watt.ideplatform.plugin.gerrit.service.Gerrit",
+	"extends": [],
+	"methods": {
+		"getChanges": {
+			"description": "get Gerrit Changes"
+		},
+		"isAuthenticated": {
+			"description": "is Gerrit Authentication already saved",
+			"returns": "boolean"
+		},
+		"getGerritHost": {
+			"description": "get Gerrit host from git configuration",
+			"returns": "string"
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"name": "sap.watt.platform.tipsandtricks",
+	"description": "The Tips and Tricks Plugin",
+	"i18n" : "sap.watt.platform.tipsandtricks/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"preferences"
+		]
+	},
+
+	"provides": {
+		"services" : {
+			"tipsandtricks": {
+				"implements": "sap.watt.platform.tipsandtricks.service.TipsAndTricksManager",
+				"module": "sap.watt.platform.tipsandtricks/service/TipsAndTricksManager"
+			},
+			"tipsandtricksviewsfactory": {
+				"implements": "sap.watt.platform.tipsandtricks.service.TipsAndTricksViewsFactory",
+				"module": "sap.watt.platform.tipsandtricks/service/TipsAndTricksViewsFactory"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.platform.tipsandtricks.service.TipsAndTricksManager": "sap.watt.platform.tipsandtricks/service/TipsAndTricksManager",
+			"sap.watt.platform.tipsandtricks.service.TipsAndTricksViewsFactory": "sap.watt.platform.tipsandtricks/service/TipsAndTricksViewsFactory",
+			"sap.watt.platform.tipsandtricks.service.TipsAndTricksProvider": "sap.watt.platform.tipsandtricks/service/TipsAndTricksProvider"
+		}
+
+	},
+
+	"configures": {
+		"services": {
+			"command:commands" : [
+				{
+					"id" : "platform.tipsandtricks",
+					"label": "{i18n>command_tips_and_tricks}",
+					"service": "sap.watt.platform.tipsandtricks/command/OpenTipsAndTricks"
+				}
+			],
+			"commandGroup:items" : [
+				{ "parent": "help.ide", "command": "platform.tipsandtricks", "prio": 27 }
+			]
+		}
+	}
+}

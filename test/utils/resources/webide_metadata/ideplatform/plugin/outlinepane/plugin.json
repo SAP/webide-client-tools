@@ -1,0 +1,72 @@
+{
+	"name": "sap.watt.ideplatform.outlinepane",
+	"description": "The outline pane",
+	"i18n" : "sap.watt.ideplatform.outlinepane/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"perspective",
+			"content",
+			"resource"	
+		]
+	},
+
+	"provides": {
+		"services" : {
+			"outlinePane" : {
+				"implements": "sap.watt.common.outlinepane.OutlinePane",
+				"module" : "sap.watt.ideplatform.outlinepane/service/OutlinePane"
+			}
+		},
+		"interfaces" : {
+			"sap.watt.common.outlinepane.OutlinePane" : "sap.watt.ideplatform.outlinepane/service/OutlinePane",
+			"sap.watt.common.outlinepane.Outline" : "sap.watt.ideplatform.outlinepane/service/Outline"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"outlinePane:styles" : [
+				{
+					"uri" : "sap.watt.ideplatform.outlinepane/css/outlinePane.css"
+				}
+			],
+
+			"command:commands" : [
+				{
+					"id" : "outlinepane.toggle",
+					"label": "{i18n>command_outline_pane}",
+					"keyBinding": "mod+shift+u",
+					"service": {
+						"implements" : "sap.watt.common.service.ide.AbstractUIPartToggler",
+						"module" : "sap.watt.common.perspective/command/AbstractUIPartToggler",
+						"configuration" : { "id" : "outlinepane.toggle", "service" : "@outlinePane", "perspective" : "development"}
+					},
+					"icon" : "outlinePane"
+				}
+			],
+			
+			"commandGroup:items": [
+				{
+					"parent" : "view.otherPanes",
+					"command": "outlinepane.toggle",
+					"prio": "80"
+				}
+			],
+
+			"perspective:views": [
+				{ "id": "outlinePane", "service": "@outlinePane", "cssclass": "sapWattOutlinePane" }
+			],
+
+			"perspective:viewToAreaMapping": [
+				{ "view": "outlinePane", "perspective": "development", "area": "right" }
+			]
+		}
+	},
+
+	"subscribes": {
+		"selection:changed" : "outlinePane:onSelectionChanged"
+	}
+}

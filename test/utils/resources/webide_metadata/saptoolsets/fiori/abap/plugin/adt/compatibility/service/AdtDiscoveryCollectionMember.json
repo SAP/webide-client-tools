@@ -1,0 +1,58 @@
+{
+    "name" : "sap.watt.common.plugin.adt.compatibility.service.AdtDiscoveryCollectionMember",
+    "description": "The interface for a collection member of the ADT discovery",
+    "methods": {
+        "getUri": {
+            "description": "The method returns the URI of the collection member.",
+            "returns": {
+                "type": "string",
+                "description": "The URI of the collection member"
+            }
+        },
+
+        "getAcceptedContentTypes": {
+            "description": "The method returns the accepted content types, i.e. the content types, which can be used to add a new entry to the collection.",
+            "returns": {
+                "type": "object",
+                "description": "An array with the accepted content types"
+            }
+        },
+
+        "accepts": {
+            "description": "The method returns true if the collection permits the creation of new members with the specified content type, else false. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: an object {message, stack}.",
+            "params": [
+                {
+                    "name": "contentType",
+                    "type": "string",
+                    "description": "the content type",
+                    "optional": false
+                }
+            ],
+            "returns": {
+                "type": "boolean",
+                "description": "true, if new members with this content type can be created in this collection, else false."
+            }
+        },
+		"getTemplateLink": {
+			"description": "The method returns the template link for the given relation and contentType or it returns null if no link for these input parameters exists. If the contentType parameter is undefined, then the method looks for a template link with the given relation, but without content type. This implies that the method also returns null, if the contentType parameter is undefined and the collection member has one or more template links with the given relation, but with content types specified. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: one error object { message, stack }.",
+			"params": [
+				{
+					"name": "relation",
+					"type": "string",
+					"description": "the relation of the template link",
+					"optional": false
+				},
+				{
+					"name": "contentType",
+					"type": "string",
+					"description": "the content type of the template link",
+					"optional": true
+				}
+			],
+			"returns": {
+				"type": "string",
+				"description": "The template link for the given relation and content type or null."
+			}
+		}
+    }
+}

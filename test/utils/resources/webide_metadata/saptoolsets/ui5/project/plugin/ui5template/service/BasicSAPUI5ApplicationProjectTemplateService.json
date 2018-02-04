@@ -1,0 +1,37 @@
+{
+  "name": "sap.watt.saptoolsets.ui5.project.ui5template.service.BasicSAPUI5ApplicationProjectTemplateService",
+  "description": "Basic SAPUI5 application common project template service",
+  "methods": {
+    "configWizardSteps": {
+      "params": [
+        {
+          "name": "oTemplateCustomizationStep",
+          "description" : "Object of template customization step ",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "Return object with template Customization Step "
+      }
+    },
+    "onBeforeTemplateGenerate": {
+      "params": [
+        {
+          "name": "templateZip",
+           "description" : "template zip ",
+          "type": "object"
+        },
+        {
+          "name": "model",
+          "description" : "Model object ",
+          "type": "object"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "Return array with template zip and model "
+      }
+    }
+  }
+}

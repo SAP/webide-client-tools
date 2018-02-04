@@ -1,0 +1,10 @@
+{
+	"name" : "sap.watt.uitools.plugin.servicecatalog.service.DataConnectionUtilsProvider",
+	"description": "The interface of the DataConnectionUtils Provider",
+	"methods" : {
+		"getDataConnectionUtils" : {
+			"description" : "This method returns the DataConnectionUtils.", 
+			"returns" : "object"
+		}		
+	}
+}

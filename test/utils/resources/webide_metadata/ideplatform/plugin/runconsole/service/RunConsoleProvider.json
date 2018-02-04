@@ -1,0 +1,36 @@
+{
+    "name": "sap.watt.ideplatform.runconsole.RunConsoleProvider",
+    "methods": {
+
+        "getLatestConfigurations": {
+            "description" : "Return latest configurations for each sub-project for each runner",
+            "params" : [
+                {
+                    "name" : "oDocument",
+                    "type" : "sap.watt.common.plugin.document.Document"
+                }
+            ],
+            "returns" : {
+                "type": "object",
+                "description": "The latest configurations for each sub-project for each runner. For example: {\"sub_proj_path_A\":[conf1, conf2],\"sub_proj_path_B\":[conf8, conf6]"
+            }
+        },
+        "getProjectPath":{
+            "description" : "Get path of the project that has configuration iConfigId",
+            "params" : [
+                {
+                    "name" : "sDocumentPath",
+                    "type" : "string"
+                },
+                {
+                    "name" : "iConfigId",
+                    "type" : "number"
+                }
+            ],
+            "returns" : {
+                "type": "string",
+                "description": "Path of the project that has configuration iConfigId"
+            }
+        }
+    }
+}

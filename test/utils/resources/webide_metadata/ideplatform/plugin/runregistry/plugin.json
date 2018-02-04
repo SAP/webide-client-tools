@@ -1,0 +1,28 @@
+{
+	
+	"name": "sap.watt.ideplatform.runregistry",
+	"description": "Runner registry",
+	"i18n" : "sap.watt.ideplatform.runregistry/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"selection",
+			"log"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"runRegistry": {
+				"implements": "sap.watt.common.plugin.runregistry.service.RunRegistry",
+				"module": "sap.watt.ideplatform.runregistry/service/RunRegistry"
+			}
+		},
+		"interfaces": {
+				"sap.watt.common.plugin.runregistry.service.RunRegistry": "sap.watt.ideplatform.runregistry/service/RunRegistry"
+		},
+		"methods" : {
+			
+		}
+	}
+}

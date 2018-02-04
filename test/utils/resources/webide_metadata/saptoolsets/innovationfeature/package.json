@@ -1,0 +1,9 @@
+{
+
+	"layer" : "SAPToolsets",
+
+	"name": "sap.watt.saptoolsets.innovation.feature",
+	"title": "Web IDE innovation feature placeholder",
+	"version": "1.0.0",
+	"description": "This feature is used in environments that don't have innovation plugins and should remain empty"
+}

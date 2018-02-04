@@ -1,0 +1,250 @@
+{
+	"name": "sap.watt.platform.content",
+	"description": "The Content Plugin",
+	"i18n": "sap.watt.platform.content/i18n/i18n",
+
+	"module": "sap.watt.platform.content/Plugin",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"content",
+			"contextMenu",
+			"selection",
+			"focus",
+			"document",
+			"resource",
+			"perspective",
+			"usernotification",
+			"system",
+			"aceeditor.config",
+			"log",
+			"unloadHandler",
+			"preferences"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"content": {
+				"implements": "sap.watt.common.service.ui.Content",
+				"module": "sap.watt.platform.content/service/Content"
+			},
+			"contentPersistence": {
+				"implements": "sap.watt.common.content.service.ContentServicePersistence",
+				"module": "sap.watt.platform.content/service/ContentServicePersistence"
+			},
+			"dirtyDocumentsStorage": {
+				"implements": "sap.watt.common.content.service.DirtyDocumentsStorage",
+				"module": "sap.watt.platform.content/service/DirtyDocumentsStorage"
+			}
+		},
+		"interfaces": {
+			"sap.watt.common.content.service.ContentServicePersistence": "sap.watt.platform.content/service/ContentServicePersistence",
+			"sap.watt.common.content.service.DirtyDocumentsStorage": "sap.watt.platform.content/service/DirtyDocumentsStorage"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"selection:typedSelections": [{
+				"id": "editor",
+				"service": "@content"
+			}],
+			
+			"content:styles": [{
+				"uri": "sap.watt.platform.content/css/content.css"
+			}],
+			
+			"content:contextMenu": "contentContextMenu",
+			
+			"command:commands": [{
+				"id": "content.close",
+				"label": "{i18n>command_close}",
+				"type": "action",
+				"icon": "close",
+				"service": "sap.watt.platform.content/command/Close",
+				"keyBinding": "alt+w"
+			}, {
+				"id": "content.closeAll",
+				"label": "{i18n>command_closeAll}",
+				"type": "action",
+				"icon": "closeAll",
+				"service": "sap.watt.platform.content/command/CloseAll",
+				"keyBinding": "alt+shift+w"
+			}, {
+				"id": "content.closeOthers",
+				"label": "{i18n>command_closeOthers}",
+				"icon": "closeOthers",
+				"service": "sap.watt.platform.content/command/CloseOthers"
+			}, {
+				"id": "content.closeTabsToTheRight",
+				"label": "{i18n>command_closeTabsToTheRight}",
+				"icon": "closeToTheRight",
+				"service": "sap.watt.platform.content/command/CloseTabsToTheRight"
+			}, {
+				"id": "content.redo",
+				"label": "{i18n>command_redo}",
+				"type": "action",
+				"icon": "redo",
+				"service": "sap.watt.platform.content/command/Redo",
+				"keyBinding": "mod+y"
+			}, {
+				"id": "content.undo",
+				"label": "{i18n>command_undo}",
+				"type": "action",
+				"icon": "undo",
+				"service": "sap.watt.platform.content/command/Undo",
+				"keyBinding": "mod+z"
+			}, {
+				"id": "content.navigateBack",
+				"label": "{i18n>command_navigateBack}",
+				"type": "action",
+				"icon": "arrow_left",
+				"service": "sap.watt.platform.content/command/NavigateBack",
+				"keyBinding": "mod+alt+r"
+			}, {
+				"id": "content.navigateForward",
+				"label": "{i18n>command_navigateForward}",
+				"type": "action",
+				"icon": "arrow_right",
+				"service": "sap.watt.platform.content/command/NavigateForward",
+				"keyBinding": "mod+alt+y"
+			}, {
+				"id": "content.navigateToLastEdit",
+				"label": "{i18n>command_navigateToLastEdit}",
+				"type": "action",
+				"icon": "arrow_star",
+				"service": "sap.watt.platform.content/command/NavigateToLastEdit",
+				"keyBinding": "mod+shift+9"
+			}, {
+				"id": "content.save",
+				"label": "{i18n>command_save}",
+				"type": "action",
+				"icon": "save_cloud",
+				"iconLabel": "{i18n>command_save}",
+				"service": "sap.watt.platform.content/command/Save",
+				"keyBinding": "mod+s"
+			}, {
+				"id": "content.saveAll",
+				"label": "{i18n>command_saveAll}",
+				"type": "action",
+				"icon": "saveAll",
+				"service": "sap.watt.platform.content/command/SaveAll",
+				"keyBinding": "mod+shift+s"
+			}, {
+				"id": "content.openRightTab",
+				"service": "sap.watt.platform.content/command/OpenRightTab",
+				"keyBinding": "alt+r"
+			}, {
+				"id": "content.openLeftTab",
+				"service": "sap.watt.platform.content/command/OpenLeftTab",
+				"keyBinding": "alt+q"
+			}, {
+				"id": "content.maximize.normalize",
+				"label": "{i18n>command_maximizeNormalize}",
+				"service": "sap.watt.platform.content/command/MaximizeNormalize",
+				"keyBinding": "mod+m"
+			}],
+			
+			"commandGroup:groups": [
+				{ "id" : "navigation"},
+                { "id" : "navigation.navigate"}
+			],
+
+			"commandGroup:items": [{
+				"parent": "file.closeshow",
+				"command": "content.close",
+				"prio": 20
+			}, {
+				"parent": "file.closeshow",
+				"command": "content.closeAll",
+				"prio": 30
+			}, {
+				"parent": "file.closeshow",
+				"command": "content.closeOthers",
+				"prio": 40
+			}, {
+				"parent": "file.closeshow",
+				"command": "content.closeTabsToTheRight",
+				"prio": 50
+			}, {
+				"parent": "file.save",
+				"command": "content.save",
+				"prio": 40
+			}, {
+				"parent": "file.save",
+				"command": "content.saveAll",
+				"prio": 60
+			}, {
+				"parent": "edit.undoRedo",
+				"command": "content.undo",
+				"prio": 0
+			}, {
+				"parent": "edit.undoRedo",
+				"command": "content.redo",
+				"prio": 10
+			}, {
+				"parent": "view.editor",
+				"command": "content.maximize.normalize",
+				"prio": 20
+			}, {
+				"id" : "saveintoolbar", 
+				"parent" : "applicationToolbar", 
+				"command" : "content.save", 
+				"prio": 10 
+			}, { 
+				"parent" : "navigation", 
+				"type":"inline", 
+				"group" : "navigation.navigate", 
+				"prio": 10
+			},{
+				"parent": "navigation.navigate",
+				"command": "content.navigateBack",
+				"prio": 10
+			}, {
+				"parent": "navigation.navigate",
+				"command": "content.navigateForward",
+				"prio": 20
+			}, {
+				"parent": "navigation.navigate",
+				"command": "content.navigateToLastEdit",
+				"prio": 0
+			}, { 
+				"id" : "toolbar.navigate", 
+				"parent" : "applicationToolbar", 
+				"type" : "inline", 
+				"group" : "navigation.navigate", 
+				"prio": 80 
+			}],
+			
+			"commandGroup:itemToPerspectiveMapping" : [
+				{ "id" : "saveintoolbar", "perspective" : "development" },
+				{ "id" : "toolbar.navigate", "perspective" : "development" },
+				{ "id" : "file.save", "perspective" : "development" },
+				{ "id" : "file.close", "perspective" : "development" }
+			],
+			
+			"perspective:views": [{
+				"id": "content",
+				"service": "@content"
+			}],
+			
+			"perspective:viewToAreaMapping": [{
+				"view": "content",
+				"perspective": "development",
+				"area": "center_top"
+			}]
+		}
+	},
+
+	"subscribes": {
+		"document:requestOpen": "openDocument",
+		"document:stateChanged": "content:onDocumentStateChanged",
+		"document:deleted": "content:onDocumentDeleted",
+		"document:changed": "content:onDocumentChanged",
+		"document:externalChanged": "content:refresh",
+		"system:loggedIn": "content:onRDELoad"
+	}
+}

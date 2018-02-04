@@ -1,0 +1,26 @@
+{
+	"name": "sap.watt.platform.odataprovider",
+	"description": "The Odata provider Plugin",
+
+	"requires": {
+		"services": [
+			"filesystem.documentProvider",
+			"document"
+		]
+	},
+	
+	"provides": {
+		"services" : {
+			"odataProvider" : {
+				"implements" : "sap.watt.common.odataprovider.service.ODataProvider",
+		  		"module": "sap.watt.platform.odataprovider/service/ODataProvider"
+		  	}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.odataprovider.service.ODataProvider": "sap.watt.platform.odataprovider/service/ODataProvider"
+
+		}
+		
+	}
+}

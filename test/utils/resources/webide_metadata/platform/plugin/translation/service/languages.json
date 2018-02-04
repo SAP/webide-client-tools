@@ -1,0 +1,92 @@
+{
+	"name": "sap.watt.common.plugin.translation.service.languages",
+	"description": "The Translation service interface for translation a properties files",
+	"extends": ["sap.watt.common.service.ui.Config"],
+	"configurationProperties": {
+		"styles": {
+			"type": [{
+				"uri": "string",
+				"type": "string"
+			}],
+			"multiple": false
+		}
+	},
+
+	"methods": {
+		"getSupportedLanguages": {
+			"description": "Gets all languages supported by the Term/Translation Server",
+			"returns": {
+				"type": {
+					"languages": {
+						"type": "[object]",
+						"description": "an array of all languages in format of [{id:'', name:''}]"
+					}
+				}
+			}
+		},
+		"getProjectSettingLanguages" : {
+			"description": "Gets languages from the project setting",
+			"params" : [
+				{
+					"name" 			: "sProjectPath",
+					"type" 			: "string",
+					"description" 	: "the project path"
+				},
+				{
+					"name" 			: "oTargetDocument",
+					"type" 			: "object",
+					"description" 	: "the target document"
+				}
+			],
+			"returns": {
+				"type": {
+					"languages": {
+						"type": "[object]",
+						"description": "an array of languages ids from project setting"
+					}
+				}
+			}
+		},
+		"getTranslationHubProjectId" : {
+			"description": "Gets Translation Hub project id if exist. if does not exist return null",
+			"params" : [
+				{
+					"name" 			: "sProjectPath",
+					"type" 			: "string",
+					"description" 	: "the project path"
+				}
+			],
+			"returns": {
+				"type": "string",
+				"description" : "the project id in the Translation Hub in case this project was already translated. Null if it was not"
+			}
+		},
+		"saveTranslationHubNewSetting"  :{
+			"description": "Save the supported languages in the project setting",
+			"params" : [
+				{
+					"name" 			: "sProjectPath",
+					"type" 			: "string",
+					"description" 	: "the project path"
+				},
+				{
+					"name" 			: "sSupportedLanguages",
+					"type" 			: "string",
+					"description" 	: "the supported languages"
+				},
+				{
+					"name" 			: "sTranslationDomain",
+					"type" 			: "string",
+					"description" 	: "the translation domain"
+				}
+			]
+		}
+
+	},
+
+	"events": {
+		"translated": {
+			"description": "It's the timing when the term is translated."
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+    "name": "sap.watt.common.service.runconfigurationui.resourcemapping",
+    "description" : "Composite UI controls",
+    "methods" : {
+        "getControl" : {
+            "description" : "Returns the resource mapping control",
+            "returns" : {
+                "type": "object",
+                "description": "the resource mapping control"
+            }
+        }
+    },
+    "configurationProperties": {
+		"externalservices": {
+			"type": {"service" : "sap.watt.ideplatform.plugin.run.service.handler.ReuseLibsUtil"},
+			"multiple": true
+		}
+		
+	}
+}

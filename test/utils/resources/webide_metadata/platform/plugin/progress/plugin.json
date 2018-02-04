@@ -1,0 +1,47 @@
+{
+	
+	"name": "sap.watt.platform.progress",
+	"description": "The Process Progress Plugin",
+	"i18n": "sap.watt.platform.progress/i18n/i18n",
+	"requires": {
+		"services": [
+			"resource"
+		]
+	},
+	"provides" : {
+		"services": {
+			"progress": {
+				"implements": "sap.watt.common.plugin.progress.service.Progress",
+				"module": "sap.watt.platform.progress/service/progress"
+			},
+			"dialogprogress": {
+				"implements": "sap.watt.common.plugin.progress.service.DialogProgress",
+				"module": "sap.watt.platform.progress/service/DialogProgress"
+			}
+		},
+        "interfaces": {
+            "sap.watt.common.plugin.progress.service.Progress": "sap.watt.platform.progress/service/Progress",
+            "sap.watt.common.plugin.progress.service.DialogProgress": "sap.watt.platform.progress/service/DialogProgress"
+        }
+	},
+	
+ 	"configures" : {
+        "services" : {
+            "progress:styles" : [
+                {
+                    "uri" : "sap.watt.platform.progress/styles/progressStyles.css",
+                    "type" : "css" 
+                }
+			],
+			"dialogprogress:styles" : [
+                {
+                    "uri" : "sap.watt.platform.progress/styles/dialogProgressStyles.css",
+                    "type" : "css" 
+                }
+            ]
+        }
+    }
+
+
+    
+}

@@ -1,0 +1,329 @@
+{
+  "name": "sap.watt.ideplatform.debug.core",
+  "module": "sap.watt.ideplatform.debug.core/Plugin",
+  "description": "Debug Framework",
+  "i18n": "sap.watt.ideplatform.debug.core/i18n/i18n",
+  "version": "${plugins.version}",
+  "requires": {
+    "services": [
+      "aceeditor",
+      "command",
+      "commandGroup",
+      "content",
+      "contextMenu",
+      "document",
+      "editor",
+      "log",
+      "perspective",
+      "preferences",
+      "progress",
+      "repositorybrowser",
+      "resource",
+      "usernotification"
+    ]
+  },
+  "provides": {
+    "services": {
+      "debug.platform": {
+        "implements": "sap.watt.ideplatform.debug.core.service.DebugPlatform",
+        "module": "sap.watt.ideplatform.debug.core/service/DebugPlatform"
+      },
+      "debug.client": {
+        "implements": "sap.watt.ideplatform.debug.core.service.DebugClient",
+        "module": "sap.watt.ideplatform.debug.core/service/DebugClient"
+      },
+      "debug.breakpointManager": {
+        "implements": "sap.watt.ideplatform.debug.core.service.BreakpointManager",
+        "module": "sap.watt.ideplatform.debug.core/service/BreakpointManager"
+      },
+      "debug.editor": {
+        "implements": "sap.watt.ideplatform.debug.core.service.EditorSupport",
+        "module": "sap.watt.ideplatform.debug.core/service/EditorSupport"
+      },
+      "debug.config": {
+        "implements": "sap.watt.ideplatform.debug.core.service.DebugConfig",
+        "module": "sap.watt.ideplatform.debug.core/service/DebugConfig"
+      },
+      "debug.preferences": {
+        "implements": "sap.watt.ideplatform.debug.core.service.DebugPreferences",
+        "module": "sap.watt.ideplatform.debug.core/service/DebugPreferences"
+      },
+      "debug.sessionManager": {
+        "implements": "sap.watt.ideplatform.debug.core.service.DebugSessionManager",
+        "module": "sap.watt.ideplatform.debug.core/service/DebugSessionManager"
+      },
+      "debug.documentProvider": {
+        "implements": "sap.watt.ideplatform.debug.core.service.DocumentProvider",
+        "module": "sap.watt.ideplatform.debug.core/service/DocumentProvider"
+      }
+    },
+    "interfaces": {
+      "sap.watt.ideplatform.debug.core.service.DebugPlatform": "sap.watt.ideplatform.debug.core/service/DebugPlatform",
+      "sap.watt.ideplatform.debug.core.service.DebugClient": "sap.watt.ideplatform.debug.core/service/DebugClient",
+      "sap.watt.ideplatform.debug.core.service.DebugConfig": "sap.watt.ideplatform.debug.core/service/DebugConfig",
+      "sap.watt.ideplatform.debug.core.service.BreakpointManager": "sap.watt.ideplatform.debug.core/service/BreakpointManager",
+      "sap.watt.ideplatform.debug.core.service.EditorSupport": "sap.watt.ideplatform.debug.core/service/EditorSupport",
+      "sap.watt.ideplatform.debug.core.service.DebugPreferences": "sap.watt.ideplatform.debug.core/service/DebugPreferences",
+      "sap.watt.ideplatform.debug.core.service.DebugSessionManager": "sap.watt.ideplatform.debug.core/service/DebugSessionManager",
+      "sap.watt.ideplatform.debug.core.service.DocumentProvider": "sap.watt.ideplatform.debug.core/service/DocumentProvider",
+      "sap.watt.ideplatform.debug.core.service.extension.DebugSuspendProcessor": "sap.watt.ideplatform.debug.core/service/extension/DebugSuspendProcessor",
+      "sap.watt.ideplatform.debug.core.service.extension.DebugStepProcessor": "sap.watt.ideplatform.debug.core/service/extension/DebugStepProcessor",
+      "sap.watt.ideplatform.debug.core.service.extension.BreakpointLifecycleParticipant": "sap.watt.ideplatform.debug.core/service/extension/BreakpointLifecycleParticipant",
+      "sap.watt.ideplatform.debug.core.service.extension.DebugEngine": "sap.watt.ideplatform.debug.core/service/extension/DebugEngine",
+      "sap.watt.ideplatform.debug.core.service.extension.Presentation": "sap.watt.ideplatform.debug.core/service/extension/Presentation",
+      "sap.watt.ideplatform.debug.core.service.extension.DocumentProvider": "sap.watt.ideplatform.debug.core/service/extension/DocumentProvider"
+    }
+  },
+  "configures": {
+    "services": {
+      "debug.client:styles": [
+        {
+          "uri": "sap.watt.ideplatform.debug.core/css/debug.css"
+        }
+      ],
+      "command:commands": [
+        {
+          "id": "sap.watt.ideplatform.debug.core.toggle",
+          "label": "{i18n>command_debug_xgrp}",
+          "keyBinding": "mod+shift+o",
+          "icon": "sap-icon://watt/tool-debugger",
+          "available": true,
+          "service": {
+            "implements": "sap.watt.common.service.ide.AbstractUIPartToggler",
+            "module": "sap.watt.common.perspective/command/AbstractUIPartToggler",
+            "configuration": {
+              "id": "sap.watt.ideplatform.debug.core.toggle",
+              "service": "@debug.client",
+              "perspective": "development"
+            }
+          }
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.suspend",
+          "label": "{i18n>command_suspend_xgrp}",
+          "type": "action",
+          "icon": "sap-icon://watt/icon-pause-process",
+          "service": "sap.watt.ideplatform.debug.core/command/Suspend",
+          "keyBinding": "f8"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.resume",
+          "label": "{i18n>command_resume_xgrp}",
+          "type": "action",
+          "icon": "sap-icon://watt/icon-run-process",
+          "service": "sap.watt.ideplatform.debug.core/command/Resume",
+          "keyBinding": "f8"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.suspendAll",
+          "label": "{i18n>command_suspendAll_xgrp}",
+          "type": "action",
+          "service": "sap.watt.ideplatform.debug.core/command/SuspendAll",
+          "keyBinding": "shift+f8"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.resumeAll",
+          "label": "{i18n>command_resumeAll_xgrp}",
+          "type": "action",
+          "service": "sap.watt.ideplatform.debug.core/command/ResumeAll",
+          "keyBinding": "shift+mod+f8"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.stepOver",
+          "label": "{i18n>command_stepOver_xgrp}",
+          "type": "action",
+          "icon": "sap-icon://watt/icon-step-over",
+          "available": true,
+          "service": "sap.watt.ideplatform.debug.core/command/StepOver",
+          "keyBinding": "f10"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.stepInto",
+          "label": "{i18n>command_stepInto_xgrp}",
+          "type": "action",
+          "icon": "sap-icon://watt/icon-step-into",
+          "available": true,
+          "service": "sap.watt.ideplatform.debug.core/command/StepInto",
+          "keyBinding": "f11"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.stepOut",
+          "label": "{i18n>command_stepOut_xgrp}",
+          "type": "action",
+          "icon": "sap-icon://watt/icon-step-out",
+          "available": true,
+          "service": "sap.watt.ideplatform.debug.core/command/StepOut",
+          "keyBinding": "shift+f11"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.remove",
+          "label": "{i18n>command_removeBreakpoint_xgrp}",
+          "type": "action",
+          "enabled": true,
+          "service": "sap.watt.ideplatform.debug.core/command/breakpoint/Remove"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.removeAll",
+          "label": "{i18n>command_removeAllBreakpoints_xgrp}",
+          "type": "action",
+          "enabled": true,
+          "service": "sap.watt.ideplatform.debug.core/command/breakpoint/RemoveAll"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.enableAll",
+          "label": "{i18n>command_enableAllBreakpoints_xgrp}",
+          "type": "action",
+          "enabled": true,
+          "service": "sap.watt.ideplatform.debug.core/command/breakpoint/EnableAll"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.disableAll",
+          "label": "{i18n>command_disableAllBreakpoints_xgrp}",
+          "type": "action",
+          "enabled": true,
+          "service": "sap.watt.ideplatform.debug.core/command/breakpoint/DisableAll"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.activateBreakpoints",
+          "label": "{i18n>command_activateBreakpoints_xgrp}",
+          "type": "action",
+          "enabled": true,
+          "service": "sap.watt.ideplatform.debug.core/command/breakpoint/ActivateBreakpoints"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.deactivateBreakpoints",
+          "label": "{i18n>command_deactivateBreakpoints_xgrp}",
+          "type": "action",
+          "enabled": true,
+          "service": "sap.watt.ideplatform.debug.core/command/breakpoint/DeactivateBreakpoints"
+        }
+      ],
+      "commandGroup:groups": [
+        {
+          "id": "run.debug",
+          "label": "{i18n>command_debug_xmit}",
+          "service": "sap.watt.ideplatform.debug.core/service/DebugCommandProvider"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.file"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.remove"
+        },
+        {
+          "id": "sap.watt.ideplatform.debug.core.breakpoint.operation"
+        }
+      ],
+      "commandGroup:items": [
+        {
+          "parent": "view.otherPanes",
+          "type": "action",
+          "command": "sap.watt.ideplatform.debug.core.toggle",
+          "label": "{i18n>command_debug_xmit}",
+          "prio": 100
+        },
+        {
+          "parent": "applicationRightSidebar",
+          "command": "sap.watt.ideplatform.debug.core.toggle",
+          "label": "{i18n>command_debug_xmit}",
+          "prio": 100
+        },
+        {
+          "parent": "run",
+          "type": "menu",
+          "group": "run.debug",
+          "label": "{i18n>command_debug_xmit}",
+          "prio": 10
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint",
+          "type": "inline",
+          "group": "sap.watt.ideplatform.debug.core.breakpoint.file",
+          "prio": 10
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint",
+          "type": "inline",
+          "group": "sap.watt.ideplatform.debug.core.breakpoint.remove",
+          "prio": 20
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint",
+          "type": "inline",
+          "group": "sap.watt.ideplatform.debug.core.breakpoint.operation",
+          "prio": 30
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint.remove",
+          "command": "sap.watt.ideplatform.debug.core.breakpoint.remove",
+          "label": "{i18n>command_remove_xmit}",
+          "prio": 10
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint.remove",
+          "command": "sap.watt.ideplatform.debug.core.breakpoint.removeAll",
+          "label": "{i18n>command_removeAll_xmit}",
+          "prio": 20
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint.operation",
+          "command": "sap.watt.ideplatform.debug.core.breakpoint.enableAll",
+          "label": "{i18n>command_enableAll_xmit}",
+          "prio": 30
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint.operation",
+          "command": "sap.watt.ideplatform.debug.core.breakpoint.disableAll",
+          "label": "{i18n>command_disableAll_xmit}",
+          "prio": 30
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint.operation",
+          "command": "sap.watt.ideplatform.debug.core.breakpoint.activateBreakpoints",
+          "label": "{i18n>command_activateBreakpoints_xmit}",
+          "prio": 40
+        },
+        {
+          "parent": "sap.watt.ideplatform.debug.core.breakpoint.operation",
+          "command": "sap.watt.ideplatform.debug.core.breakpoint.deactivateBreakpoints",
+          "label": "{i18n>command_deactivateBreakpoints_xmit}",
+          "prio": 40
+        }
+      ],
+      "perspective:views": [
+        {
+          "id": "debug.client",
+          "service": "@debug.client",
+          "cssclass": "debugView"
+        }
+      ],
+      "perspective:viewToAreaMapping": [
+        {
+          "view": "debug.client",
+          "perspective": "development",
+          "area": "right"
+        }
+      ]
+    }
+  },
+  "subscribes": {
+    "core:started": "initialize",
+    "aceeditor:rendered": "debug.editor:_onEditorRendered",
+    "content:tabClosed": "debug.editor:_onTabClosed",
+    "document:saved": "debug.editor:_onDocumentChanged",
+    "document:deleted": "debug.editor:_onDocumentChanged",
+    "debug.client:callStackSelectionChanged": "debug.editor:_onCallStackSelectionChanged",
+    "debug.client:breakpointSelectionChanged": "debug.editor:_onBreakpointSelectionChanged",
+    "debug.breakpointManager:breakpointManagerEnablementChanged": "debug.editor:_onBreakpointManagerEnablementChanged",
+    "debug.breakpointManager:breakpointsChanged": [
+      "debug.client:_onBreakpointsChanged",
+      "debug.editor:_onBreakpointsChanged"
+    ],
+    "debug.sessionManager:debugSessionsChanged": [
+      "debug.editor:_onDebugSessionsChanged"
+    ]
+  }
+}

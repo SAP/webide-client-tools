@@ -1,0 +1,21 @@
+{
+  "preloadCapable": true,
+
+  "name": "sap.watt.uitools.orion.hcp.feature",
+  "title": "Web IDE with Orion on HCP - uitools layer",
+  "version": "1.0.0",
+  "description": "Web IDE with Orion on HCP - uitools layer",
+
+  "bundledFeatures": {
+    "sap.watt.saptoolsets.fiori.orion.hcp.feature" : "file:../../../saptoolsets/fiori/package-hcp-orion.json",
+    "sap.watt.uitools.feature" : "file:../../package.json"
+  },
+
+  "layers" : [
+    "SAPToolsets",
+    "Toolsets",
+    "IDEPlatform",
+    "Platform"
+  ]
+
+}

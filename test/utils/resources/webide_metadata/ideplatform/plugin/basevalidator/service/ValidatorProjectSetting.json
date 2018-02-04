@@ -1,0 +1,30 @@
+{
+	"name" : "sap.watt.common.basevalidator.ValidatorProjectSetting",
+	"description" : "Add validators configuration to project settings",
+	"methods" : {
+		"setSelectedValidatorSettings" : {
+			"description" : "Sets Validator settings",
+			"params": [
+				{
+					"name" : "sExtention",
+					"type" : "string",
+					"description" : "The name of the validator extention"
+				},
+				{
+					"name" : "sValidator",
+					"type" : "string",
+					"description" : "The name of the validator "
+				},
+				{
+					"name" : "oProject",
+					"type" : "string",
+					"description" : "The name of the project "
+				}
+			],
+			"returns" : {
+				"type" : "object",
+				"description" : "Contains the current Validator settings"
+			}
+		}
+	}
+}

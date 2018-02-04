@@ -1,0 +1,15 @@
+{
+    "name": "sap.watt.common.service.editor.PortableValidator",
+	"description": "Interface for validator that may execute outside of IDE",
+	"extends" : ["sap.watt.common.service.editor.Validator"],
+	"methods": {
+		"getMetadata": {
+			"returns" : {
+				"type" : "object",
+				"default" : null,
+				"description" : "return metadata that is required for validator execution"
+			}
+		}
+	},
+	"events": {}
+}

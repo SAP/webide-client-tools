@@ -1,0 +1,22 @@
+{
+	"name": "sap.watt.platform.focus",
+	"module": "sap.watt.platform.focus/Plugin",
+	"description": "The Focus Plugin",
+
+	"provides" : {
+		"services": {
+			"focus" : {
+				"implements" : "sap.watt.common.plugin.focus.service.Focus",
+				"module" : "sap.watt.platform.focus/service/Focus"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.focus.service.Focus": "sap.watt.platform.focus/service/Focus"
+		}
+	},
+
+	"subscribes": {
+		"core:started": "onAfterStartedHandleUiFocus"
+	}
+}

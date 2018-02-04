@@ -1,0 +1,170 @@
+{
+	"name": "sap.watt.uitools.plugin.ui5template.service.SmartTemplateHelper",
+	"description": "The Smart Template Helper service interface",
+	"methods": {
+		"getAllExtensionPoints": {
+			"description": "Returns all available extension points of the given smart template name",
+			"params": [{
+				"name": "sSmartTemplateName",
+				"type": "string",
+				"description": "Smart Template Name"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "extension points array of the given template"
+			}
+		},
+		"getFacetsPerEntitySet": {
+			"description": "Returns all Facets of the given entity sets under the handler file document",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "aEntitySet",
+				"type": "object",
+				"description": "array of entity sets"
+			}]
+		},
+		"getSmartTableIDPerEntitySet": {
+			"description": "Returns all SmartTableIDs of the given entity sets under the handler file document",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "aEntitySet",
+				"type": "object",
+				"description": "array of entity sets"
+			}]
+		},
+		"writeToI18n": {
+			"description": "Writes to i18n all entries that in the given entity array",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "aEntry",
+				"type": "object",
+				"description": "array of i18n entries"
+			}, {
+				"name": "sTextType",
+				"type": "string",
+				"description": "i18n text type",
+				"optional": true
+			}],
+			"returns": {
+				"type": "object",
+				"description": "the property file entry object"
+			}
+		},
+		"getEntitySets": {
+			"description": "Returns all entity sets of the given smart template name under the handler file document",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "sSmartTemplateName",
+				"type": "string",
+				"description": "Smart Template Name"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "entity sets of the given smart template name under the handler file document"
+			}
+		},
+		"createNewControllerExtensionEntry": {
+			"description": "Creates new controllerExtensions entry by given View and Controller names under the handler file document",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "sView",
+				"type": "string",
+				"description": "view name"
+			}, {
+				"name": "sControllerName",
+				"type": "string",
+				"description": "controller name"
+			}]
+		},
+		"createNewViewExtensionEntry": {
+			"description": "Creates new viewExtensions entry under the handler file document",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "sView",
+				"type": "string",
+				"description": "view name"
+			}, {
+				"name": "sExtensionPoint",
+				"type": "string",
+				"description": "extension point name"
+			}, {
+				"name": "sEntitySet",
+				"type": "string",
+				"description": "entity set name"
+			}, {
+				"name": "oExtensionContent",
+				"type": "object",
+				"description": "extension point content object"
+			}, {
+				"name": "sFacetId",
+				"type": "string",
+				"optional": true,
+				"description": "faced id"
+			}]
+		},
+		"validateOnSelection": {
+			"description": "Validates if template exist under pages according to given document and the project and template name",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "sTemplateName",
+				"type": "string",
+				"description": "template name"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "true if template exist under pages"
+			}
+		},
+		"addAction": {
+			"description": "Creates new action entry under the handler file document",
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "a given document object from a project"
+			}, {
+				"name": "sView",
+				"type": "string",
+				"description": "view name"
+			}, {
+				"name": "sEntitySet",
+				"type": "string",
+				"description": "entity set name"
+			}, {
+				"name": "sControllerName",
+				"type": "string",
+				"description": "controller name"
+			},{
+				"name": "sActionPosition",
+				"type": "string",
+				"optional": true,
+				"description": "action position - Header or Section"
+			}, {
+				"name": "sTableId",
+				"type": "string",
+				"optional": true,
+				"description": "The table id in annotation file"
+			}]
+		}
+	}
+}

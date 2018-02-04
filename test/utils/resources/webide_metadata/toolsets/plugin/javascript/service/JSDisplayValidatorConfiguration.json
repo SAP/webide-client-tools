@@ -1,0 +1,7 @@
+{
+	"name": "sap.watt.common.javascript.JSDisplayValidatorConfiguration",
+	"description": "The Javascript DisplayValidatorConfiguration interface",
+	"extends" : ["sap.watt.common.service.editor.DisplayValidatorConfiguration"],
+	"methods": {},
+	"events" : {}
+}

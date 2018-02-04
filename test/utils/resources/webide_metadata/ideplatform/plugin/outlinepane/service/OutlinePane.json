@@ -1,0 +1,28 @@
+{
+	"name": "sap.watt.common.outlinepane.OutlinePane",
+	"description": "The outline pane interface",
+	"extends" : "sap.watt.common.service.ui.Part",
+	"methods": {
+		"onSelectionChanged" : {
+			"description" : "Handler for selection:changed event",
+			"params" : [
+				{
+					"name" : "oEvent",
+					"type" : "object"
+				}
+			]
+		}
+	},
+	"events" : {
+	},
+	"configurationProperties" : {
+		"outlines" : {
+			"type" : {
+			  	"fileExtension" : "string",
+				"editor" : "string",
+				"service" : "sap.watt.common.outlinepane.Outline"
+			},
+			"multiple" : true
+		}
+	}
+}

@@ -1,0 +1,89 @@
+{
+    "name": "sap.watt.common.plugin.run.service.run",
+    "description":"The <i>run</i> service enables you to run an application.",
+    "visibility" : "public",
+    "extends" : ["sap.watt.common.service.ide.CommandGroupItemProvider", "sap.watt.common.service.ui.Config"],
+    "methods" : {
+        "isAvailable" : {},
+        "isEnabled" : {},
+        "execute" : {},
+        "run" : {},
+        "open" : {},
+        "getRunnersForSelectedProject" : {},
+        "getRunnersForDocument" : {},
+        "getRunnersWithConfigurations" : {},
+        "getRunnerForProject" : {},
+        "getSelectedDocument" : {},
+        "onDocumentDeleted" : {},
+        "isRunConfigurationViewActive" : {},
+        "getApplicationUrl" : {
+            "description" : "Returns the URL of the application for running it with a specific file.",
+            "params" : [
+                {
+                    "name" : "fullPath",
+                    "type" : "string",
+                    "description" : "Full path of a runnable file. Full path definition: '/{project folder}/{sub folders}/{runnable file name}', for example: '/AppName/webapp/index.html' The full path can be retrieved via the document object by calling oDocument.getEntity().getFullPath()"
+                }
+            ],
+            "returns" : {
+                "type": "string",
+                "description": "The application URL"
+            },
+            "visibility" : "public"
+        },
+        "isAppUrlRelevant" : {
+            "description" : "Returns a boolean to determine if we need to display a url in the console",
+            "params" : [
+                {
+                    "name" : "sProjectPath",
+                    "type" : "string",
+                    "description" : "The project's path - needed to get the document"
+                }
+            ],
+            "returns" : {
+                "type": "boolean",
+                "description": "is the url relevant"
+            }
+        },
+        "getRunnerById" : {
+            "description" : "Returns a runner by the given runner id",
+            "params" : [
+                {
+                    "name" : "sRunnerId",
+                    "type" : "string",
+                    "description" : "The requested runner id"
+                }
+            ],
+            "returns" : {
+                "type" : "object",
+                "description" : "The runner object"
+            }
+        }
+    },
+    "configurationProperties" : {
+
+        "runners": {
+            "type" : {
+                "service" : "sap.watt.common.plugin.run.service.runner",
+                "id" : "string",
+                "displayName" : "string",
+                "projectTypes" : "[string]",
+                "fileTypes" : "[string]",
+                "appCacheBuster" : "boolean",
+                "appCacheBusterOffset" : "string",
+                "doNotOpenNewWindow" : "boolean",
+                "extensionService": "object"
+            },
+            "multiple" : true
+        },
+        "styles" : {
+            "type" : "object",
+            "multiple" : true
+        }
+    },
+    "events" : {
+        "runConfigurationExecuted" : {
+            "description" : "fired once an application runs"
+        }
+    }
+}

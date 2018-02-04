@@ -1,0 +1,23 @@
+{
+	"name": "sap.watt.common.service.registry.HtmlProducer",
+	"description": "HTML extention registry service interface",
+	"configurationProperties": {
+		"htmlProducers": {
+			"type": {
+				"id": {
+					"type": "string"
+				},
+				"htmlProducer": {
+					"type": "sap.watt.common.service.htmlproducer.HtmlProducer"
+				}
+			},
+			"multiple": true
+		}
+	},
+	"methods": {
+		"getAllHtmlExtenders":  {
+			"description": "Return all extenders that would like to extend the runnable document",
+			"returns": "[object]"
+		}
+	}
+}

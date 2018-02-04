@@ -1,0 +1,85 @@
+{
+	"name" : "sap.watt.common.service.platform.DocumentProvider",
+	"description" : "The interface for document provider. A document provider",
+	"methods" : {
+		
+		"getDocumentByKeyString" : {
+			"description" : "Get a document by it's key string",
+			"params": [
+				{ 
+					"name" : "sKeyString",
+					"type" : "string",
+					"description" : "Key string"
+				}
+			],
+			"returns": {
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The found document"
+			}
+		},
+		
+		"createDocumentInternally": {
+			"description" : "Creates a Document instance based on the entity. Be careful it will not create it in the backend. To create a document in the backend, get a document an create a child of it (e.g. folder.createFile()).",
+			"params": [
+				{ 
+					"name" : "oEntity",
+					"type" : "object",
+					"description" : "The entity with the basic information to create a document for"
+				},
+				{ 
+					"name" : "oEventEmitter",
+					"type" : "object",
+					"description" : "Event Emitter context of the document service"
+				}
+			],
+			"returns": {
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The newly created document instance with the specific methods of the type adapter"
+				}
+		},
+		
+		"createExtDocumentInternally": {
+			"deprecated" : {
+				"since" : "1.6.0",
+				"until" : "2.0.0",
+				"description" : "ExtDocuments are deprecated, File Systems now allows multiple DAO objects e.g. to fetch documents from JAM which has to replace this"
+			},
+			"description" : "Creates a Document instance based on the ExtDocument. Be careful it will not create it in the backend. ",
+			"params": [
+				{ 
+					"name" : "oExtDocument",
+					"type" : "object",
+					"description" : "The object with the basic information to create a document for"
+				},
+				{ 
+					"name" : "oEventEmitter",
+					"type" : "object",
+					"description" : "Event Emitter context of the document service"
+				}
+			],
+			"returns": {
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The newly created document instance with the specific methods of the type adapter"
+				}
+		},
+        "createProject": {
+          "description" : "Creates a project instance based on the entity. unlike createDocumentInternally this method creates the document in the BE",
+          "params": [
+            {
+              "name" : "oProjectData",
+              "type" : "object",
+              "description" : "The project input data"
+            },
+            {
+              "name" : "sDAO",
+              "type" : "string",
+              "description" : "The project dao"
+            }
+          ],
+          "returns": {
+            "type" : "sap.watt.common.plugin.document.Document",
+            "description" : "The newly created project instance"
+          }
+        }
+	}
+}

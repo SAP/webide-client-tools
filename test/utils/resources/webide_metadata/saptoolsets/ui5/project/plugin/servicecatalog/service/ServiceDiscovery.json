@@ -1,0 +1,25 @@
+{
+	"name" : "sap.watt.uitools.plugin.servicecatalog.service.ServiceDiscovery",
+	"description" : "The service discovery interface",
+	"extends" : ["sap.watt.common.service.ui.Part"],
+	"methods": {
+		"getContent" : {
+			"description" : "This method returns a UI5 catalog viewer object.",
+			"returns" : "object"
+		}
+	},
+	"events" : {
+		"requestSent" : {
+			"description" : "This event is fired when the Service Discovery sents a request to some data source"
+		},
+		"requestCompleted" : {
+			"description" : "This event is fired when the Service Discovery receives a response from the data source"
+		},
+		"serviceSelectionCompleted" : {
+			"description" : "This event is fired when a service in the Service Discovery is selected and validated"
+		},
+		"validateNextSent" : {
+			"description" : "This event is fired when a service in the Service Discovery is selected to Enable/Disable Next button"
+		}
+	}
+}

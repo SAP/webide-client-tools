@@ -1,0 +1,23 @@
+{
+	"name" : "sap.watt.common.service.editor.LibraryMetadataProvider",
+	"description" : "Library metadata provider interface",
+	"methods" : {
+		"getMetadata" : {
+			"params" : [{
+				"name":"oDocument",
+				"type":"object"
+			}],
+			"returns" : "object"
+		}
+	},
+	"events": {
+		"projectConfigurationChanged" : {
+			"description" :"Fired when there was a change in library configuration of some project",
+			"params" : [{
+				"name" : "projectDocument",
+				"type" : "object",
+				"description" :"The project document"
+			}]
+		}
+	}
+}

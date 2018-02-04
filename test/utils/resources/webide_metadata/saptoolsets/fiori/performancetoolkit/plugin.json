@@ -1,0 +1,79 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.performancetoolkit",
+	"description": "The Performance Toolkit plugin",
+	"i18n": "sap.watt.saptoolsets.fiori.performancetoolkit/i18n/i18n",
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"document",
+			"filesystem.documentProvider",
+			"setting.project",
+			"selection",
+			"usernotification",
+			"ui5projecthandler",
+			"platform.builder",
+			"resource",
+			"log",
+			"usagemonitoring",
+			"beautifier",
+			"projectsetting",
+			"projectType",
+			"htmlbuilder",
+			"filefilter"
+		]
+	},
+	"provides": {
+		"services": {
+			"performancetoolkit.runner": {
+				"implements": "sap.watt.saptoolsets.fiori.performancetoolkit.service.PerformanceToolkitRunner",
+				"module": "sap.watt.saptoolsets.fiori.performancetoolkit/service/PerformanceToolkit"
+			},
+			"performancekpisupplier": {
+				"implements": "sap.watt.saptoolsets.fiori.performancetoolkit.service.PerformanceKPIsSupplier",
+				"module": "sap.watt.saptoolsets.fiori.performancetoolkit/service/PerformanceKPIsSupplier"
+			}
+		},
+		"interfaces": {
+			"sap.watt.saptoolsets.fiori.performancetoolkit.service.PerformanceToolkitRunner": "sap.watt.saptoolsets.fiori.performancetoolkit/service/PerformanceToolkitRunner",
+			"sap.watt.saptoolsets.fiori.performancetoolkit.service.PerformanceKPIsSupplier": "sap.watt.saptoolsets.fiori.performancetoolkit/service/PerformanceKPIsSupplier"
+		}
+	},
+	"configures": {
+		"services": {
+			"usagemonitoring:reportParams": [
+				{
+					"components": [
+						"performancetoolkit"
+					],
+					"eventTypes": [
+						"run"
+					]
+				}
+			],
+			"filefilter:alwaysHidden": [
+				{
+					"regExps": [
+						"_perf$", "_perf/"
+					],
+					"projectTypes": [
+						"com.watt.common.builder.sapui5clientbuild"
+					]
+				}
+			],
+			"projectsetting:plugins": [
+				{
+					"id": "PerformanceToolkitProjectKPIs",
+					"name": "{i18n>lbl_name_proj_settings_kpis}",
+					"title": "{i18n>lbl_title_proj_settings_kpis}",
+					"description": "{i18n>lbl_desc_proj_settings_kpis}",
+					"service": "sap.watt.saptoolsets.fiori.performancetoolkit/service/PerformanceKPIsProjectSettingConfig",
+					"availabilityService" : "sap.watt.saptoolsets.fiori.performancetoolkit/service/PerformanceKPIsProjectSettingConfig"
+				}
+			]
+		}
+	},
+	"subscribes": {
+		"document:deleted": "performancetoolkit.runner:onDocumentDeleted"
+	}
+}

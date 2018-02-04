@@ -1,0 +1,35 @@
+{
+    "name": "sap.watt.common.plugin.intellisence.service.LibraryVersion",
+	"extends" : [],
+	"description": "Get the Project Library version",	
+	"methods" : {
+		"getLibVersion" : {
+		    "description" : "Get neo-app.json Library names and versions",
+			"params" : [
+			 {
+                "name" : "oDocument",
+                "type" : "object"
+			},
+			{
+                "name" : "aTypes",
+                "type" : "[object]"
+			}],
+			"returns" : {
+				"type" : "[object]",
+				"description" : "Array of Libraries and versions"
+			}
+		}
+	},
+	"events" : {
+        "neoappChanged" : {
+    		"description" : "This event is triggered when neo-app.json was changed",
+        	"params" : [
+                {
+                    "name" : "document",
+                    "type" : "object",
+                    "description" : "Document object of the changed neo-app.json"
+                }                
+            ]
+        }
+	}
+}

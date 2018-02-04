@@ -1,0 +1,74 @@
+{
+	"name" : "sap.watt.common.service.ui.Menu",
+	"description" : "The menu interface",
+	"configurationProperties" : {
+		"group" : {
+			"type" : "string",
+			"multiple" : false
+		}
+	},
+	"methods" : {
+		"createMenu" : {
+			"params" : [
+				{
+					"name" : "oGroup",
+					"type": "object"
+				},
+				{
+					"name" : "sStyle",
+					"type": "string"	
+				}
+			]
+		},
+		"populate" : {
+			"description" : "Add items to the menu object according to the group",
+			"params" : [
+				{
+					"name" : "oMenu",
+					"type": "object"
+				},
+				{
+					"name" : "oGroup",
+					"type": "object"	
+				},
+				{
+					"name" : "mOptions",
+					"type": {
+						"bFilter" : {
+							"type" : "boolean",
+							"description" : "Should menu items which are not available be filtered. True by default."
+						},
+						"sParentId" : "string",
+						"fnAddMenuItem" : {
+							"type": "function",
+							"description" : "Create and add menu item UI elements that represent the menu item object to the menu. Parameters are the item index and the item. An array with all the created items should be returned. By default the created items are sap.ui.unified.MenuItem elements and they are added to the menu with the addItem method."
+						},
+						"fnClearMenu" : {
+							"type" : "function",
+							"description" : "Remove all menu item UI elements from the menu. By default the items are removed using destroyItems method."
+						}
+					}
+				}
+			],
+			"returns" : {
+				"type" : "object",
+				"description" : "Map from the ID of the menu item UI element created during the method to the menu item object it represents"
+			}
+		},
+		"filterMenuItems" : {
+			"description" : "Set menu item UI elements visible or invisible according to the menu item object they represent",
+			"params" : [
+				{
+					"name" : "aMenuItems",
+					"type" : ["object"],
+					"description" : "A list of menu item UI elements which can be set visible or invisible"
+				},
+				{
+					"name" : "mIdToItem",
+					"type" : "object",
+					"description" : "Map from menu item UI element ID to the menu item object it represents"
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "sap.watt.platform.utils",
+	"description": "The plugin provides utility services for plugins",
+	
+	"requires": {
+		"services": [
+			"translation"
+		]
+	},
+	
+	"configures": {
+		"services": {
+		}
+	},
+	
+	"provides": {
+		"services" : {	
+		}
+	}
+}

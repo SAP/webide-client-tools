@@ -1,0 +1,6 @@
+{
+	"name" : "sap.watt.common.service.selection.UI5ControlProvider",
+	"description" : "The ui5 selection provider interface. Base interface for all selectable ui parts",
+	
+	"extends" : [ "sap.watt.common.service.selection.Provider" ]
+}

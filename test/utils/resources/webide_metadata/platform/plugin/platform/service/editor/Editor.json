@@ -1,0 +1,86 @@
+{
+	"name" : "sap.watt.common.service.editor.Editor",
+	"description" : "The base editor interface",
+	"extends" : [
+		"sap.watt.common.service.ui.Part",
+		"sap.watt.common.service.selection.Provider"
+	],
+
+	"events" : {
+		"opened" : {
+			"params" : [{
+				"name" : "document",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}]
+		},
+		"closed" : {
+			"params" : [{
+				"name" : "document",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}]
+		}
+	},
+
+	"methods" : {
+		"open" : {
+			"description" : "Sets the current document in the editor",
+			"params" : [{
+				"name": "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}]
+		},
+
+		"getState" : {
+			"description" : "Gets the current state of editor. Null or undefined means ok",
+			"params" : []
+		},
+		
+		"isRestorable" : {
+			"description" : "setting if the opened editor should be restored at startup",
+			"returns" : {
+				"type" : "boolean"
+			}
+		},
+
+		"isAvailable" : {
+			"description" : "setting if the editor is available in the current system",
+			"returns" : {
+				"type" : "boolean"
+			}
+		},
+
+		"flush" : {
+			"description" : "Writes the editor content into the document"
+		},
+
+		"close" : {
+			"description" : "Called when the document is closed",
+			"params" : [{
+				"name": "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}]
+		},
+		
+		"getTitleForDocument" : {
+			"description" : "Gets display title for document",
+			"params" : [{
+				"name": "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}],
+			"returns" : {
+				"type" : "string"
+			}
+		},
+		
+		"getTooltipForDocument" : {
+			"description" : "Gets display tooltip for document",
+			"params" : [{
+				"name": "oDocument",
+				"type" : "sap.watt.common.plugin.document.Document"
+			}],
+			"returns" : {
+				"type" : "string"
+			}
+		}
+	}
+}

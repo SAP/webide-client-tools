@@ -1,0 +1,19 @@
+{
+	"name" : "sap.watt.common.plugin.preview.service.HTMLbuilder",
+	"description" : "The HTML builder interface",
+	"methods" : {
+		"build" : {
+			"params" : [{
+				"name" : "oOrigFileDocument",
+				"type" : "object",
+				"description": "The original html file document"
+			},{
+				"name" : "sScript",
+				"type" : "string"
+			},{
+				"name" : "sNewFileName",
+				"type" : "string"
+			}]
+		}
+	} 
+}

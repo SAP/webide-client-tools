@@ -1,0 +1,21 @@
+{
+	"name": "sap.watt.platform.contextmenu",
+	"description": "Context Menu Plugin",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"menu"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"contextMenu": {
+				"implements": "sap.watt.common.service.ui.ContextMenu",
+				"module": "sap.watt.platform.contextmenu/service/ContextMenu"
+			}
+		}
+	}
+}

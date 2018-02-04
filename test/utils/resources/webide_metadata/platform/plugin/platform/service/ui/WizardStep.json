@@ -1,0 +1,8 @@
+{
+	"name" : "sap.watt.common.service.ui.WizardStep",
+	"extends" : ["sap.watt.common.service.ui.WizardPart"],
+	"description": "The wizard step interface. Any wizard step that is intended to be available in the template creation wizards is a UI wizard part whose <i>getContent</i> method initiates the step UI (extending sap.watt.uitools.plugin.template.ui.wizard.WizardStepContent) with the <i>this.context</i> property, and returns the result of the <i>getWizardStep</i> method of the <i>wizard</i> service with the step content object, the step title, and description.",
+	"exposedAsInterface":true,
+	"visibility": "public",
+	"methods" : {}
+}

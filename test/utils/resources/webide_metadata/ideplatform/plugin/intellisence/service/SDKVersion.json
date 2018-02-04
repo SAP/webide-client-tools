@@ -1,0 +1,28 @@
+{
+    "name": "sap.watt.common.plugin.intellisence.service.SDKVersion",
+	"extends" : [],
+	"description": "HCP based Library SDK Version provider",
+	"methods" : {
+        "getLibraryVersionsFromHCP" : {
+            "description": "retrieve available SDK versions from HCP",
+        	"params" : [{
+        		"name" : "sLibPath",
+        		"type" : "string"
+        	},
+        	{
+        		"name" : "aPackages",
+        		"type" : ["string"]
+        	},
+        	{
+        	    "name" : "aFiles",
+        	    "type" : ["string"]
+        	}],
+
+        	"returns" : {
+        		"type" : ["object"],
+        		"description" : "SDK versions info"
+        	}
+        
+        }
+	}
+}

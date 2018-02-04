@@ -1,0 +1,26 @@
+{
+	"name" : "sap.watt.common.service.resourceindex.Index",
+	"description": "The indexing interface",
+    
+	"methods" : {
+        "getMetadata" : {
+            "description" : "Start indexing"
+        },  
+        "resort" : {
+            "description" : "Resort index on file opened",
+            "params": [
+                {
+                    "name": "oDocument",
+                    "type": "object",
+                    "description": "The document that is opened"
+                }
+            ]
+        },
+	    "onDocumentDeleted" : {
+	    	"description" : "Called when a document is deleted."
+        },
+        "onDocumentCreated" : {
+            "description" : "Called when a document is created."
+        }
+	}
+}

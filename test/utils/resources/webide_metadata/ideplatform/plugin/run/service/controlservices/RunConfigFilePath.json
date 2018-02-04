@@ -1,0 +1,13 @@
+{
+    "name": "sap.watt.common.service.runconfigurationui.filepath",
+    "description" : "Composite UI controls",
+    "methods" : {
+        "getControl" : {
+            "description" : "Returns the file path control",
+            "returns" : {
+                "type": "object",
+                "description": "the file path control"
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+	"name": "sap.watt.common.service.htmlproducer.HtmlProducer",
+	"description": "The HTML Producer interface",
+	"methods": {
+		"extendRunnableHtml": {
+			"params": [{
+				"name": "oConfiguration",
+				"type": "object"
+			}],
+			"returns": "object"
+		}
+	}
+
+}

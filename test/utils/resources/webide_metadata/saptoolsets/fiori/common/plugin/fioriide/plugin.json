@@ -1,0 +1,65 @@
+{
+	"name" : "sap.watt.saptoolsets.fiori.common.fioriide",
+	"description" : "specific prespective and configurations for the fioriide product",
+	"i18n" : "sap.watt.saptoolsets.fiori.common.fioriide/i18n/i18n",
+	
+	"requires" : {
+		"services" : [
+			"perspective",
+			"commandGroup",
+			"userpreference",
+			"optionalPlugins",
+			"help",
+			"logserver",
+			"notification.manager"
+		]
+	},
+
+	"configures" : {
+		"services" : {
+			
+			"commandGroup:groups": [
+				{ "id" : "deploy"},
+				{ "id" : "deploy.actions"},
+				{ "id" : "deploy.status"}				
+			],
+			"commandGroup:items" : [
+				{ "parent": "tools.perspectives", "command": "tools.welcome", "prio": 0 },
+				{ "parent" : "applicationMenu", "type" : "menu", "group" : "deploy", "label": "{i18n>commandGroup_deploy}", "prio":40},
+				{ "parent" : "repositoryBrowserContextMenu", "type" : "menu", "group" : "deploy", "label" : "{i18n>commandGroup_deploy}", "prio": 75 },
+				{ "parent" : "file.ArchiveFolder", "command": "repositorybrowser.archiveFolder", "prio": 10},
+				
+				{ "parent" : "deploy", "type": "inline", "group" : "deploy.actions", "prio" : 20 },
+				{ "parent" : "deploy", "type": "inline", "group" : "deploy.status", "prio" : 40 }
+			],
+			"perspective:perspectives": [
+				{"id": "welcome"}
+			],
+			"perspective:areas": [
+				{
+					"id": "welcome_center",
+					"position": "1",
+					"perspective":"welcome",
+					"view":"welcome_page"
+				}
+			],
+			"userpreference:plugins" : [
+				{
+					"id": "optionalPlugins",
+					"name" : "{i18n>optional_plugins_name}",
+					"title" : "{i18n>optional_plugins_title}",
+					"description" : "{i18n>optional_plugins_desc}",
+					"service": "@optionalPlugins"
+				}
+			],
+
+			"help:url": "{{help_url}}/webide/frameset.htm",
+
+			"notification.manager:timeoutInMilliSeconds":300000,
+
+			"logserver:intervalInMilliSeconds":30000,
+			"logserver:bufferOptimalLimit":50000,
+			"logserver:bufferMaxLimit":10485760
+		}
+	}
+}

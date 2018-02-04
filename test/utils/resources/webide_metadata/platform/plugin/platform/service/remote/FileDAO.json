@@ -1,0 +1,188 @@
+{
+	"name": "sap.watt.common.service.remote.FileDAO",
+	"description": "The file remote service interface. It contains the static methods to create and retrieve file specific documents and serves as file and folder type adapter",
+	"extends": "sap.watt.common.service.remote.FileDAOReadOnly",
+
+	"methods": {
+		"onLogIn": {},
+		
+		"createFolder": {
+			"description" : "Creates a folder",
+			"params": [
+				{
+					"name" : "oParentFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Parent folder document in which the new folder should be created (never be null)"
+				},
+				{
+					"name" : "sFolderName",
+					"type" : "string",
+					"description" : "Name of the folder which should be created"
+				}
+			],
+			"returns": {
+				"type" : "sap.watt.common.plugin.document.Document",
+				"description" : "File document of the newly created folder"
+			}
+		},
+		"copyObject": {
+			"description" : "Copys a file or a folder",
+			"params": [
+				{
+					"name" : "oSourceDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Source document of the file or folder which should be copied"
+				},
+				{
+					"name" : "oTargetFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Folder target document to which it should be copied to"
+				},
+				{
+					"name" : "sTargetName",
+					"type" : "string",
+					"optional" : true,
+					"description" : "The target name of the file or folder"
+				},
+				{
+					"name" : "bForce",
+					"type" : "boolean",
+					"optional" : true,
+					"description" : "true file/folder shall be overwritten, false if not (default)"
+				}
+			]
+		},
+		"deleteFile": {
+			"description" : "Deletes a file",
+			"params": [
+				{
+					"name" : "oFileDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "File document of the file which should be deleted"
+				}
+			]
+		},
+		"deleteFolder": {
+			"description" : "Deletes a folder",
+			"params": [
+				{
+					"name" : "oFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Folder document of the folder which should be deleted"
+				}
+			]
+		},
+		"importFile": {
+			"description" : "Import a file",
+			"params": [
+				{
+					"name" : "oParentFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Parent folder document of the folder in which the file should be imported"
+				},
+				{
+					"name" : "oFile",
+					"type" : "object",
+					"description" : "The HTML5 File object of the file which should be imported, or a HTML5 Blob"
+				},
+				{
+					"name" : "bUnzip",
+					"type" : "boolean",
+					"description" : "If it is a zip file, the indicator whether the file should be unzipped for the import"
+				},
+				{
+					"name" : "bForce",
+					"type" : "boolean",
+					"description" : "If it is a zip file and should be unzipped, the indicator whether the files should be overwritten when importing the unzipped content"
+				},
+				{
+					"name" : "sFileName",
+					"type" : "string",
+					"description" : "Needs to be provided in case oFile is a Blob"
+				}
+			],
+			"returns": {
+				"type" : "sap.watt.common.plugin.document.Document",
+				"description" : "The file document of the imported file if it was not unzipped"
+			}
+		},
+		"importZip": {
+			"description" : "Imports a zip file",
+			"params": [
+				{
+					"name" : "oParentFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Parent folder document of the folder in which the zip file should be unzipped and imported"
+				},
+				{
+					"name" : "oContent",
+					"type" : "object",
+					"description" : "File|Blob The content of the zip"
+				},
+				{
+					"name" : "bForce",
+					"type" : "boolean",
+					"description" : "The indicator whether the files should be overwritten when importing the unzipped content"
+				}
+			]
+		},
+		"moveObject": {
+			"description" : "Moves a 2nd level file or folder to an other location. Can also be used for renaming.",
+			"params": [
+				{
+					"name" : "oSourceDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The document to move / rename"
+				},
+				{
+					"name" : "oTargetParentFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The folder document of the target folder"
+				},
+				{
+					"name" : "sTargetName",
+					"type" : "string",
+					"description" : "The target name of the file"
+				}
+			],
+			"returns": {
+				"type" : "sap.watt.common.plugin.document.Document",
+				"description" : "The file document of the moved/renamed file"
+			}
+		},
+
+		"save": {
+			"description" : "Saves a file",
+			"params": [
+				{
+					"name" : "oFileDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "File document"
+				}
+			],
+			"returns": {
+				"type" : "string",
+				"description" : "The new ETag"
+			}
+		},
+		"createFile": {
+			"description" : "Creates a file",
+			"params": [
+				{
+					"name" : "oParentFolderDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The folder document of the folder in which the new file should be created (never be null)"
+				},
+				{
+					"name" : "sName",
+					"type" : "string",
+					"description" : "Name of the file which should be created"
+				}
+			],
+			"returns": {
+				"type" : "sap.watt.common.plugin.document.Document",
+				"description" : "The file document of the newly created file"
+			}
+		}
+	}
+}

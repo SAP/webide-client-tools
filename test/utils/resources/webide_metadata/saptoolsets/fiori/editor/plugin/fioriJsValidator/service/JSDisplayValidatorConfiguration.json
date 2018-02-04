@@ -1,0 +1,7 @@
+{
+	"name": "sap.watt.bamba.fioriJsValidator.service.JSDisplayValidatorConfiguration",
+	"description": "Fiori Javascript DisplayValidatorConfiguration interface",
+	"extends" : ["sap.watt.common.service.editor.DisplayValidatorConfiguration"],
+	"methods": {},
+	"events" : {}
+}

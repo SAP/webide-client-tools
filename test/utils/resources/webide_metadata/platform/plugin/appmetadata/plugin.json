@@ -1,0 +1,16 @@
+{
+	"name": "sap.watt.platform.appmetadata",
+	"description": "Application metadata plugin",
+
+	"provides": {
+		"services": {
+			"appmetadata": {
+				"implements": "sap.watt.common.appmetadata.appmetadata",
+				"module":  "sap.watt.platform.appmetadata/service/appmetadata"
+			}
+		},
+		"interfaces" : {
+	        "sap.watt.common.appmetadata.appmetadata" : "sap.watt.platform.appmetadata/appmetadata"
+	    }
+	}
+}

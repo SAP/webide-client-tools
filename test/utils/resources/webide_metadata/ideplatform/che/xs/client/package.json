@@ -1,0 +1,21 @@
+{
+	"preloadCapable" : true,
+
+	"name" : "sap.watt.ideplatform.di.xs.feature",
+	"title" : "Web IDE with DI on XSA - ideplatform layer",
+	"version" : "1.0.0",
+	"description" : "Web IDE with DI on XSA - ideplatform layer",
+
+	"bundledFeatures" : {
+		"sap.watt.ideplatform.di.feature" : "file:../../package.json",
+		"sap.watt.platform.xs.feature" : "file:../../../../platform/xs/package.json",
+		"sap.watt.ideplatform.test": "file:../../../test/package.json",
+		"sap.watt.ideplatform.debug": "file:../../../debug/package.json"
+	},
+
+	"bundledPlugins" : {
+		"sap.watt.ideplatform.che.mtafoldertoprojectconvertor" : "file:../../plugin/mtafoldertoprojectconvertor",
+		"sap.watt.ideplatform.che.xsconnectivity" : "file:../../plugin/xsconnectivity",
+		"sap.watt.ideplatform.che.mtaproject" : "file:../../plugin/mtaproject"
+	}
+}

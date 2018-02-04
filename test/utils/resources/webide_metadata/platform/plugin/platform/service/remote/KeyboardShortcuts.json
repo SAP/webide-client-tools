@@ -1,0 +1,60 @@
+{
+	"name": "sap.watt.common.service.remote.KeyboardShortcuts",
+	"description" : "The Keyboard Shortcuts interface",
+	"configurationProperties" : {
+		"constants": {
+			"description": "Configure the Keyboard Shortcuts service constants",
+			"type" : {
+			    "SAPDefault" : "string"
+			},
+			"multiple" : false
+		}
+	},
+
+	"methods" : {
+		"record" : {
+			"description" : "Record keyboard key press input",
+			"params" : [{
+				"name" : "sCommandId",
+				"type" : "string"
+			}],
+			"returns" : "string"
+		},
+		"stopRecord" : {
+			"description" : "Stop record keyboard shortcut"
+		},
+		
+		"registerShortcuts": {
+			"description" : "Bind keyboard shortcuts",
+			"params" : [{
+				"name" : "mCommands",
+				"type" : "object"
+			}]
+		},
+		"getAllSets": {
+			"description" : "Get keyboard shortcuts custom sets",
+			"returns" : "object"
+		},
+		"saveAllSets": {
+			"description" : "Save keyboard shortcuts custom sets",
+			 "params" : [{
+				"name" : "oSettings",
+				"type" : "object"
+			}]
+		},
+		"getKeyBindingAsText": {
+			"description" : "Get keyboard shortcut as formatted text",
+			"async" : false,
+			"params" : [{
+				"name" : "sId",
+				"type" : "string"
+				},
+				{
+				"name" : "sText",
+				"type" : "string"
+				}
+			],
+			"returns" : "string"	
+		}
+	}
+}

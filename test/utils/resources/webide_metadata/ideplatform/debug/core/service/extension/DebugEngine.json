@@ -1,0 +1,30 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.extension.DebugEngine",
+  "description": "A debug engine provides debugging services such as execution control, breakpoints, and expression evaluation. The debug engine is responsible for monitoring the state of a program being debugged.",
+  "methods": {
+    "createDebugSession": {
+      "description": "Creates a debug session based on the given launch configuration and add it to the collection of registered debug sessions.",
+      "params": [
+        {
+          "name": "launchConfiguration",
+          "type": "sap.watt.ideplatform.debug.core.model.LaunchConfiguration",
+          "description": "The configuration used to setup the debug session"
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.model.DebugSession",
+        "description": "Returns the new debug session connected to the debug taget runtime."
+      }
+    },
+    "disconnectDebugSession": {
+      "description": "Removes the given debug session from the collection of registered debug sessions and disconnects it from the debugee.",
+      "params": [
+        {
+          "name": "debugSession",
+          "type": "sap.watt.ideplatform.debug.core.model.DebugSession",
+          "description": "The debug session to add."
+        }
+      ]
+    }
+  }
+}

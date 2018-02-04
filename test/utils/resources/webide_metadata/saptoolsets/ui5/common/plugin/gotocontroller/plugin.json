@@ -1,0 +1,66 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller",
+	"description": "The XML go to controller Plugin",
+	"i18n": "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"log",
+			"indexmanager",
+			"document",
+			"command",
+			"commandGroup",
+			"selection",
+			"usernotification",
+			"usagemonitoring"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"gotocontroller": {
+				"implements": "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller.service.GoToController",
+				"module": "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller/service/GoToController"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.saptoolsets.ui5.common.plugin.gotocontroller.service.GoToController": "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller/service/GoToController"
+		}
+	},
+	"configures": {
+		"services": {
+			"command:commands": [
+				{
+					"id": "xml.gotocontroller",
+					"label": "{i18n>command_gotocontroller}",
+					"service": "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller/command/GoToController",
+					"type": "action"
+				}
+			],
+
+			"usagemonitoring:reportParams": [
+				{
+					"components": ["GoToController"],
+					"eventTypes": ["gotocontroller"]
+				}],
+
+			"commandGroup:groups": [
+			{
+				"id": "xmlcodesymbol"
+			}],
+
+			"commandGroup:items": [{
+				"parent": "xmlContextMenu",
+				"group": "xmlcodesymbol",
+				"type": "inline",
+				"prio": 10
+			},
+			{
+				"parent": "xmlcodesymbol",
+				"command": "xml.gotocontroller",
+				"prio": 50
+			}]
+		}
+	}
+}

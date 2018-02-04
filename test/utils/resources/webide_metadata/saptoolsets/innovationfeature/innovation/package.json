@@ -1,0 +1,13 @@
+{
+
+	"layer" : "SAPToolsets",
+
+	"name": "sap.watt.saptoolsets.innovation.feature",
+	"title": "Web IDE innovation - SAPToolsets layer (wrapper for innovation)",
+	"version": "1.0.0",
+	"description": "Web IDE innovation - SAPToolsets layer",
+
+	"optionalBundledFeatures" : {
+		"sap.watt.saptoolsets.innovation" : "file:package-innovation.json"
+	}
+}

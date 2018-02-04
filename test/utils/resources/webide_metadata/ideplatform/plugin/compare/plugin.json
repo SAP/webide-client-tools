@@ -1,0 +1,45 @@
+{
+	"name": "sap.watt.ideplatform.compare",
+	"description": "The Compare Plugin",
+	"i18n" : "sap.watt.ideplatform.compare/i18n/i18n",
+     "requires":{
+              "services": [
+                     "content",
+                     "resource",
+                     "perspective",
+                     "document",
+                     "usagemonitoring"
+              ] 
+     },  
+ 	"provides": {
+ 		"services":{
+ 			"compare": {
+ 				"implements" : "sap.watt.common.compare.service.Compare",
+ 				"module": "sap.watt.ideplatform.compare/service/Compare"
+ 			}
+ 		},
+ 		"interfaces": {
+				"sap.watt.common.compare.service.Compare": "sap.watt.ideplatform.compare/service/Compare"
+		}
+	},
+	 "configures" : {
+            "services" : {
+                "compare:styles" : [
+                    {
+                        "uri" : "sap.watt.ideplatform.compare/lib/built-compare.css" 
+                    },
+              	    {
+                        "uri" : "sap.watt.ideplatform.compare/css/Controls-Buttons-Delta.css" 
+                    },
+              	    {
+                        "uri" : "sap.watt.ideplatform.compare/css/Compare.css"
+                    }
+              	],
+              	"usagemonitoring:reportParams": [
+				{
+					"components": ["Compare"],
+					"eventTypes": ["compare"]
+				}]
+            }
+    }
+}

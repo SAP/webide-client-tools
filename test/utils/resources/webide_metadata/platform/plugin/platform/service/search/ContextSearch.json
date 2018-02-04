@@ -1,0 +1,43 @@
+{
+	"name" : "sap.watt.common.service.search.ContextSearch",
+	"description" : "The base Search provider interface",
+	"configurationProperties" : {
+		"supportedFileExtensions" : {
+			"description" : "Supported file extensions",
+			"type" : "[string]",
+			"multiple" : true
+		}
+	},
+	"methods" : {
+		"findByContext" : {
+			"description": "Find artifacts by repository artifact status",
+			"params" : [
+				{
+					"name" : "oContentStatus",
+					"type" : "object",
+					"description" : "The info of current repository artifact"
+				},
+				{
+					"name" : "oSearchStatus",
+					"type" : "object",
+					"description" : "The current search status"
+				}
+			],
+			"returns" : "object"
+		},
+		"isFileExtensionSupported" : {
+			"description": "Returns true if File Extension is supported",
+			"params" : [
+				{
+					"name" : "sFileExtension",
+					"type" : "string",
+					"description" : "The file extension"
+				}
+			],
+			"returns" : {
+			 	"type" : "boolean",
+				"description" : "Returns true if File Extension is supported"
+			}
+		}
+	}
+}

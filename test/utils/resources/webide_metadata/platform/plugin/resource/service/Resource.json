@@ -1,0 +1,15 @@
+{
+	"name" : "sap.watt.common.plugin.resource.service.Resource",
+	
+	"methods" : {
+		"includeStyles" : {
+			"params" : [{
+				"name" : "aStyles",
+				"type" : [{
+					"uri" : "string",
+					"type" : "string"
+				}]
+			}]
+		}
+	}	
+}

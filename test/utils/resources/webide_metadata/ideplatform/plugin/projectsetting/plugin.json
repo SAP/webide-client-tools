@@ -1,0 +1,71 @@
+{
+	"name": "sap.watt.ideplatform.projectsetting",
+	"description": "The project setting.",
+	"i18n" : "sap.watt.ideplatform.projectsetting/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"perspective",
+			"content",
+			"resource",
+			"selection",
+			"focus",
+			"usernotification",
+			"setting.project",
+			"projectType",
+			"document",
+			"usagemonitoring"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"projectsetting": {
+				"implements": "sap.watt.common.service.ui.ProjectSetting",
+				"module":  "sap.watt.ideplatform.projectsetting/service/ProjectSetting"
+			}
+		}
+	},
+
+	"configures" : {
+		"services" : {
+		    "usagemonitoring:reportParams": [
+                {
+                    "components": ["projectSettings"],
+                    "eventTypes": ["selectSetting"]
+                }
+            ],
+			"projectsetting:styles" : [
+				{
+					"uri" : "sap.watt.ideplatform.projectsetting/css/projectsetting.css"
+				}
+			],
+			"commandGroup:items" : [	
+				{ "parent": "repositoryBrowserContextMenu", "command": "projectsetting.show", "prio": "90" }
+			],
+			"command:commands": [
+				{
+					"id":"projectsetting.show",
+					"service":"sap.watt.ideplatform.projectsetting/command/Show",
+					"label": "{i18n>command_projectsetting}"
+				}
+			],
+
+			"perspective:views": [
+				{ "id": "projectsetting", "service": "@projectsetting", "persist": "false" }
+			],
+
+			"perspective:viewToAreaMapping": [
+				{ "view": "projectsetting", "perspective": "development", "area": "center_top" }
+			]
+		}
+	},
+
+	"subscribes": {
+		"selection:changed": "projectsetting:onDocumentSelected",
+		"document:deleted": "projectsetting:onDocumentDeleted",
+		"projectType:projectTypeConfigSaved" : "projectsetting:onProjectTypeConfigSaved"
+	}
+}

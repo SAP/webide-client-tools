@@ -1,0 +1,20 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.performancetoolkit.service.PerformanceKPIsSupplier",
+	"description": "The Performance KPIs Supplier interface",
+	"methods": {
+		"getProjectKPIs": {
+			"params": [
+				{
+					"name": "sProjectPath",
+					"type": "string",
+					"description": "The project path"
+				}
+			],
+			"returns": {
+				"name": "oKPIs",
+				"type": "object",
+				"description": "The KPIs for the project"
+			}
+		}
+	}
+}

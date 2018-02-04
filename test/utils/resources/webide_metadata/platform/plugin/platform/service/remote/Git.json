@@ -1,0 +1,1394 @@
+{
+	"name": "sap.watt.common.service.remote.Git",
+	"description": "The GIT remote service interface",
+	"extends": "sap.watt.common.service.setting.Ignore",
+	"methods": {
+		"clone": {
+			"params": [
+				{
+					"name": "sGitUrl",
+					"type": "string",
+					"description": "The GIT repository URL"
+                },
+				{
+					"name": "sGitSshUsername",
+					"type": "string",
+					"description": "The GIT user name"
+                },
+				{
+					"name": "sGitPassword",
+					"type": "string",
+					"description": "The GIT password for https"
+                },
+				{
+					"name": "sGitSshPrivateKey",
+					"type": "string",
+					"description": "The GIT SSH private key"
+                },
+				{
+					"name": "sGitSshPassphrase",
+					"type": "string",
+					"description": "The GIT SSH password phrase"
+                },
+				{
+					"name": "sLocation",
+					"type": "string",
+					"description": "The location in the workspace"
+                },
+                {
+					"name": "sDestinationName",
+					"type": "string",
+					"description": "The hcp destination name"
+                },
+                {
+					"name": "mAdditionalHeaders",
+					"type": "object",
+					"description": "Key value list of request headers",
+					"optional": true
+                }
+            ],
+			"returns": {
+				"type": {
+					"Location": {
+						"type": "string",
+						"description": "Location to clone the repository"
+					}
+				},
+				"description": "The Clone destination"
+			}
+		},
+		"getRepositoryDetailsByLocation": {
+			"params": [
+				{
+					"name": "oLocation",
+					"type": "object",
+					"description": "The GIT repository location object"
+        		}
+        	],
+			"returns": {
+				"type": "object",
+				"description": "Return the cloned repository details (BranchLocation,CommitLocation,GitUrl,Location, ...)"
+			}
+		},
+		"getRepositoryDetails": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "bInvalidate",
+					"type": "boolean",
+					"optional": true,
+					"description": "True if the cache should be invalidated and an explicit call to the backend should be done. The default value is false."
+                }
+            ],
+			"returns": {
+				"type": "object",
+				"description": "Return the cloned repository details (BranchLocation,CommitLocation,GitUrl,Location, ...)"
+			}
+		},
+
+		"getFileHead": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "bStaged",
+					"type": "boolean",
+					"description": "is file Staged or not"
+                }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "Return base content of file"
+			}
+		},
+		"getFileNew": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "bStaged",
+					"type": "boolean",
+					"description": "is file Staged or not"
+                }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "Return base content of file"
+			}
+		},
+		"pull": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "bGerrit",
+					"type": "boolean",
+					"description": "Is it a repository that supports gerrit"
+                },
+				{
+					"name": "oRepositoryDetails",
+					"type": "object",
+					"description": "The cloned repository details (BranchLocation, CommitLocation, GitUrl, Location, ...)"
+                },
+				{
+					"name": "sGitSshPrivateKey",
+					"type": "string",
+					"description": "The GIT SSH private"
+                },
+				{
+					"name": "sGitPassword",
+					"type": "string",
+					"description": "The GIT password"
+                },
+				{
+					"name": "sUserName",
+					"type": "string",
+					"description": "The GIT username"
+                },
+                {
+					"name": "mAdditionalHeaders",
+					"type": "object",
+					"description": "Key value list of request headers",
+					"optional": true
+                }
+            ]
+		},
+		"fetch": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "oRepositoryDetails",
+					"type": "object",
+					"description": "The cloned repository details (BranchLocation, CommitLocation, GitUrl, Location, ...)"
+                },
+				{
+					"name": "sGitSshPrivateKey",
+					"type": "string",
+					"description": "The GIT SSH private"
+                },
+				{
+					"name": "sGitPassword",
+					"type": "string",
+					"description": "The GIT SSH password"
+                },
+				{
+					"name": "sUserName",
+					"type": "string",
+					"description": "The GIT SSH user name"
+                },
+                {
+					"name": "mAdditionalHeaders",
+					"type": "object",
+					"description": "Key value list of request headers",
+					"optional": true
+                }
+            ]
+		},
+		"fetchFromGerrit": {
+			"params": [
+				{
+					"name": "sLocation",
+					"type": "string",
+					"description": "The GIT repository location in the workspace"
+                },
+				{
+					"name": "oRepositoryDetails",
+					"type": "object",
+					"description": "The cloned repository details (BranchLocation, CommitLocation, GitUrl, Location, ...)"
+                },
+				{
+					"name": "sName",
+					"type": "string",
+					"description": "The GIT repository name in the workspace"
+                },
+				{
+					"name": "sBranch",
+					"type": "string",
+					"description": "The name of the GERRIT branch"
+                },
+				{
+					"name": "sGitSshPrivateKey",
+					"type": "string",
+					"description": "The GIT SSH private key"
+                },
+				{
+					"name": "sGitPassword",
+					"type": "string",
+					"description": "The GIT Password"
+                },
+				{
+					"name": "sUserName",
+					"type": "string",
+					"description": "The GIT SSH user name"
+                },
+                {
+					"name": "mAdditionalHeaders",
+					"type": "object",
+					"description": "Key value list of request headers",
+					"optional": true
+                }
+            ]
+		},
+		"merge": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sMerge",
+					"type": "string",
+					"description": "The name of the branch to merge against"
+                }
+            ],
+			"description": "Merge the content from the branch to your active branch"
+		},
+		"rebase": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sRebase",
+					"type": "string",
+					"description": "The name of the branch to rebase against"
+                }
+            ]
+		},
+		"rebaseInteractive": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sRebaseOperation",
+					"type": "string",
+					"description": "The name of the reabse operation. e.g. continue, Skip Patch or ABORT"
+                }
+            ]
+		},
+		"cherryPick": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sCommitName",
+					"type": "string",
+					"description": "The name of the commit"
+                }
+            ]
+		},
+
+		"push": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "bGerrit",
+					"type": "boolean",
+					"description": "Is it a push to gerrit"
+                },
+				{
+					"name": "oRepositoryDetails",
+					"type": "object",
+					"description": "The cloned repository details (BranchLocation, CommitLocation, GitUrl, Location, ...)"
+                },
+				{
+					"name": "sGitSshPrivateKey",
+					"type": "string",
+					"description": "The GIT SSH private key"
+                },
+				{
+					"name": "sGitPassword",
+					"type": "string",
+					"description": "The GIT Password"
+                },
+				{
+					"name": "sUserName",
+					"type": "string",
+					"description": "The GIT SSH user name"
+                },
+				{
+					"name": "bBypassCodeReview",
+					"type": "boolean",
+					"description": "Does byppass code review to Gerrit"
+				},
+                {
+					"name": "mAdditionalHeaders",
+					"type": "object",
+					"description": "Key value list of request headers",
+					"optional": true
+                }
+            ]
+		},
+		"getLog": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "iPage",
+					"type": "number",
+					"description": "Page number for paging"
+                },
+				{
+					"name": "iPageSize",
+					"type": "number",
+					"description": "Page size"
+                }
+            ],
+			"returns": {
+				"type": "[object]",
+				"description": ""
+			},
+			"description": ""
+		},
+		"getRepositoriesList": {
+			"params": [
+				{
+					"name": "sRootLocation",
+					"type": "string",
+					"description": "The repository root location"
+                }
+            ],
+			"returns": {
+				"type": "object",
+				"description": "Return object with all the repositories"
+			}
+		},
+		"getStatus": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": [{
+					"Git": {
+						"type": "object",
+						"description": "The GIT repository object"
+					},
+					"Name": {
+						"type": "string",
+						"description": "File name"
+					},
+					"Path": {
+						"type": "string",
+						"description": "Path name"
+					},
+					"Stage": {
+						"type": "boolean",
+						"description": "is Staged"
+					},
+					"Status": {
+						"type": "string",
+						"description": "N - new, M - modified, D - deleted  "
+					}
+                }],
+				"description": "Array objects with data on staged/unstaged files"
+			}
+		},
+		"commit": {
+			"params": [
+				{
+					"name": "oLocation",
+					"type": "object",
+					"description": "The location for the commit"
+                },
+				{
+					"name": "sMessage",
+					"type": "string",
+					"description": "The commit message"
+                },
+				{
+					"name": "oGitSettings",
+					"type": {
+						"sEmail": {
+							"type": "string",
+							"description": "Git user email"
+						},
+						"sName": {
+							"type": "string",
+							"description": "Git user name"
+						}
+					},
+					"optional": true,
+					"description": "the user email and name"
+                },
+				{
+					"name": "bAmend",
+					"type": "boolean",
+					"description": "should the previous commit be amended"
+                },
+				{
+					"name": "bChangeId",
+					"type": "boolean",
+					"description": "Add Gerrit change Id"
+                }
+            ]
+		},
+		"stageFile": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ]
+		},
+		"stash": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sStashMessage",
+					"type": "string",
+					"optional": true,
+					"description": "The stash message"
+                },
+                {
+					"name": "aPaths",
+					"type": "[string]",
+					"description": "Stashed file paths",
+					"optional": true
+                }
+            ]
+		},
+		"useStash": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "oStashInfo",
+					"type": "object",
+					"description": "Details for the use stash process. Apply/Pop/Drop and apply locations"
+                }
+            ]
+		},
+		"isStashSupported": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": "boolean",
+				"description": "True if server supports stash"
+			}
+		},
+		"isRmSupported": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+				}
+			],
+			"returns": {
+				"type": "boolean",
+				"description": "True if server supports rm command"
+			}
+		},
+		"getStash": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": "object",
+				"description": "Array of stash"
+			}
+		},
+		"stageMultipleFiles": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "aPaths",
+					"type": "object",
+					"optional": true,
+					"description": "Array of file paths. if not specified, all files will be staged "
+                }
+            ]
+		},
+		"unStageFile": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ]
+		},
+		"unstageAll": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ]
+		},
+		"getLocalBranches": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": [{
+					"Current": {
+						"type": "boolean",
+						"description": "Is this branch checked out"
+					},
+					"Name": {
+						"type": "string",
+						"description": "Name of the branch"
+					},
+					"Type": {
+						"type": "string",
+						"description": "Git object type (=Branch)"
+					},
+					"Location": {
+						"type": "string",
+						"description": "Branch location"
+					},
+					"RemoteLocation": {
+						"type": "object",
+						"description": "Remote branch object with Git details"
+					}
+                }],
+				"description": "Array of local branches"
+			}
+		},
+		"getRemoteBranches": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": "object",
+				"description": "Array of remote branches"
+			}
+		},
+		"getCommits": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sBrancheName",
+					"type": "string",
+					"optional": true,
+					"description": "The name of the branch to get the logs"
+				}
+            ],
+			"returns": {
+				"type": [{
+					"Message": {
+						"type": "string",
+						"description": "Name(description) of the commit"
+					},
+					"Time": {
+						"type": "object",
+						"description": "datetime of the commit"
+					}
+                }],
+				"description": "Array of commits"
+			}
+		},
+		"getLastCommit": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": "object",
+				"description": "The last commit"
+			}
+		},
+		"getRemoteBranchOfCurrent": {
+			"params": [
+				{
+					"name": "oBranches",
+					"type": "[object]",
+					"description": "Array with all branches "
+                }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "Name of the remote branch of the currently checked out branch"
+			}
+		},
+		"getRemoteBranchOfLocalBranch": {
+			"params": [
+				{
+					"name": "oBranch",
+					"type": "object",
+					"description": "Local branch"
+                }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "Returns the remote branch name of the incomming local branch"
+			}
+		},
+		"getCurrentBranchName": {
+			"params": [
+				{
+					"name": "aBranches",
+					"type": "[object]",
+					"description": "Array of all git branches"
+                }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "Name currently checked out branch"
+			}
+		},
+		"getCurrentBranch": {
+			"params": [
+				{
+					"name": "aBranches",
+					"type": "[object]",
+					"description": "Array of All git branches"
+                }
+            ],
+			"returns": {
+				"type": "[object]",
+				"description": "Object of the current checked-out branch"
+			}
+		},
+		"checkoutRemoteBranch": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sBranchName",
+					"type": "string",
+					"description": "The branch name"
+                }
+            ]
+		},
+		"checkoutLocalBranch": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sBranchName",
+					"type": "string",
+					"description": "The branch name"
+                },
+				{
+					"name": "oLog",
+					"type": "object",
+					"optional": true,
+					"description": "The Git log object. Used in case the branch is checked out from the Git History Pane commit"
+                }
+            ]
+		},
+		"setNewBranchConfiguration": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sBranchName",
+					"type": "string",
+					"description": "The branch name"
+                },
+				{
+					"name": "sCheckedOutBranch",
+					"type": "string",
+					"description": "The checked out branch name"
+                }
+            ],
+			"description": "Set GIT configuration of the new Branch Key = branch.<branchName>.merge   Value = refs/heads/<branchName> (e.g. branch.rel-0.2.merge : refs/heads/rel-0.2)"
+		},
+
+		"createLocalBranch": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sBranchName",
+					"type": "string",
+					"description": "The branch name"
+                },
+				{
+					"name": "sRemoteBranch",
+					"type": "string",
+					"description": "The remote branch name"
+				}]
+		},
+
+		"resetBranch": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sResetType",
+					"type": "string",
+					"description": "Reset type param"
+                },
+				{
+					"name": "sRemote",
+					"type": "string",
+					"description": "The remote branch for reset source"
+                }
+            ]
+		},
+		"discardFiles": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "aPaths",
+					"type": "object",
+					"description": "Array of file paths"
+                }
+            ]
+		},
+
+		"blame": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+				}
+			],
+			"returns": {
+				"type": "object",
+				"description": "Blamed data for file"
+			}
+		},
+
+		"removeLocalBranches": {
+			"params": [
+				{
+					"name": "aBranchName",
+					"type": "object",
+					"description": "The branches objects"
+                },
+				{
+					"name": "sRepositoryName",
+					"type": "string",
+					"description": "The repository name"
+                }
+            ]
+		},
+		"setGitSettings": {
+			"params": [{
+					"name": "sEmail",
+					"type": "string",
+					"description": "The GIT settings email address"
+           },
+				{
+					"name": "sName",
+					"type": "string",
+					"description": "The GIT settings user name"
+           }]
+		},
+		"getGitSettings": {
+			"returns": {
+				"type": {
+					"sEmail": {
+						"type": "string",
+						"description": "Git user email"
+					},
+					"sName": {
+						"type": "string",
+						"description": "Git user name"
+					}
+				},
+				"description": "Git user email and name"
+			}
+		},
+
+		"initRepository": {
+			"params": [
+				{
+					"name": "sName",
+					"type": "string",
+					"description": "The project name"
+                },
+				{
+					"name": "sLocation",
+					"type": "string",
+					"description": "The project location"
+                },
+				{
+					"name": "sPath",
+					"type": "string",
+					"optional": true,
+					"description": "The project path in the workspace"
+                }
+            ],
+			"description": "Initialize a git repository"
+		},
+		"addRemote": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sRemote",
+					"type": "string",
+					"description": "The remote name"
+                },
+				{
+					"name": "sUri",
+					"type": "string",
+					"description": "The remote uri"
+                },
+				{
+					"name": "sFetchRefSpec",
+					"type": "string",
+					"optional": true,
+					"description": "The fetch refspec"
+                },
+				{
+					"name": "sPushURI",
+					"type": "string",
+					"optional": true,
+					"description": "The remote push URI"
+                },
+				{
+					"name": "sPushRefSpec",
+					"type": "string",
+					"optional": true,
+					"description": "The push refspec"
+                }
+            ],
+			"description": "Adding new to remote to the git repository"
+		},
+
+		"deleteRemote": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "remoteAlias",
+					"type": "string",
+					"description": "The alias of the remote. The default is usually origin."
+                }
+            ],
+			"description": "Removing a remote from the git repository"
+		},
+
+		"getRemotes": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": [{
+					"CloneLocation": {
+						"type": "string",
+						"description": "Clone location"
+					},
+					"GitUrl": {
+						"type": "string",
+						"description": "Url of the remote"
+					},
+					"IsGerrit": {
+						"type": "boolean",
+						"description": "True if the remote is gerrit"
+					},
+					"Location": {
+						"type": "string",
+						"description": "Location of the remote"
+					},
+					"Name": {
+						"type": "string",
+						"description": "The name (alias) of the remote"
+					},
+					"Type": {
+						"type": "string",
+						"description": "settings type"
+					}
+                }],
+				"description": "List of remotes"
+			}
+		},
+		"mergeChangesFromRemoteToHead": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "sRefId",
+					"type": "string",
+					"description": "The ref Id"
+                }
+            ],
+			"description": "Merging changes from a remote to HEAD"
+		},
+		"commitAfterContinue": {
+			"params": [
+				{
+					"name": "oBranch",
+					"type": "object",
+					"description": "The GIT repository Branch"
+                },
+				{
+					"name": "sId",
+					"type": "string",
+					"description": "Id"
+                }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "URI location of the changes from the commit"
+			},
+			"description": "Commit the changes"
+		},
+		"getRepositoryConfigurations": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"returns": {
+				"type": [{
+					"CloneLocation": {
+						"type": "string",
+						"description": "Clone location"
+					},
+					"Key": {
+						"type": "string",
+						"description": "user setting for repository key"
+					},
+					"Location": {
+						"type": "string",
+						"description": "user setting key location"
+					},
+					"Type": {
+						"type": "string",
+						"description": "settings type"
+					},
+					"Value": {
+						"type": "boolean",
+						"description": "value of the settings key"
+					}
+                }],
+				"description": "Get Repository Configurations"
+			}
+		},
+		"setRepositoryConfiguration": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "oConfiguration",
+					"type": "object",
+					"description": "Configuration to be added to the repository configurations. Must contain Key and Value properties"
+                }
+            ],
+			"description": "Set Repository Configurations"
+		},
+		"deleteRepositoryConfiguration": {
+			"params": [
+				{
+					"name": "oConfiguration",
+					"type": "object",
+					"description": "Configuration to be deleted"
+                },
+				{
+					"name": "oGit",
+					"type": "object",
+					"optional": true,
+					"description": "The GIT repository object"
+				}
+            ]
+		},
+
+		"updateRepositoryConfiguration": {
+			"params": [
+				{
+					"name": "oConfiguration",
+					"type": "object",
+					"description": "Configuration to be updated"
+                },
+				{
+					"name": "oValue",
+					"type": "object",
+					"description": "The new value to be updated"
+                },
+				{
+					"name": "oGit",
+					"type": "object",
+					"optional": true,
+					"description": "The GIT repository object"
+				}
+            ],
+			"description": "Updates the selected Repository Configurations"
+		},
+
+		"revert": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+				{
+					"name": "oLog",
+					"type": "object",
+					"description": "The git log object"
+                }
+            ],
+			"description": "Revert a change"
+		},
+		"tag": {
+			"params": [
+				{
+					"name": "oLog",
+					"type": "object",
+					"description": "The git log object"
+                },
+				{
+					"name": "sTagName",
+					"type": "string",
+					"description": "The tag name"
+                }
+            ],
+			"description": "Tagging a commit"
+		},
+		"untrack": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+				}
+			],
+			"description": "Untracking a file"
+		},
+		"getCommitsCount": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "Retriving the amount of incoming and outgoing commits"
+		},
+		"getIncomingAndOutcomingCommits" :  {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+                {
+					"name": "sRemoteBranch",
+					"type": "String",
+					"description": "The remote branch name"
+                }
+            ],
+			"description": "Retriving the incoming and outgoing commits"
+		},
+		"isFeatureSupported": {
+			"params": [{
+					"name": "sFeatureId",
+					"type": "string",
+					"description": "The feature to check"
+            }
+            ],
+			"returns": {
+				"type": "boolean",
+				"description": "True if the feature is supported"
+			},
+			"description": "Checks if a feature is supported in this DAO"
+		},
+		"isGerritSupported": {
+			"params": [{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+            }
+            ],
+			"returns": {
+				"type": "boolean",
+				"description": "True if gerrit is supported"
+			},
+			"description": "Checks if gerrit is supported"
+		},
+		"getDestinationNameByGitUrl": {
+			"params": [{
+					"name": "sGitUrl",
+					"type": "string",
+					"description": "The GIT repository URL"
+            }
+            ],
+			"returns": {
+				"type": "string",
+				"description": "The git destination name in hcp"
+			},
+			"description": "Gets the git destination name in hcp by url"
+		}
+	},
+	"events": {
+		"pullFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after pull was finished"
+		},
+		"pushFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after pull was finished"
+		},
+		"mergeFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after merge was finished"
+		},
+		"rebaseFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after rebase was finished"
+		},
+		"commitFinished": {
+			"params": [
+				{
+					"name": "oStatusResult",
+					"type": "object",
+					"description": "The GIT status object"
+                }
+            ],
+			"description": "This event is fired after the commit operation is done"
+		},
+		"rebaseInteractiveFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after one of the rebase interactive operation is done"
+		},
+		"cherryPickFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after cherryPick was resolved"
+		},
+		"cherryPickResolved": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after cherryPick was resolved"
+		},
+		"CheckoutBranch": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after a branch was checked out"
+		},
+		"mergeResolved": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after merge was resolved"
+		},
+		"resetFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after reset was resolved"
+		},
+		"revertFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after revert was resolved"
+		},
+		"discardFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+                {
+					"name": "aPaths",
+					"type": "[string]",
+					"description": "Discarded file paths",
+					"optional": true
+                }
+            ],
+			"description": "This event is fired after discard or discard all was resolved"
+		},
+		"stashFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                },
+                {
+					"name": "aPaths",
+					"type": "[string]",
+					"description": "Stashed file paths",
+					"optional": true
+                }
+            ],
+			"description": "This event is fired after a stash was finished"
+		},
+		"useStashFinished": {
+			"params": [
+				{
+					"name": "oGit",
+					"type": "object",
+					"description": "The GIT repository object"
+                }
+            ],
+			"description": "This event is fired after a stash was applied"
+		}
+	},
+	
+	"configurationProperties" : {
+		"ignore" :{
+			"type":"[string]",
+			"description":"Array of files to be ignored",
+			"multiple":true
+		}
+	}
+}

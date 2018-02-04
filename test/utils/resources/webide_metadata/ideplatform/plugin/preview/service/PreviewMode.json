@@ -1,0 +1,12 @@
+{
+	"name" : "sap.watt.common.plugin.preview.service.PreviewMode",
+	"description" : "A preview mode implements runs a preview in a specific way, e.g. plain, with mock data or in a u-shell sandbox. It receives the preview setup and can apply changes on it e.g. add URL parameters",
+	"methods" : {
+		"apply" : {
+			"params" : [{
+				"name" : "mConfig",
+				"type" : "object"
+			}]
+		}
+	}
+}

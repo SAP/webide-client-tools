@@ -1,0 +1,27 @@
+{
+    "name": "sap.watt.common.plugin.adt.compatibility.service.AdtDiscovery",
+    "description": "The ADT discovery interface",
+    "methods": {
+        "getCollectionMember": {
+            "description": "Returns the collection member for the given category scheme and term from this discovery. It returns null if this collection member is not found. If the discovery is not yet initialized, then it is retrieved from ABAP remote server via GET request. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: one error object { message, stack }.",
+            "params": [
+                {
+                    "name": "categoryScheme",
+                    "type": "string",
+                    "description": "the category scheme of the collection member",
+                    "optional": false
+                },
+                {
+                    "name": "categoryTerm",
+                    "type": "string",
+                    "description": "the category term of the collection member",
+                    "optional": false
+                }
+            ],
+            "returns": {
+                "type": "sap.watt.common.plugin.adt.compatibility.service.AdtDiscoveryCollectionMember",
+                "description": "A Q-promise providing a done-callback with the collection member as parameter (see AdtDiscoveryCollectionMember)."
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+	"name": "sap.watt.common.javascript.JSOutline",
+	"description": "The JS Outline interface",
+	"extends" : [
+		"sap.watt.common.outlinepane.Outline",
+		"sap.watt.common.service.selection.UI5ControlProvider"
+	],
+	"configurationProperties" : {
+		"supportedFileExtensions" : {
+			"type" : "[string]",
+			"multiple" : true
+		}
+	}
+}

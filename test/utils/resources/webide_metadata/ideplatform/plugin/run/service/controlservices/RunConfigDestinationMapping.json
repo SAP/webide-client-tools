@@ -1,0 +1,27 @@
+{
+	"name": "sap.watt.common.service.runconfigurationui.destinationmapping",
+	"description": "Destination Mapping UI control for run configuration",
+	"methods": {
+		"getControl": {
+			"description": "Gets the destination mapping control",
+			"params": [
+				{
+					"name": "oDocument",
+					"type": "object"
+				},
+				{
+					"name": "aSourceDestinations",
+					"type": "object"
+				},
+				{
+					"name": "aTargetDestinations",
+					"type": "object"
+				}
+			],
+			"returns": {
+				"type": "object",
+				"description": "The destination mapping control"
+			}
+		}
+	}
+}

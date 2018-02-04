@@ -1,0 +1,53 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.performancetoolkit.service.PerformanceToolkitRunner",
+	"description": "The Performance Toolkit runner interface",
+	"methods": {
+		"extendRunner": {
+			"params": [
+				{
+					"name": "oSourceProjectDocument",
+					"type": "object",
+					"description": "The project to be run"
+				},
+				{
+					"name": "oRunConfiguration",
+					"type": "object",
+					"description": "The run configuration to extend"
+				}
+			],
+			"returns": {
+				"name": "oExtendedRunConfiguration",
+				"type": "object",
+				"description": "The extended run configuration"
+			}
+		},
+		"isPerformanceRunEnabled": {
+			"params": [
+				{
+					"name": "oCommandData",
+					"type": "object",
+					"description": "The command data to check"
+				}
+			],
+			"returns": {
+				"name": "bEnabled",
+				"type": "boolean",
+				"description": "Is the current configuration can run in performance mode"
+			}
+		},
+		"build": {
+			"params": [
+				{
+					"name": "oSourceProjectDocument",
+					"type": "object",
+					"description": "The source project to be built"
+				}
+			],
+			"returns": {
+				"name": "oPerformanceProjectDocument",
+				"type": "object",
+				"description": "The performance project built"
+			}
+		}
+	}
+}

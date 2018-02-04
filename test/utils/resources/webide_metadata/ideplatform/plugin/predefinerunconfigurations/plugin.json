@@ -1,0 +1,33 @@
+{
+	
+	"name": "sap.watt.ideplatform.predefinerunconfigurations",
+	"description": "Predefine run configurations",
+	"i18n" : "sap.watt.ideplatform.predefinerunconfigurations/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"selection",
+			"log",
+			"pluginmanagement",
+			"configurationhelper",
+			"run"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"predefinerunconfigs": {
+				"implements": "sap.watt.ideplatform.plugin.predefinerunconfigurations.service.predefinerunconfigs",
+				"module": "sap.watt.ideplatform.predefinerunconfigurations/service/PredefineRunConfigs"
+			}
+		},
+		"interfaces": {
+				"sap.watt.ideplatform.plugin.predefinerunconfigurations.service.predefinerunconfigs": "sap.watt.ideplatform.predefinerunconfigurations/service/PredefineRunConfigs"
+		},
+		"methods" : {
+		}
+	},
+	"subscribes": {
+		"generation:generated": "predefinerunconfigs:onAfterTemplateGenerate"
+	}
+}

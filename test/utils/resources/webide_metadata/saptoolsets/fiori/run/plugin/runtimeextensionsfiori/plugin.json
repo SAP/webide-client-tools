@@ -1,0 +1,50 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori",
+	"description": "Plugin which supplies extension services for runners",
+	"i18n": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/i18n/i18n",
+	"requires": {
+		"services": [
+			"htmlproducerhandler"
+		]
+	},
+	"provides": {
+		"services": {
+			"ui5versionextension": {
+				"implements": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.UI5VersionExtension",
+				"module": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/UI5VersionExtension"
+			},
+			"destinationmappingextension": {
+				"implements": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.DestinationMappingExtension",
+				"module": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/DestinationMappingExtension"
+			},
+			"appcachebusterextension": {
+				"implements": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.AppCacheBusterExtension",
+				"module": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/AppCacheBusterExtension"
+			},
+			"performanceextension": {
+				"implements": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.PerformanceExtension",
+				"module": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/PerformanceExtension"
+			},
+			"htmlextendersextension": {
+				"implements": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.HtmlExtendersExtension",
+				"module": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/HtmlExtendersExtension"
+			},
+			"componentpreloadextension": {
+				"implements": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.ComponentPreloadExtension",
+				"module": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/ComponentPreloadExtension"
+			}
+		},
+		"interfaces": {
+			"sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.UI5VersionExtension": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/UI5VersionExtension",
+			"sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.DestinationMappingExtension": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/DestinationMappingExtension",
+			"sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.AppCacheBusterExtension": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/AppCacheBusterExtension",
+			"sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.PerformanceExtension": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/PerformanceExtension",
+			"sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.HtmlExtendersExtension": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/HtmlExtendersExtension",
+			"sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.ComponentPreloadExtension": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori/service/ComponentPreloadExtension"
+		}
+	},	
+	"configures": {
+	},
+	"subscribes": {
+	}
+}

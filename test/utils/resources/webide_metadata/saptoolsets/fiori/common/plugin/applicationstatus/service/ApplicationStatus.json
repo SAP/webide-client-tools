@@ -1,0 +1,19 @@
+{
+	"name" : "sap.watt.uitools.plugin.applicationstatus.service.ApplicationStatus",
+	"description" : "The Application Status interface",
+	"methods" : {
+		"openDialog" : {
+			"params" : [{
+				"name" : "oSelection",
+				"type" : "object"
+			}]
+		},
+		"getABAPDeploymentInfo": {
+			"params" : [{
+				"name" : "oProjectDocument",
+				"type" : "object"
+			}],
+			"returns" : "object"
+		}
+	}
+}

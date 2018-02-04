@@ -1,0 +1,24 @@
+{
+    "name": "sap.watt.ideplatform.multieditor",
+	"description": "The Multi Editor Plugin",
+
+    "requires" : {
+        "services" : [
+            "resource",
+            "preferences",
+            "focus"
+        ]
+    },
+	"provides" : {
+		"services": {
+			"multiEditorFactory": {
+				"implements": "sap.watt.common.plugin.multieditor.service.MultiEditor",
+				"module": "sap.watt.ideplatform.multieditor/service/MultiEditor",
+				"isFactory" : true
+			}
+		},
+		"interfaces": {
+			"sap.watt.common.plugin.multieditor.service.MultiEditor": "sap.watt.ideplatform.multieditor/service/MultiEditor"
+		}
+	}
+}

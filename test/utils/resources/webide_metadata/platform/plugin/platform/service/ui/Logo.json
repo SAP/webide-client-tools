@@ -1,0 +1,9 @@
+{
+	"name" : "sap.watt.common.service.ui.Logo",
+	"description" : "The logo interface",
+	"methods" : {
+		"getContent" : {
+			"returns" : "object"
+		}
+	}
+}

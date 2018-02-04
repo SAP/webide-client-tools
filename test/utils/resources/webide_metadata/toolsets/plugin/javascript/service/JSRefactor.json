@@ -1,0 +1,25 @@
+{
+	"name" : "sap.watt.toolsets.plugin.javascript.service.JSRefactor",
+	"description" : "Refactor service for JS",
+	"methods" : {
+		"rename" : {
+			"description": "Rename refactor",
+			"params" : [
+				{
+					"name" : "contentStatus",
+					"type" : "object",
+					"description" : "Content object of the document"
+				},
+				{
+					"name" : "newName",
+					"type" : "string",
+					"description" : "The new name"
+				}
+			],
+			"returns" : "object"
+		}
+	}
+}
+
+
+

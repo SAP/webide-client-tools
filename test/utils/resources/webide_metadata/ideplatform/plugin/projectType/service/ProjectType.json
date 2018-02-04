@@ -1,0 +1,156 @@
+{
+	"name" : "sap.watt.common.plugin.projectType.service.ProjectType",
+	"description" : "The project type interface",
+    "configurationProperties" : {
+        "types" : {
+            "type" : {
+                "id" : "string",
+                "displayName" : "string",
+                "service" : "sap.watt.common.service.ide.ProjectType",
+                "description" :"string",
+                "icon" : "string",
+                "decoratorIconStyleClass" : "string",
+                "includes" : {
+                    "type" : "string",
+                    "multiple" : true
+                }
+            },
+            "multiple" : true
+        },
+        "builtInTypes" : {
+            "type": "string",
+            "multiple" : false
+        },
+        "defaultTypes" : {
+            "type": "string",
+            "multiple" : true
+        },
+        "dao" : {
+			"type" : {
+				"service" : "sap.watt.common.service.remote.ProjectTypeDAO"
+			},
+			"multiple" : false
+		}
+    },
+    "methods" : {
+        "getAllTypes" : {
+            "returns" : {
+                "type" : "[object]"
+            }
+        },
+        "getType" : {
+            "params" : [{
+                    "name" : "typeId",
+                    "type" : "string"
+                }
+            ],
+            "returns" : {
+                "type" : "object"
+            }
+        },
+        "getIncludedTypes" : {
+            "params" : [{
+                    "name" : "typeId",
+                    "type" : "string"
+                }
+            ],
+            "returns" : {
+                "type" : "[object]"
+            }
+        },
+		"getProjectTypes" : {
+			"params" : [{
+                    "name" : "document",
+                    "type" : "object"
+                }
+            ],
+			"returns" : {
+                "type" : "[object]"
+            }
+		},
+		"hasProjectType" : {
+			"description" : "Check whether the given project has the given project type",
+			"params" : [{
+                    "name" : "document",
+                    "type" : "object",
+                    "description" : "Document describing a project"
+                },
+                {
+                    "name" : "typeId",
+                    "type" : "string",
+                    "description" : "Id of the project type to look for in the project"
+                }
+            ],
+			"returns": {
+				"type" : "boolean"
+			}            
+		},		
+		"getProjectTypesPerCategories" : {
+			"params" : [{
+                    "name" : "document",
+                    "type" : "object"
+                }
+            ],
+			"returns" : {
+                "type" : "object"
+            }
+		},
+        "addProjectTypes" : {
+            "params" : [{
+                    "name" : "document",
+                    "type" : "object"
+                },
+                {
+                    "name" : "projectTypeIDs",
+                    "type" : "[string]"
+                }
+            ]
+        },
+        "removeProjectTypes" : {
+            "params" : [{
+                    "name" : "document",
+                    "type" : "object"
+                },
+                {
+                    "name" : "projectTypeIDs",
+                    "type" : "[string]"
+                }
+            ]
+        },
+        "setProjectTypes" : {
+            "params" : [{
+                    "name" : "document",
+                    "type" : "object"
+                },
+                {
+                    "name" : "projectTypeIDs",
+                    "type" : "[string]"
+                }
+            ]
+        }
+	},
+    "events" : {
+        "projectTypesUpdated" : {
+            "description" : "This event is fired when a project's project types are updated. In case only the order changes, the added and removed lists are both empty.",
+            "params" : [{
+                    "name" : "projectDocument",
+                    "type" : "object",
+                    "description" : "The updated project"
+                },
+                {
+                    "name" : "added",
+                    "type" : "[string]",
+                    "description" : "A list of added project type IDs"
+                },
+                {
+                    "name" : "removed",
+                    "type" : "[string]",
+                    "description" : "A list of removed project type IDs"
+                }
+            ]
+        },
+        "projectTypeConfigSaved" : {
+        	"description" : "This event is fired when project types are updated and saved in project settings."				
+		}
+    }
+}

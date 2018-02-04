@@ -1,0 +1,22 @@
+{
+  "name": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.PerformanceExtension",
+  "methods": {
+    "getPerformanceUrl": {
+      "description": "Returns the URL of the application to run it with in performance mode.",
+      "params": [
+        {
+          "name": "oAppUrl",
+          "type": "object",
+          "description": "URI of the application to run in performance mode"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "Application URI to run in performance mode"
+      },
+      "visibility": "private"
+    }
+  },
+  "configurationProperties": {
+  }
+}

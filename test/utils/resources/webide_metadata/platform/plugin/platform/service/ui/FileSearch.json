@@ -1,0 +1,67 @@
+{
+	"name": "sap.watt.common.service.ui.FileSearch",
+	"description": "The file search interface",
+	"extends": "sap.watt.common.service.ui.Part",
+	"methods": {
+		"replace": {
+			"params": [{
+				"name": "oFileDocument",
+				"type": "object"
+			}, {
+				"name": "sWith",
+				"type": "string"
+			}, {
+				"name": "nIndex",
+				"type": "number",
+				"optional": true
+			}, {
+				"name": "nLine",
+				"type": "number",
+				"optional": true
+			}]
+		},
+		"saveSearchScope": {
+			"params": [{
+				"name": "sSearchScopeText",
+				"type": "string"
+			}]
+		},
+		"replaceAll": {
+			"params": [{
+				"name": "sReplaceWith",
+				"type": "string"
+			}]
+		},
+		"search": {
+			"params": [{
+				"name": "oCriteria",
+				"type": "object"
+			}]
+		},
+		"previous": {},
+		"triggerFindReferences": {
+			"params": [{
+				"name": "oContext",
+				"type": "object"
+			}]
+		},
+		"findReference": {
+			"params": [{
+				"name": "bRestart",
+				"type": "boolean"
+			}]
+		},
+		"getPreviousReference": {}
+	},
+	"configurationProperties": {
+		"findProvider": {
+			"description": "Find reference relults provider service",
+			"type": {
+				"provider": "string",
+				"service": "sap.watt.common.service.search.ContextSearch"
+			},
+			"multiple" : true
+		}
+	}
+
+}

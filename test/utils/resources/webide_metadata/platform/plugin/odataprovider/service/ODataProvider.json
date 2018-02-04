@@ -1,0 +1,165 @@
+{
+	"name" : "sap.watt.common.odataprovider.service.ODataProvider",
+	"description" : "The ODataProvider registry service interface",
+	"methods" : {
+		"getMetadata" : {
+			"description": "Returns service metadata object",
+			"params" :[{
+				"name" : "sUrl",
+				"type" : "string"
+			},
+			{
+				"name" : "sClient",
+				"type" : "string",
+				"description": "sap-client",
+				"optional" : true
+			}],
+			"returns" : "object"
+		},
+		"getMetadataFromWorkspace" : {
+			"description": "Returns service metadata object",
+			"params" :[{
+				"name" : "sUrl",
+				"type" : "string"
+			}],
+			"returns" : "object"
+		},
+		"getEntityType": {
+			"description": "Returns the required EntityType of the EntitySet",
+			"params" :[{
+					"name" : "oMetadata",
+					"type" : "object"
+				},
+				{
+					"name" : "oEntitySet",
+					"type" : "object"
+			}],
+			"returns" : "object"
+		},
+		"getAddressableEntitySets" : {
+			"description": "Returns the addressable entitySets",
+			"params" : [{
+				"name" : "oMetadata",
+				"type" : "object"
+			}],
+			"returns" : "[object]"
+		},
+		"getEntitySets" : {
+			"description": "Returns all entitySets",
+			"params" : [{
+				"name" : "oMetadata",
+				"type" : "object"
+			}],
+			"returns" : "[object]"
+		},
+		"getEntitySet" : {
+			"description": "Returns the EntitySet object for a given metadata object and Entityset name",
+			"params" : [{
+				"name" : "oMetadata",
+				"type" : "object"
+			},
+			{
+				"name" : "sEntitySetName",
+				"type" : "string"
+			}],
+			"returns" : "object"
+		},
+		"getProperties" : {
+			"description": "Returns the property list of the entity type of the given entity set",
+			"params" : [
+			{
+				"name" : "oMetadata",
+				"type" : "object"
+			},
+			{
+				"name" : "oEntitySet",
+				"type" : "object"
+			},
+			{
+				"name" : "bflatten",
+				"type" : "object",
+				"optional" : true
+			}
+			],
+			"returns" : "[object]"
+		},
+		"getNavigations" : {
+			"description": "Returns an array of objects, where each object containing the navigation name and target entityset",
+			"params" : [
+			{
+				"name" : "oMetadata",
+				"type" : "object"
+			},
+			{
+				"name" : "oEntitySet",
+				"type" : "object"
+			}],
+			"returns" : "[object]"
+		},
+		"getNavigationsForMultiplicity" : {
+		"description": "Returns an array of objects, where each object containing the navigation name and target entityset of the given entity set and multiplicity",
+			"params" : [
+			{
+				"name" : "oMetadata",
+				"type" : "object"
+			},
+			{
+				"name" : "oEntitySet",
+				"type" : "object"
+			},
+			{
+				"name" : "sMultiplicity",
+				"type" : "string"
+			}],
+			"returns" : "[object]"
+		},
+		"validateMetadata": {
+	        "description": "Returns if the metadata file content is valid",
+	        "params" : [
+			{
+				"name" : "sMetadata",
+				"type" : "string"
+			}]
+		},
+		"getEntitySetCount" : {
+			"description": "Returns count of the given service url and entity set",
+			"params" :[{
+				"name" : "sUrl",
+				"type" : "string"
+			},
+			{
+				"name" : "sEntitySet",
+				"type" : "string"
+			},
+			{
+				"name" : "sClient",
+				"type" : "string",
+				"description": "sap-client",
+				"optional" : true
+			}],
+			"returns" : "object"
+		},
+		"getNamespace": {
+			"description": "Returns namespace the requested entitySet is related to",
+			"params": [
+				{
+					"name": "oEntitySet",
+					"type": "object"
+				}
+			],
+			"returns": "string"
+		},
+		"getEntityTypes" :	{
+			"description": "get all entityTypes of specified namespace",
+			"params" :[{
+				"name" : "oMetadata",
+				"type" : "object"
+			},
+			{
+				"name" : "sNamespace",
+				"type" : "string"
+			}],
+			"returns" : "[object]"
+		}
+	}
+}

@@ -1,0 +1,9 @@
+{
+	"name" : "sap.watt.ideplatform.plugin.validationTriggers.triggers.git.view.customActionsMessageBox",
+	"description" : "",
+	"methods" : {
+	    "show" : {
+	            
+	        }
+	}
+}

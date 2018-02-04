@@ -1,0 +1,15 @@
+{
+	
+	"name": "sap.watt.platform.log",
+	"description": "The Log plugin",
+
+
+	"provides": {
+		"services": {
+			"log": {
+				"implements": "sap.watt.common.service.ide.Log",
+				"module":  "sap.watt.platform.log/service/Log"
+			}
+		}
+	}
+}

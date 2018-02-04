@@ -1,0 +1,42 @@
+{
+    "name": "sap.watt.common.plugin.intellisence.service.LibraryMetadataProvider",
+	"extends" : [],
+	"description": "HCP based Library Metadata provider",
+	"configurationProperties" : {
+		"sdkProvider" : {
+		    "type" : {
+		        "service" : "sap.watt.common.plugin.intellisence.service.LibraryMetadataProvider"
+		    }
+		},
+		"packageSet" : {
+		    "type" : {
+		        "id" : "string",
+		        "type" : "string",
+		        "packages" : "[string]"
+		    },
+		    "multiple" : true
+		}
+	},
+	"methods" : {
+        "getLibraryMetaFromHCP" : {
+            "description": "retrieve available library metadata from HCP",
+        	"params" : [{
+        		"name" : "sLibPath",
+        		"type" : "string"
+        	},
+        	{
+        		"name" : "sId",
+        		"type" : "string"
+        	},
+        	{
+        	    "name" : "sType",
+        	    "type" : "string"
+        	}],
+        	"returns" : {
+        		"type" : "[object]",
+        		"description" : "Metadata fileszip objects"
+        	}
+        
+        }
+	}
+}

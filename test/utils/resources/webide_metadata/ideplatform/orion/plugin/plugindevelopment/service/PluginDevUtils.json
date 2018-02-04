@@ -1,0 +1,79 @@
+{
+	"name" : "sap.watt.uitools.service.plugindevelopment",
+	"description" : "The Plugin Development Utilities service interface",
+	"methods" : {
+		"writeFeatureToOrion": {
+			"description": "Writes feature path to package-dev in Orion and returns the target window",
+				"params" :[
+					{
+						"name" : "oPluginDocument",
+						"type" : "object",
+						"description" : "feature document object"
+					},
+					{
+						"name" : "oWindow",
+						"type" : "object",
+						"optional" : true,
+						"description" : "target window"
+					}
+				],
+				"returns" : "object"
+		},
+		"writePluginToOrion" : {
+			"description": "Writes plugin path to config-dev in Orion and returns the target window",
+				"params" :[
+					{
+						"name" : "oPluginDocument",
+						"type" : "object",
+						"description" : "plugin document object"
+					},
+					{
+						"name" : "oWindow",
+						"type" : "object",
+						"optional" : true,
+						"description" : "target window"
+					}
+				],
+				"returns" : "object"
+		},
+		"closeTargetWindow" : {
+			"description": "Closes the Debug SAP Web IDE instance"
+		},
+		"isCommandEnabled": {
+			"description": "should be disabled when server type is \"local_hcproxy\"",
+			"returns" : "boolean"
+		},
+		"isCommandAvailable": {
+			"description": "command is available only if the provided file name is selected and project has one of the provided project types",
+			"params" :[
+				{
+					"name" : "sFileName",
+					"type" : "string",
+					"description" : "file name that should be selected"
+				},
+				{
+					"name" : "aProjectTypes",
+					"type" : "object",
+					"description" : "selected project project types"
+				}
+			],
+			"returns" : "boolean"
+		},
+		"customValidation": {
+			"description": "Validates availability of the component menu item. The selected folder must contain the given json file",
+			"params" :[
+				{
+					"name" : "sSelectedDocumentPath",
+					"type" : "string",
+					"description" : "custom validation generation framework object"
+				},
+				{
+					"name" : "sFileName",
+					"type" : "string",
+					"description" : "file name that should be existed in a folder"
+				}
+			],
+			"returns" : "object"
+		}
+	}
+}

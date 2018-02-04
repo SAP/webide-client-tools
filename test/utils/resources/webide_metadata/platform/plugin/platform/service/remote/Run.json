@@ -1,0 +1,84 @@
+{
+	"name": "sap.watt.common.service.remote.Run",
+	"description": "Interface for remote run",
+	"methods": {
+	    "run": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "sap.watt.common.plugin.document.Document",
+					"description": "Project to run"
+				}
+			],
+			"returns": {
+				"type": "string",
+				"description": "The application URL"
+			},
+			"description": "Runs a generic runner on a remote server"
+		},
+		
+		"stop": {
+			"params": [
+				{
+					"name": "sRunId",
+					"type": "string",
+					"description": "ID of runner to stop"
+				},
+				{
+					"name": "sProjectId",
+					"type": "string",
+					"description": "Project to stop"
+				}
+			]
+		},
+		
+		"getProcesses": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "sap.watt.common.plugin.document.Document",
+					"description": "Project to get processes for"
+				}
+			],
+			"returns": {
+				"type": "object",
+				"description": "The project processes array"
+			},
+			"description": "Gets processes of specific project"
+		},
+		
+		"refresh": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "sap.watt.common.plugin.document.Document",
+					"description": "Project to get processes for"
+				},
+				{
+					"name": "oRefreshBody",
+					"type": "object",
+					"description": "Refresh request body"
+				}
+				
+			],
+			"returns": {
+				"type": "string",
+				"description": "The application URL"
+			},
+			"description": "Restart specific runner process"
+		}	
+		
+	},
+		"events": {
+			"runProgress": {
+				"params": [
+					{
+						"name" : "oResponse",
+						"type" : "object",
+						"description" : "object includes processId, status, project"
+					}
+				],
+				"description": "This event is fired when the server reports progress on the run process"
+			}
+		}
+}

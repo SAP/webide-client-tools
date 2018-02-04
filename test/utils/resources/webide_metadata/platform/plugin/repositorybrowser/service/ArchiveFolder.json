@@ -1,0 +1,14 @@
+{
+	"name" : "sap.watt.common.service.repositorybrowser.ArchiveFolder",
+	"description" : "Archive Folder To Workspace",
+	"methods" : {
+		"createArchive" : {
+			"description": "Archive folder to zip file",
+				"params" :[{
+					"name" : "sFolderPath",
+					"type" : "string"
+				}],
+				"returns" : "boolean"
+		}
+	}
+}

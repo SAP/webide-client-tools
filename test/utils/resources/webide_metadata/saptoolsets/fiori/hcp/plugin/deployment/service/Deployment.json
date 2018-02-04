@@ -1,0 +1,199 @@
+{
+	"name": "sap.watt.uitools.plugin.deployment.service.Deployment",
+	"description": "The <i>deployment</i> service manages functionality related to the deployment of applications to SAP HCP.",
+	"visibility": "public",
+	"deployment:styles": [{
+		"uri": "sap.watt.saptoolsets.fiori.hcp.deployment/css/deployment.css"
+	}],
+	"methods": {
+		"openDeploymentDialog": {
+			"params": [{
+				"name": "oDocument",
+				"type": "object"
+			}]
+		},
+		"isPomXmlExist": {
+			"params": [{
+				"name": "oProjectDocument",
+				"type": "object"
+			}],
+			"returns": "boolean"
+		},
+		"doDeploy": {
+			"params": [{
+				"name": "oModel",
+				"type": "object"
+			}],
+			"returns": "object"
+		},
+		"getAppURI": {
+			"params": [{
+				"name": "sAccount",
+				"type": "object"
+			}, {
+				"name": "sUsername",
+				"type": "object"
+			}, {
+				"name": "sPassword",
+				"type": "object"
+			}, {
+				"name": "deployedAppName",
+				"type": "object"
+			}],
+			"returns": "object"
+		},
+		"initializeParams": {
+			"params": [{
+				"name": "oSelection",
+				"type": "object"
+			}]
+		},
+		"getHCPAppNameFromProjectSettings": {
+			"description": "Get HCP application name from the hcpdeploy block in the project settings",
+			"params": [{
+				"name": "oProjectDocument",
+				"type": "object"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "HCP application name"
+			}
+		},
+		"getHCPAccountFromProjectSettings": {
+			"description": "Get HCP account from hcpdeploy bloack in project settings",
+			"params": [{
+				"name": "oProjectDocument",
+				"type": "object"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "HCP Account name"
+			}
+		},
+		"getDefaultDeploymentAppName": {
+			"description": "Get default deployment application name from project document name",
+			"params": [{
+				"name": "oProjectDocument",
+				"type": "object"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "Default application name"
+			}
+		},
+		"getRelevantAccount": {
+			"description": "Get HCP account from Git Repository or hcpdeploy bloack or from default account",
+			"params": [{
+				"name": "sHCPAccountFromGit",
+				"type": "string"
+			}, {
+				"name": "oDeployBlock",
+				"type": "object"
+			}, {
+				"name": "sDefaultAccount",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "HCP Account name"
+			}
+		},
+		"getRelevantAppName": {
+			"description": "Get HCP application name from Git Repository or hcpdeploy bloack or from default deployment application name",
+			"params": [{
+				"name": "sHCPAppNameFromGit",
+				"type": "string"
+			}, {
+				"name": "oDeployBlock",
+				"type": "object"
+			}, {
+				"name": "sDefaultDeploymentAppName",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "HCP deployment application name"
+			}
+		},
+		"getIsWelcomeFileExistOnHCP": {
+			"description": "Get the state if welcome file path from neo-app.json file exist on HCP or not",
+			"params": [{
+				"name": "sUsername",
+				"type": "object"
+			}, {
+				"name": "sPassword",
+				"type": "object"
+			}, {
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sAppName",
+				"type": "string"
+			}, {
+				"name": "oProjectDocument",
+				"type": "object"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "State if the welcome file exist on HCP"
+			}
+		},
+		"getDeployedAppInfo": {
+			"description": "Get the deployed application information",
+			"params": [{
+				"name": "sUsername",
+				"type": "string"
+			}, {
+				"name": "sPassword",
+				"type": "string"
+			}, {
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sAppName",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Deployed application information"
+			}
+		},
+		"getLinkToAppPageOnHCP": {
+			"description": "Returns the link to the given application's page on HCP Cockpit",
+			"params": [{
+				"name": "sAccount",
+				"type": "string"
+			}, {
+				"name": "sDeployedAppName",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The link to the given application's page on HCP Cockpit"
+			}
+		}
+	},
+	"events": {
+		"deploymentToHCPSuccessfullyFinished" : {
+			"description": "Fired when the deployment to SAP HCP has successfully finished.",
+			"params": [{
+				"name": "deployedAppName",
+				"type": "string",
+				"description": "The application name in SAP HCP."
+			}, {
+				"name": "projectDocument",
+				"type": "object",
+				"description": "The document object representing the application in SAP Web IDE."
+			}, {
+				"name": "version",
+				"type": "string",
+				"description": "The application version (for example 1.0.2)."
+			}, {
+				"name": "URL",
+				"type": "string",
+				"description": "The URL of the application in SAP HCP."
+			}],
+			"visibility": "public"
+		}
+	}
+}

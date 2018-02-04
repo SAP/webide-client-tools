@@ -1,0 +1,50 @@
+{
+	"name": "sap.watt.ideplatform.validationsDistributor",
+	"description": "The validationsDistributor contains converters for different validations clients, to convert validation issues",
+	"requires": {
+		"services": [
+			"focus",
+			"document",
+			"content",
+			"editor",
+			"problems",
+			"issues",
+			"codeValidationDAO",
+			"log",
+			"usagemonitoring",
+			"selection",
+			"repositorybrowser",
+			"filesystem.documentProvider",
+			"problemsView",
+			"usagemonitoring",
+			"resource",
+			"setting.project",
+			"projectsetting"
+		]
+	},
+	"provides": {
+		"services": {
+			"problemsViewValidation": {
+				"implements": "sap.watt.common.plugin.validationsDistributor.adopters.ProblemProvider",
+				"module": "sap.watt.ideplatform.validationsDistributor/adopters/problemsView/codeValidator"
+			}
+		},
+		"interfaces": {
+			"sap.watt.common.plugin.validationsDistributor.adopters.ProblemProvider": "sap.watt.ideplatform.validationsDistributor/adopters/ProblemsProvider"
+		}
+	},
+	"configures": {
+		"services": {
+			"usagemonitoring:reportParams": [
+				{
+					"components": [
+						"ProblemsView"
+					],
+					"eventTypes": [
+						"NavigateToIssue"
+					]
+				}
+			]
+		}
+	}
+}

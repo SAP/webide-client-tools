@@ -1,0 +1,191 @@
+{
+  "name": "sap.watt.ideplatform.generationwizard",
+  "description": "Generation Wizard Plugin",
+  "i18n": "sap.watt.ideplatform.generationwizard/i18n/i18n",
+
+  "requires": {
+    "services": [
+      "command",
+      "selection",
+      "commandGroup",
+      "document",
+      "filesystem.documentProvider",
+      "destination",
+      "translation",
+      "repositorybrowser",
+      "pluginmanagement",
+      "log",
+      "resource",
+      "wizard",
+      "generation",
+      "template",
+      "usernotification",
+      "neoapp",
+      "console",
+      "projectType",
+      "preferences",
+      "usagemonitoring"
+    ]
+  },
+
+  "configures": {
+
+    "services": {
+      "usagemonitoring:reportParams": [{
+        "components": ["template"],
+        "eventTypes": ["create", "finish", "TemplateLibraryOpened", "ComponentCreated", "SetTemplateAsFavorite"]
+      }],
+
+      "command:commands": [
+        {
+          "id": "template.createComponent",
+          "service": "sap.watt.ideplatform.generationwizard/command/CreateComponent"
+        },
+        {
+          "id": "template.createModule",
+          "service": "sap.watt.ideplatform.generationwizard/command/CreateModule"
+        },
+        {
+          "id": "template.createProject",
+          "label": "{i18n>command_createProjectLabel}",
+          "service": "sap.watt.ideplatform.generationwizard/command/CreateProject",
+          "keyBinding": "mod+alt+shift+o"
+        },
+        {
+          "id": "template.createReferenceProject",
+          "label": "{i18n>command_createReferenceProjectLabel}",
+          "service": "sap.watt.ideplatform.generationwizard/command/CreateReferenceProject",
+          "available"  : {"not" : {"equals" : [{"env":"server_type"},"xs2"]}}
+        },
+        {
+          "id": "template.displayTemplates",
+          "label": "{i18n>command_displayTemplatesLabel}",
+          "service": "sap.watt.ideplatform.generationwizard/command/DisplayTemplates"
+        },
+        {
+          "id": "template.createCloundConnectivity",
+          "label": "{i18n>command_createCloudConnectivityLabel}",
+          "service": "sap.watt.ideplatform.generationwizard/command/CreateCloudConnectivity",
+          "available"  : {"equals" : [{"env":"server_type"},"hcproxy"]}
+        }
+      ],
+
+      "commandGroup:groups": [
+		{ "id" : "file.new.template"},
+        {
+          "id": "file.new.addComponents",
+          "service": "@relevantcomponentsprovider"
+        },
+        {
+          "id": "file.new.addModules",
+          "service": "@relevantmodulesprovider"
+        }
+      ],
+
+      "commandGroup:items": [
+		{ "parent" : "file.new", "type":"inline", "group" : "file.new.template", "prio": 20},
+        {
+          "parent": "file.new.template",
+          "command": "template.createProject",
+          "prio": 20
+        },
+        {
+          "parent": "file.new.template",
+          "command": "template.createReferenceProject",
+          "prio": 30
+        },
+        {
+          "parent": "file.new",
+          "type": "inline",
+          "group": "file.new.addModules",
+          "prio": 40
+        },
+        {
+          "parent": "file.new",
+          "type": "inline",
+          "group": "file.new.addComponents",
+          "prio": 50
+        },
+        {
+          "parent": "tools.templates",
+          "command": "template.displayTemplates",
+          "prio": 60
+        },
+        {
+          "parent": "file.new",
+          "command": "template.createCloundConnectivity",
+          "prio": 60
+        }
+      ],
+
+      "wizard:styles": [
+        {
+          "uri": "sap.watt.ideplatform.generationwizard/css/generationWizardSteps.css"
+        }
+      ]
+    }
+  },
+
+  "provides": {
+    "services": {
+      "projectbasicstep": {
+        "implements": "sap.watt.common.service.ui.WizardPart",
+        "module": "sap.watt.ideplatform.generationwizard/service/ProjectBasicStep"
+      },
+      "componentConfirmStep": {
+        "implements": "sap.watt.common.service.ui.WizardFinishStep",
+        "module": "sap.watt.ideplatform.generationwizard/service/ComponentFinishStep"
+      },
+      "offlinestep": {
+        "implements": "sap.watt.common.service.ui.WizardPart",
+        "module": "sap.watt.ideplatform.generationwizard/service/OfflineStep"
+      },
+      "appDescriptorGenericStep": {
+        "implements": "sap.watt.common.service.ui.WizardPart",
+        "module": "sap.watt.ideplatform.generationwizard/service/AppDescriptorGenericStep"
+      },
+      "templateselectstep": {
+        "implements": "sap.watt.common.service.ui.WizardPart",
+        "module": "sap.watt.ideplatform.generationwizard/service/TemplateSelectStep"
+      },
+      "selectReferenceProjectStep": {
+        "implements": "sap.watt.common.service.ui.WizardPart",
+        "module": "sap.watt.ideplatform.generationwizard/service/SelectReferenceProjectStep"
+      },
+      "templateCustomizationStep": {
+        "implements": "sap.watt.common.service.ui.WizardStep",
+        "module": "sap.watt.ideplatform.generationwizard/service/ModelBuilderStep"
+      },
+      "fioriRefAppsTermsFinishStep": {
+        "implements": "sap.watt.common.service.ui.WizardFinishStep",
+        "module": "sap.watt.ideplatform.generationwizard/service/ConfirmReferenceAppTerms"
+      },
+      "smartDocProvider": {
+        "implements": "sap.watt.uitools.generationwizard.service.SmartDocProvider",
+        "module": "sap.watt.ideplatform.generationwizard/service/SmartDocProvider"
+      },
+      "relevantcomponentsprovider": {
+        "implements": "sap.watt.common.service.ide.CommandGroupItemProvider",
+        "module": "sap.watt.ideplatform.generationwizard/service/RelevantComponentsProvider"
+      },
+      "relevantmodulesprovider": {
+        "implements": "sap.watt.common.service.ide.CommandGroupItemProvider",
+        "module": "sap.watt.ideplatform.generationwizard/service/RelevantModulesProvider"
+      },
+      "componentgeneration": {
+        "implements": "sap.watt.ideplatform.generationwizard.service.ComponentGeneration",
+        "module": "sap.watt.ideplatform.generationwizard/service/ComponentGeneration"
+      },
+      "selecttemplatestepcontent": {
+      	"implements": "sap.watt.ideplatform.generationwizard.service.SelectTemplateStepContent",
+        "module": "sap.watt.ideplatform.generationwizard/service/SelectTemplateStepContent"
+      }
+    },
+    "interfaces": {
+      "sap.watt.uitools.generationwizard.service.SmartDocProvider": "sap.watt.ideplatform.generationwizard/service/SmartDocProvider",
+      "sap.watt.ideplatform.generationwizard.service.ComponentGeneration": "sap.watt.ideplatform.generationwizard/service/ComponentGeneration",
+      "sap.watt.ideplatform.generationwizard.service.SelectTemplateStepContent": "sap.watt.ideplatform.generationwizard/service/SelectTemplateStepContent",
+      "sap.watt.ideplatform.generationwizard.service.FilterAdapter": "sap.watt.ideplatform.generationwizard/service/FilterAdapter"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+	"name": "sap.watt.uitools.plugin.abaprepository.service.LREPConnector",
+	
+	"description": "The LREP Connector Service",
+
+	"methods": {
+
+		"updateChange": {
+			"params": [{
+				"name": "selection",
+				"type": "object"
+			}, {
+				"name": "changes",
+				"type": "object"
+			}],
+			"returns": "object"
+		}
+	}
+}

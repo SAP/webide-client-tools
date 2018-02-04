@@ -1,0 +1,12 @@
+{
+    "name": "sap.watt.platform.xs.destination",
+    "description": "The Destination Plugin.",
+    "provides": {
+        "services": {
+            "destination": {
+                "implements": "sap.watt.common.plugin.destination.service.Destination",
+                "module": "sap.watt.platform.xs.destination/service/Destination"
+            }
+        }
+    }
+}

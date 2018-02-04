@@ -1,0 +1,95 @@
+{
+	"name": "sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterRT",
+	"description": "Run configuration adapter for Fiori runner Run Time. Handles Run Time Fiori run configurations for each environment.",
+	"methods": {
+		"getEnvSpecificUrl": {
+			"description": "Specific environment logic to get the URL for previewing the application using the Fiori Runner.",
+			"params": [{
+				"name": "oConfiguration",
+				"type": "object",
+				"description": "The application run configuration"
+			}, {
+				"name": "oRunnableDocument",
+				"type": "object",
+				"description": "The application runnable document"
+			}, {
+				"name": "oContainerObject",
+				"type": "sap.watt.common.plugin.document.Document",
+				"description": "The file to run."
+			}, {
+				"name": "oProject",
+				"type": "sap.watt.common.plugin.document.Document",
+				"description": "The file to run."
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Application URI"
+			},
+			"visibility": "private"
+		},
+		"getUi5Theme": {
+			"description": "Get UI5 Theme for the Fiori sandbox html file.",
+			"params": [{
+				"name": "oConfiguration",
+				"type": "object",
+				"description": "The application run configuration"
+			}, {
+				"name": "oRunnableDocument",
+				"type": "object",
+				"description": "The application runnable document"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "Application theme"
+			},
+			"visibility": "private"
+		},
+		"getPathPrefix": {
+			"description": "Get path prefix for the UI5 repository.",
+			"returns": {
+				"type": "string",
+				"description": "Path prefix for the UI5 repository"
+			},
+			"visibility": "private"
+		},
+		"getRelativePath": {
+			"description": "Get Relativ path for a file in the project.",
+			"params": [{
+				"name": "sPath",
+				"type": "string",
+				"description": "The original file path"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The relative file path"
+			},
+			"visibility": "private"
+		},
+		"getRelativeUrl": {
+			"description": "Get Relativ URL",
+			"params": [{
+				"name": "sPath",
+				"type": "string",
+				"description": "The original URL"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "The relative URL"
+			},
+			"visibility": "private"
+		},
+		"isRunLocalFile": {
+			"description": "Specify if the runner should use the local Html file or the sandbox html file from the UI5 repository for running the application",
+			"params": [{
+				"name": "runnableFileContent",
+				"type": "string",
+				"description": "The newly created runnable file content"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "True if the local Html file should be used for running the application"
+			},
+			"visibility": "private"
+		}
+	}
+}

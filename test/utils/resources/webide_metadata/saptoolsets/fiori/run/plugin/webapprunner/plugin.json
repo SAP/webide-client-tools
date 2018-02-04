@@ -1,0 +1,96 @@
+{
+  "name": "sap.watt.saptoolsets.fiori.run.webapprunner",
+  "description": "Web App runner plugin",
+  "i18n": "sap.watt.saptoolsets.fiori.run.webapprunner/i18n/i18n",
+  "requires": {
+    "services": [
+      "run",
+      "filesystem.documentProvider",
+      "appparams",
+      "setting.project",
+      "filesearchutil",
+      "choosefilepopup",
+      "baseinputvalidatorutil",
+      "log",
+      "usagemonitoring",
+      "runconfig.filepath",
+      "runconfig.ui5versions",
+      "runconfig.withmock",
+      "runconfig.preview",
+      "UI5VersionsUtil",
+      "runconfig.resourcemapping",
+      "runconfig.urlparameters",
+      "destinationsutil",
+      "runconfig.destinationmapping",
+      "reuseLibsUtil",
+      "performancetoolkit.runner",
+      "heliumPreviewAdapter",
+      "ui5versionextension",
+      "destinationmappingextension",
+      "appcachebusterextension",
+      "performanceextension",
+      "htmlextendersextension",
+      "runwithframe",
+      "reuselibsextension",
+      "runinnewprocess",
+      "runwithframenewProcess",
+      "ideurlparameters",
+      "componentpreloadextension",
+      "pluginmanagement"
+    ]
+  },
+  "provides": {
+    "services": {
+      "WebAppRunner": {
+        "implements": "sap.watt.common.plugin.run.service.runner",
+        "module": "sap.watt.saptoolsets.fiori.run.webapprunner/service/WebAppRunner"
+      },
+      "WebAppRunnerRuntime": {
+        "implements": "sap.watt.saptoolsets.fiori.run.webapprunner.WebAppRunnerRuntime",
+        "module": "sap.watt.saptoolsets.fiori.run.webapprunner/service/WebAppRunnerRuntime"
+      }
+    },
+    "interfaces": {
+      "sap.watt.saptoolsets.fiori.run.webapprunner.WebAppRunnerRuntime": "sap.watt.saptoolsets.fiori.run.webapprunner/service/WebAppRunnerRuntime"
+    }
+  },
+  "configures": {
+    "services": {
+      "run:runners": [
+        {
+          "id": "webapprunner",
+          "service": "@WebAppRunner",
+          "displayName": "{i18n>lbl_run_sap_web_app}",
+          "projectTypesIds": [
+            "sap.watt.uitools.ide.web"
+          ],
+          "windowTarget": "web_preview",
+          "fileTypes": [
+            "*.html"
+          ],
+          "extensionService": "@performancetoolkit.runner"
+        }
+      ],
+      "runconfig.resourcemapping:externalservices": [
+        {
+          "service": "@reuseLibsUtil"
+        }
+      ],
+      "usagemonitoring:reportParams": [
+        {
+          "components": [
+            "runner"
+          ],
+          "eventTypes": [
+            "web_app",
+            "web_app_config",
+            "Ui5Version",
+            "url_parameters"
+          ]
+        }
+      ]
+    }
+  },
+  "subscribes": {
+  }
+}

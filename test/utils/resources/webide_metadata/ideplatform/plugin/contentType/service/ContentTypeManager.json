@@ -1,0 +1,57 @@
+{
+	"name": "sap.watt.ideplatform.plugin.contentType.service.ContentTypeManager",
+	"description": "Content Type Service",
+	"visibility" : "public",
+	"configurationProperties" : {
+		"contentTypes" : {
+			"type" : {
+				"id": "string",
+				"name": "string",
+				"description": "string",
+				"baseTypeId": "string",
+				"fileExtensions" : "[string]",
+				"fileNames" : "[string]",
+				"fileSpecs" : "[string]",
+				"projectTypes": "[string]",
+				"contentTypeMatcher" : "sap.watt.common.service.registry.ContentTypeMatcher"
+			},
+			"multiple" : true
+		}
+	},
+	"methods": {
+		"getContentTypeOfDocument": {
+			"description": "get content types stack by Document object",
+			"params": [  {
+				"name": "document object",
+				"type": "object",
+				"description": "Document object"
+			} ],
+			"returns": {
+				"type": "[string]",
+				"description": "stack of content type id's"
+			}
+		},
+		
+		"getAllContentTypes": {
+			"description": "get all content types",
+			"returns": {
+				"type": "[object]",
+				"description": "stack of content type objects"
+			}
+		},
+		
+		"getContentTypeInfo": {
+			"description": "get Content Type info by Content type id",
+			"params": [  {
+				"name": "id",
+				"type": "string",
+				"description": "Content type id"
+			} ],
+			"returns": {
+				"type": "[object]",
+				"description": "Content type object"
+			}
+			
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name": "sap.watt.ideplatform.runtimeextensions.RunInNewProcess",
+	"methods": {
+		"openWindow": {
+			"description": "Open window to run the application in a new process",
+			"params": [{
+				"name": "oAppUrl",
+				"type": "object",
+				"description": "URI of the application to run"
+			}]
+		}
+	}
+}

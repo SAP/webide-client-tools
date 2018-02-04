@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.uitools.plugin.fiorilaunchpad.ui.dialogs.NotificationDialog",
+	"description" : "User notification dialog service",
+	"methods" : {
+		"info" : {
+			"params" : [{
+				"name" : "sMessage",
+				"type" : "string"
+			}],
+			"returns" : "object"
+		}
+	}
+}

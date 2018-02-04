@@ -1,0 +1,19 @@
+{
+	"name" : "sap.watt.uitools.rdlastlibrary.service.astLibraryInterface",
+	"description" : "River Ast Library ",
+	"methods" : {
+		"getRiverAstLibrary" : {
+			"description" : "Returns a River AST Library object",
+			"params" : [	
+			{	
+				"name" : "tree",
+				"type" : "object", 
+				"description" : "Returns the River Ast Library", 
+				"optional" : false               
+			}
+			],
+			"returns" : "object"
+		}
+	}
+
+}

@@ -1,0 +1,35 @@
+{
+    "name": "sap.watt.ideplatform.libmetaaccess",
+    "description": "Service to retrieve libraries meta from HCP",
+    "i18n": "sap.watt.ideplatform.libmetaaccess/i18n/i18n",
+    "requires": {
+        "services": [
+            "intellisence.calculatelibraryversion",
+            "intellisence.libmetadataprovider"
+        ]
+    },
+    
+    "provides": {
+        "services": {
+			"libraryMetaAccess" : {
+				"implements": "sap.watt.uitools.plugin.libmetaaccess.libraryMetaAccess",
+				"module": "sap.watt.ideplatform.libmetaaccess/service/LibraryMetaAccess"
+			}
+        },
+
+        "interfaces": {
+        	"sap.watt.uitools.plugin.libmetaaccess.libraryMetaAccess": "sap.watt.ideplatform.libmetaaccess/service/LibraryMetaAccess"
+        }
+    },
+    
+    "configures": {
+        "services": {
+			    "intellisence.calculatelibraryversion:sdkVersionProvider": { "service": "@libraryMetaAccess"},
+			    "intellisence.libmetadataprovider:sdkProvider": { "service": "@libraryMetaAccess"}
+        }
+    },
+
+	"subscribes": {
+	    "core:allPluginsStarted" : "libraryMetaAccess:onAllPluginsStarted"
+	}
+}

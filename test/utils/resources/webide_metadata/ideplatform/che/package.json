@@ -1,0 +1,23 @@
+{
+	"preloadCapable" : true,
+
+	"name" : "sap.watt.ideplatform.di.feature",
+	"title" : "Web IDE with DI - ideplatform layer",
+	"version" : "1.0.0",
+	"description" : "Web IDE with DI - ideplatform layer",
+
+	"bundledFeatures" : {
+		"sap.watt.ideplatform.feature": "file:../package.json"
+	},
+
+	"bundledPlugins" : {
+		"sap.watt.ideplatform.che.chewebsockets" : "file:plugin/chewebsockets",
+		"sap.watt.ideplatform.che.chebackend" : "file:plugin/chebackend",
+		"sap.watt.ideplatform.che.mtafoldertoprojectvalidator" : "file:plugin/mtafoldertoprojectvalidator",
+		"sap.watt.ideplatform.che.report" : "file:plugin/report",
+		"sap.watt.ideplatform.che.cherunconsoleprovider" : "file:plugin/cherunconsoleprovider",
+		"sap.watt.ideplatform.che.chepreview" : "file:plugin/chepreview",
+		"sap.watt.common.buildregistry": "file:../../common/plugin/buildregistry"
+	}
+
+}

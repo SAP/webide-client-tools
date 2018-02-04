@@ -1,0 +1,26 @@
+{
+	"name" : "sap.watt.common.plugin.snippet.PreSnippetInsertionHandler",
+	"description" : "The pre-insertion snippet handler interface",
+    
+	"methods" : {
+		"updateSnippetBeforeInsertion": {
+			"description" : "This method updates the snippet before insertion",
+			"params": [{
+				"name": "sSnippetContent",
+				"type": "string",
+				"description" : "Snippet content"
+			},
+			{
+				"name": "oDocument",
+				"type": "sap.watt.common.plugin.document.Document",
+				"description" : "Document"
+			}
+			],
+			"returns": {
+				"name": "sModifiedSnippetContent",
+				"type": "string",
+				"description" : "Modified snippet content"
+			}
+		}
+    }
+}

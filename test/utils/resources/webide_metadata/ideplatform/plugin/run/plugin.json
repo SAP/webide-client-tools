@@ -1,0 +1,298 @@
+{
+	"name": "sap.watt.ideplatform.run",
+	"description": "Run Configuration plugin",
+	"i18n": "sap.watt.ideplatform.run/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"commandGroup",
+			"menuBar",
+			"command",
+			"setting.user",
+			"projectType",
+			"projectsetting",
+			"perspective",
+			"document",
+			"filefilter",
+			"resource",
+			"focus",
+			"preferences",
+			"usernotification",
+			"progress",
+			"log",
+			"filesystem.documentProvider",
+			"usagemonitoring",
+			"selection",
+			"repositorybrowser",
+			"git",
+			"runconsole",
+			"neoapp",
+			"tipsandtricks",
+			"tipsandtricksviewsfactory",
+			"htmlproducer",
+			"pluginmanagement"
+		]
+	},
+	"provides": {
+		"services": {
+			"run": {
+				"implements": "sap.watt.common.plugin.run.service.run",
+				"module": "sap.watt.ideplatform.run/service/Run"
+			},
+			"runconfigurationhistory": {
+				"implements": "sap.watt.common.plugin.run.service.history",
+				"module": "sap.watt.ideplatform.run/service/RunConfigurationHistory"
+			},
+			"runcommandstate": {
+				"implements": "sap.watt.common.plugin.run.service.runcommandstate",
+				"module": "sap.watt.ideplatform.run/service/RunCommandStateService"
+			},
+			"configurationhelper": {
+				"implements": "sap.watt.common.plugin.run.service.configurationhelper",
+				"module": "sap.watt.ideplatform.run/service/ConfigurationHelper"
+			},
+			"projectrecentlyusedprovider": {
+				"implements": "sap.watt.common.service.ide.CommandGroupItemProvider",
+				"module": "sap.watt.ideplatform.run/service/ProjectRecentlyUsedProvider"
+			},
+			"listconfigurationsprovider": {
+				"implements": "sap.watt.common.service.ide.CommandGroupItemProvider",
+				"module": "sap.watt.ideplatform.run/service/ListConfigurationsProvider"
+			},
+			"run.appcachebuster": {
+				"implements": "sap.watt.common.service.run.appcachebuster",
+				"module": "sap.watt.ideplatform.run/service/AppCacheBuster"
+			},
+			"runconfig.filepath": {
+				"implements": "sap.watt.common.service.runconfigurationui.filepath",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigFilePath"
+			},
+			"filepathhandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.FilePathHandler",
+				"module": "sap.watt.ideplatform.run/service/handler/FilePathHandler"
+			},
+			"runconfig.withmock": {
+				"implements": "sap.watt.common.service.runconfigurationui.withmock",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigWithMock"
+			},
+			"withmockhandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.WithMockHandler",
+				"module": "sap.watt.ideplatform.run/service/handler/WithMockHandler"
+			},
+			"runconfig.preview": {
+				"implements": "sap.watt.common.service.runconfigurationui.preview",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigPreview"
+			},
+			"previewhandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.PreviewHandler",
+				"module": "sap.watt.ideplatform.run/service/handler/PreviewHandler"
+			},
+			"runconfig.ui5versions": {
+				"implements": "sap.watt.common.service.runconfigurationui.ui5versions",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigurationUi5Versions"
+			},
+			"ui5versionhandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.Ui5VersionHandler",
+				"module": "sap.watt.ideplatform.run/service/handler/Ui5VersionHandler"
+			},
+			"runconfig.resourcemapping": {
+				"implements": "sap.watt.common.service.runconfigurationui.resourcemapping",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigResourceMapping"
+			},
+			"resourcemappinghandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.resourcemappinghandler",
+				"module": "sap.watt.ideplatform.run/service/handler/ResourceMappingHandler"
+			},
+			"runconfig.urlparameters": {
+				"implements": "sap.watt.common.service.runconfigurationui.urlparameters",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigURLParameters"
+			},
+			"urlparametershandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.URLParametersHandler",
+				"module": "sap.watt.ideplatform.run/service/handler/URLParametersHandler"
+			},
+			"urlparametersvalidations": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.URLParametersValidations",
+				"module": "sap.watt.ideplatform.run/service/validations/URLParametersValidations"
+			},
+			"runconfig.destinationmapping": {
+				"implements": "sap.watt.common.service.runconfigurationui.destinationmapping",
+				"module": "sap.watt.ideplatform.run/service/controlservices/RunConfigDestinationMapping"
+			},
+			"destinationmappinghandler": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.DestinationMappingHandler",
+				"module": "sap.watt.ideplatform.run/service/handler/DestinationMappingHandler"
+			},
+			"filesearchutil": {
+				"implements": "sap.watt.uitools.plugin.commonrunners.service.FileSearchUtil",
+				"module": "sap.watt.ideplatform.run/service/util/FileSearchUtil"
+			},
+			"choosefilepopup": {
+				"implements": "sap.watt.uitools.plugin.commonrunners.service.RunConfigChooseFilePopupHandler",
+				"module": "sap.watt.ideplatform.run/service/util/RunConfigChooseFilePopupHandler"
+			},
+			"runApi": {
+				"implements": "sap.watt.ideplatform.plugin.run.service.RunApi",
+				"module": "sap.watt.ideplatform.run/service/RunApi"
+			}
+		},
+		"interfaces": {
+			"sap.watt.common.plugin.run.service.history": "sap.watt.ideplatform.run/service/RunConfigurationHistory",
+			"sap.watt.common.plugin.run.service.runcommandstate": "sap.watt.ideplatform.run/service/RunCommandStateService",
+			"sap.watt.common.plugin.run.service.configurationhelper": "sap.watt.ideplatform.run/service/ConfigurationHelper",
+			"sap.watt.common.plugin.run.service.runner": "sap.watt.ideplatform.run/service/Runner",
+			"sap.watt.common.plugin.run.service.run": "sap.watt.ideplatform.run/service/Run",
+			"sap.watt.common.service.run.appcachebuster": "sap.watt.ideplatform.run/service/AppCacheBuster",
+			"sap.watt.common.service.runconfigurationui.filepath": "sap.watt.ideplatform.run/service/controlservices/RunConfigFilePath",
+			"sap.watt.ideplatform.plugin.run.service.FilePathHandler": "sap.watt.ideplatform.run/service/handler/FilePathHandler",
+			"sap.watt.common.service.runconfigurationui.ui5versions": "sap.watt.ideplatform.run/service/controlservices/RunConfigurationUi5Versions",
+			"sap.watt.ideplatform.plugin.run.service.Ui5VersionHandler": "sap.watt.ideplatform.run/service/handler/Ui5VersionHandler",
+			"sap.watt.common.service.runconfigurationui.resourcemapping": "sap.watt.ideplatform.run/service/controlservices/RunConfigResourceMapping",
+			"sap.watt.ideplatform.plugin.run.service.resourcemappinghandler": "sap.watt.ideplatform.run/service/handler/ResourceMappingHandler",
+			"sap.watt.ideplatform.plugin.run.service.handler.ReuseLibsUtil": "sap.watt.ideplatform.run/service/handler/ReuseLibsUtil",
+			"sap.watt.common.service.runconfigurationui.urlparameters": "sap.watt.ideplatform.run/service/controlservices/RunConfigURLParameters",
+			"sap.watt.ideplatform.plugin.run.service.URLParametersHandler": "sap.watt.ideplatform.run/service/handler/URLParametersHandler",
+			"sap.watt.ideplatform.plugin.run.service.URLParametersValidations": "sap.watt.ideplatform.run/service/validations/URLParametersValidations",
+			"sap.watt.common.service.runconfigurationui.destinationmapping": "sap.watt.ideplatform.run/service/controlservices/RunConfigDestinationMapping",
+			"sap.watt.ideplatform.plugin.run.service.DestinationMappingHandler": "sap.watt.ideplatform.run/service/handler/DestinationMappingHandler",
+			"sap.watt.ideplatform.plugin.run.service.WithMockHandler": "sap.watt.ideplatform.run/service/handler/WithMockHandler",
+			"sap.watt.common.service.runconfigurationui.withmock": "sap.watt.ideplatform.run/service/controlservices/RunConfigWithMock",
+			"sap.watt.ideplatform.plugin.run.service.PreviewHandler": "sap.watt.ideplatform.run/service/handler/PreviewHandler",
+			"sap.watt.common.service.runconfigurationui.preview": "sap.watt.ideplatform.run/service/controlservices/RunConfigPreview",
+			"sap.watt.uitools.plugin.commonrunners.service.FileSearchUtil": "sap.watt.ideplatform.run/service/util/FileSearchUtil",
+			"sap.watt.uitools.plugin.commonrunners.service.RunConfigChooseFilePopupHandler": "sap.watt.ideplatform.run/service/util/RunConfigChooseFilePopupHandler",
+			"sap.watt.ideplatform.plugin.run.service.RunApi": "sap.watt.ideplatform.run/service/RunApi"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"filefilter:alwaysHidden": [{
+				"regExps": ["/{1}(sap-ui-cachebuster-info.json)$"]
+			}],
+			"git:ignore": [
+				"sap-ui-cachebuster-info.json"
+			],
+			"usagemonitoring:reportParams": [{
+
+				"components": ["runConfiguration", "runner", "runDocument"],
+				"eventTypes": ["preview", "projectRecentlyUsedClick", "measureClicked", "runClicked", "addConfiguration",
+					"deleteConfiguration",
+					"runAsClicked", "configurationError", "DialogSave&Run", "DialogCancel", "DialogOpen", "DialogOK",
+					"runAs", "projectRecentlyUsed", "moreRunConfiguration", "runButton", "runHelp", "duplicateConfiguration", "runFromDist"
+				]
+			}],
+			"runconfigurationhistory:maxConfigurationsToStore": 5,
+			"run:styles": [{
+				"uri": "sap.watt.ideplatform.run/css/runConfigurationsStyles.css"
+			}],
+			"commandGroup:groups": [{
+				"id": "run.runAsGroup",
+				"label": "{i18n>run_RunAs}",
+				"service": "@run"
+			}, {
+				"id": "run.projectRecentlyUsedGroup",
+				"label": "{i18n>run_ProjectConfigurations}",
+				"service": "@projectrecentlyusedprovider"
+			}, {
+				"id": "run.listConfiguration",
+				"service": "@listconfigurationsprovider"
+			}],
+			"commandGroup:items": [{
+				"group": "run.runAsGroup",
+				"parent": "run",
+				"type": "menu",
+				"prio": 4
+			}, {
+				"group": "run.projectRecentlyUsedGroup",
+				"parent": "run",
+				"type": "inline",
+				"prio": 2
+			}, {
+				"parent": "run",
+				"command": "run.runConfigurations",
+				"prio": 3
+			}, {
+				"id": "run.listRunConfigurationsGroup",
+				"parent": "applicationToolbar.run",
+				"type": "list",
+				"group": "run.listConfiguration",
+				"label": "Configurations",
+				"prio": 10
+			}, {
+				"parent": "applicationToolbar.run",
+				"command": "preview.run",
+				"prio": 20
+			}],
+			"command:commands": [{
+				"id": "preview.run",
+				"icon": "run",
+				"label": "Run",
+				"service": "sap.watt.ideplatform.run/command/RunCommand",
+				"keyBinding": "alt+f5"
+			}, {
+				"id": "preview.runPerformance",
+				"icon": "measure",
+				"label": "Run with performance measurements",
+				"service": "sap.watt.ideplatform.run/command/RunPerformanceCommand",
+				"keyBinding": "alt+f6"
+			}, {
+				"id": "run.selectConfiguration",
+				"enabled": true,
+				"service": "sap.watt.ideplatform.run/command/SelectConfigurationCommandService"
+			}, {
+				"id": "run.projectRecentlyUsedCommand",
+				"service": "sap.watt.ideplatform.run/command/ProjectRecentlyUsedCommand"
+			}, {
+				"id": "multiPurposeCommand1",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand2",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand3",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand4",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand5",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand6",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand7",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand8",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand9",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand10",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand11",
+				"service": "@run"
+			}, {
+				"id": "multiPurposeCommand12",
+				"service": "@run"
+			}, {
+				"id": "run.runConfigurations",
+				"service": "sap.watt.ideplatform.run/command/RunConfigurationsCommand",
+				"label": "{i18n>run_ContextMenuRunConfigurations}"
+			}],
+			"tipsandtricks:tips": [{
+				"id": "sap.watt.ideplatform.run.HashFragment",
+				"service": "sap.watt.ideplatform.run/tips/HashFragmentTip"
+			}]
+		}
+	},
+
+	"subscribes": {
+		"document:deleted": "run:onDocumentDeleted",
+		"selection:changed": "runcommandstate:onSelectionChanged"
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"name": "sap.watt.platform.builder",
+	"i18n": "sap.watt.platform.builder/i18n/i18n",
+	"description": "The client builder plugin",
+
+	"requires": {
+		"services": [
+			"filesystem.documentProvider",
+			"builder",
+			"resource",
+			"usagemonitoring"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"platform.builder": {
+				"implements": "sap.watt.platform.builder.service.BuildService",
+				"module": "sap.watt.platform.builder/service/BuildService"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.platform.builder.service.BuildService": "sap.watt.platform.builder/service/BuildService"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"usagemonitoring:reportParams": [
+            {
+                "components": ["platform.builder"],
+                "eventTypes": ["build"]
+            }]
+		}
+	}
+}

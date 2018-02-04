@@ -1,0 +1,44 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.fiorirunner.service.SandboxPreviewHtmlBuilder",
+	"description": "The sandbox PreviewImplFioriHtmlBuilder service interface",
+	"methods": {
+		"runLocalExtenders": {
+			"description": "Run an application using the html extenders",
+			"params": [{
+					"name": "oRunnableDocument",
+					"type": "object",
+					"description": "the application runnable document"
+				}, {
+					"name": "oWindow",
+					"type": "object",
+					"description": "the window instance"
+				}, {
+					"name": "oRunParameters",
+					"type": "object",
+					"description": "the parameters relevant for this app runtime"
+				}
+
+			],
+			"visibility": "private"
+		},
+		"createLocalRunnableTemplate": {
+			"description": "Create runnable html file template in the workspace of the project",
+			"params": [{
+					"name": "oFolderProjectDoc",
+					"type": "object",
+					"description": "the project folder in a document format"
+				}
+			],
+			"visibility": "private"
+		}
+	},
+	
+	"configurationProperties": {
+		"fiorirunneradapterrt": {
+			"type": {
+				"service": "sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterRT"
+			},
+			"multiple": false
+		}
+	}
+}

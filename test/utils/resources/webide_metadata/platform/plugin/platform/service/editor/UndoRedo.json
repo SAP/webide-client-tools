@@ -1,0 +1,12 @@
+{
+	"name" : "sap.watt.common.service.editor.UndoRedo",
+	"description" : "The undo / redo handling for editors",
+	"methods" : {
+		"undo" : {},
+		"redo" : {},
+		"hasUndo" : {},
+		"hasRedo" : {},
+		"markClean" : {},
+		"isClean" : {}
+	}
+}

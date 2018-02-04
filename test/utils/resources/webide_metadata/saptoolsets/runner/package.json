@@ -1,0 +1,11 @@
+{
+	"layer" : "SAPToolsets",
+	"preloadCapable" : true,
+	"name": "sap.watt.saptoolsets.runner.feature",
+	"title": "Web IDE - SAPToolsets layer - runner",
+	"version": "1.0.0",
+	"description": "Web IDE - SAPToolsets layer - runner",
+	"bundledPlugins" : {
+		"sap.watt.saptoolsets.fiori.run.fiorirunner" : "file:plugin/fiorirunner"
+	}
+}

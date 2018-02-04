@@ -1,0 +1,141 @@
+{
+	"name" : "sap.watt.common.plugin.template.service.Neoapp",
+	"description" : "The Neoapp service interface",
+	"methods" : {
+		"addDestination" : {
+			"description": "Adds new destination object by a given properties to the neo-app.json file",
+			"params": [
+				{
+					"name" : "sPath",
+					"type" : "string",
+					"description" : "a destination's path"
+				},
+				{
+					"name" : "oTarget",
+					"type" : "object",
+					"description" : "a destination's target"
+				},
+				{
+					"name" : "sDescription",
+					"type" : "string",
+					"description" : "a destination's description"
+				},
+				{
+					"name" : "oDocument",
+					"type" : "object",
+					"description" : "a document file in a project"
+				},
+				{
+					"name" : "bOverride",
+					"type" : "boolean",
+					"description" : "true to override current content"
+				}],
+			"returns" : "object"
+		},
+		"addDestinations" : {
+			"description": "Adds new destinations to the neo-app.json file by a given destinations array and document file in a project",
+			"params": [
+				{
+					"name" : "aDestinations",
+					"type" : "object",
+					"description" : "destinations array"
+				},
+				{
+					"name" : "oDocument",
+					"type" : "object",
+					"description" : "a document file in a project"
+				}],
+			"returns" : "object"
+		},
+		"updateDestination" : {
+			"description": "Updates destination to the neo-app.json file by a given destination and document file in a project",
+			"params": [
+				{
+					"name" : "sPath",
+					"type" : "string",
+					"description" : "a destination's path"
+				},
+				{
+					"name" : "oTarget",
+					"type" : "object",
+					"description" : "a destination's target"
+				},
+				{
+					"name" : "sDescription",
+					"type" : "string",
+					"description" : "a destination's description"
+				},
+				{
+					"name" : "oDocument",
+					"type" : "object",
+					"description" : "a document file in a project"
+				}
+			],
+			"returns" : "object"
+		},
+		"addNeoapp" : {
+			"description": "Adds entire Neo App json content to the neo-app.json file",
+			"params": [
+				{
+					"name" : "oNeoapp",
+					"type" : "object",
+					"description" : "neo app complete object"
+				},
+				{
+					"name" : "oDocument",
+					"type" : "object",
+					"description" : "a document file in a project"
+				}],
+			"returns" : "object"
+
+		},
+		"getDestinations" : {
+		    "deprecated" : {
+                "since" : "1.13",
+                "description" : "Use getNeoappDocumentAndContent method instead"
+            }
+		},
+		"getAppllications" : {
+			"description": "Returns an array of (name, version) of all applications from the Neo App",
+			"params" :[
+				{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "a document file in a project"
+				}
+			],
+			"returns" : "object"
+		},
+		"addCacheControls" : {
+		    "description": "Add cacheControl blocks to the neo-app.json file",
+		    "params": [
+		    {
+		        "name" : "aCacheControls",
+		        "type" : "object",
+				"description" : "array of cache controls to be added"
+		    },
+		    {
+		        "name" : "oDocument",
+		        "type" : "object",
+				"description" : "a document file in a project"
+		    },
+		    {
+		        "name" : "bOverride",
+		        "type" : "boolean",
+				"description" : "true to override current content"
+		    }],
+			"returns" : "object"
+		},
+		"getNeoappDocumentAndContent" : {
+		    "description": "Returns the neo-app document and content by a given document in the project",
+		    "params": [
+				{
+		        "name" : "oDocument",
+		        "type" : "object",
+				"description" : "a document file in a project"
+		    	}
+			],
+			"returns" : "object"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.uitools.plugin.commonrunners.service.baseRunConfigChooseFilePopupHandler",
+	"description" : "Run configuration choose file popup handler",
+	"extends" : ["sap.watt.common.service.ui.Part"],	
+	"methods" : {
+	    "getResult" : {
+	            
+	        },
+		"getContent" : {
+	            
+	        }
+	}
+}

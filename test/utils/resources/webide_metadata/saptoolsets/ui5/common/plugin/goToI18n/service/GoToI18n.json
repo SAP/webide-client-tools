@@ -1,0 +1,25 @@
+{
+	"name" : "sap.watt.saptoolsets.ui5.plugin.goToI18n.service.GoToI18n",
+	"description" : "Go to i18n file from xml view or js file",
+	"methods" : {
+		"goToI18n" : {
+			"description": "Open i18n file",
+			"params" : [
+                {
+                    "name" : "oDoc",
+                    "type" : "object",
+                    "description": "The document from which you want to navigate to i18n file"
+
+                },
+                {
+                    "name" : "sText",
+                    "type" : "string",
+                    "description": "String of i18n value"
+
+                }
+            ]
+        
+		
+		}
+	}
+}

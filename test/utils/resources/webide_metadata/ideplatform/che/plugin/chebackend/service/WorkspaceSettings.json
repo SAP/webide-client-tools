@@ -1,0 +1,62 @@
+{
+    "name": "sap.watt.uitools.chebackend.WorkspaceSettings",
+    "description": "Interface for WorkspaceSettings",
+    "methods": {
+        "getWorkspaceAttribute": {
+            "params": [
+                {
+                    "name": "sKey",
+                    "type": "string",
+                    "description": "Key in workspace attribute"
+                }
+            ],
+            "description": "get Workspace specific attribute"
+        },
+        "updateWorkspaceAttribute": {
+            "params": [
+                {
+                    "name": "sKey",
+                    "type": "string",
+                    "description": "Key in workspace attribute"
+                },
+                {
+                    "name": "SValue",
+                    "type": "string",
+                    "description": "sValue in workspace attribute"
+                }
+            ],
+            "description": "Update Workspace specific attribute"
+        },
+        "updateWorkspaceAttributes": {
+            "params": [
+                {
+                    "name": "mAttributes",
+                    "type": "object",
+                    "description": "Object containing key value attributes"
+                }
+            ],
+            "description": "Update Workspace attribute object"
+        },
+        "getWorkspaceById": {
+            "returns": {
+                "type": "object",
+                "description": "workspace object"
+            },
+            "description": "Returns a workspace by it's id"
+        },
+        "deleteWorkspaceAttribute": {
+            "params": [
+                {
+                    "name": "sKey",
+                    "type": "string",
+                    "description": "Key in workspace attribute"
+                }
+            ],
+            "description": "Deletes a workspace attribute"
+        },
+        "clearWorkspaceAttributes": {
+            "description": "Clear all attributes of a given workspace"
+        }
+    }
+
+}

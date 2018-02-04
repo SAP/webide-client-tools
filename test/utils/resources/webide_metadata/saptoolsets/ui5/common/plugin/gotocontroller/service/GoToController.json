@@ -1,0 +1,9 @@
+{
+	"name" : "sap.watt.saptoolsets.ui5.common.plugin.gotocontroller.service.GoToController",
+	"description" : "Go to controller from xml view",
+	"methods" : {
+		"goToController" : {
+			"description": "Open controller"
+		}
+	}
+}

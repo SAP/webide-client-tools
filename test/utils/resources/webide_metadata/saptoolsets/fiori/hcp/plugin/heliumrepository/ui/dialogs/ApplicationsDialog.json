@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.uitools.plugin.heliumrepository.ui.dialogs.ApplicationsDialog",
+	
+	"description" : "Dialog service for to display SAP HANA Cloud Platform applications",
+	
+	"methods" : {
+	
+		"open":{
+		    "params" : [],				
+			"returns" : "object"		
+		}
+	}
+}  

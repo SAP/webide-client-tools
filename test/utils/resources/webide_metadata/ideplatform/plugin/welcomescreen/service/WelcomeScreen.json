@@ -1,0 +1,15 @@
+{
+	"name" : "sap.watt.common.welcomescreen.service.WelcomeScreen",
+	"description": "The main service of the welcome screen",
+	"extends" : ["sap.watt.common.service.ui.Part", "sap.watt.common.service.selection.Provider","sap.watt.common.service.selection.TypedSelectionProvider"],
+	"methods" : {
+		"getBasicContainer" : {
+			"params" : [
+				{
+					"name" : "sId",
+					"type": "string"
+				}],
+			"returns" : "object"
+		}
+	}
+}

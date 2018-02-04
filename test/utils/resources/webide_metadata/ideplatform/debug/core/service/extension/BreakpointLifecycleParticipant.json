@@ -1,0 +1,48 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.extension.BreakpointLifecycleParticipant",
+  "description": "The breakpoint lifecylce participant is responsible for saving/restoring breakpoints in the IDEs preferences and for creating breakpoints based on the editor's file location information.",
+  "methods": {
+    "create": {
+      "description": "Creates a new breakpoint from the state captured by the given JSON representation. Clients must check for existence of properties.",
+      "params": [
+        {
+          "name": "breakpointSettings",
+          "type": "object",
+          "description": "Breakpoint settings, e.g. as defined by 'sap.watt.ideplatform.debug.core.model.Breakpoint' ('debugModelId', 'location') or 'sap.watt.ideplatform.debug.core.model.LineBreakpoint' ('debugModelId', 'location', 'statement')"
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.model.Breakpoint",
+        "description": "The newly created breakpoint instance"
+      }
+    },
+    "restore": {
+      "description": "Re-creates and returns the breakpoint from the state captured by the given JSON representation. <p>This method is called by the debug framework as part of the breakpoint manager bootstrap sequence. No debug session exists at this point in time.",
+      "params": [
+        {
+          "name": "breakpointSettings",
+          "type": "object",
+          "description": "Breakpoint settings, e.g. as defined by 'sap.watt.ideplatform.debug.core.model.Breakpoint' ('debugModelId', 'location') or 'sap.watt.ideplatform.debug.core.model.LineBreakpoint' ('debugModelId', 'location', 'statement')"
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.model.Breakpoint",
+        "description": "The breakpoint object or undefined if it could not be created"
+      }
+    },
+    "save": {
+      "description": "Saves the state of the given breakpoint. <p>This method is called by the debug framework on every 'breakpointsChanged' or 'breakpointManagerEnablementChanged' event.",
+      "params": [
+        {
+          "name": "breakpoint",
+          "type": "sap.watt.ideplatform.debug.core.model.Breakpoint",
+          "description": "The breakpoint object"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The JSON representation of the given breakpoint that should be persisted."
+      }
+    }
+  }
+}

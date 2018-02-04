@@ -1,0 +1,92 @@
+{
+	"name": "sap.watt.platform.filefilter",
+	"description": "The File Filter Plugin",
+	"i18n": "sap.watt.platform.filefilter/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"document",
+			"preferences",
+			"command",
+			"commandGroup",
+			"log",
+			"filesystem.documentProvider",
+			"perspective",
+			"usagemonitoring"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"filefilter": {
+				"implements": "sap.watt.platform.filefilter.FileFilter",
+				"module": "sap.watt.platform.filefilter/service/FileFilter"
+			},
+			"_filefilter.hide": {
+				"implements": "sap.watt.platform.filefilter.FileFilterHide",
+				"module": "sap.watt.platform.filefilter/service/FileFilterHide"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.platform.filefilter.FileFilter": "sap.watt.platform.filefilter/service/FileFilter",
+			"sap.watt.platform.filefilter.FileFilterHide": "sap.watt.platform.filefilter/service/FileFilterHide"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"filesystem.documentProvider:fileFilterHandler" : {
+                "service" : "@filefilter"
+            },
+			"command:commands": [{
+				"id": "filefilter.showHiddenFiles",
+				"icon": "show",
+				"label": "{i18n>command_show_hidden_files}",
+				"type": "action",
+				"service": "sap.watt.platform.filefilter/command/ShowHiddenFiles"
+			}, {
+				"id": "filefilter.hideFiles",
+				"icon": "hide",
+				"label": "{i18n>command_hide_files}",
+				"type": "action",
+				"service": "sap.watt.platform.filefilter/command/HideFiles"
+			}],
+			"commandGroup:groups": [{
+				"id": "view.fileFilter"
+			}],
+			"commandGroup:items": [{
+				"parent": "repositorybrowserToolbar",
+				"command": "filefilter.showHiddenFiles",
+				"prio": 30
+			}, {
+				"parent": "repositorybrowserToolbar",
+				"command": "filefilter.hideFiles",
+				"prio": 35
+			}, {
+				"parent": "view",
+				"type": "inline",
+				"group": "view.fileFilter",
+				"prio": 20
+			}, {
+				"parent": "view.fileFilter",
+				"command": "filefilter.hideFiles",
+				"prio": 10
+			}, {
+				"parent": "view.fileFilter",
+				"command": "filefilter.showHiddenFiles",
+				"prio": 20
+			}],
+			"usagemonitoring:reportParams": [{
+				"components": ["repositoryBrowser"],
+				"eventTypes": ["showHiddenFiles", "hideFiles"]
+			}]
+		}
+	},
+
+	"subscribes": {
+		"document:deleted": "_filefilter.hide:deleteFilters",
+		"document:created": "_filefilter.hide:addFilters",
+		"projectType:projectTypesUpdated": "_filefilter.hide:onUpdateProjectTypes"
+	}
+}

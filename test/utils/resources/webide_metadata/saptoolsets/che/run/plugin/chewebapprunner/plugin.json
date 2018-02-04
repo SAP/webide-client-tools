@@ -1,0 +1,59 @@
+{
+	"name": "sap.watt.saptoolsets.che.run.chewebapprunner",
+	"description": "Che Web App runner plugin",
+	"i18n" : "sap.watt.saptoolsets.che.run.chewebapprunner/i18n/i18n",
+
+	"requires": {
+		"services": [
+		    "run",
+			"setting.project",
+			"basefilesearchutil",
+			"basechoosefilepopup",
+			"baseinputvalidatorutil",
+			"log",
+			"runconfig.filepath",
+			"runconfig.preview",
+			"runconfig.urlparameters",
+            "runconfig.withmock",
+			"chepreviewadapter",
+			"runwithframenewProcess",
+			"run",
+			"htmlextendersextension",
+			"runinnewprocess"
+		]
+	},
+	"provides": {
+		"services": {
+			"CheWebAppRunner": {
+				"implements": "sap.watt.common.plugin.run.service.runner",
+				"module": "sap.watt.saptoolsets.che.run.chewebapprunner/service/CheWebAppRunner"
+			},
+			"chewebapprunnerruntime": {
+				"implements": "sap.watt.saptoolsets.che.run.chewebapprunner.CheWebAppRunnerRuntime",
+				"module": "sap.watt.saptoolsets.che.run.chewebapprunner/service/CheWebAppRunnerRuntime"
+			}
+		},
+		"interfaces": {
+			"sap.watt.saptoolsets.che.run.chewebapprunner.CheWebAppRunnerRuntime": "sap.watt.saptoolsets.che.run.chewebapprunner/service/CheWebAppRunnerRuntime"
+		}	
+	},
+	
+ 	"configures" : {
+        "services" : {
+            "run:runners": [
+                {
+                    "id" : "chewebapprunner",
+                    "service": "@CheWebAppRunner",
+                    "displayName" : "{i18n>lbl_run_sap_web_app}",
+                    "projectTypesIds" : ["sap.html5"],
+                    "windowTarget" : "web_preview",
+					"fileTypes" : ["*.html"],
+					"registerRunConsole": true
+                }
+            ]
+        }
+	},
+	"subscribes": {
+	
+	}
+}

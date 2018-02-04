@@ -1,0 +1,27 @@
+{
+    "name" : "sap.watt.common.plugin.adt.compatibility.service.AdtDiscoveryFactory",
+    "description": "The ADT discovery factory interface",
+    "methods": {
+        "getDiscovery": {
+            "description": "The factory returns an ADT discovery for a given discoveryUrl and for the page currently loaded in the browser window, i.e. for the ABAP remote server from which this page is loaded. The discovery is either taken from cache or created. In the later case the discovery content is retrieved via a request from remote server. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: one error object { message, stack }.",
+            "params": [
+                {
+                    "name": "discoveryUrl",
+                    "type": "string",
+                    "description": "RestResource URL for the specific discovery",
+                    "optional": false
+                },
+                {
+                    "name": "settings",
+                    "type": "object",
+                    "description": "Optional settings parameter, e.g. {urlPrefix : \"/destinations/uia_abap_dev\"}",
+                    "optional": true
+                }
+            ],
+            "returns": {
+                "type": "sap.watt.common.plugin.adt.compatibility.service.AdtDiscovery",
+                "description": "AdtDiscovery for this given discovery URL and remote server, from which the current page was loaded in the browser window"
+            }
+        }
+    }
+}

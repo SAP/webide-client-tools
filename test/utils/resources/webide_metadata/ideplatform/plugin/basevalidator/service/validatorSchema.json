@@ -1,0 +1,21 @@
+{
+  "name": "sap.watt.common.basevalidator.validatorSchema",
+  "extends": [],
+  "methods": {
+	"getSchema": {
+	  "description": "provides the schema for the validator",
+	  "returns": {
+		"type": "object",
+		"description": "The schema content"
+	  }
+	},
+	  "getHelpURL" : {
+		  "params" : [],
+		  "returns" : {
+			  "type" : "string",
+			  "default": "",
+			  "description" : "return help URL for the specific schema"
+		  }
+	  }
+  }
+}

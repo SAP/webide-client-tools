@@ -1,0 +1,30 @@
+{
+	"name" : "sap.watt.common.decoration.Decorator",
+
+	"methods" : {
+		"decorate" : {
+			
+			"description" : "Method is called to decorate an instance which is displaying a certain document",
+			"params" : [
+				{
+					"name" : "oDocument",					
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The document for which the decoration should be applied to"	
+				}
+			],
+			"returns": {
+				"type" : {
+					"styleClass" : "string",
+					"prefix" :  "object",
+					"suffix" :  "[object]",
+					"decoratorIconBottomLeft" : "string",
+					"decoratorIconBottomRight" : "string",
+					"decoratorIconTopLeft" : "string",
+					"decoratorIconTopRight" : "string",
+				  	"decoratorIconStyleClass" : "string"
+				}
+				
+			}		
+		}
+	}
+}

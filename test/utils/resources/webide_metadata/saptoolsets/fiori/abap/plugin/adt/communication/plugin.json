@@ -1,0 +1,17 @@
+{
+    "name": "sap.watt.saptoolsets.fiori.abap.adt.communication",
+    "description": "The plugin providing communication services for ABAP remote servers",
+    "provides": {
+        "services": {
+            "adtRestResourceFactory": {
+                "version": "0.0.1",
+                "implements": "sap.watt.common.plugin.adt.communication.service.AdtRestResourceFactory",
+                "module": "sap.watt.saptoolsets.fiori.abap.adt.communication/service/AdtRestResourceWrapper"
+            }
+        },
+        "interfaces": {
+            "sap.watt.common.plugin.adt.communication.service.AdtRestResourceFactory": "sap.watt.saptoolsets.fiori.abap.adt.communication/service/AdtRestResourceFactory",
+            "sap.watt.common.plugin.adt.communication.service.AdtRestResource": "sap.watt.saptoolsets.fiori.abap.adt.communication/service/AdtRestResource"
+        }
+    }
+}

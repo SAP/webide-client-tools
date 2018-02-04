@@ -1,0 +1,83 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.project.testGenerationWizard.service.WizardUtils",
+	"extends": [],
+	"description": "The test snippet file creation service",
+	"methods": {
+		"updateListOfFiles": {
+			"description": "Update the wizard model with the list of files",
+			"params": [{
+				"name": "oContext",
+				"type": "object"
+			}, {
+				"name": "oModel",
+				"type": "object"
+			}, {
+				"name": "sArrayContainerFilesName",
+				"type": "string"
+			}, {
+				"name": "oDocument",
+				"type": "object"
+			}, {
+				"name": "oFilterFiles",
+				"type": "object"
+			}, {
+				"name": "sSelectedFile",
+				"type": "string"
+			}, {
+				"name": "sSelectedContainerFile",
+				"type": "string"
+			}]
+
+		},
+		"createTestAndUpdateSuite": {
+			"description": "Create a test file and update his name in the test suite",
+			"params": [{
+				"name": "oContext",
+				"type": "object"
+			}, {
+				"name": "sFileName",
+				"type": "string"
+			}, {
+				"name": "sSelectedSuiteFile",
+				"type": "string"
+			}, {
+				"name": "sSnippetType",
+				"type": "string"
+			}, {
+				"name": "oDocument",
+				"type": "object"
+			}, {
+				"name": "sNewFileTestName",
+				"type": "string"
+			}, {
+				"name": "sSelectedViewFile",
+				"type": "string"
+			}, {
+				"name": "aViewFileControls",
+				"type": "object"
+			}]
+		},
+		"validateFileNameSyntax": {
+			"description": "Create a test file and update his name in the test suite",
+			"params": [{
+				"name": "sName",
+				"type": "string"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "Returns true if valid, false if invalid"
+			}
+		},
+		"getProjectInfo": {
+			"description": "get namespace and application root path",
+			"params": [{
+				"name": "oDocument",
+				"type": "object"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Returns namespace and application root path"
+			}
+		}
+	}
+}

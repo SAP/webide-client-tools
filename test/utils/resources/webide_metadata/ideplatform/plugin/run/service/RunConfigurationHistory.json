@@ -1,0 +1,65 @@
+{
+    "name": "sap.watt.common.plugin.run.service.history",
+    "methods" : {
+        "store" : {
+            "description" : "Stores a run configuration in a workspace preferences",
+            "params" : [
+                {
+                    "name" : "oConfiguration",
+                    "type" : "object"
+                }
+            ]
+        },
+        "remove" : {
+            "description" : "Removes run configurations by ids",
+            "params" : [
+                {
+                    "name" : "aRunConfigurationIds",
+                    "type" : "object"
+                }
+            ]
+        },
+        "getLatestConfigurations" : {
+            "description" : "Returns all stored run configuration"
+        },
+        "getConfigurationNames" : {
+            "description" : "Returns all current configuration names"
+        },
+        "removeByProjectPath" : {
+            "description" : "Removes run configurations by project path",
+            "params" : [
+                {
+                    "name" : "sProjectPath",
+                    "type" : "string"
+                }
+            ]
+        },
+        "update" : {
+            "description" : "Updates stored run configurations",
+            "params" : [
+                {
+                    "name" : "aConfigurations",
+                    "type" : "object"
+                }
+            ]
+        },
+        "isDisplayNameExists" : {
+        	"params" : [
+                {
+                    "name" : "sDisplayName",
+                    "type" : "string"
+                },
+                {
+                    "name" : "sConfigurationId",
+                    "type" : "string"
+                }
+            ]
+        }
+    },
+    "configurationProperties" : {
+		"maxConfigurationsToStore" : {
+			"type" : "number",
+			"multiple" : false
+		}
+	}
+}

@@ -1,0 +1,94 @@
+{
+	"name" : "sap.watt.common.service.remote.System",
+	"description" : "The service remote service interface",
+	"methods" : {
+		"reconnect": {
+			"description" : "Performs a reconnect to the remote backend when a session is gone."
+		},
+		"login" : {
+			"description" : "Performs a login to the remote backend",
+			"params" : [
+				{ 
+					"name" : "sUsername",
+					"type" : "string",
+					"description" : "The user name"
+				},
+				{ 
+					"name" : "sPassword",
+					"type" : "string",
+					"description" : "The password"
+				}
+			]
+		},
+		"logout" : {
+			"description" : "Performs a logout of the remote backend"
+		},
+		"isAlive" : {
+			"description" : "Performs a keep alive ping and returns whether the session is alive. A rejection can differentiate between connection/server down or session lost"
+		},
+		"getQuota" : {
+		    "description" : "Retrieves the global disk usage quota and the global maximum request size",
+		    "returns" : {
+		        "type" : "object",
+				"description" : "The global disk usage quota and the global maximum request size",
+				"default" : null
+		    }
+		},
+		"getSystemInfo" : {
+			"description" : "Gets the system info",
+			"returns": {
+					"type" : {
+						"sDbname" : {
+							"type" : "string",
+							"description" : "The remote repository name"
+							},
+						"sUsername" : {
+							"type" : "string",
+							"description" : "The user name (user id)"
+							},
+						"sAccount" : {
+							"type" : "string",
+							"description" : "The account"
+							},
+						"sEMail" : {
+							"type" : "string",
+							"description" : "The email address (if available)"
+							},
+						"sFirstName" : {
+							"type" : "string",
+							"description" : "The first name (if available)"
+							},
+						"sLastName" : {
+							"type" : "string",
+							"description" : "The last name (if available)"
+							}
+						},
+					"description" : "The system information"
+				}
+		}
+	},
+	
+	"events" : {
+		"loggedIn" : {
+			"description": "This event is fired when the login process completed successfully"
+		},
+		"loggedOut" : {
+			"description": "This event is fired when there is a user logout request"
+		},
+		"failure" :{
+			"params": [
+				{
+					"errorMessage": {
+						"type": "String",
+						"description": "Error message text"
+					},
+					"suggestedAction": {
+						"type": "String",
+						"description": "User suggested action text"
+					}
+				}
+			],
+			"description": "This event is fired when there is a communication error"
+		}
+	}
+}

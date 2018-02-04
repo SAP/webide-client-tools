@@ -1,0 +1,40 @@
+{
+	"name": "sap.watt.uitools.chewebsockets.MessageBusConfig",
+	"description": "DevX message bus configuration",
+	"extends" : [
+		"sap.watt.common.service.ui.Config"
+	],
+	"configurationProperties" : {
+		"preferenceService" : {
+			"type" : {
+				"service" : "sap.watt.common.service.ui.Settings",
+				"node" : "string"
+			},
+			"multiple" : false
+		}
+	},
+	"methods": {
+		"getSettings": {
+			"returns": "object"
+		}
+	},
+
+	"events": {
+		"settingsChanged" : {
+			"description": "When preference values have changed",
+			"params": [
+				{
+					"name": "newValue",
+					"type": "object",
+					"description": "the new settings"
+				},
+				{
+					"name": "oldValue",
+					"type": "object",
+					"description": "the old settings"
+				}
+			]
+		}
+	}
+
+}

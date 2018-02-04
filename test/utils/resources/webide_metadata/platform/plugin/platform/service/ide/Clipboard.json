@@ -1,0 +1,11 @@
+{
+	"name" : "sap.watt.common.service.ide.Clipboard",
+	"description": "The clipboard interface",
+	"methods" : {
+		"addEntity" : {},
+		"removeEntity" : {},
+		"getEntity" : {},
+		"getSource" : {},
+		"getClipboardEntry" : {}
+	}
+}

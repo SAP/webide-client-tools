@@ -1,0 +1,22 @@
+{
+	"name": "sap.watt.platform.issues",
+	"description": "The Issues Plugin",
+	"requires": {
+		"services": [
+			"perspective",
+			"resource",
+			"log"
+		]
+	},
+	"provides": {
+		"services": {
+			"issues": {
+				"implements": "sap.watt.platform.issues.issues",
+				"module": "sap.watt.platform.issues/service/Issues"
+			}
+		},
+		"interfaces": {
+			"sap.watt.platform.issues.issues": "sap.watt.platform.issues/service/Issues"
+		}
+	}
+}

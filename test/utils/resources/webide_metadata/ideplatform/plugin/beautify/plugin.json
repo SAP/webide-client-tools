@@ -1,0 +1,85 @@
+{
+	"name": "sap.watt.ideplatform.beautify",
+	"description": "Beautify plugin",
+	"i18n" : "sap.watt.ideplatform.beautify/i18n/i18n",
+	
+	"requires": {
+		"services": [
+            "command",
+            "commandGroup",
+            "document",
+            "selection",
+            "log",
+			"usagemonitoring"
+        ]
+	},
+	"provides" : {
+		"services": {
+			"beautifierProcessor": {
+				"implements": "sap.watt.common.beautify.beautifierProcessor",
+				"module": "sap.watt.ideplatform.beautify/service/BeautifierProcessor"
+			}
+		},
+        "interfaces": {
+            "sap.watt.common.beautify.beautifier" : "sap.watt.ideplatform.beautify/service/Beautifier",
+            "sap.watt.common.beautify.beautifierProcessor" : "sap.watt.ideplatform.beautify/service/BeautifierProcessor"
+        }
+	},
+
+	"configures": {
+		"services": {
+			"usagemonitoring:reportParams": [{
+				"components": ["editor"],
+				"eventTypes": ["format_content"]
+			}],
+            "command:commands" : [
+                {
+                    "id" : "beautify.beautifier",
+                    "service":"sap.watt.ideplatform.beautify/command/BeautifyCommand",
+                    "label": "{i18n>command_beautify}",
+				  	"keyBinding":"ctrl+alt+b",
+                    "type" : "action"
+                }
+            ],
+			"commandGroup:groups": [
+				{ "id" : "beautifier"}
+			],
+			"commandGroup:items" : [
+				{
+					"parent":"xmlContextMenu",
+					"group":"beautifier",
+					"type":"inline",
+					"prio" : 30
+				},
+				{
+				  "parent":"cssContextMenu",
+				  "group":"beautifier",
+				  "type":"inline",
+				  "prio" : 30
+				},
+				{
+					"parent":"jsContextMenu",
+					"group":"beautifier",
+					"type":"inline",
+					"prio" : 30
+				},
+				{
+				  "parent":"jsonContextMenu",
+				  "group":"beautifier",
+				  "type":"inline",
+				  "prio" : 30
+				},
+				{
+					"parent":"beautifier",
+					"command":"beautify.beautifier",
+					"prio" : 10
+				},
+				{
+					"parent":"edit.editor",
+					"command":"beautify.beautifier",
+					"prio" : 10
+				}
+			]
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+	"name": "sap.watt.ideplatform.che.gruntbuild.service.GruntBuilder",
+	"description": "GruntBuild service Interface",
+	"methods": {
+		"isGruntBuildAvailable": {
+			"params": [
+				{
+					"name" : "oDocument",
+					"type" : "object",
+					"description" : "document"
+				}
+			],
+			"returns": "boolean"
+		},
+		"build": {
+			"params": [
+				{
+					"name" : "oProjectDocument",
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "Project to build"
+				},
+				{
+					"name" : "oBuildOptions",
+					"type" : "object",
+					"description" : "Json object with Che BuildOptions "
+				}
+			],
+			"returns": {
+				"type" : "string",
+				"description" : "The unique build ID"
+			},
+			"description": "Runs a build on a remote server"
+		},
+		"getTargetFolder": {
+			"params": [
+				{
+					"name": "oProjectDocument",
+					"type": "sap.watt.common.plugin.document.Document",
+					"description": "Project to get build results"
+				}
+			],
+			"returns": {
+				"type": "sap.watt.common.plugin.document.Document",
+				"description": "Build result folder"
+			},
+			"description": "Get a build result folder"
+		},
+		"triggerErrorMessagePopup":{
+			"params": [
+				{
+					"name": "oError",
+					"type": "object",
+					"description": "The error thrown"
+				},
+				{
+					"name": "sProjectName",
+					"type": "string",
+					"description": "The project name for which the error was thrown"
+				}
+			]
+		}
+	},
+	"configurationProperties": {
+		"styles": {
+			"type": [{
+				"uri": "string",
+				"type": "string"
+			}],
+			"multiple": false
+		}
+	}
+} 

@@ -1,0 +1,19 @@
+{
+	"name": "sap.watt.bamba.plugin.appdescriptoreditor.service.AppDescriptorEditor",
+	"description": "The app descriptor editor interface",
+	"extends" : [
+		"sap.watt.common.service.editor.Editor"
+	],
+
+	"methods": {
+	},
+	"events" : {
+
+	},
+	"configurationProperties" : {
+        "repositoryBrowserExtensionFilters" : {
+            "type" : "[string]",
+            "multiple" : false
+        }
+    }
+}

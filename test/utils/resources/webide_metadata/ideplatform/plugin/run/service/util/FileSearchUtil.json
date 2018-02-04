@@ -1,0 +1,39 @@
+{
+	"name" : "sap.watt.uitools.plugin.commonrunners.service.FileSearchUtil",
+	"description" : "Common logic to get all HTML files in a project",
+
+	"methods" : {
+	    
+		"getRunnableFiles" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object"
+			},
+			{
+			    "name" : "fnIsValid",
+				"type" : "function"
+			}],
+			"returns" : {
+				"type" : "object",
+				"description" : "Array of files"
+			}
+		},
+		"getRunnableDocument" : {
+			"params" : [{
+				"name" : "sPath",
+				"type" : "object"
+			},
+			{
+			    "name" : "sProjName",
+				"type" : "object"
+			}],
+			"returns" : {
+				"type" : "object",
+				"description" : "oRunnableDocument"
+			}
+		}
+		
+		
+	
+	}
+}

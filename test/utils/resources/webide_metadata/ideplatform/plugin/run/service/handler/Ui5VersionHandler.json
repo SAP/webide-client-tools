@@ -1,0 +1,13 @@
+{
+	"name": "sap.watt.ideplatform.plugin.run.service.Ui5VersionHandler",
+	"description": "UI5 version section UI Handler interface",
+	"methods": {
+		"setServiceData":{},
+		"getDocument":{},
+		"getUIVersions":{},
+		"rbSelectedUpdateModel":{},
+		"dropdownBoxChangeUpdateModel":{},
+		"rbGetSelectedIndex":{},
+		"updateModelDropdownField":{}
+	}
+}

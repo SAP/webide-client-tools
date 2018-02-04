@@ -1,0 +1,13 @@
+{
+    "name": "sap.watt.common.service.runconfigurationui.withmock",
+    "description" : "Composite UI controls",
+    "methods" : {
+        "getControl" : {
+            "description" : "Returns the with mock control",
+            "returns" : {
+                "type": "object",
+                "description": "the with mock control"
+            }
+        }
+    }
+}

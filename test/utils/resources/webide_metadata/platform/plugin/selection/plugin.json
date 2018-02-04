@@ -1,0 +1,32 @@
+{
+	"name": "sap.watt.platform.selection",
+	"description": "The Selection Plugin",
+
+	"requires": {
+		"services": [
+			"focus"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"selection" : {
+				"implements" : "sap.watt.common.plugin.selection.service.Selection",
+				"module" : "sap.watt.platform.selection/service/Selection"
+			},
+			"dummyselectionprovider" : {
+				"implements" : "sap.watt.common.service.selection.Provider",
+				"module" : "sap.watt.platform.selection/service/DummySelectionProvider"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.selection.service.Selection": "sap.watt.platform.selection/service/Selection"
+		}
+		
+	},
+
+	"subscribes": {
+		"focus:changed": "selection:onFocusChanged"
+	}
+}

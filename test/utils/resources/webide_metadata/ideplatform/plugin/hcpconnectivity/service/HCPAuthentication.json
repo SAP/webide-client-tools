@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.uitools.plugin.hcpconnectivity.service.HCPAuthentication",
+	
+	"description" : "HCP Authentication service",
+	
+	"methods" : {
+	
+		"authenticate":{
+		    "params" : [],				
+			"returns" : "object"		
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+    "name": "sap.watt.common.service.runconfigurationui.urlparameters",
+    "description" : "Composite UI controls",
+    "methods" : {
+        "getControl" : {
+            "description" : "Returns the URL Parameters control",
+            "returns" : {
+                "type": "object",
+                "description": "URL Parameters control"
+            }
+        }
+    }
+}

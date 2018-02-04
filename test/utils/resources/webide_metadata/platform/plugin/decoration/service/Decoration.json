@@ -1,0 +1,88 @@
+{
+	"name" : "sap.watt.common.decoration.Decoration",
+
+	"description" : "The decoration service",
+
+	"configurationProperties" : {
+		"decorators" : {
+			"type" : {
+				"service":"sap.watt.common.decoration.Decorator",
+				"prio": "number"
+			},
+			"multiple" : true		
+		}
+	},
+	
+	
+	"methods" : {
+		"areDecoratorsAvailable" : {
+			"returns" : "boolean"
+		},
+		
+		"decorate" : {
+			
+			"description" : "Method is called to decorate an instance which is visualisation a certain document",
+			"params" : [
+				{
+					"name" : "oDocument",					
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The document for which the decoration should be applied to"	
+				}
+			],
+			"returns": {
+				"type" : {
+					"styleClass" : "string",
+					"prefix" :  "string",
+					"prefixStyleClass" :  "string",
+					"suffix" :  "string",
+					"suffixStyleClass" :  "string",
+					"decoratorIconBottomLeft" : "string",
+					"decoratorIconBottomRight" : "string",
+					"decoratorIconTopLeft" : "string",
+					"decoratorIconTopRight" : "string",
+                    "decoratorIconStyleClass" : "string"
+				}
+			}		
+		},
+
+        "updateDecorations" : {
+            "description" : "Fire an event that decorations should be updated",
+            "params" : [
+                {
+                    "name" : "aDocuments",
+                    "type" : "[sap.watt.common.plugin.document.Document]",
+                    "description" : "The documents whose decorations should be updated. It's possible to send a single document."
+                },
+                {
+                    "name" : "oEvent",
+                    "type" : "object",
+                    "optional" : true,
+                    "description" : "The event which triggered the decoration update"
+                }
+            ]
+        }
+	},
+    "events" : {
+        "decorationsChanged" : {
+            "description" : "Fired when decorations should be updated",
+            "params" : [
+                {
+                    "name" : "documents",
+                    "type" : "[sap.watt.common.plugin.document.Document]",
+                    "description" : "The documents whose decorations should be updated"
+                },
+                {
+                    "name" : "updateChildren",
+                    "type" : "boolean",
+                    "description" : "True if the decorations for the documents' children were also updated"
+                },
+                {
+                    "name" : "event",
+                    "type" : "object",
+                    "optional" : true,
+                    "description" : "The event which triggered the decoration change"
+                }
+            ]
+        }
+    }
+}

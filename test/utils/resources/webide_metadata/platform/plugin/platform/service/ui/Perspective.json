@@ -1,0 +1,275 @@
+{
+
+	"name": "sap.watt.common.service.ui.Perspective",
+	"description": "The <i>perspective</i> service allows defining a structured layout with resizable areas.",
+	"extends": "sap.watt.common.service.ui.Part",
+	"visibility" : "public",
+
+	"configurationProperties": {
+		"perspectives": {
+			"type": {
+				"id": "string"
+			},
+			"multiple": true,
+			"visibility" : "hidden"
+		},
+
+		"defaultPerspective": {
+			"type": "string",
+			"multiple": false,
+			"visibility" : "hidden"
+		},
+
+		"areas": {
+			"type": {
+				"id": "string",
+				"position": "string",
+				"cssclass": "string",
+				"perspective": "string",
+				"visible": "boolean",
+				"view": "string"
+			},
+			"multiple": true,
+			"visibility" : "hidden"
+		},
+
+		"views": {
+			"description": "Determines the service that is mapped to the <i>view</i> ID. A <i>view</i> can be displayed in a perspective.",
+			"type": {
+				"id": {
+					"type" : "string",
+					"description" : "Is used for identifying a <i>view</i> in SAP Web IDE."
+				},
+				"service": {
+					"type" : "sap.watt.common.service.ui.Part",
+					"description" : "Is displayed in a specific area and should implement the <i>part</i> interface."
+				},
+				"area": {
+					"type" : "string",
+					"description" : "The area where the view will be displayed in all perspectives having an area with this name.",
+					"deprecated": {
+						"description": "The <i>area</i> property of the <i>views</i> configuration property has been deprecated. Instead, use the <i>viewToAreaMapping</i> configuration property."
+					}
+				},
+				"cssclass": {
+					"type" : "string",
+					"description" : "The CSS class that is provided for the specific view."
+				},
+				"restore": {
+					"type" : "boolean",
+					"description" : "Determines whether a view is rendered on startup if it was opened before SAP Web IDE was closed. The default value of the <i>restore</i> type is <i>true</i>."
+				},
+				"persist": {
+					"type" : "boolean",
+					"description" : "Determines whether a view is saved in the user preferences."
+				},
+				"alwaysOpenAsDefaultAfterNormalized": {
+					"type" : "boolean",
+					"description" : "Determines whether a service is displayed after the area is minimized, even if it was closed before the area was maximized."
+				}
+			},
+			"multiple": true,
+			"visibility" : "public"
+		},
+
+		"viewToAreaMapping": {
+			"description": "Determines the placement of a <i>view</i> in each perspective.",
+			"type": {
+				"view":  {
+					"type" : "string",
+					"description" : "The ID of the <i>view</i> that is displayed."
+				},
+				"perspective": {
+					"type" : "string",
+					"description" : "The ID of the perspective in which the <i>view</i> is displayed."
+				},
+				"area": {
+					"type" : "string",
+					"description" : "The area where the <i>view</i> is displayed."
+				}
+			},
+			"multiple": true,
+			"visibility" : "public"
+		},
+
+		"preferenceService": {
+			"type": {
+				"node": "string"
+			},
+			"multiple": false,
+			"visibility" : "hidden"
+		},
+
+		"initialPerspectiveChooser": {
+			"description": "Chooses which perspective is initially displayed.",
+			"type": {
+				"priority": {
+					"type" : "number",
+					"description" : "The priority of the chooser. A lower number means a higher priority."
+				},
+				"service": {
+					"type" : "sap.watt.common.service.ui.PerspectiveChooser",
+					"description" : "The service that chooses the perspective"
+				}
+			},
+			"multiple": true,
+			"visibility" : "hidden"
+		}
+	},
+
+	"methods": {
+
+		"renderPerspective": {
+			"params": [{
+				"name": "sPerspective",
+				"type": "string"
+			}],
+			"visibility" : "hidden"
+		},
+
+		"resetToDefault": {
+			"params": [],
+			"visibility" : "hidden"
+		},
+
+		"getCurrentPerspective": {
+			"params": [],
+			"returns": "string",
+			"visibility" : "hidden"
+		},
+
+		"placeServiceAt": {
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}, {
+				"name": "sViewId",
+				"type": "string"
+			}],
+			"visibility" : "hidden"
+		},
+
+		"getServiceAt": {
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}],
+			"returns": "object",
+			"visibility" : "hidden"
+		},
+
+		"getViewIdAt": {
+			"description": "Returns the <i>viewId</i> that is currently located in an area containing the <i>sId</i> ID.",
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}],
+			"returns": "string",
+			"visibility" : "hidden"
+		},
+
+		"getAreaForService": {
+			"params": [{
+				"name": "sViewId",
+				"type": "string"
+			}],
+			"returns": "string",
+			"visibility" : "hidden"
+		},
+
+		"setAreaMaximized": {
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}, {
+				"name": "bVisible",
+				"type": "boolean"
+			}],
+			"visibility" : "hidden"
+		},
+
+		"isAreaMaximized": {
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}],
+			"returns": "boolean",
+			"visibility" : "hidden"
+		},
+
+		"setAreaVisible": {
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}, {
+				"name": "bVisible",
+				"type": "boolean"
+			}],
+			"visibility" : "hidden"
+		},
+
+		"isAreaVisible": {
+			"params": [{
+				"name": "sId",
+				"type": "string"
+			}],
+			"returns": "boolean",
+			"visibility" : "hidden"
+		},
+
+		"isPerspectiveRegistered": {
+			"params": [{
+				"name": "sPerspectiveId",
+				"type": "string"
+			}],
+			"returns": "boolean",
+			"visibility" : "hidden"
+		},
+
+		"getPerspectivesForService": {
+			"params": [{
+				"name" : "sViewId",
+				"type": "string"
+			}],
+			"retrns": ["string"],
+			"visibility" : "hidden"
+		},
+
+		"report": {
+			"params": [{
+				"name": "sEventType",
+				"type": "string"
+			},
+			{
+				"name": "sData",
+				"type": "string",
+				"description": "The service name that contains the toggle state."
+			}],
+			"description" : "The <i>report</i> method is used to report usage analytics in order to prevent each UI part from adding a dependency to the <i>usagemonitoring</i> service when using the <i>AbstractUIPartToggler</i> service without a context.",
+			"visibility" : "hidden"
+		}
+
+	},
+
+	"events": {
+		"perspectiveChanged": {
+			"description": "This event is fired when when a perspective is changed.",
+			"params": [{
+				"name": "from",
+				"type": "string"
+			}, {
+				"name": "to",
+				"type": "string"
+			}],
+			"visibility" : "hidden"
+		},
+
+		"splitterPositionChanged": {
+			"description": "This event is fired when a splitter position is changed.",
+			"params": [],
+			"visibility" : "hidden"
+		}
+
+	}
+
+}

@@ -1,0 +1,25 @@
+{
+	"name": "sap.watt.platform.ajaxrequest",
+	"description": "The Template Plugin",
+	"i18n" : "sap.watt.platform.ajaxrequest/i18n/i18n",
+
+	"requires": {
+		"services": []
+	},
+	
+	"provides": {
+		"services" : {
+			"ajaxrequest": {
+				"implements": "sap.watt.common.plugin.ajaxrequest.service.AjaxRequest",
+				"module": "sap.watt.platform.ajaxrequest/service/AjaxRequest"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.ajaxrequest.service.AjaxRequest": "sap.watt.platform.ajaxrequest/service/AjaxRequest"
+		
+		}
+		
+	}
+
+}

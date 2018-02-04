@@ -1,0 +1,93 @@
+{
+    "name" : "sap.watt.common.plugin.adt.communication.service.AdtRestResource",
+    "description": "The ADT rest resource interface",
+    "methods": {
+        "get": {
+            "description": "Invokes an HTTP GET method on the given URL. The GET request is performed asynchronously or synchronously, as it is defined in the given jQuery ajax settings. Independently of the settings, the method returns a Q-promise, which asynchronously calls the respective callback functions: API of the done-callback is function(result) with result is one object {data, textStatus, jqXHR},  API of fail-callback: function( error ) with error is one object {jqXHR, textStatus, errorThrown, adtErrorData} with data, textStatus, jqXHR, errorThrown are the parameters provided in the callback functions of the jQuery ajax call. If an error came up on ABAP server, then adtErrorData is available and contains the respective error data. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: an error object {message, stack}. In case a success callback is provided via the given jQuery ajax settings, then this callback must fulfill the API of a Q-promise success-callback, as described above. The method performs security checks as input validation as it was configured when the AdtRestResource was created (see JSDoc of AdtRestResourceFactory#createInstance).",
+            "params": [
+                {
+                    "name": "url",
+                    "type": "string",
+                    "description": "Rest resource URL",
+                    "optional": true
+                },
+                {
+                    "name": "settings",
+                    "type": "object",
+                    "description": "Settings for ajax call. Type: plain object, see jQuery.ajax() for more details. If only the settings parameter is given, then the relative URL has to be provided via settings.url.",
+                    "optional": true
+                }
+            ],
+            "returns": {
+                "type": "object",
+                "description": "The promise for the HTTP GET request"
+            }
+        },
+
+        "post": {
+            "description": "Invokes an HTTP POST method on the given URL. The POST request is performed asynchronously or synchronously, as it is defined in the given jQuery ajax settings. Independently of the settings, the method returns a Q-promise, which asynchronously calls the respective callback functions: API of the done-callback is function(result) with result is one object {data, textStatus, jqXHR},  API of fail-callback: function( error ) with error is one object {jqXHR, textStatus, errorThrown, adtErrorData} with data, textStatus, jqXHR, errorThrown are the parameters provided in the callback functions of the jQuery ajax call. If an error came up on ABAP server, then adtErrorData is available and contains the respective error data. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: an error object {message, stack}. In case a success callback is provided via the given jQuery ajax settings, then this callback must fulfill the API of a Q-promise success-callback, as described above. Remark: If the Http status of the ABAP server response is 403 (FORBIDDEN), then the CSRF-token might be outdated. In this case the method retries to retrieve a new CSRF-token and retries the POST request one further time. The method performs security checks as input validation as it was configured when the AdtRestResource was created (see JSDoc of AdtRestResourceFactory#createInstance).",
+            "params": [
+                {
+                    "name": "url",
+                    "type": "string",
+                    "description": "Rest resource URL",
+                    "optional": true
+                },
+                {
+                    "name": "settings",
+                    "type": "object",
+                    "description": "Settings for ajax call. Type: plain object, see jQuery.ajax() for more details. If only the settings parameter is given, then the relative URL has to be provided via settings.url.",
+                    "optional": true
+                }
+            ],
+            "returns": {
+                "type": "object",
+                "description": "The promise for the HTTP GET request"
+            }
+        },
+
+        "put": {
+            "description": "Invokes an HTTP PUT method on the given URL. The PUT request is performed asynchronously or synchronously, as it is defined in the given jQuery ajax settings. Independently of the settings, the method returns a Q-promise, which asynchronously calls the respective callback functions: API of the done-callback is function(result) with result is one object {data, textStatus, jqXHR},  API of fail-callback: function( error ) with error is one object {jqXHR, textStatus, errorThrown, adtErrorData} with data, textStatus, jqXHR, errorThrown are the parameters provided in the callback functions of the jQuery ajax call. If an error came up on ABAP server, then adtErrorData is available and contains the respective error data. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: an error object {message, stack}. In case a success callback is provided via the given jQuery ajax settings, then this callback must fulfill the API of a Q-promise success-callback, as described above. Remark: If the Http status of the ABAP server response is 403 (FORBIDDEN), then the CSRF-token might be outdated. In this case the method retries to retrieve a new CSRF-token and retries the PUT request one further time. The method performs security checks as input validation as it was configured when the AdtRestResource was created (see JSDoc of AdtRestResourceFactory#createInstance).",
+            "params": [
+                {
+                    "name": "url",
+                    "type": "string",
+                    "description": "Rest resource URL",
+                    "optional": true
+                },
+                {
+                    "name": "settings",
+                    "type": "object",
+                    "description": "Settings for ajax call. Type: plain object, see jQuery.ajax() for more details. If only the settings parameter is given, then the relative URL has to be provided via settings.url.",
+                    "optional": true
+                }
+            ],
+            "returns": {
+                "type": "object",
+                "description": "The promise for the HTTP PUT request"
+            }
+        },
+
+        "del": {
+            "description": "Invokes an HTTP DELETE method on the given URL. The DELETE request is performed asynchronously or synchronously, as it is defined in the given jQuery ajax settings. Independently of the settings, the method returns a Q-promise, which asynchronously calls the respective callback functions: API of the done-callback is function(result) with result is one object {data, textStatus, jqXHR},  API of fail-callback: function( error ) with error is one object {jqXHR, textStatus, errorThrown, adtErrorData} with data, textStatus, jqXHR, errorThrown are the parameters provided in the callback functions of the jQuery ajax call. If an error came up on ABAP server, then adtErrorData is available and contains the respective error data. If a precondition check fails, e.g. in case of illegal arguments, then an exception is thrown: an error object {message, stack}. In case a success callback is provided via the given jQuery ajax settings, then this callback must fulfill the API of a Q-promise success-callback, as described above. Remark: If the Http status of the ABAP server response is 403 (FORBIDDEN), then the CSRF-token might be outdated. In this case the method retries to retrieve a new CSRF-token and retries the DELETE request one further time. The method performs security checks as input validation as it was configured when the AdtRestResource was created (see JSDoc of AdtRestResourceFactory#createInstance).",
+            "params": [
+                {
+                    "name": "url",
+                    "type": "string",
+                    "description": "Rest resource URL",
+                    "optional": true
+                },
+                {
+                    "name": "settings",
+                    "type": "object",
+                    "description": "Settings for ajax call. Type: plain object, see jQuery.ajax() for more details. If only the settings parameter is given, then the relative URL has to be provided via settings.url.",
+                    "optional": true
+                }
+            ],
+            "returns": {
+                "type": "object",
+                "description": "The promise for the HTTP DELETE request"
+            }
+        }
+    }
+}

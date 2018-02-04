@@ -1,0 +1,53 @@
+{
+	"name": "sap.watt.common.perspective",
+	"comment": "The name remain common also the layer is platform because of the usage in require all over the application",
+	"description": "The perspective manages the content area of an ide.",
+	"i18n": "sap.watt.common.perspective/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"focus",
+			"command",
+			"commandGroup",
+			"resource",
+			"usernotification",
+			"preferences",
+			"usagemonitoring",
+			"log"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"perspective": {
+				"implements": "sap.watt.common.service.ui.Perspective",
+				"module": "sap.watt.common.perspective/service/Perspective"
+			}
+		}
+	},
+
+	"configures": {
+		"services": {
+
+			"perspective:styles": [{
+				"uri": "sap.watt.common.perspective/css/perspective.css"
+			}],
+
+			"command:commands": [{
+				"id": "perspective.reset",
+				"label": "{i18n>command_resetToDefault}",
+				"service": "sap.watt.common.perspective/command/ResetToDefault"
+			}],
+			"commandGroup:items": [{
+				"parent": "view.perspectives",
+				"command": "perspective.reset",
+				"prio": 20
+			}],
+			"usagemonitoring:reportParams": [{
+				"components": ["Perspective"],
+				"eventTypes": ["UiPartToggleState"]
+			}]
+
+		}
+	}
+}

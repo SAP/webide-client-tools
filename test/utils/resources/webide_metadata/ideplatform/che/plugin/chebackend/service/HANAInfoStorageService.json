@@ -1,0 +1,31 @@
+{
+    "name": "sap.watt.uitools.chebackend.HANAInfoStorageService",
+    "description": "Storage interface for HANA usages",
+    "methods": {
+
+        "getHANAVersion" : {
+            "returns" : "string",
+            "description": "Returns the installed HANA version."
+        },
+
+        "setHANAVersion" : {
+            "params" : [
+                {
+                    "name" : "sHANAVersion",
+                    "type" : "string"
+                }
+            ],
+            "description": "Sets the installed HANA version."
+        },
+
+        "resetHANAVersion" : {
+            "params" : [],
+            "description": "Resets the cached HANA version to null"
+        },
+
+        "getHDIPluginVersionByTheInstalledHANAVersion" : {
+            "returns" : "string",
+            "description": "Returns an HDI plugin version matching the installed HANA version."
+        }
+    }
+}

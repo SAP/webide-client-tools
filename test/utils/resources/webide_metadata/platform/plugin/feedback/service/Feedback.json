@@ -1,0 +1,30 @@
+{
+	"name" : "sap.watt.platform.feedback.service.Feedback",
+	"description" : "Feedback Service interface",
+	"methods" : {
+		"getFeedbackUI" : {
+			"description": "Returns the feedback form",
+			"returns" : "object"
+		},
+		"sendFeedback" : {
+			"description": "Sends the feedback to HCP backend service",
+			"params" :[
+			    {
+    				"name" : "oTextAnswers",
+    				"description" : "The answers of the feedback questions",
+    				"type" : "object"
+    			},
+			    {
+    				"name" : "oRatings",
+    				"description" : "The ratings",
+    				"type" : "object"
+    			},
+			    {
+    				"name" : "oContextAttributes",
+    				"description" : "The context attributes (e.g browser type and version)",
+    				"type" : "object"
+    			}
+			]
+		}
+	}
+}

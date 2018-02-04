@@ -1,0 +1,24 @@
+{
+	"name" : "sap.watt.common.plugin.projectToolBox.service.ProjectToolBoxFactory",
+	"description" : "The project type interface",
+    "configurationProperties" : {
+    },
+    "methods" : {
+        "getInstance" : {
+        	"params" : [{
+                    "name" : "sProjectPath",
+                    "type" : "string"
+                }
+            ],
+            "returns" : {
+                "type" : "object"
+            }
+        },
+        "onProjectTypeUpdated": {
+        	"params": [{
+        		"name": "oEvent",
+        		"type": "object"
+        	}]
+        }
+	}
+}

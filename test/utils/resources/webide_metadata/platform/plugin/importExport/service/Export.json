@@ -1,0 +1,22 @@
+{
+    "name": "sap.watt.common.plugin.importexport.service.export",
+    "description": "Export of project,folder or file",
+   
+    "methods" : {
+        "exportDocument" : {
+          "description" : "Export of project,folder or file to local file system",
+          "params" : [
+            {
+              "name" : "oDocument",
+              "type" : "[sap.watt.common.plugin.document.Document]",
+              "description" : "file to export"
+            },
+            {
+              "name" : "sFileName",
+              "type" : "string",
+              "description" : "file name"
+            }
+          ]
+        }
+    }
+}

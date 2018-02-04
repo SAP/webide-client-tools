@@ -1,0 +1,13 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.DebugPlatform",
+  "description": "Debug platform related services",
+  "methods": {
+    "getLogger": {
+      "description": "Returns a logger that supports enabling and disabling of log info messages using URL param 'sap-ide-debug'.",
+      "returns": {
+        "type": "object",
+        "description": "The log service."
+      }
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+	"name": "sap.watt.common.javascript.JSAstManager",
+	"description": "The Javascript AST Manager interface",
+	"methods": {
+	    "parse" : {
+			"params" : [
+				{
+					"name" : "content",
+					"type" : "string",
+					"description": "the text to be parsed"
+				},
+				{
+					"name" : "options",
+					"type" : "object",
+					"description": "parser settings options"
+				}
+			],
+			"returns": "object",
+			"description": "AST"
+		},
+		"visit" : {
+			"params" : [
+				{
+					"name" : "node",
+					"type" : "object",
+					"description": "the AST node to visit"
+				},
+				{
+					"name" : "visitContext",
+					"type" : "object",
+					"description": "data to be passed between operations"
+				},
+				{
+					"name" : "operation",
+					"type" : "object",
+					"description": "an operation to be performed on the AST node and visitContext"
+				},
+				{
+					"name" : "postoperation",
+					"type" : "object",
+					"description": "operation to be performed after visiting the current node"
+				}
+			]
+		},
+		"parseAndVisitForFunctions":{
+			"description": "Parse and visit for functions",
+			"params" : [
+				{
+					"name" : "contentStatusTargetFile",
+					"type" : "string",
+					"description": ""
+				},
+				{
+					"name" : "content",
+					"type" : "string",
+					"description": "The text to be parsed"
+				}
+			],
+			"returns": "object"
+		},
+
+		"emptyAST" :{
+		    "params" : [
+				{
+					"name" : "content",
+					"type" : "string",
+					"description": "the text to be parsed"
+				}
+			],
+			"returns": "object",
+			"description": "empty AST"
+		},
+		"parseAndVisit" : {
+			"params" : [
+			    {
+					"name" : "contentOwner",
+					"type" : "string",
+					"description": "a unique identifier of the content owner (e.g. file full name) for validatation purposes"
+				},
+				{
+					"name" : "content",
+					"type" : "string",
+					"description": "the text to be parsed"
+				},
+				{
+					"name" : "options",
+					"type" : "object",
+					"description": "parser settings options"
+				},
+				{
+					"name" : "visitContext",
+					"type" : "object",
+					"description": "data to be passed between operations"
+				},
+				{
+					"name" : "operation",
+					"type" : "object",
+					"description": "an operation to be performed on the AST node and visitContext"
+				},
+				{
+					"name" : "postoperation",
+					"type" : "object",
+					"description": "operation to be performed after visiting the current node"
+				}
+			]
+		}
+	},
+	"events" : {}
+}

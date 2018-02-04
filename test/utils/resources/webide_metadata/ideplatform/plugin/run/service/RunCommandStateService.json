@@ -1,0 +1,7 @@
+{
+	"name": "sap.watt.common.plugin.run.service.runcommandstate",
+	"methods" : {
+		"setSelectedConfigurationState": {},
+		"getSelectedConfigurationState" : {}
+	}
+}

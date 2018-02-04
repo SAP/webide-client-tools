@@ -1,0 +1,92 @@
+{
+	"name": "sap.watt.ideplatform.runconsole",
+	"description": "Run Console plugin",
+	"i18n": "sap.watt.ideplatform.runconsole/i18n/i18n",
+	"requires": {
+		"services": [
+			"perspective",
+			"command",
+			"commandGroup",
+			"resource",
+			"content",
+			"log",
+			"selection",
+			"repositorybrowser",
+			"filesystem.documentProvider",
+			"runRegistry",
+			"progress",
+			"document",
+			"run",
+			"filesearchutil",
+			"aceeditor"
+		]
+	},
+	"provides": {
+		"services": {
+			"runconsole": {
+				"implements": "sap.watt.ideplatform.runconsole.RunConsole",
+				"module": "sap.watt.ideplatform.runconsole/service/RunConsole"
+			}
+		},
+		"interfaces": {
+			"sap.watt.ideplatform.runconsole.RunConsole": "sap.watt.ideplatform.runconsole/service/RunConsole",
+			"sap.watt.ideplatform.runconsole.RunConsoleProvider": "sap.watt.ideplatform.runconsole/service/RunConsoleProvider"
+		}
+	},	
+	"configures": {
+		"services": {
+			"perspective:views": [{
+				"id": "runconsole",
+				"service": "@runconsole"
+			}],
+			"perspective:viewToAreaMapping": [{
+				"view": "runconsole",
+				"perspective": "development",
+				"area": "center_bottom"
+			}],
+			"runconsole:styles": [{
+				"uri": "sap.watt.ideplatform.runconsole/css/runconsole.css"
+			},
+			{
+				"uri": "sap.watt.platform.console/css/console.css"
+			}],
+			"runconsole:targets": ["run"],
+			"runconsole:projectTypes": [
+				"sap.html5",
+				"sap.nodejs"
+			],
+			"runconsole:format": "$MESSAGE",
+			"runconsole:maxLineCount": 1000000,
+			"commandGroup:groups": [{
+				"id": "view.runconsole"
+			}],
+			"commandGroup:items": [{
+				"parent": "view.console",
+				"command": "runconsole.open",
+				"prio": 20
+			}, {
+				"parent": "applicationLowerRightSidebar",
+				"command": "runconsole.open",
+				"prio": 30
+			}],
+			"command:commands": [{
+				"id": "runconsole.open",
+				"label": "{i18n>run_console_command_open_run_console}",
+				"type": "action",
+				"icon": "runConsole",
+				"service": {
+					"implements": "sap.watt.common.service.ide.AbstractUIPartToggler",
+					"module": "sap.watt.ideplatform.runconsole/command/openRunConsole",
+					"configuration": {
+						"id": "runconsole.open",
+						"service": "@runconsole",
+						"perspective": "development"
+					}
+				}
+			}]
+		}
+	},
+	"subscribes": {
+		"core:allPluginsStarted": "runconsole:onAllPluginsStarted"
+	}
+}

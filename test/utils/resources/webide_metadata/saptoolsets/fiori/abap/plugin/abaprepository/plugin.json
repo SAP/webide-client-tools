@@ -1,0 +1,120 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.abap.abaprepository",
+	"description": "The plugin responsible for handling actions made on SAPUI5 ABAP Repository",
+	"i18n": "sap.watt.saptoolsets.fiori.abap.abaprepository/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"beautifierProcessor",
+			"command",
+			"commandGroup",
+			"contextMenu",
+			"document",
+			"filesystem.documentProvider",
+			"selection",
+			"translation",
+			"destination",
+			"repositorybrowser",
+			"resource",
+			"wizard",
+			"workspaceapplicationfactory",
+			"usernotification",
+			"log",
+			"git",
+			"setting.project",
+			"preview",
+			"neoapp",
+			"repositorybrowserUtils",
+			"mockpreview",
+			"adtRestResourceFactory",
+			"adtDiscoveryFactory",
+			"progress",
+			"usagemonitoring",
+			"platform.builder",
+			"ui5projecthandler",
+			"ui5librarymetadata"
+		]
+	},
+
+	"configures": {
+		"services": {
+			"command:commands": [{
+				"id": "repositorybrowser.deployToBSP",
+				"label": "{i18n>command_deployToABAP}",
+				"service": "sap.watt.saptoolsets.fiori.abap.abaprepository/command/DeployToBSP"
+			}],
+			"commandGroup:items": [{
+				"parent": "deploy.actions",
+				"command": "repositorybrowser.deployToBSP",
+				"prio": 30
+			}],
+			"filesystem.documentProvider:dao": [{
+				"id": "bspFileDao",
+				"service": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/BSPFileDAO"
+			}],
+			"usagemonitoring:reportParams": [{
+				"components": ["deployment"],
+				"eventTypes": ["deploy_to_abap"]
+			}]
+		}
+	},
+
+	"provides": {
+		"services": {
+			"abapdestination": {
+				"implements": "sap.watt.uitools.plugin.abaprepository.service.ABAPDestination",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/ABAPDestination"
+			},
+			"abaprepository": {
+				"implements": "sap.watt.uitools.plugin.abaprepository.service.ABAPRepository",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/ABAPRepository"
+			},
+			"bspparentproject": {
+				"implements": "sap.watt.common.service.extensibility.ParentProject",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/BSPParentProject"
+			},
+			"transport": {
+				"implements": "sap.watt.uitools.plugin.abaprepository.service.Transport",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/Transport"
+			},
+			"discovery": {
+				"implements": "sap.watt.uitools.plugin.abaprepository.service.Discovery",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/Discovery"
+			},
+			"search": {
+				"implements": "sap.watt.uitools.plugin.abaprepository.service.Search",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/Search"
+			},
+			"selectabapsystemstep": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/ui/services/SelectABAPSystemStep"
+			},
+			"createapplicationstepservice": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/ui/services/CreateApplicationStepService"
+			},
+			"selectapplicationstepservice": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/ui/services/SelectApplicationStepService"
+			},
+			"selecttransportstepservice": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/ui/services/SelectTransportStepService"
+			},
+			"lrepconnector": {
+				"implements": "sap.watt.uitools.plugin.abaprepository.service.LREPConnector",
+				"module": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/LREPConnector"
+			}
+			
+		},
+
+		"interfaces": {
+			"sap.watt.uitools.plugin.abaprepository.service.ABAPDestination": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/ABAPDestination",
+			"sap.watt.uitools.plugin.abaprepository.service.ABAPRepository": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/ABAPRepository",
+			"sap.watt.uitools.plugin.abaprepository.service.Transport": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/Transport",
+			"sap.watt.uitools.plugin.abaprepository.service.Discovery": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/Discovery",
+			"sap.watt.uitools.plugin.abaprepository.service.Search": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/Search",
+			"sap.watt.uitools.plugin.abaprepository.service.LREPConnector": "sap.watt.saptoolsets.fiori.abap.abaprepository/service/LREPConnector"
+		}
+	}
+}

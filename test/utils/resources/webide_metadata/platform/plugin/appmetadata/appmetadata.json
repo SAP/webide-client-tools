@@ -1,0 +1,15 @@
+{
+  "name": "sap.watt.common.appmetadata.appmetadata",
+  "description": "App descriptor facet",
+  "methods": {
+    "getNeoMetadata": {
+      "params": [
+        {
+          "name": "document",
+          "type": "object"
+        }
+      ],
+      "returns": "object"
+    }
+  }
+}

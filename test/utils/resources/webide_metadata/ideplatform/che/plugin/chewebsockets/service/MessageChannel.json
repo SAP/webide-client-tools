@@ -1,0 +1,49 @@
+{
+	"name": "sap.watt.uitools.chewebsockets.MessageChannel",
+	"description": "One channel maintained in message bus",
+
+	"extends" : [
+	],
+	"configurationProperties" : {
+	},
+
+	"methods": {
+		"subscribe": {
+			"description": "Subscribe to this channel"
+		},
+		"unsubscribe": {
+			"description": "Unsubscribe from this channel"
+		},
+		"post": {
+			"description": "Post a message on this channel",
+			"params": [
+				{
+					"name": "endpoint",
+					"type": "string",
+					"description": "The full path to the server endpoint"
+				},
+				{
+					"name": "payload",
+					"type": "object",
+					"description": "The payload to send, either as string or object"
+				},
+				{
+					"name": "context",
+					"type": "object",
+					"description": "An arbitrary object that can serve to link post requests with responses.  Will be passed back in the channel's message callback."
+				}
+			]
+		},
+		"getName": {
+			"description": "Returns the name of this channel",
+			"returns": {
+				"type": "string",
+				"description": "The channel name"
+			}
+		}
+	},
+
+	"events": {
+	}
+
+}

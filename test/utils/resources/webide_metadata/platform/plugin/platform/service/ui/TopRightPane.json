@@ -1,0 +1,18 @@
+{
+	"name" : "sap.watt.common.service.ui.TopRightPane",
+	"description" : "The top right panel",
+	"extends" : "sap.watt.common.service.ui.Part",
+	
+	"configurationProperties" : {
+		"items" : {
+			"type" : {
+				"service" : "sap.watt.common.service.ui.Part",
+                "prio": "number"
+			},
+			"multiple" : true
+		}
+	},	
+
+	"methods" : {
+	}
+}

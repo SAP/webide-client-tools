@@ -1,0 +1,79 @@
+{
+	"name" : "sap.watt.uitools.plugin.gitclient.service.GitClient",
+	"description" : "The GIT client interface",
+	"extends" : ["sap.watt.common.service.ui.Part", "sap.watt.common.service.selection.Provider"]	,
+	"configurationProperties" : {
+        "contextMenu" : {
+            "type" : "string",
+            "multiple" : false
+		},
+		"prePush" : {
+			"type" : {
+				"service" : "sap.watt.common.service.git.PrePushTask"
+			},
+			"multiple" : true
+		}
+    },
+	"methods" : {
+		"doUpdate" : {
+	            "params" : [
+	            	{
+	                	"name" : "oDocument", 
+	                	"type" : "object"
+	                },
+	                {
+	                	"name" : "bForce", 
+	                	"type" : "boolean"
+	                }
+	            ]
+	        },
+	     "isAvailable" : {
+	            "params" : [
+	            	{
+	                	"name" : "oDocument", 
+	                	"type" : "object"
+	                }
+	            ],
+	            "returns" : "object"
+	        },
+			"isEnabled" : {
+	            "params" : [
+	            	{
+	                	"name" : "aSelection", 
+	                	"type" : "[object]"
+	                }
+	            ],
+	            "returns" : "object"
+	        },
+			"getStatus" : {
+	            "params" : [
+	            	{
+	                	"name" : "oEntity", 
+	                	"type" : "object"
+	                },
+	                {
+	                	"name" : "bForce", 
+	                	"type" : "boolean"
+	                }
+	            ],
+	            "returns" : "object"
+	        },
+			"getStatusForNode" : {
+	            "params" : [
+	            	{
+	                	"name" : "oDocument", 
+	                	"type" : "object"
+	                }
+	            ],
+	            "returns" : "object"
+	        },
+	        "setSelection" : {
+	            "params": [
+	                {
+	                    "name"   :"oObject",
+	                    "type": "object"
+	                }
+	            ]
+	        }
+	}
+}

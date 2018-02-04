@@ -1,0 +1,74 @@
+{
+	"name": "sap.watt.ideplatform.hcpconnectivity",
+	"description": "HCP Connectivity plug-in",
+	"i18n" : "sap.watt.ideplatform.hcpconnectivity/i18n/i18n",
+
+	"requires": {
+		"services": [
+		    "command",
+		    "commandGroup",
+			"system",
+			"git",
+			"ajaxrequest",
+			"keystorage",
+			"setting.project",
+			"tipsandtricks",
+			"tipsandtricksviewsfactory"
+		]
+	},
+	
+	"provides": {
+		"services" : {
+			"hcpconnectivity": {
+				"implements": "sap.watt.uitools.plugin.hcpconnectivity.service.HCPConnectivity",
+				"module": "sap.watt.ideplatform.hcpconnectivity/service/HCPConnectivity"
+			},
+			"hcpauthentication" : {
+			    "implements": "sap.watt.uitools.plugin.hcpconnectivity.service.HCPAuthentication",
+				"module": "sap.watt.ideplatform.hcpconnectivity/service/HCPAuthentication"
+			}
+			
+		},
+		
+		"interfaces": {
+		    "sap.watt.uitools.plugin.hcpconnectivity.service.HCPConnectivity": "sap.watt.ideplatform.hcpconnectivity/service/HCPConnectivity",
+		    "sap.watt.uitools.plugin.hcpconnectivity.service.HCPAuthentication": "sap.watt.ideplatform.hcpconnectivity/service/HCPAuthentication"
+		}
+	},
+    
+    "configures" : {
+		"services" : {
+			"command:commands": [{
+				"id" : "hcpconnectivity.opencockpit",
+				"label": "{i18n>command_opencockpit}",
+				"service": "sap.watt.ideplatform.hcpconnectivity/command/OpenCockpit",
+				"windowTarget" : "openCockpit",
+				"available"  : {"not" : {"equals" : [{"env":"server_type"},"xs2"]}}
+			}, {
+				"id" : "hcpconnectivity.openuithemedesigner",
+				"label": "{i18n>command_openuithemedesigner}",
+				"service": "sap.watt.ideplatform.hcpconnectivity/command/OpenUIThemeDesigner",
+				"windowTarget" : "openUIThemeDesigner",
+				"available"  : {"not" : {"equals" : [{"env":"server_type"},"xs2"]}}
+			}],
+			"commandGroup:items": [
+				{
+					"parent": "tools.hcp",
+					"command": "hcpconnectivity.opencockpit",
+					"prio": 50
+				},
+				{
+					"parent": "tools.hcp",
+					"command": "hcpconnectivity.openuithemedesigner",
+					"prio": 60
+				}
+			],
+			"tipsandtricks:tips": [
+				{
+					"id": "sap.watt.ideplatform.hcpconnectivity.LinkToCockpit",
+					"service": "sap.watt.ideplatform.hcpconnectivity/tips/LinkToCockpitTip"
+				}
+			]
+		}
+	}
+}

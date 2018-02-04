@@ -1,0 +1,12 @@
+{
+	"name" : "sap.watt.uitools.plugin.uiannotations.service.SelectAnnotationStep",
+	"extends" : ["sap.watt.common.service.ui.WizardStep"],
+	"description": "The interface of the annotations selection wizard step",
+	"methods" : {},
+	"configurationProperties" : {
+        "repositoryBrowserExtensionFilters" : {
+            "type" : "[string]",
+            "multiple" : false
+        }
+    }
+}

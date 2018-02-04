@@ -1,0 +1,41 @@
+{
+    "name": "sap.watt.common.plugin.intellisence.service.CalculateLibraryVersion",
+	"extends" : [],
+	"description": "Calculate requested Library version to load",	
+	"configurationProperties" : {
+		"sdkVersionProvider" : {
+		    "type" : {
+		        "service" : "sap.watt.common.plugin.intellisence.service.SDKVersion"
+		    },
+		    "multiple" : false
+		}
+	},
+
+	"methods" : {
+		"getCalculatedLibraryVersion" : {
+			"params" : [
+		    {
+                "name" : "oDocument",
+                "type" : "object"
+			},
+			{
+                "name" : "[aLibraries]",
+                "type" : "object"
+			}
+			],
+			"returns" : {
+				"type" : "[object]",
+				"description" : " array of Library type and version"
+			}
+		},
+	    "useUI5Snapshot" : {
+			"params" : [
+    			{
+                    "name" : "bUseUI5Snapshot",
+                    "type" : "boolean"
+    			}
+			]
+	    
+	    }
+	}
+}

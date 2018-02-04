@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.common.service.selection.Provider",
+	"description" : "The selection provider interface. Base interface for all selectable ui parts",
+	"methods" : {
+        "getSelection" : {
+            "returns" : "object"
+	    }
+	},
+	
+	"events" : {
+	    "selectionChanged" : {}
+	}
+}

@@ -1,0 +1,87 @@
+{
+	"name": "sap.watt.common.builder",
+	"description": "The client builder plugin",
+	"i18n": "sap.watt.common.builder/i18n/i18n",
+
+	"requires": {
+		"services": [
+		    "command",
+			"commandGroup",
+			"document",
+			"filesystem.documentProvider",
+			"setting.project",
+			"selection",
+			"usernotification",
+			"progress",
+			"builder",
+			"projectType",
+			"repositorybrowser",
+			"log",
+			"resource",
+			"decoration",
+			"usagemonitoring",
+			"console",
+		  	"perspective"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"builder": {
+				"implements": "sap.watt.common.builder.service.Builder",
+				"module": "sap.watt.common.builder/service/buildImpl"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.common.builder.service.Builder": "sap.watt.common.builder/service/Builder",
+			"sap.watt.common.builder.service.BuildService": "sap.watt.common.builder/service/BuildService",
+			"sap.watt.common.builder.service.BuildConfigurationService": "sap.watt.common.builder/service/BuildConfigurationService"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"command:commands": [
+				{
+					"id": "builder.build",
+					"label": "{i18n>command_build}",
+					"service": "sap.watt.common.builder/command/Builder"
+                },
+                {
+					"id": "builder.buildconfiguration",
+					"label": "{i18n>command_buildConfiguration}",
+					"service": "sap.watt.common.builder/command/BuildConfiguration"
+                }
+            ],
+            "builder:styles": [
+				{
+					"uri": "sap.watt.common.builder/css/Builder.css"
+      		 	}],
+
+			"commandGroup:items": [
+				{
+					"parent": "file.build",
+					"command": "builder.build",
+					"prio": 20
+			    }
+			],
+			"decoration:decorators" : [
+                {
+                    "prio" : 0,
+                    "service" : "sap.watt.common.builder/service/BuildDecorator"
+                }
+            ],
+			"usagemonitoring:reportParams": [
+            {
+                "components": ["builder"],
+                "eventTypes": ["build"]
+            }]
+		}
+	},
+	"subscribes": {
+		"document:saved": "builder:onDocumentChanged",
+		"document:created": "builder:onDocumentChanged",
+		"document:deleted": "builder:onDocumentChanged"
+	}
+}

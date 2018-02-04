@@ -1,0 +1,16 @@
+{
+	"name" : "sap.watt.common.service.repositorybrowser.RepositoryBrowserPersistence",
+	"description": "The repository browsers persistence service interface",
+    
+	"methods" : {
+		"add" : {},
+		"remove" : {},
+		"onSelectionChanged" : {},
+		"onLinkChanged" : {},
+		"getSelected" : {},
+		"getStoredSelected" : {},
+		"getNodes" : {},
+		"getLinked" : {}
+	}
+	
+}

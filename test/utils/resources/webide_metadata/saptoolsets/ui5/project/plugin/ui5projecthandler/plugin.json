@@ -1,0 +1,27 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.project.ui5projecthandler",
+	"description": "The Ui5 Project Handler plugin",
+	"i18n" : "sap.watt.saptoolsets.ui5.project.ui5projecthandler/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"selection",
+			"document",
+			"filesystem.documentProvider",
+		  	"filesystem.jsonProvider",
+		  	"beautifierProcessor",
+			"platform.builder"
+		]
+	},
+	"provides": {
+	  "services": {
+		"ui5projecthandler": {
+		  "implements": "sap.watt.common.ui5projecthandler.service.UI5ProjectHandler",
+		  "module": "sap.watt.saptoolsets.ui5.project.ui5projecthandler/service/UI5ProjectHandler"
+		}
+	  },
+	  "interfaces": {
+		"sap.watt.common.ui5projecthandler.service.UI5ProjectHandler": "sap.watt.saptoolsets.ui5.project.ui5projecthandler/service/UI5ProjectHandler"
+	  }
+	}
+}

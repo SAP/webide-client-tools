@@ -1,0 +1,45 @@
+{
+
+    "name": "sap.watt.ideplatform.openwith",
+    "description": "The Open With Plugin.",
+	"i18n" : "sap.watt.ideplatform.openwith/i18n/i18n",
+
+    "requires": {
+        "services": [
+        	"editor",
+        	"command",
+        	"commandGroup",
+        	"content",
+        	"selection",
+        	"repositorybrowserUtils"
+        ]
+    },
+
+	"configures": {
+	 	"services": {
+			"command:commands" : [
+				{
+					"id" : "openwith",
+					"type" : "action",
+					"service" : "sap.watt.ideplatform.openwith/command/OpenWith",
+					"available" : true
+				}
+   			],
+   			"commandGroup:groups": [
+				{
+				    "id" : "file.openwith",
+       			    "label" : "{i18n>commandgroup_openwith}",
+    			    "service": "sap.watt.ideplatform.openwith/service/DynEditorProvider"
+				}
+			],
+			"commandGroup:items": [
+        		{
+					"parent": "edit.fileOpen",
+					"group": "file.openwith",
+					"type": "menu",
+					"prio": 15
+				}
+			]
+	 	}
+	}
+}

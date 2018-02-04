@@ -1,0 +1,78 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata",
+	"description": "UI5 library metadata plugin",
+	"i18n": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"ui5projecthandler",
+			"document",
+			"jscodecompletion",
+			"xmlcodecompletion",
+			"projectType",
+			"projectsearchutil"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"ui5librarymetadata": {
+				"implements": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata.service.UI5LibraryMetadata",
+				"module": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata/service/UI5LibraryMetadata"
+			},
+			"ui5metadataxml": {
+				"implements": [
+					"sap.watt.common.service.editor.LibraryMetadataProvider",
+					"sap.watt.common.service.editor.HelpDataProvider"
+				],
+				"module": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata/service/UI5MetadataXMLProvider"
+			},
+			"ui5metadatajs": {
+				"implements": [
+					"sap.watt.common.service.editor.LibraryMetadataProvider",
+					"sap.watt.common.service.editor.HelpDataProvider"
+				],
+				"module": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata/service/UI5MetadataJSProvider"
+			}
+		},
+		"interfaces": {
+			"sap.watt.saptoolsets.ui5.common.ui5librarymetadata.service.UI5LibraryMetadata": "sap.watt.saptoolsets.ui5.common.ui5librarymetadata/service/UI5LibraryMetadata"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"xmlcodecompletion:libraries": [{
+				"name": "sapui5",
+				"libraryMetadataService": "@ui5metadataxml",
+				"helpService": "@ui5metadataxml"
+			}],
+			"jscodecompletion:libraries": [{
+				"name": "sapui5",
+				"libraryMetadataService": "@ui5metadatajs",
+				"helpService": "@ui5metadatajs"
+			}],
+			"ui5librarymetadata:fallbackSubLibraries": [
+				"sap.ui.core",
+				"sap.ui.commons",
+				"sap.m",
+				"sap.me",
+				"sap.ui.layout",
+				"sap.ui.unified",
+				"sap.ushell",
+				"sap.ca.ui",
+				"sap.viz",
+				"sap.ui.comp",
+				"sap.ui.table",
+				"sap.ui.ux3",
+				"sap.ui.richtexteditor",
+				"sap.uxap"
+			],
+			"ui5metadatajs:helpUrlPrefix": "https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/",
+			"ui5metadataxml:helpUrlPrefix": "https://sapui5.hana.ondemand.com/sdk/#docs/api/symbols/"
+		}
+	},
+	"subscribes": {
+		"document:saved": "ui5librarymetadata:onDocumentSaved"
+	}
+}

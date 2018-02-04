@@ -1,0 +1,30 @@
+{
+  "name": "sap.watt.common.plugin.navigation.service.navigation",
+  "methods" : {
+    "navigate" : {
+      "description" : "",
+      "params" : [
+        {
+          "name" : "oDocument",
+          "type" : "object",
+          "description" : "The current document object"
+        },
+        {
+          "name" : "oNavigationData",
+          "type" : "object",
+          "description" : "All the data that will be used to navigate"
+        }
+      ]
+    }
+
+  },
+  "configurationProperties" : {
+    "navigators": {
+      "type" : {
+        "service" : "sap.watt.common.plugin.navigation.service.navigator",
+        "fileExtension" : "[string]"
+      },
+      "multiple" : true
+    }
+  }
+}

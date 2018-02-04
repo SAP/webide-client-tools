@@ -1,0 +1,38 @@
+{
+	"name" : "sap.watt.common.plugin.snippet.service.Snippet",
+	"description" : "The insert snippet interface",
+	"configurationProperties" : {
+		"snippets" : {
+			"type" : {
+				"fileExtension" : "string",
+				"snippets" : {
+					"type" : 
+						[{
+						 	"id" : "string",
+							"filePath" : "string",
+							"title" : "string",
+							"preSnippetInsertionHandler" : "sap.watt.common.plugin.snippet.PreSnippetInsertionHandler"
+						}]
+				}
+			},
+			"multiple" : true
+		}
+    },
+    
+	"methods" : {
+		"getAllSnippets": {
+			"description" : "This method returns the snippets",
+			"params": [{
+				"name": "sFileExtension",
+				"type": "string",
+				"description" : "File Extension"
+			}],
+			"returns": {
+				"type": "[object]",
+				"default": null,
+				"description" : "All snippets"
+			}
+		}
+    }
+        
+}

@@ -1,0 +1,258 @@
+{
+	"datasource" : 
+	{
+		"type" : "odata",
+		"url" : ""
+	},
+    "fioriMasterDetail":
+    {
+        "parameters" : 
+        {
+        	"ServiceDetails" :
+        		{
+        			"serviceName" : ""
+        		},
+           "ProjectNamespace" :
+                {
+                    "type" : "string",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                        "control" : "TextField",
+                        "required" : false,
+                        "title" : "project_namespace",
+						"regExp" : "(?!(sap|new(\\..*)*)$)^[a-zA-Z_][\\w-]*(\\.[a-zA-Z_][\\w-]*)*$",
+    					"regExpErrMsg" : "nameSpace_model_parameters_name_validationError"		
+                    }
+            },
+            "MasterTitle" :
+                {
+                    "type" : "string",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "TextField",
+                    	"required" : "false",
+                    	"title" : "master_title_title",
+                    	"tooltip" : "master_title_tooltip"                    	
+                    }                    
+                },
+            "MasterODataCollection" :
+                {
+                    "type" : "Entity",
+                    "multiplicity" : "many",
+                	"isRoot" : "true",
+                	"binding" : "@datasource.entities",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required" : "false",
+                    	"title" : "master_collection_title",
+                    	"tooltip" : "master_collection_tooltip"
+                    }
+           		},
+            "MasterItemTitle" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required" : "false",
+                    	"title" : "master_item_title_title",
+                    	"tooltip" : "master_item_title_tooltip"
+                    }
+            	},
+            "MasterNumericAttribute" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "master_numeric_attribute_title",
+                    	"tooltip" : "master_numeric_attribute_tooltip"
+                    }
+            	},
+            "MasterUnitsAttribute" :
+            	{
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "master_units_attribute_title",
+                    	"tooltip" : "master_units_attribute_tooltip"
+                    }
+            	},
+			"DetailTitle" :
+                {
+                    "type" : "string",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "TextField",
+                    	"required" : "false",
+                    	"title" : "detail_title_title",
+                    	"tooltip" : "detail_title_tooltip"                    	
+                    }                    
+                },
+            "DetailText" : 
+                {
+                    "type" : "string",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "TextField",
+                    	"required" : "false",
+                    	"title" : "detail_text_title",
+                    	"tooltip" : "detail_text_tooltip"                    	
+                    }                    
+                },
+            "DetailStatus" : 
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "detail_status_title",
+                    	"tooltip" : "detail_status_tooltip"
+                    }
+            	},       
+             "DetailAttribute1" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "detail_attribute1_title",
+                    	"tooltip" : "detail_attribute1_tooltip"
+                    }
+            	},
+             "DetailAttribute2" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "detail_attribute2_title",
+                    	"tooltip" : "detail_attribute2_tooltip"
+                    }
+            	},
+             "DetailAttribute3" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "detail_attribute3_title",
+                    	"tooltip" : "detail_attribute3_tooltip"
+                    }
+            	},
+            "NavigateCollection" :
+                {
+                    "type" : "Entity",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.MasterODataCollection.value.navigations",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required" : false,
+                    	"title" : "navigation_collection_title",
+                    	"tooltip" : "masterdetail_navigation_collection_tooltip"
+                    }
+            	},
+             "NavigateAttribute1" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.NavigateCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "navigation_attribute1_title",
+                    	"tooltip" : "masterdetail_navigation_attribute_tooltip"
+                    }
+            	},
+             "NavigateAttribute2" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.NavigateCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "navigation_attribute2_title",
+                    	"tooltip" : "masterdetail_navigation_attribute_tooltip"
+                    }
+            	},
+             "NavigateAttribute3" :
+                {
+                    "type" : "string",
+                	"multiplicity" : "one",
+                    "binding" : "@fioriMasterDetail.parameters.NavigateCollection.value.elements",
+                    "value" : "",
+                    "wizard" : 
+                    {
+                    	"control" : "ComboBox",
+                    	"required": "false",
+                    	"title" : "navigation_attribute3_title",
+                    	"tooltip" : "masterdetail_navigation_attribute_tooltip"
+                    }
+            	}
+            },
+        "forms" : [
+            {
+                "title" : "forms_groups_title",
+                "groups" : [
+                    {
+                        "title" : "forms_title1",
+                        "parameters": ["@fioriMasterDetail.parameters.ProjectNamespace"]
+                    },
+                    {
+                        "title": "forms_title2",
+                        "parameters": ["@fioriMasterDetail.parameters.MasterTitle","@fioriMasterDetail.parameters.MasterODataCollection","@fioriMasterDetail.parameters.MasterItemTitle", "@fioriMasterDetail.parameters.MasterNumericAttribute", "@fioriMasterDetail.parameters.MasterUnitsAttribute"]
+                    },
+					{
+                        "title": "forms_title3",
+                        "parameters": ["@fioriMasterDetail.parameters.DetailTitle","@fioriMasterDetail.parameters.DetailText","@fioriMasterDetail.parameters.DetailStatus","@fioriMasterDetail.parameters.DetailAttribute1","@fioriMasterDetail.parameters.DetailAttribute2","@fioriMasterDetail.parameters.DetailAttribute3"]
+                    },
+					{
+                        "title": "forms_title4",
+                        "parameters": ["@fioriMasterDetail.parameters.NavigateCollection","@fioriMasterDetail.parameters.NavigateAttribute1","@fioriMasterDetail.parameters.NavigateAttribute2","@fioriMasterDetail.parameters.NavigateAttribute3"]
+                    }
+                ]
+            }
+        ]
+    }
+}

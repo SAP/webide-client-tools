@@ -1,0 +1,128 @@
+{
+	"name" : "sap.watt.common.plugin.filesystem.service.FilesystemDocumentProvider",
+	"description" : "The interface for document provider. A document provider",
+	"extends" : "sap.watt.common.service.platform.DocumentProvider",
+	
+	"methods" : {
+		"getRoot" : {
+			"params": [
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"optional" : true,
+					"default" : "workspace",
+					"description" : "The Data Access Object to use, default is the workspace"
+				}
+			],
+			"returns" : {
+				"type" : "sap.watt.common.plugin.document.Document",
+				"description" : "The root document of all the documents this document provider can provide, e.g. the workspace folder, system entry point or repository root"
+			}
+		},
+		"search": {
+			"description" : "Search for documents",
+			"params": [
+				{ 
+					"name" : "oInputObject",
+					"type" : {
+						"sSearchTerm" : {
+							"type" : "string",
+							"description" : "The search term"
+							},
+						"bContentSearch" : {
+							"type" : "boolean",
+							"optional" : true,
+							"description" : "Search should be done on content level (if not provided it is on document metadata, e.g. name)"
+							},
+						"oParentDocument" : {
+							"type" : "sap.watt.common.plugin.document.Document",
+							"optional" : true,
+							"description" : "Search should be done on this parent document (if not provided a global search in all documents below the root is done)"
+							}
+						},
+					"description" : "The input object"
+				},
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"optional" : true,
+					"default" : "workspace",
+					"description" : "The Data Access Object to use, default is the workspace"
+				}
+			],
+			"returns": {
+					"type" : "[sap.watt.common.plugin.document.Document]",
+					"description" : "Array of documents matching the search criteria"
+				}
+		},
+		
+		"getDocument" : {
+			"description" : "Get a document by an absolute path",
+			"params": [
+				{ 
+					"name" : "sPath",
+					"type" : "string",
+					"description" : "Absolute path of the document"
+				},
+				{ 
+					"name" : "sDAO",
+					"type" : "string",
+					"optional" : true,
+					"default" : "workspace",
+					"description" : "The Data Access Object to use, default is the workspace"
+				},
+				{ 
+					"name" : "sVersion",
+					"type" : "string",
+					"optional" : true,
+					"default" : "",
+					"description" : "The version to provide"
+				}
+			],
+			"returns": {
+					"type" : "sap.watt.common.plugin.document.Document",
+					"description" : "The found document"
+			}
+		}
+	},
+	
+	"configurationProperties" : {
+		"dao" : {
+			"type" : {
+				"id":"string",
+				"service":"sap.watt.common.service.remote.FileDAOReadOnly"
+			},
+			"multiple" : true
+		},
+		"projectTypeHandler" : {
+			"type" : {
+				"service":"sap.watt.ideplatform.plugin.projectType.service.ProjectType"
+			},
+			"multiple" : false
+		},
+		"fileFilterHandler" : {
+			"type" : {
+				"service":"sap.watt.platform.filefilter.FileFilter"
+			},
+			"multiple" : false
+		}
+	},
+	
+	"events" : {
+        "beforeExportZip" : {
+        	"description" : "Before Export event",
+        	"params" : [
+        	    {
+					"name": "oZip",
+					"description" : "zip content",
+					"type" : "object"
+				},
+				{
+					"name": "oDocument",
+					"description" : "folder document which is exported",
+					"type" : "sap.watt.common.plugin.document.Document"
+				}
+			] 
+        }  
+    }
+}

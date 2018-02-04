@@ -1,0 +1,16 @@
+{
+	"preloadCapable" : true,
+
+	"name" : "sap.watt.platform.xs.feature",
+	"title" : "Web IDE on XS - platform layer",
+	"version" : "1.0.0",
+	"description" : "Web IDE on XS - platform layer",
+	"bundledFeatures" : {
+		"sap.watt.platform.feature" : "file:../package.json",
+		"sap.watt.common.feature" : "file:../../common/package.json"
+	},
+
+	"bundledPlugins" : {
+		"sap.watt.platform.xs.destination" : "file:plugin/destination"
+	}
+}

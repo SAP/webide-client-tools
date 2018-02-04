@@ -1,0 +1,29 @@
+{
+	"name" : "sap.watt.common.service.registry.WelcomeScreen",
+	"description" : "The main service of the welcome screen registry",
+	"configurationProperties" : {
+		"containers" : {
+			"type" : {
+				"id" : {
+					"type" : "string"	
+				},
+				"container" : {
+					"type" : "sap.watt.common.service.ui.BasicWelcomeContainer"	
+				},
+				"section" : {
+				    "type" : "string"
+				},
+				"priority" : {
+				    "type" : "number"
+				}
+			},
+			"multiple" : true
+		}
+	},
+	"methods" : {
+		"getWelcomeContainers" : {
+			"description" : "Retrieve all the registered containers",
+			"returns" : "object"
+		}
+	}
+}

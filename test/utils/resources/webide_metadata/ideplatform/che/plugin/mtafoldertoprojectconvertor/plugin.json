@@ -1,0 +1,59 @@
+{
+    "name": "sap.watt.ideplatform.che.mtafoldertoprojectconvertor",
+    "description": "Convert the folder to module.",
+    "i18n": "sap.watt.ideplatform.che.mtafoldertoprojectconvertor/i18n/i18n",
+    "requires": {
+        "services": [
+            "commandGroup",
+            "command",
+            "document",
+		    "usernotification",
+            "selection",
+            "repositorybrowser",
+            "resource",
+            "report",
+			"mtafoldertoprojectconvertor.validation"
+         ]
+    },
+    
+    "configures": {
+        "services": {
+            "commandGroup:groups": [
+				{ 
+					"id" : "convert.folder"
+				}
+			],
+            "command:commands" : [   	
+                {
+					"id" : "convert.folder.module.hdb",
+					"label" : "{i18n>module_type_HDB}",
+					"tooltip" : "{i18n>convert_to_module_tooltip}",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.che.mtafoldertoprojectconvertor/command/convertFolderToHdbModule"	
+				},
+			  	{
+					"id" : "convert.folder.module.html5",
+					"label" : "{i18n>module_type_HTML5}",
+					"tooltip" : "{i18n>convert_to_module_tooltip}",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.che.mtafoldertoprojectconvertor/command/convertFolderToHtml5Module"	
+				},
+				{
+					"id" : "convert.folder.module.nodejs",
+					"label" : "{i18n>module_type_NODEJS}",
+					"tooltip" : "{i18n>convert_to_module_tooltip}",
+					"type" : "action",
+					"service": "sap.watt.ideplatform.che.mtafoldertoprojectconvertor/command/convertFolderToNodejsModule"	
+				}
+            ],
+            "commandGroup:items": [
+            	 { "parent": "repositoryBrowser.importExport","tooltip" : "{i18n>convert_to_module_tooltip}","label" : "{i18n>convert_to_module_command}","type" : "menu","group" : "convert.folder", "prio": "30"} ,
+            	 { "parent": "convert.folder", "command": "convert.folder.module.hdb", "prio": "50"},
+            	 { "parent": "convert.folder", "command": "convert.folder.module.html5", "prio": "60"},
+            	 { "parent": "convert.folder", "command": "convert.folder.module.nodejs", "prio": "70"}
+			]
+        }
+    }
+
+}
+

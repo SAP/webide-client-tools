@@ -1,0 +1,79 @@
+{
+	"name" : "sap.watt.uitools.plugin.gitclient.service.KeyStorage",
+	"description" : "The GIT client key storage interface",
+	"methods" : {
+		"get" : {
+			"params" : [
+		            	{
+		                	"name" : "sHost", 
+		                	"type" : "string"
+		                },
+		                {
+		                	"name" : "sType", 
+		                	"type" : "string"
+		                }
+		            ],
+			"returns" : "object"	           
+	     },
+	     "setSsh" : {
+			"params" : [
+	                {
+	                	"name" : "sHost", 
+	                	"type" : "string"
+	                },
+	                {
+	                	"name" : "sUsername", 
+	                	"type" : "string"
+	                },
+	                 {
+	                	"name" : "sKey", 
+	                	"type" : "string"
+	                }
+	            ]           
+	     },
+	     "setHttps" : {
+			"params" : [
+					{
+	                	"name" : "sHost", 
+	                	"type" : "string"
+	                },
+	            	{
+	                	"name" : "sUsername", 
+	                	"type" : "string"
+	                },
+	                {
+	                	"name" : "sPassword", 
+	                	"type" : "string"
+	                }
+	            ]           
+	     },
+		"delete" : {
+			"description": "Deletes an entry of a certain host in the storage according to the given type (SSH/HTTPS)",
+			"params" : [
+				{
+					"name" : "sHost",
+					"type" : "string",
+					"description": "The host to be deleted from the storage"
+				},
+				{
+					"name" : "sType",
+					"type" : "string",
+					"description": "The type of the storage (SSH/HTTPS)"
+				},
+				{
+					"name" : "sUsername",
+					"type" : "string",
+					"description": "The username saved in the entry"
+				},
+				{
+					"name" : "sPassword",
+					"type" : "string",
+					"description": "The password saved in the entry"
+				}
+			]
+		},
+	     "resetKeys" : {
+	     	"params" : []
+	     }
+	}
+}

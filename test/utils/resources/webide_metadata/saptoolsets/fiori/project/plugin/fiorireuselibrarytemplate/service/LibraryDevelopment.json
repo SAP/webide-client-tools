@@ -1,0 +1,53 @@
+{
+	"name" : "sap.watt.uitools.plugin.fiorireuselibrarytemplate.service.LibraryDevelopment",
+	"description" : "The Library Development Utilities service interface",
+	"methods" : {
+		"isLibraryProject" : {
+			"description": "Checks if the given path points to a library project",
+				"params" :[{
+					"name" : "sProjectFolderPath",
+					"type" : "string"
+				}],
+				"returns" : "boolean"
+		},
+		"getSelectedLibraryModelObject" : {
+		    "params" : [{
+		        "name" : "selectedLibraryObject",
+		        "type" : "object"  
+		        },{
+		        "name" : "repositoryType",
+		        "type" : "number"  
+		        }],
+			"description": "get library object to be set on the model",
+			"returns" : "object"
+		},
+		"updateAppParamsInProjectSetting" : {
+			"description": "Updates project.json appparmas",
+				"params" :[{
+					"name" : "sPath",
+					"type" : "string"
+				}],
+				"returns" : "object"
+		},
+		"getAppNamespace" :{
+			"description": "Updates project.json appparmas",
+			"params" :[{
+				"name" : "oDocument",
+				"type" : "object"
+			}],
+			"returns" : "object"
+		},
+		"addDependenciesToAppDescriptor" :{
+			"description": "Updates project.json appparmas",
+			"params" :[{
+				"name" : "oDescriptorContent",
+				"type" : "object"
+			},{
+			"name" : "oDependencies",
+				"type" : "object"	
+			}],
+			"returns" : "object"
+		}
+		
+	}
+}

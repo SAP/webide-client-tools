@@ -1,0 +1,31 @@
+{
+    "name": "sap.watt.common.service.runconfigurationui.ui5versions",
+    "description" : "Composite UI controls",
+    "methods" : {
+        "getControl" : {
+            "description" : "Returns the ui5 versions control",
+            "params" : [
+                {
+                    "name" : "oDoc",
+                    "type" : "object"
+                },
+                {
+                	"name" : "aUi5Version",
+                    "type" : "object"
+                },
+                {
+                	"name" : "sUI5CurrentVersion",
+                    "type" : "string"
+                },
+                {
+                    "name" : "sUI5MinimalVersion",
+                    "type" : "string"
+                }
+            ],
+            "returns" : {
+                "type": "object",
+                "description": "the ui5 versions control"
+            }
+        }
+    }
+}

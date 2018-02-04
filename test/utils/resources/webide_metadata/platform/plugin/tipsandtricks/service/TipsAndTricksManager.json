@@ -1,0 +1,36 @@
+{
+	"name" : "sap.watt.platform.tipsandtricks.service.TipsAndTricksManager",
+	"description" : "Manages the registration of tips and tricks from different plugins",
+	"configurationProperties" : {
+		"tips" : {
+			"type" : {
+				"id" : "string",
+				"service" : "sap.watt.platform.tipsandtricks.service.TipsAndTricksProvider",
+				"available": "boolean"
+			},
+			"multiple" : true
+		}
+	},
+	"methods" : {
+		"getTips" : {
+			"description": "Retrieves all the registered tips",
+			"params" : []
+		},
+		"openTipsAndTricksDialog" : {
+			"description": "Opens the Tips and Tricks dialog",
+			"params" : []
+		},
+		"getValidConfiguredTipsArray" : {
+			"description": "Returns an array of the valid configured tips",
+			"params" : []
+		},
+		"getShowOnStartup" : {
+			"description": "Gets the value of the show on startup of the dialog",
+			"params" : []
+		}
+	},
+
+	"events" : {
+	}
+}
+

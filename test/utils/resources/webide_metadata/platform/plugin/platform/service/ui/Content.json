@@ -1,0 +1,318 @@
+{
+	"name" : "sap.watt.common.service.ui.Content",
+	"description" : "The <i>content</i> service maps a document to an editor, enabling the document to be displayed or edited.",
+        "visibility" : "public",
+	"extends" : ["sap.watt.common.service.ui.Part", "sap.watt.common.service.selection.Provider","sap.watt.common.service.selection.TypedSelectionProvider"],
+	"configurationProperties" : {
+		"editorProvider" : {
+			"description" : "Editor registry service",
+			"type" : "sap.watt.common.service.registry.Editor",
+			"multiple" : false
+		},
+		"contextMenu" : {
+			"description" : "Command group ID that is used for the <i>content</i> service tab context menu.",
+			"type" : "string",
+			"multiple" : false
+		},
+		"decorator" : {
+			"description" : "Default content decorator that will be displayed in editor header",
+			"type" : "sap.watt.common.service.ui.ContentDecorator",
+			"multiple" : false
+		},
+		"startScreenText" : {
+			"type" : "string",
+			"multiple" : false
+		},
+		"startScreenProductNameText" : {
+			"type" : "string",
+			"multiple" : false
+		}
+	},
+    "events" : {
+        "tabSelected" : {
+    		"description" : "This event is triggered when content tab is selected",
+        	"params" : [
+                {
+                    "name" : "indexSelected",
+                    "type" : "number",
+                    "description" : "Index of the selected tab"
+                }                
+            ]
+            
+        },
+       "tabClosed" : {
+   			"description" : "This event is triggered when content tab is closed",
+        	"params" : [
+                {
+                    "name" : "indexClosed",
+                    "type" : "number",
+                    "description" : "Index of the closed tab"
+                },
+                {
+                    "name" : "document",
+                    "type" : "object",
+                    "description" : "Document object attached to the tab"
+                }
+            ]            
+        },
+        "tabDoubleClicked" :{
+    		"description" : "Triggered when a user performs a double click on content tab",
+        	"params" : [
+        		{
+        			"name" : "maximized",
+        			"type" : "boolean",
+        			"description" : "Whether the tab was maximized or minimized"
+        		}
+        	]
+        },
+		"beforeShow" :{
+			"description" : "Triggered before content tab is shown",
+			"params" : [
+				{
+					"name" : "document",
+					"type" : "object",
+					"description" : "Document object attached to the tab"
+				},
+				{
+					"name" : "editor",
+					"type" : "sap.watt.common.service.editor.Editor",
+					"description" : "Editor service shown in the tab"
+				}
+			]
+		},
+        "finishedRendering" : {
+        	"description" : "Triggered when content view is rendered"
+        }
+	},
+	"methods" : {
+		"showIfOpen" : { 
+			"description" : "Shows the existing tab containing the document; that is, if more than one tab exists, the first tab opens.",
+   			"params" : [{ 
+				"name" : "oDocument", 
+   				"type" : "object",
+   				"description" : "Document object"
+			}],
+			"visibility" : "hidden"
+		},  
+	
+		"open" : {
+			"description" : "Opens a specified document with a specified editor such as the layout editor or compare editor.",
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "The document object."
+			},
+			{
+				"name" : "oEditor",
+				"type" : "sap.watt.common.service.editor.Editor",
+				"description" : "The <i>editor</i> service."
+			}],
+			"visibility" : "public"
+		},
+		"getEditorProvider" : {
+			"description" : "Returns configured editor provider service",
+			"returns" : {
+				"description" : "Editor provider service",
+				"type": "sap.watt.common.service.registry.Editor"
+			},
+			"visibility" : "hidden"
+		},
+		"getCurrentEditor" : {
+			"description" : "Returns editor service of current tab",
+			"returns" : {
+				"type" : "sap.watt.common.service.editor.Editor",
+				"description" : "Editor service"
+			},
+			"visibility" : "hidden"
+		},
+		"getCurrentDocument" : {
+			"description" : "Returns document of current tab",
+			"returns" : {
+				"type" : "object",
+				"description" : "Document object"
+			},
+			"visibility" : "hidden"
+		},
+		"getDocuments" : {
+			"params" : [{
+				"name" : "bOnlyTheDirty",
+				"type" : "boolean",
+				"description" : "if undefined or false return all documents, if true return only the dirty documents",
+				"optional" : true
+			}],
+			"returns" : {
+				"type" : "[object]",
+				"description" : "Array of Document objects"
+			},
+			"visibility" : "hidden"
+	     },
+		"getDocumentCount" : {
+			"description" : "Returns a count of open documents",
+			"returns" : {
+				"type" : "number",
+				"description" : "Count of open documents"
+			},
+			"visibility" : "hidden"
+		},
+		"close" : {
+			"description" : "Close the tab with the given editor and document (if exists)",
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "Document object"
+			},
+			{
+				"name" : "oEditor",
+				"type" : "sap.watt.common.service.editor.Editor",
+				"description" : "Editor service"
+			},
+			{
+				"name" : "bForce",
+				"type" : "boolean",
+				"description" : "If set to true the tab is closed without asking the user to save (in case it is dirty)"
+			}],
+			"visibility" : "hidden"
+		},
+		"closeAll" : {
+			"description" : "Close all tabs",
+			"params" : [{
+				"name" : "bForce",
+				"type" : "boolean",
+				"description" : "If set to true all tabs are closed without asking the user to save (in case some tab is dirty)"
+			}],
+			"visibility" : "hidden"
+		},
+		"closeOthers" : {
+			"description" : "Close all tabs besides the current tab",
+			"visibility" : "hidden"
+		},
+		"closeTabsToTheRight" : {
+			"description" : "Close all tabs to the right of the current tab",
+			"visibility" : "hidden"
+		},
+		"getTabIndex" : {
+			"description" : "Returns the index of the current tab",
+			"returns" : {
+				"type" : "number",
+				"description" : "index of the current tab"
+			},
+			"visibility" : "hidden"
+		},
+		"save" : {
+			"description" : "Save current document"	,
+			"visibility" : "hidden"
+		},
+		"saveAll" : {
+			"description" : "Save all open documents",
+			"visibility" : "hidden"	
+		},
+		"undo" : {
+			"description" : "Perform undo operation in current editor",
+			"visibility" : "hidden"		
+		},
+		"redo" : {
+			"description" : "Perform redo operation in current editor",
+			"visibility" : "hidden"		
+		},
+		"hasUndo" : {
+			"description" : "Returns true if there are undo operations left to perform in the current editor",	
+			"returns" : "boolean"
+		},
+		"hasRedo" : {
+			"description" : "Returns true if there are reso operations left to perform in the current editor",	
+			"returns" : "boolean",
+			"visibility" : "hidden"
+		},
+		"isDirty" : {
+			"description" : "Returns true if at least one of open documents is dirty",
+			"params" : [{
+				"name" : "sPath",
+				"type" : "string",
+				"description" : "check if the current tabs are in the specific path",
+				"optional" : true
+			}],
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"isCurrentDocumentDirty" : {
+			"description" : "Returns true if current document is dirty",	
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"hasDocuments" : {
+			"description" : "Returns true if there are open documents",	
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"isClickedTabSelected" : {
+			"description" : "Returns true if context menu of current tab is open",	
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"refresh" : {
+			"description" : "Refresh all open documents content",
+			"visibility" : "hidden"	
+		},
+		"startAutoSave" : {
+			"description" : "Start auto save interval",
+			"visibility" : "hidden"	
+		},
+		"stopAutoSave" : {
+			"description" : "Stop auto save interval",
+			"visibility" : "hidden"	
+		},
+		"refreshTab" : {
+			"description" : "Open the tab with given index or refresh it if it is already open",
+			"params" : [{
+				"name" : "iTabIndex",
+				"type" : "number",
+				"description" : "Tab index"
+			}],
+			"visibility" : "hidden"
+		},
+	  	"setTabIcon" : {
+  			"description" : "Set current tab icon",
+			"params" : [{
+				"name" : "sType",
+				"type" : "string",
+				"description" : "Icon type"
+			}],
+			"visibility" : "hidden"
+	  	},
+	  	"navigateToLastEdit" : {
+	  		"description" : "Navigate to last edited tab",
+			"visibility" : "hidden"
+	  	},
+	  	"navigateBack" : {
+  			"description" : "Navigate back in tab history",
+			"visibility" : "hidden"
+	  	},
+		"navigateForward" : {
+			"description" : "Navigate forward in tab history",
+			"visibility" : "hidden"
+		},
+		"hasNavigateToLastEdit" : {
+			"description" : "Returns true if an open tab was edited and it is not the current tab",	
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"hasNavigateBack" : {
+			"description" : "Returns true if navigation back in tab history is possible",	
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"hasNavigateForward" : {
+			"description" : "Returns true if navigation forward in tab history is possible",	
+			"returns" : "boolean",
+			"visibility" : "hidden"	
+		},
+		"openRightTab" : {
+			"description" : "Open right tab if exists",
+			"visibility" : "hidden"	
+		},
+		"openLeftTab" : {
+			"description" : "Open Left tab if exists",
+			"visibility" : "hidden"	
+		}
+	}
+}

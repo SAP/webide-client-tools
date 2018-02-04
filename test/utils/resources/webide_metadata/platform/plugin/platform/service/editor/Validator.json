@@ -1,0 +1,121 @@
+{
+    "name": "sap.watt.common.service.editor.Validator",
+	"description": "The Validator interface",
+	"methods": {
+		"prepare": {
+			"params":
+			[
+				{
+					"name":"projectDocument",
+					"type":"object"
+				},
+				{
+					"name":"contextState",
+					"type":"object",
+					"description":"contextState object to set key values pair"
+				}
+			],
+			"returns": {
+				"type":"object",
+				"default": {"isDefault":"true"}
+			}
+		},
+	    "getDefaultConfiguration":{
+	        "params":
+	        [
+	            {
+    	            "name":"path",
+    	            "type":"[string]",
+    	            "optional" : true,
+    	            "description":"path to validator's custom rules"
+	            }
+	        ],
+	        "returns":"object",
+	        "description":"get validator configuration - specific format. If path supplied- the validator will return a merge rules configuration (default + custom),else return only default rules configuration."
+	    },
+	    "getIssuesSynchronously":{
+	        "params":
+	        [
+	            {
+	                "name":"source",
+	                "type":"string",
+	                "description":"text to validate"
+	            },
+	            {
+	                "name":"configuration",
+	                "type":"object",
+	                "description":"validator configuration"
+	            },
+	            {
+	                "name":"fullPath",
+	                "type":"string",
+	                "description":"document full path"
+	            },
+				{
+					"name":"oCustomRules",
+					"type":"object"
+				},
+				{
+					"name":"contextState",
+					"type":"object"
+				}
+	        ],
+	        "returns":"object",
+	        "description":"get issues synchronously"
+	    },
+	    "getPathToImplementationModule":{
+	        "returns":"string",
+	        "description": "get path of module that implements the get issues functionality"
+	    },
+	    "getCustomRulesContent":{
+	        "params":
+	        [
+	            {
+	                "name":"path",
+	                "type":"[string]",
+	                "description":"path to validator's custom rules"
+	            }
+	       ],
+	       "returns":"object",
+	       "description": "get the custom rules content and their rule-id, from the workspace"
+	    },
+	    "getConfiguration":{
+	        "params":
+	        [
+	            {
+	                "name":"errorLevels",
+	                "type":"[string]",
+	                "description":"text to validate"
+	            },
+	            {
+	                "name":"defaultConfigWithCustom",
+	                "type":"object",
+	                "description":"default configuration"
+	            },
+	            {
+	                "name":"customConfig",
+	                "type":"object",
+	                "description":"configuration to merge"
+	            }
+	        ],
+	        "returns":"object",
+	        "description":"full configuration for execution filtered according to errorLevels"
+	    },
+	    "postValidate":{
+	        "params":
+	        [
+	            {
+	                "name":"result",
+	                "type":"object",
+	                "description":"validate results"
+	            }
+	       ],
+	       "returns": {
+	           "type":"object",
+	           "default": {"isDefault":"true"}
+	       },
+	       "description": "return the validate results after manipulation"
+	    }
+	},
+	"events": {}
+}

@@ -1,0 +1,21 @@
+{
+  "name": "sap.watt.uitools.plugin.mockpreview.service.MockHtmlProducer",
+  "description" : "The Mock Previwe HTML producer interface",
+  "extends": [],
+  "methods": {
+	"extendRunnableHtml": {
+		"description": "Gets extended html file content",
+		"params": [
+			{
+				"name": "oConfiguration",
+				"type": "object",
+				"description": ""
+			}
+		],
+		"returns": {
+			"type": "object",
+			"description": "Extended Html as a object"
+		}
+	}
+  }
+}

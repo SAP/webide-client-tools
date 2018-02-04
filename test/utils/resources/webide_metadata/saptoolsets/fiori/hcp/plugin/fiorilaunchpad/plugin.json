@@ -1,0 +1,92 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad",
+	"description": "SAP Fiori Launchpad Plugin",
+	"i18n" : "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/i18n/i18n",
+
+	"requires":{
+		"services": [
+			"command",
+			"filesystem.documentProvider",
+			"selection",
+			"setting.project",
+			"system",
+			"git",
+			"commandGroup",
+			"log",
+			"extensionproject",
+			"deployment",
+			"wizard",
+			"templateCustomizationStep",
+			"authenticationuicontainerservice",
+			"usernotification",
+			"odataProvider",
+			"neoapp",
+			"ajaxrequest",
+			"hcpconnectivity",
+			"hcpauthentication",
+			"repositorybrowserUtils",
+			"repositorybrowser",
+			"ui5icons",
+			"usagemonitoring",
+			"ui5projecthandler",
+			"platform.builder"
+		]
+	},
+	"provides": {
+		"services": {
+			"generalinfostepservice": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/ui/services/GeneralInfoStepService"
+			},
+			"configuretilestepservice": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/ui/services/ConfigureTileStepService"
+			},
+			"assigntostepservice": {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/ui/services/AssignToStepService"
+			},
+			"fiorilaunchpad": {
+				"implements": "sap.watt.uitools.plugin.fiorilaunchpad.services.FioriLaunchpad",
+				"module": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/services/FioriLaunchpad"
+			},
+			"flpconfig": {
+				"implements": "sap.watt.uitools.plugin.fiorilaunchpad.services.FlpConfig",
+				"module": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/services/FlpConfig"
+			},
+			"fiorilaunchpad.notificationdialog": {
+				"implements": "sap.watt.uitools.plugin.fiorilaunchpad.ui.dialogs.NotificationDialog",
+				"module": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/ui/dialogs/NotificationDialog"
+			}
+		},
+		
+		"interfaces": {
+		    	"sap.watt.uitools.plugin.fiorilaunchpad.services.FioriLaunchpad":"sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/services/FioriLaunchpad",
+		    	"sap.watt.uitools.plugin.fiorilaunchpad.services.FlpConfig": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/services/FlpConfig",
+		    	"sap.watt.uitools.plugin.fiorilaunchpad.ui.dialogs.NotificationDialog":"sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/ui/dialogs/NotificationDialog"
+		}
+		
+	},
+	
+	"configures" : {
+		"services" : {
+		    "command:commands": [
+    			{
+    				"id" : "deployment.registertoflp",
+    				"label": "{i18n>FLPRegistrationCommand}",
+    				"service": "sap.watt.saptoolsets.fiori.hcp.fiorilaunchpad/command/RegisterToFLP"
+    			}],
+    			"commandGroup:items": [
+				{
+					"parent": "deploy.actions",
+					"command": "deployment.registertoflp",
+					"prio": 90
+				}],
+				"usagemonitoring:reportParams": [
+			    {
+                    "components": ["deployment"],
+                    "eventTypes": ["register_to_flp"]
+                }]
+    	}
+	}
+}

@@ -1,0 +1,78 @@
+{
+	"name" : "sap.watt.common.service.ui.Config",
+	"description" : "The config part interface. Base interface for all config components",
+	"methods" : {
+		"getProjectSettingContent" : {
+			"params" : [{
+				"name" : "id",
+				"type" : "string"
+			},
+			{
+				"name" : "group",
+				"type" : "string"
+			},
+			{
+				"name" : "sProjectPath",
+				"type" :  "string",
+				"optional" : true,
+				"description": "Path of the project that to be edited. If not defined actual selection is used."
+			}],
+			"returns" : "object"
+		},
+		"saveProjectSetting" : {
+			"params" : [{
+				"name" : "id",
+				"type" : "string"
+			},
+			{
+				"name" : "group",
+				"type" : "string"
+			},
+            {
+                "name" : "sProjectPath",
+                "type" :  "string",
+                "optional" : true,
+                "description": "Path of the project that to be edited. If not defined actual selection is used."
+            }],
+			"returns" : "object"
+		},
+		"getUserPreferenceContent" : {
+			"params" : [{
+				"name" : "id",
+				"type" : "string"
+			},
+			{
+				"name" : "group",
+				"type" : "string"
+			}],
+			"returns" : "object"
+		},
+		"saveUserPreference" : {
+			"params" : [{
+				"name" : "id",
+				"type" : "string"
+			},
+			{
+				"name" : "group",
+				"type" : "string"
+			}],
+			"returns" : "object"
+		}
+	},
+	"events" : {
+		"projectSettingChanged": {
+			"description" : "Notification about change of project setting.",
+        	"params" : [{
+				"name": "service",
+				"type" : "sap.watt.common.service.ui.Part"
+			}] 
+		},
+		"userPreferenceChanged": {
+			"description" : "Notification about change of the user preference.",
+        	"params" : [{
+				"name": "service",
+				"type" : "sap.watt.common.service.ui.Part"
+			}] 
+		}
+	}
+}

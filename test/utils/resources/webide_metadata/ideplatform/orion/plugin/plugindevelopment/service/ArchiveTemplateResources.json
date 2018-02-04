@@ -1,0 +1,14 @@
+{
+	"name" : "sap.watt.uitools.service.archivetemplateresources",
+	"description" : "Archive template resources",
+	"methods" : {
+		"createArchive" : {
+			"description": "Archives the template resources to zip file",
+				"params" :[{
+					"name" : "sPluginDocumentPath",
+					"type" : "string",
+					"description": "the project plugin document path to be archive"
+				}]
+		}
+	}
+}

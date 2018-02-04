@@ -1,0 +1,57 @@
+{
+	"name" : "sap.watt.uitools.plugin.ushellsandbox.service.Preview",
+	"description" : "The ushellsandbox preview service interface",
+	"methods" : {
+		"showPreview" : {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "a Component.js or *fiorisandboxconfig*.json  file to be used to preview in the sandbox"
+			},{
+				"name" : "oWindow",
+				"type" : "object",
+				"optional" : true,
+				"description" : "a window object; if provided, url will be started in this window"
+			},{
+				"name" : "bNoFrame",
+				"type" : "boolean"
+			},{
+				"name" : "oRunConfiguration",
+				"optional" : true,
+				"type" : "object"
+			},
+			{
+				"name" : "bReturnURL",
+				"optional" : true,
+				"type" : "boolean"
+			}]
+		},
+		"showPreviewWithParameters": {
+			"params" : [{
+				"name" : "sUrl",
+				"type" : "string",
+				"description" : "the actual URL to the folder containing the component.js of the SAP Fiori application, potentially containing URL parameters"
+			},{
+				"name" : "sAdditionalInformation",
+				"type" : "string",
+				"description" : "additional information as returned in the ResolveLink service, e.g. SAPUI5.Component=\"com.sap.fiori.epm.MyComponent\", see SAP Fiori launchpad documentation"
+			},{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "a valid document within your project, used to extract the base URL"
+			},{
+				"name" : "oWindow",
+				"type" : "object",
+				"optional" : true,
+				"description" : "a window object; if provided, url will be started in this window"
+			}]
+		},
+		"getComponentNameFromComponentJs": {
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "a valid document within your project, used to extract the base URL"
+			}]
+		}
+	}
+}

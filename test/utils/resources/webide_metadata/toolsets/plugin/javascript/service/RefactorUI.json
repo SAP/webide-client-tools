@@ -1,0 +1,9 @@
+{
+	"name" : "sap.watt.toolsets.plugin.javascript.service.RefactorUI",
+	"description" : "Refactor UI service for JS",
+	"methods" : {
+		"openRefactorUI" : {
+			"description": "openRefactorUI"
+		}
+	}
+}

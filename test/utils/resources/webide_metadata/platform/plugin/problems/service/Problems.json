@@ -1,0 +1,78 @@
+{
+	"name": "sap.watt.common.problems.problems",
+	"visibility": "public",
+	"description":"The Problems view displays information about any problems you may have in the projects in your workspace, and provides navigation to each problem’s location. It is dynamically updated when you edit, add, or delete files in the project.",
+	"methods": {
+		"setProblems": {
+			"visibility": "public",
+			"description": "Sets problems to be displayed in the 'Problems View' container",
+			"params": [
+				{
+					"name": "domain",
+					"type": "string",
+					"description": "Domain of the problems, such as 'validation', 'build'.. ",
+					"optional": false
+				},
+				{
+					"name": "[problem]",
+					"type": "[object]",
+					"description": "Array of objects from type problem(Please check the wiki for the structure of problem)",
+					"optional": false
+				}
+			]
+		},
+		"clearProblems": {
+			"visibility": "public",
+			"description": "Removes problems from Problem View container, remove can be done by domain(removes all problems in domain) or by domain and ids",
+			"params": [
+				{
+					"name": "domain",
+					"type": "string",
+					"description": "Domain of the problems, such as 'validation', 'build'.. ",
+					"optional": false
+				},
+				{
+					"name": "[problemId]",
+					"type": "[string]",
+					"description": "Array of problems IDs",
+					"optional": true
+				}
+			]
+		},
+		"setTitle": {
+
+			"description": "Set title to display",
+			"params": [
+				{
+					"name": "sTitle",
+					"type": "string",
+					"description": "The name of the displayed project"
+				}
+			]
+		},
+		"clearTitle": {
+			"visibility": "hidden",
+			"description": "removes title from display",
+			"params": []
+		}
+	},
+	"events": {
+		"titleUpdate": {
+			"visibility": "hidden",
+			"description": "fired whenever any problems are set and a new title needs to match their location"
+		},
+		"titleDelete": {
+			"visibility": "hidden",
+			"description": "fired whenever problem view is empty of problems"
+		},
+		"problemsUpdate": {
+			"visibility": "hidden",
+			"description": "fired whenever any problem is set"
+		},
+		"problemsDelete": {
+			"visibility": "hidden",
+			"description": "fired whenever any problem is removed"
+		}
+	}
+}
+

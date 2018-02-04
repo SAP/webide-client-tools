@@ -1,0 +1,167 @@
+{
+	"name": "sap.watt.common.platform",
+	"description": "The platform plugin provides common interfaces",
+	"i18n" : "sap.watt.common.platform/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"system",
+			"log",
+			"usernotification",
+			"usagemonitoring"
+		]
+	},
+
+	"provides" : {
+		"services": {
+			"keepAlive": {
+				"implements": "sap.watt.common.service.keepalive.KeepAlive",
+				"module":  "sap.watt.common.platform/service/keepalive/KeepAlive"
+			},
+			"unloadHandler": {
+				"implements": "sap.watt.common.service.unloadhandler.UnloadHandler",
+				"module":  "sap.watt.common.platform/service/unloadhandler/UnloadHandler"
+			},
+			"preferences": {
+				"implements": "sap.watt.common.service.remote.PreferencesWrapper",
+				"module": "sap.watt.common.platform/service/remote/Preferences"
+			}
+		},
+		
+		"interfaces" : {
+			"sap.watt.common.service.editor.CodeCompletion": "sap.watt.common.platform/service/editor/CodeCompletion",
+			"sap.watt.common.service.editor.PrefixCalculation": "sap.watt.common.platform/service/editor/PrefixCalculation",
+			"sap.watt.common.service.editor.Editor": "sap.watt.common.platform/service/editor/Editor",
+			"sap.watt.common.service.editor.LibraryMetadataProvider": "sap.watt.common.platform/service/editor/LibraryMetadataProvider",
+			"sap.watt.common.service.editor.HelpDataProvider": "sap.watt.common.platform/service/editor/HelpDataProvider",
+			"sap.watt.common.service.editor.UndoRedo": "sap.watt.common.platform/service/editor/UndoRedo",
+			"sap.watt.common.service.editor.Validator": "sap.watt.common.platform/service/editor/Validator",
+			"sap.watt.common.service.editor.PortableValidator": "sap.watt.common.platform/service/editor/PortableValidator",
+			"sap.watt.common.service.editor.ValidatorConfiguration": "sap.watt.common.platform/service/editor/ValidatorConfiguration",
+			"sap.watt.common.service.editor.DisplayValidatorConfiguration": "sap.watt.common.platform/service/editor/DisplayValidatorConfiguration",
+			"sap.watt.common.service.git.PrePushTask": "sap.watt.common.platform/service/git/PrePushTask",
+			"sap.watt.common.service.ide.Clipboard": "sap.watt.common.platform/service/ide/Clipboard",
+			"sap.watt.common.service.ide.Command": "sap.watt.common.platform/service/ide/Command",
+			"sap.watt.common.service.ide.ProjectType": "sap.watt.common.platform/service/ide/ProjectType",
+			"sap.watt.common.service.ide.StatefullCommand": "sap.watt.common.platform/service/ide/StatefullCommand",
+			"sap.watt.common.service.ide.CommandGroupItemProvider": "sap.watt.common.platform/service/ide/CommandGroupItemProvider",
+			"sap.watt.common.service.ide.FileDialog": "sap.watt.common.platform/service/ide/FileDialog",
+			"sap.watt.common.service.ide.Log": "sap.watt.common.platform/service/ide/Log",
+			"sap.watt.common.service.ide.LogServer": "sap.watt.common.platform/service/ide/LogServer",
+			"sap.watt.common.service.ide.SummaryFromMetaProvider": "sap.watt.common.platform/service/ide/SummaryFromMetaProvider",
+			"sap.watt.common.service.ide.UI5LibraryMetadataProvider": "sap.watt.common.platform/service/ide/UI5LibraryMetadataProvider",
+			
+			"sap.watt.common.service.search.ContextSearch": "sap.watt.common.platform/service/search/ContextSearch",
+
+		    "sap.watt.common.service.keepalive.KeepAlive": "sap.watt.common.platform/service/keepalive/KeepAlive",
+		    "sap.watt.common.service.unloadhandler.UnloadHandler": "sap.watt.common.platform/service/unloadhandler/UnloadHandler",
+		
+			"sap.watt.common.service.resourceindex.Index": "sap.watt.common.platform/service/resourceindex/Index",
+			
+			"sap.watt.common.service.ui.ImportDialog": "sap.watt.common.platform/service/ui/ImportDialog",
+			"sap.watt.common.service.ui.ImportFileDialog": "sap.watt.common.platform/service/ui/ImportFileDialog",
+
+			"sap.watt.common.service.usernotification.UserNotification": "sap.watt.common.platform/service/usernotification/UserNotification",
+			"sap.watt.common.service.ui.UserNotificationBar": "sap.watt.common.platform/service/usernotification/UserNotificationBar",
+
+			"sap.watt.common.service.platform.DocumentProvider": "sap.watt.common.platform/service/platform/DocumentProvider",
+			"sap.watt.common.service.platform.NotificationManager": "sap.watt.common.platform/service/platform/NotificationManager",
+
+			"sap.watt.common.service.registry.Command": "sap.watt.common.platform/service/registry/Command",
+
+			"sap.watt.common.service.registry.ContentTypeMatcher": "sap.watt.common.platform/service/registry/ContentTypeMatcher",
+			"sap.watt.common.service.registry.Editor": "sap.watt.common.platform/service/registry/Editor",
+			"sap.watt.common.service.registry.Template": "sap.watt.common.platform/service/registry/Template",
+			"sap.watt.common.service.registry.HtmlProducer": "sap.watt.common.platform/service/registry/HtmlProducer",
+			"sap.watt.common.service.registry.WelcomeScreen" : "sap.watt.common.platform/service/registry/WelcomeScreen",
+			
+			"sap.watt.common.service.remote.FileDAOReadOnly": "sap.watt.common.platform/service/remote/FileDAOReadOnly",
+			"sap.watt.common.service.remote.FileDAO": "sap.watt.common.platform/service/remote/FileDAO",
+			"sap.watt.common.service.remote.ProjectDAO" : "sap.watt.common.platform/service/remote/ProjectDAO",
+
+			"sap.watt.common.service.remote.Git": "sap.watt.common.platform/service/remote/Git",
+			"sap.watt.common.service.remote.NotificationAccessor": "sap.watt.common.platform/service/remote/NotificationAccessor",
+			"sap.watt.common.service.remote.Preferences": "sap.watt.common.platform/service/remote/Preferences",
+			"sap.watt.common.service.remote.PreferencesWrapper": "sap.watt.common.platform/service/remote/PreferencesWrapper",
+			"sap.watt.common.service.remote.Project": "sap.watt.common.platform/service/remote/Project",
+			"sap.watt.common.service.remote.System": "sap.watt.common.platform/service/remote/System",
+			"sap.watt.common.service.remote.Build": "sap.watt.common.platform/service/remote/Build",
+			"sap.watt.common.service.remote.Deploy": "sap.watt.common.platform/service/remote/Deploy",
+			"sap.watt.common.service.remote.Run": "sap.watt.common.platform/service/remote/Run",
+			"sap.watt.common.service.remote.ProjectTypeDAO": "sap.watt.common.platform/service/remote/ProjectTypeDAO",
+			"sap.watt.common.service.remote.KeyboardShortcuts": "sap.watt.common.platform/service/remote/KeyboardShortcuts",
+			"sap.watt.common.plugin.destination.service.Destination": "sap.watt.common.platform/service/remote/Destination",
+			
+
+			"sap.watt.common.service.selection.Provider": "sap.watt.common.platform/service/selection/Provider",
+			"sap.watt.common.service.selection.TypedSelectionProvider": "sap.watt.common.platform/service/selection/TypedSelectionProvider",
+			"sap.watt.common.service.selection.UI5ControlProvider": "sap.watt.common.platform/service/selection/UI5ControlProvider",
+			
+			"sap.watt.common.service.setting.Project": "sap.watt.common.platform/service/setting/Project",
+			"sap.watt.common.service.remote.ProjectSettingsDAO": "sap.watt.common.platform/service/remote/ProjectSettingsDAO",
+			"sap.watt.common.service.setting.User": "sap.watt.common.platform/service/setting/User",
+			"sap.watt.common.service.setting.Ignore": "sap.watt.common.platform/service/setting/Ignore",
+			
+			"sap.watt.common.service.template.Template": "sap.watt.common.platform/service/template/Template",
+			"sap.watt.common.service.htmlproducer.HtmlProducer": "sap.watt.common.platform/service/htmlproducer/HtmlProducer",
+			
+			"sap.watt.common.service.externalcommand.ExternalCommand": "sap.watt.common.platform/service/externalcommand/ExternalCommand",
+			"sap.watt.common.service.registry.ExternalCommand": "sap.watt.common.platform/service/registry/ExternalCommand",
+			
+			"sap.watt.common.service.extensibility.ParentProject": "sap.watt.common.platform/service/extensibility/ParentProject",
+			
+
+			"sap.watt.common.service.ui.BasicWelcomeContainer": "sap.watt.common.platform/service/ui/BasicWelcomeContainer",
+			"sap.watt.common.service.ui.Browser": "sap.watt.common.platform/service/ui/Browser",
+			"sap.watt.common.service.ui.Console": "sap.watt.common.platform/service/ui/Console",
+			"sap.watt.common.service.ui.Content": "sap.watt.common.platform/service/ui/Content",
+			"sap.watt.common.service.ui.ContentDecorator": "sap.watt.common.platform/service/ui/ContentDecorator", 
+			"sap.watt.common.service.ui.ContextMenu": "sap.watt.common.platform/service/ui/ContextMenu",
+			"sap.watt.common.service.ui.Debugindication": "sap.watt.common.platform/service/ui/Debugindication",
+			"sap.watt.common.service.ui.Displayinformation": "sap.watt.common.platform/service/ui/Displayinformation",
+			"sap.watt.common.service.ui.Feedback": "sap.watt.common.platform/service/ui/Feedback",
+			"sap.watt.common.service.ui.FileSearch": "sap.watt.common.platform/service/ui/FileSearch",
+			"sap.watt.common.service.ui.Layout": "sap.watt.common.platform/service/ui/Layout",
+			"sap.watt.common.service.ui.Logo": "sap.watt.common.platform/service/ui/Logo",
+			"sap.watt.common.service.ui.Logout": "sap.watt.common.platform/service/ui/Logout",
+			"sap.watt.common.service.ui.Menu": "sap.watt.common.platform/service/ui/Menu",
+			"sap.watt.common.service.ui.MenuBar": "sap.watt.common.platform/service/ui/MenuBar",
+			"sap.watt.common.service.ui.Part": "sap.watt.common.platform/service/ui/Part",
+			"sap.watt.common.service.ui.Config": "sap.watt.common.platform/service/ui/Config",
+			"sap.watt.common.service.ui.ConfigAvailability": "sap.watt.common.platform/service/ui/ConfigAvailability",
+			"sap.watt.common.service.ui.Perspective": "sap.watt.common.platform/service/ui/Perspective",
+			"sap.watt.common.service.ui.PerspectiveChooser": "sap.watt.common.platform/service/ui/PerspectiveChooser",
+			"sap.watt.common.service.ui.Settings": "sap.watt.common.platform/service/ui/Settings",
+			"sap.watt.common.service.ui.Sidebar": "sap.watt.common.platform/service/ui/Sidebar",
+			"sap.watt.common.service.ui.Toolbar": "sap.watt.common.platform/service/ui/Toolbar",
+			"sap.watt.common.service.ui.TopRightPane": "sap.watt.common.platform/service/ui/TopRightPane",			
+			"sap.watt.common.service.ui.CreateFileDialog": "sap.watt.common.platform/service/ui/CreateFileDialog",
+			"sap.watt.common.service.ui.CreateFolderDialog": "sap.watt.common.platform/service/ui/CreateFolderDialog",
+			"sap.watt.common.service.ui.WizardPart" : "sap.watt.common.platform/service/ui/WizardPart",
+			"sap.watt.common.service.ui.WizardStep": "sap.watt.common.platform/service/ui/WizardStep",
+			"sap.watt.common.service.ui.WizardFinishStep": "sap.watt.common.platform/service/ui/WizardFinishStep",
+			"sap.watt.common.service.ui.ProjectSetting": "sap.watt.common.platform/service/ui/ProjectSetting",
+			"sap.watt.common.service.ui.UserPreference": "sap.watt.common.platform/service/ui/UserPreference",
+			"sap.watt.common.service.ui.UserPreferencePlugins": "sap.watt.common.platform/service/ui/UserPreferencePlugins",
+			"sap.watt.common.service.ide.PerspectiveSwitcher": "sap.watt.common.platform/service/ide/PerspectiveSwitcher",
+			"sap.watt.common.service.ide.AbstractUIPartToggler": "sap.watt.common.platform/service/ide/AbstractUIPartToggler",
+			"sap.watt.common.service.remote.CodeValidationDAO": "sap.watt.common.platform/service/remote/CodeValidationDAO"
+		}
+	},
+	
+	"configures": {
+		"services": {
+			"usagemonitoring:reportParams": [{
+				"components": [
+					"keepAlive"
+				],
+				"eventTypes": [
+					"reconnect_on_session_loss",
+					"refresh_on_new_logon",
+					"refresh_on_version_change",
+					"refresh_on_error"
+				]
+			}]
+		}
+	}
+}

@@ -1,0 +1,37 @@
+{
+	
+	"name": "sap.watt.platform.problems",
+	"description": "The Problems Plugin",
+	"i18n" : "sap.watt.platform.problems/i18n/i18n",
+
+	"requires":{
+		"services": [
+			"perspective",
+			"resource",
+			"log"
+		]
+	},
+	"provides": {
+		"services": {
+			"problems" : {
+				"implements":  "sap.watt.common.problems.problems",
+				"module" : "sap.watt.platform.problems/service/Problems"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.problems.problems" : "sap.watt.platform.problems/service/Problems"
+		}
+	},
+
+	"configures": {
+		"services": {
+
+		}
+	},
+	
+	"subscribes": {
+
+	}
+
+}

@@ -1,0 +1,90 @@
+{
+	"name": "sap.watt.platform.console",
+	"description": "Messaging area for error messages and others",
+	"i18n": "sap.watt.platform.console/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"log",
+			"selection",
+			"console",
+			"menu",
+			"command",
+			"commandGroup",
+			"perspective",
+			"resource"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"console": {
+				"implements": "sap.watt.common.service.ui.Console",
+				"module": "sap.watt.platform.console/service/Console"
+			}
+		}
+	},
+
+	"configures": {
+
+		"services": {
+			"console:styles": [{
+				"uri": "sap.watt.platform.console/css/console.css"
+			}],
+
+			"command:commands": [{
+				"id": "console.toggle",
+				"label": "{i18n>console_toggleConsole}",
+				"keyBinding": "mod+shift+m",
+				"type": "action",
+				"service": {
+					"implements": "sap.watt.common.service.ide.AbstractUIPartToggler",
+					"module": "sap.watt.common.perspective/command/AbstractUIPartToggler",
+					"configuration": {
+						"id": "console.toggle",
+						"service": "@console",
+						"perspective": "development"
+					}
+				}
+			}, {
+				"id": "console.clear",
+				"label": "{i18n>console_clearConsole}",
+				"type": "action",
+				"service": "sap.watt.platform.console/command/ClearConsole",
+				"available": true
+			}],
+
+			"commandGroup:items": [{
+				"parent": "view.console",
+				"command": "console.toggle",
+				"prio": 20
+			}, {
+				"parent": "view.console",
+				"command": "console.clear",
+				"prio": 40
+			}, {
+				"parent": "applicationLowerRightSidebar",
+				"command": "console.toggle",
+				"icon" : "console",
+				"prio": 10
+			}],
+			"perspective:views": [{
+				"id": "console",
+				"service": "@console",
+				"cssclass": "console"
+			}],
+
+			"perspective:viewToAreaMapping": [{
+				"view": "console",
+				"perspective": "development",
+				"area": "center_bottom"
+			}]
+		}
+
+	},
+
+	"subscribes": {
+		"log:changed": "console:onLoggerEvent"
+	}
+
+}

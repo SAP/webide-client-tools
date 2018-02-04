@@ -1,0 +1,22 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.runtimeextensionsfiori.UI5VersionExtension",
+	"methods": {
+		"getUi5VersionParameters" : {
+			"description" : "Returns the URL parameters needed for running an application with a specific UI5 version.",
+			"params" : [
+				{
+					"name" : "sUi5Version",
+					"type" : "string",
+					"description" : "selected UI5 version from the run configurations, for example \"1.40.9\""
+				}
+			],
+			"returns" : {
+				"type": "object",
+				"description": "Array of the URL parameters for for running an application with a specific UI5 version. For example [{\"name\":\"hc_appversion.sapui5preview\", \"value\":\"1.40.9\"}]"
+			},
+			"visibility" : "private"
+		}
+	},
+	"configurationProperties": {
+	}
+}

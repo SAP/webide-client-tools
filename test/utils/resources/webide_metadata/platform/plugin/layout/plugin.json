@@ -1,0 +1,31 @@
+{
+	"name": "sap.watt.platform.layout",
+	"description": "The layout pluging defines the overall layout",
+	"i18n" : "sap.watt.platform.layout/i18n/i18n",
+	
+	"requires": {
+		"services": [
+			"resource"
+		]
+	},
+	
+	"provides": {
+		"services": {
+			"layout": {
+			 	"implements": "sap.watt.common.service.ui.Layout",
+				"module":  "sap.watt.platform.layout/service/Layout"
+			}
+		}
+	},
+	
+	"configures" : {
+        "services" : {
+            "layout:styles" : [
+                {
+                    "uri" : "sap.watt.platform.layout/css/SAPWebIDEFailure.css",
+                    "type" : "css"
+                }
+            ]
+        }
+    }
+}

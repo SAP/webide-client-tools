@@ -1,0 +1,93 @@
+{
+	"name" : "sap.watt.common.odataprovider.service.metadataHandler",
+	"description" : "The metadataHandler service interface",
+	"methods" : {
+		"updateMetadataXml" :{
+			"description": "updates the metadata file under the given document. If the file doesn't exist, creates new file",
+			"params" :[{
+				"name" : "oParentDocumet",
+				"type" : "object"
+			},
+			{
+				"name" : "sMetadataContent",
+				"type" : "string",
+				"description": "the content of the new file"
+			},{
+				"name" : "sServiceName",
+				"type" : "string",
+				"optional" : true
+			},{
+				"name" : "sMetadataPath",
+				"type" : "string",
+				"optional" : true
+			}],
+			"returns" : "object"
+		},
+		
+		"getMetadataPath" :{
+			"description": "returns the metadata path.",
+			"params" :[{
+				"name" : "oParentDocumet",
+				"type" : "object"
+			},{
+				"name" : "sServiceName",
+				"type" : "string",
+				"optional" : true
+			}],
+			"returns" : "object"
+		},
+		
+		"getMetadataDocuments" :{
+			"description": "returns the /model/metadata.xml file documents under the given project document.",
+			"params" :[{
+				"name" : "oParentDocumet",
+				"type" : "object"
+			}],
+			"returns" : "object"
+		},
+
+		"getDefaultMetadataDocument" :{
+			"description": "Returns the default model metadata.xml file under the given project document, or the first one if no default found.",
+			"params" :[{
+				"name" : "oDocument",
+				"type" : "object",
+				"description": "The project parent folder document object or the selected document object"
+			}],
+			"returns" : "object"
+		},
+		
+		"updateAnnotationDocument": {
+			"description": "creates the annotation file under the given document. in the model or root folder",
+			"params" :[{
+				"name" : "oParentDocumet",
+				"type" : "object"
+			},
+			{
+			   	"name" : "sFileName",
+				"type" : "string",
+				"description": "the new file name"
+			},{
+			   	"name" : "bGenerateInModelFolder",
+				"type" : "boolean",
+				"description": "determines the location of the annotation file. either under model folder or root folder"
+			    
+			},
+			{
+			   	"name" : "sContent",
+				"type" : "string",
+				"description": "the content of the new file"
+			    
+			},{
+				"name" : "sMetadataPath",
+				"type" : "string",
+				"optional" : true
+			}],
+			"returns" : "object"
+		}
+	},
+	"events": {
+		"metadataUploaded": {
+			"description": "Will be thrown when metadata is uploaded successfully"
+		}
+	}
+}

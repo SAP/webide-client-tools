@@ -1,0 +1,288 @@
+{
+	"name": "sap.watt.platform.repositorybrowser",
+	"description": "The Repository Browser Plugin",
+	"i18n": "sap.watt.platform.repositorybrowser/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"contextMenu",
+			"filefilter",
+			"decoration",
+			"document",
+			"filesystem.documentProvider",
+			"selection",
+			"clipboard",
+			"clipboard.filedialog",
+			"clipboard.filedialog.rename",
+			"usernotification",
+			"log",
+			"perspective",
+			"focus",
+			"setting.project",
+			"resource",
+			"content",
+			"preferences",
+			"export",
+			"system",
+			"usagemonitoring",
+			"progress",
+			"toolbarFactory"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"_repositoryBrowserToolbar": {
+				"implements": "sap.watt.common.service.ui.Toolbar",
+				"factory": "toolbarFactory",
+				"configureation": {
+					"notificationMessagesEnabled": false
+				}
+			},
+			"repositoryBrowserFactory": {
+				"implements": "Factory",
+				"module": "sap.watt.platform.repositorybrowser/service/RepositoryBrowserFactory"
+			},
+			"repositorybrowser": {
+				"implements": "sap.watt.common.service.ui.Browser",
+				"module": "sap.watt.platform.repositorybrowser/service/RepositoryBrowser"
+			},
+
+			"repositorybrowserPersistence": {
+				"implements": "sap.watt.common.service.repositorybrowser.RepositoryBrowserPersistence",
+				"module": "sap.watt.platform.repositorybrowser/service/RepositoryBrowserPersistence"
+			},
+
+			"repositorybrowserWorkaroundForMissingFactories": {
+				"implements": "sap.watt.common.service.ui.Browser",
+				"module": "sap.watt.platform.repositorybrowser/service/RepositoryBrowser"
+			},
+
+			"repositorybrowser.createfiledialog": {
+				"implements": "sap.watt.common.service.ui.CreateFileDialog",
+				"module": "sap.watt.platform.repositorybrowser/ui/CreateFileDialog"
+			},
+			"repositorybrowser.createfolderdialog": {
+				"implements": "sap.watt.common.service.ui.CreateFolderDialog",
+				"module": "sap.watt.platform.repositorybrowser/ui/CreateFolderDialog"
+			},
+			"repositorybrowserUtils": {
+				"implements": "sap.watt.common.repositorybrowser.utils.RepositoryBrowserUtils",
+				"module": "sap.watt.platform.repositorybrowser/utils/rbUtils"
+			},
+			"archiveFolder": {
+				"implements": "sap.watt.common.service.repositorybrowser.ArchiveFolder",
+				"module": "sap.watt.platform.repositorybrowser/service/ArchiveFolder"
+			}
+		},
+		"interfaces": {
+			"sap.watt.common.service.repositorybrowser.RepositoryBrowserPersistence": "sap.watt.platform.repositorybrowser/service/RepositoryBrowserPersistence",
+			"sap.watt.common.repositorybrowser.utils.RepositoryBrowserUtils": "sap.watt.platform.repositorybrowser/utils/rbUtils",
+			"sap.watt.common.service.repositorybrowser.ArchiveFolder": "sap.watt.platform.repositorybrowser/service/ArchiveFolder"
+		}
+	},
+
+	"configures": {
+
+		"services": {
+			"_repositoryBrowserToolbar:group": "repositorybrowserToolbar",
+			"repositorybrowser:toolbarEnabled": true,
+			"repositorybrowser:decorationEnabled": true,
+			"repositorybrowser:doubleClickEnabled": true,
+			"repositorybrowser:preferenceEnabled": true,
+			"repositorybrowser:multipleSelectionEnabled": true,
+			"repositorybrowser:contextMenu": "repositoryBrowserContextMenu",
+
+			"command:commands": [{
+				"id": "repositorybrowser.linkWithEditorOn",
+				"icon": "chain-link",
+				"label": "{i18n>command_link_with_editor}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/LinkWithEditorOn"
+			}, {
+				"id": "repositorybrowser.linkWithEditorOff",
+				"icon": "broken-link",
+				"label": "{i18n>command_unlink_with_editor}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/LinkWithEditorOff"
+			}, {
+				"id": "repositorybrowser.toolbar.collapseFolder",
+				"icon": "collapse",
+				"label": "{i18n>button_collapse}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/CollapseFolder"
+			}, {
+				"id": "repositorybrowser.showInRepBrowser",
+				"label": "{i18n>command_show_in_repbrowser}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/ShowInRepBrowser",
+				"enabled": true
+			}, {
+				"id": "repositorybrowser.delete",
+				"label": "{i18n>command_delete}",
+				"type": "action",
+				"icon": "delete",
+				"service": "sap.watt.platform.repositorybrowser/command/Delete",
+				"keyBinding": "del"
+			}, {
+				"id": "repositorybrowser.refresh",
+				"label": "{i18n>command_refresh}",
+				"type": "action",
+				"icon": "refresh",
+				"service": "sap.watt.platform.repositorybrowser/command/Refresh"
+			}, {
+				"id": "repositorybrowser.copy",
+				"label": "{i18n>command_copy}",
+				"type": "action",
+				"icon": "copy<",
+				"service": "sap.watt.platform.repositorybrowser/command/Copy",
+				"keyBinding": "mod+c"
+			}, {
+				"id": "repositorybrowser.copyFullPath",
+				"label": "{i18n>command_copy_full_path}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/CopyFullPath"
+			}, {
+				"id": "repositorybrowser.cut",
+				"label": "{i18n>command_cut}",
+				"type": "action",
+				"icon": "cut",
+				"service": "sap.watt.platform.repositorybrowser/command/Cut",
+				"keyBinding": "mod+x"
+			}, {
+				"id": "repositorybrowser.paste",
+				"label": "{i18n>command_paste}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/Paste",
+				"keyBinding": "mod+v"
+			}, {
+				"id": "repositorybrowser.rename",
+				"label": "{i18n>command_rename}",
+				"type": "action",
+				"service": "sap.watt.platform.repositorybrowser/command/Rename",
+				"keyBinding": "f2"
+			}, {
+				"id": "repositorybrowser.createFile",
+				"label": "{i18n>command_file}",
+				"type": "action",
+				"icon": "createFile",
+				"service": "sap.watt.platform.repositorybrowser/command/CreateFile",
+				"keyBinding": "mod+alt+n"
+			}, {
+				"id": "repositorybrowser.createFolder",
+				"label": "{i18n>command_folder}",
+				"type": "action",
+				"icon": "createFolder",
+				"service": "sap.watt.platform.repositorybrowser/command/CreateFolder",
+				"keyBinding": "mod+alt+shift+n"
+			}, {
+				"id": "repositorybrowser.archiveFolder",
+				"service": "sap.watt.platform.repositorybrowser/command/Archive",
+				"label": "{i18n>archive_command}",
+				"type": "action"
+			}, {
+				"id": "repositorybrowser.toggle",
+				"label": "{i18n>command_repbrowser_pane}",
+				"icon": "repositorybrowser",
+				"service": {
+					"implements": "sap.watt.common.service.ide.AbstractUIPartToggler",
+					"module": "sap.watt.common.perspective/command/AbstractUIPartToggler",
+					"configuration": {
+						"id": "repositorybrowser.toggle",
+						"service": "@repositorybrowser",
+						"perspective": "development"
+					}
+				}
+			}],
+			"commandGroup:groups": [{
+				"id": "repositorybrowserToolbar"
+			}],
+			"commandGroup:items": [{
+					"parent": "file.new.fileSystem",
+					"command": "repositorybrowser.createFile",
+					"prio": 10
+				}, {
+					"parent": "file.new.fileSystem",
+					"command": "repositorybrowser.createFolder",
+					"default": true,
+					"prio": 30
+				}, {
+					"parent": "edit.fileActions",
+					"command": "repositorybrowser.cut",
+					"prio": 19
+				}, {
+					"parent": "edit.fileActions",
+					"command": "repositorybrowser.copy",
+					"prio": 20
+				}, {
+					"parent": "edit.fileActions",
+					"command": "repositorybrowser.copyFullPath",
+					"prio": 25
+				}, {
+					"parent": "edit.fileActions",
+					"command": "repositorybrowser.paste",
+					"prio": 30
+				}, {
+					"parent": "edit.fileActions",
+					"command": "repositorybrowser.rename",
+					"prio": 40
+				}, {
+					"parent": "edit.fileActionDelete",
+					"command": "repositorybrowser.delete",
+					"prio": 50
+				}, {
+					"parent": "view.linkEditor",
+					"command": "repositorybrowser.linkWithEditorOff",
+					"prio": 10
+				}, {
+					"parent": "view.linkEditor",
+					"command": "repositorybrowser.linkWithEditorOn",
+					"prio": 20
+				}, {
+					"parent": "view.perspectives",
+					"command": "repositorybrowser.toggle",
+					"prio": "10"
+				},
+
+				{
+					"parent": "repositorybrowserToolbar",
+					"command": "repositorybrowser.toolbar.collapseFolder",
+					"prio": 10
+				}, {
+					"parent": "repositorybrowserToolbar",
+					"command": "repositorybrowser.linkWithEditorOn",
+					"prio": 20
+				}, {
+					"parent": "repositorybrowserToolbar",
+					"command": "repositorybrowser.linkWithEditorOff",
+					"prio": 25
+				}
+			],
+			"perspective:views": [{
+				"id": "repositorybrowser",
+				"service": "@repositorybrowser",
+				"cssclass": "explorer",
+				"alwaysOpenAsDefaultAfterNormalized": "true"
+			}],
+			"perspective:viewToAreaMapping": [{
+				"view": "repositorybrowser",
+				"perspective": "development",
+				"area": "left"
+			}],
+			"usagemonitoring:reportParams": [{
+				"components": ["repositoryBrowser"],
+				"eventTypes": ["commandExecuted", "linkWithEditoroff", "linkWithEditorOn"]
+			}]
+		}
+	},
+
+	"subscribes": {
+		"selection:changed": ["repositorybrowser:onDocumentSelected", "_repositoryBrowserToolbar:onAfterSetSelection"],
+		"focus:changed": "repositorybrowser:onFocusChanged",
+		"content:finishedRendering": "repositorybrowser:restoreInitialLinkedState",
+		"decoration:decorationsChanged": "repositorybrowser:onDecorationsChanged",
+		"command:invalidated": "_repositoryBrowserToolbar:onAfterSetSelection"
+	}
+}

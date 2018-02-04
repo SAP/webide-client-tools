@@ -1,0 +1,55 @@
+{
+    "name": "sap.watt.common.plugin.aceeditor.service.EditorConfig",
+	"description": "The editor config interface",
+	"extends" : [
+		"sap.watt.common.service.ui.Config"
+	],
+	"configurationProperties" : {
+		"preferenceService" : {
+			"type" : {
+				"service" : "sap.watt.common.service.ui.Settings",
+				"node" : "string"
+			},
+			"multiple" : false
+		},
+		"styles" : {
+			"type" : [{
+				"uri" : "string",
+				"type" : "string"
+			}],
+			"multiple" : false
+		}
+	},
+	"methods": {
+		"getUserSetting": {
+			"description" : "This method gets the user settings",
+			"returns": {
+				"type" : "object",
+				"description" : "Return user settings"
+			}
+		},
+		"setUserSetting": {
+			"description" : "This method sets the user settings",
+			"params": [
+				{
+					"name": "oEditor",
+					"type": "object",
+					"description" : "UI5 Editor controller"
+				}
+			],
+			"returns": {
+				"type" : "object",
+				"description" : "Return current selection"
+			}
+		}
+	},
+	"events": {
+    	"preferencesSaved" : {
+    		"description" : "It's the timing when the preferences saved.",
+			"params" :[{
+				"name" : "settings",
+				"type" : "object"
+			}]
+		}
+	}
+}

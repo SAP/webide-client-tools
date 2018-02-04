@@ -1,0 +1,61 @@
+{
+	"name" : "sap.watt.common.service.ui.Settings",
+	"description" : "Interface for any Settings API implementation",
+
+	"methods": {
+
+		"set": {
+			"description" : "Set or overwrite a preference node",
+			"params": [
+				{ 
+					"name" : "oSettings",
+					"type" : "string|object",
+					"description" : "The settings representation as JSON string or object"
+				},
+				{ 
+					"name" : "sNode",
+					"type" : "string",
+					"description" : "The name of the preference node"
+				},
+				{ 
+					"name" : "bForceSave",
+					"type" : "boolean",
+					"description" : "Saves immediately new value",
+					"optional": true
+				}
+			]
+		},
+	
+		"get": {
+			"description" : "Get a preferences node",
+			"params": [
+				{ 
+					"name" : "sNode",
+					"type" : "string",
+					"description" : "The name of the preference node"
+				}
+			],
+			"returns": {
+					"type" : "object",
+					"description" : "A JSON object containing all attribute/value pairs"
+				}
+		},
+		
+		"remove": {
+			"description" : "Remove a preference node",
+			"params": [
+				{ 
+					"name" : "sNode",
+					"type" : "string",
+					"description" : "The name of the preference node"
+				},
+				{ 
+					"name" : "bForceSave",
+					"type" : "boolean",
+					"description" : "Saves immediately new value",
+					"optional": true
+				}
+			]
+		}
+	}
+}

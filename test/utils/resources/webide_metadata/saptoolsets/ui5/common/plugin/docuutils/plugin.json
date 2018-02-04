@@ -1,0 +1,19 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.common.docuutils",
+	"description": "The plugin provides ui5 controls documentation utility services",
+	
+	"requires": {
+		"services": [
+		]
+	},
+	
+	"configures": {
+		"services": {
+		}
+	},
+	
+	"provides": {
+		"services" : {	
+		}
+	}
+}

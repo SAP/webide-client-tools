@@ -1,0 +1,82 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.fiorirunner",
+	"description": "Fiori runner plugin",
+	"i18n": "sap.watt.saptoolsets.fiori.run.fiorirunner/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"run",
+			"setting.project",
+			"appparams",
+			"filesearchutil",
+			"choosefilepopup",
+			"baseinputvalidatorutil",
+			"log",
+			"usagemonitoring",
+			"runconfig.filepath",
+			"runconfig.withmock",
+			"runconfig.preview",
+			"runconfig.urlparameters",
+			"filefilter",
+			"git",
+			"runwithframenewProcess",
+			"runinnewprocess",
+			"htmlextendersextension"
+		]
+	},
+	"provides": {
+		"services": {
+			"FioriRunner": {
+				"implements": "sap.watt.common.plugin.run.service.runner",
+				"module": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunner"
+			},
+			"FioriRunnerRuntime": {
+				"implements": "sap.watt.saptoolsets.fiori.run.fiorirunner.FioriRunnerRuntime",
+				"module": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunnerRuntime"
+			},
+			"fiorirunnerconfigui": {
+				"implements": "sap.watt.saptoolsets.fiori.run.fiorirunner.FioriRunnerConfigUi",
+				"module": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunnerConfigUi"
+			},
+			"SandboxHtmlBuilder": {
+				"implements": "sap.watt.saptoolsets.fiori.run.fiorirunner.service.SandboxHtmlBuilder",
+				"module": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/SandboxHtmlBuilder"
+			}
+		},
+		"interfaces": {
+			"sap.watt.saptoolsets.fiori.run.fiorirunner.FioriRunnerRuntime": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunnerRuntime",
+			"sap.watt.saptoolsets.fiori.run.fiorirunner.FioriRunnerConfigUi": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunnerConfigUi",
+			"sap.watt.saptoolsets.fiori.run.fiorirunner.service.SandboxHtmlBuilder": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/SandboxHtmlBuilder",
+			"sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterDT": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunnerAdapterDT",
+			"sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterRT": "sap.watt.saptoolsets.fiori.run.fiorirunner/service/FioriRunnerAdapterRT"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"run:runners": [{
+				"id": "fiorirunner",
+				"service": "@FioriRunner",
+				"displayName": "{i18n>lbl_run_sap_fiori_app}",
+				"projectTypesIds": ["sap.watt.uitools.ide.fiori", "sap.html5"],
+				"windowTarget": "fiori_preview",
+				"fileTypes": ["Component.js", "*fiorisandboxconfig*.json"]
+			}],
+
+			"usagemonitoring:reportParams": [{
+				"components": ["runner"],
+				"eventTypes": ["fiori_sandbox", "fiori_sandbox_config", "Ui5Version", "url_parameters"]
+			}],
+			"git:ignore": [
+				"fioriHtmlRunner.html",
+				".*/fioriHtmlRunner.html"
+			],
+			"filefilter:alwaysHidden": [{
+				"regExps": ["/{1}(fioriHtmlRunner.html)$"]
+			}]
+		}
+	},
+	"subscribes": {
+
+	}
+}

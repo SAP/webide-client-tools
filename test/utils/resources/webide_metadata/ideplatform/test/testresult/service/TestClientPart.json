@@ -1,0 +1,27 @@
+{
+  "name": "sap.watt.ideplatform.test.testresult.service.TestClientPart",
+  "description": "The generic test runner part service",
+  "extends": "sap.watt.common.service.ui.Part",
+  "methods": {
+    "getView": {
+      "description": "Returns the test results view.",
+      "returns": {
+        "type": "object",
+        "description": "The test results view or undefined if view has not been shown yet."
+      }
+    }
+  },
+  "configurationProperties": {
+    "testResultProviders": {
+      "multiple": true,
+      "type": {
+        "id": "string",
+        "projectTypeIds": {
+          "type": "string",
+          "multiple": true
+        },
+        "service": "sap.watt.ideplatform.test.testresult.service.TestResultProvider"
+      }
+    }
+  }
+}

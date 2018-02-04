@@ -1,0 +1,51 @@
+{
+	"name": "sap.watt.common.plugin.preview.service.PreviewRunner",
+	"description": "A preview runner is repsonsible to open the preview URL in a window and control it. E.g. it can open it in a plain window or with a wrapper frame",
+	"methods": {
+		"showPreview": {
+			"deprecated" : {
+				"since" : "1.46",
+				"description" : "Call the specific runner instead."
+			},
+			"params": [
+				{
+					"name": "oWindow",
+					"type": "object",
+					"description": "The window to show the preview in"
+				},
+				{
+					"name": "oURL",
+					"type": "object",
+					"description": "The URI object which contains the URL"
+				},
+				{
+					"name": "mCustomSettings",
+					"type": "object",
+					"optional": true,
+					"description": "Custom configurations specific for this preview launch"
+				},
+				{
+					"name": "oAppForwarding",
+					"optional": true,
+					"type": "object"
+				},
+				{
+					"name": "sCustomWrapper",
+					"optional": true,
+					"type": "string"
+				}
+			]
+		}
+	},
+	"events": {
+		"buttonClicked": {
+			"params": [
+				{
+					"name": "id",
+					"type": "string",
+					"description": "ID of the button clicked on"
+				}
+			]
+		}
+	}
+}

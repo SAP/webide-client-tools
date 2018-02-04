@@ -1,0 +1,13 @@
+{
+	"preloadCapable" : true,
+
+	"name" : "sap.watt.ideplatform.test",
+	"title" : "Web IDE test support feature",
+	"version" : "0.0.1",
+	"description" : "Web IDE test feature with support for test result display",
+
+	"bundledPlugins" : {
+		"sap.watt.ideplatform.test.testresult" : "file:./testresult"
+	}
+
+}

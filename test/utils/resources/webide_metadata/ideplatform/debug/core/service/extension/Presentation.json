@@ -1,0 +1,30 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.extension.Presentation",
+  "description": "Presentation service providing UI related artefacts like sorters, labels, images or editors associated with debug elements in a specific debug model.",
+  "methods": {
+    "openLaunchConfigurationDialog": {
+      "description": "Opens a dialog for entering the lauch configuration data.",
+      "params": [
+        {
+          "name": "project",
+          "type": "object",
+          "description": "The project that should initialy be selected in the list of filtered projects."
+        }
+      ]
+    },
+    "getVariableComparator": {
+      "description": "Returns a compare function used for domain specific variable sorting. Variables are not sorted by default. The comparator is cached by the debug framework.",
+      "returns": {
+        "type": "sap.ui.model.Sorter",
+        "description": "The variable compare function."
+      }
+    },
+    "getDebugConsoleControl": {
+      "description": "Returns a UI fragment that will be embedded in the debug console panel. The UI control is cached by the debug framework.",
+      "returns": {
+        "type": "sap.ui.jsfragment",
+        "description": "The fragment providing evaluate expression support."
+      }
+    }
+  }
+}

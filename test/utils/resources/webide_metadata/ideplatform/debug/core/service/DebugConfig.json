@@ -1,0 +1,167 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.DebugConfig",
+  "description": "Debugger configuration",
+  "methods": {
+    "getConfigurations": {
+      "description": "Returns the configuration data for all registered debuggers.",
+      "returns": {
+        "type": "object",
+        "description": "The configuration data for all registered debuggers."
+      }
+    },
+    "getConfiguration": {
+      "description": "Returns the debugger configuration for the given debug model identifier.",
+      "params": [
+        {
+          "name": "debugModelId",
+          "type": "string",
+          "description": "The debug model identifier."
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "An object holding the debugger configuration."
+      }
+    },
+    "getConfigurationByProject": {
+      "description": "Returns the debugger configuration data for the given project.",
+      "params": [
+        {
+          "name": "project",
+          "type": "string",
+          "description": "The project's type is used as key."
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The debugger configuration object if a debugger has been registered for the given project type, null otherwise."
+      }
+    },
+    "getConfigurationByFileExtension": {
+      "description": "Returns the debugger configuration data for the given file extension.",
+      "params": [
+        {
+          "name": "fileExtension",
+          "type": "string",
+          "description": "The file extension."
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The debugger configuration object if a debugger has been registered for the given file extension, null otherwise."
+      }
+    },
+    "getConfigurationByDocument": {
+      "description": "Returns the debugger configuration data for the given document.",
+      "params": [
+        {
+          "name": "document",
+          "type": "object",
+          "description": "The document object."
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The debugger configuration object if a debugger has been registered for the documents file extension and project type, null otherwise."
+      }
+    },
+    "getBreakpointLifecycleParticipantService": {
+      "description": "Returns the breakpoint lifecycle participant service extension for the given debug model identifier.",
+      "params": [
+        {
+          "name": "debugModelId",
+          "type": "string",
+          "description": "The debug model identifier."
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.service.extension.BreakpointLifecycleParticipant",
+        "description": "The breakpoint lifecycle participant service extension or null if no breakpointLifecycleParticipant service extension has been registered for the given debug model identifier."
+      }
+    },
+    "getPresentationService": {
+      "description": "Returns the presentation service extension for the given debug model identifier",
+      "params": [
+        {
+          "name": "debugModelId",
+          "type": "string",
+          "description": "The debug model identifier."
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.service.extension.Presentation",
+        "description": "The presentation service extension or null if no presentation service extension has been registered for the given debug model identifier."
+      }
+    },
+    "getDocumentProviderService": {
+      "description": "Returns the document provider service extension for the given debug model identifier.",
+      "params": [
+        {
+          "name": "debugModelId",
+          "type": "string",
+          "description": "The debug model identifier."
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.service.extension.DocumentProvider",
+        "description": "The document provider service extension or null if no document provider service extension has been registered for the given debug model identifier."
+      }
+    },
+    "getDebugEngineService": {
+      "description": "Returns the debugEngine service extension for the given debug model identifier.",
+      "params": [
+        {
+          "name": "debugModelId",
+          "type": "string",
+          "description": "The debug model identifier."
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.ideplatform.debug.core.service.extension.DebugEngine",
+        "description": "The debug engine service extension or null if no debug engine service extension has been registered for the given debug model identifier."
+      }
+    }
+  },
+  "configurationProperties": {
+    "debuggers": {
+      "type": {
+        "debugModelId": "string",
+        "projectType": "string",
+        "debugEngine": {
+          "type": {
+            "service": "sap.watt.ideplatform.debug.core.service.extension.DebugEngine"
+          },
+          "multiple": false
+        },
+        "editors": {
+          "type": {
+            "fileExtensions": {
+              "type": "string",
+              "multiple": true
+            }
+          },
+          "multiple": false
+        },
+        "breakpointLifecycle": {
+          "type": {
+            "service": "sap.watt.ideplatform.debug.core.service.extension.BreakpointLifecycleParticipant"
+          },
+          "multiple": false
+        },
+        "presentation": {
+          "type": {
+            "service": "sap.watt.ideplatform.debug.core.service.extension.Presentation"
+          },
+          "multiple": false
+        },
+        "documentProvider": {
+          "type": {
+            "service": "sap.watt.ideplatform.debug.core.service.extension.DocumentProvider"
+          },
+          "multiple": false
+        }
+      },
+      "multiple": true
+    }
+  }
+}

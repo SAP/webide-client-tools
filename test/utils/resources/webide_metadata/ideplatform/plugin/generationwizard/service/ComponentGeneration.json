@@ -1,0 +1,22 @@
+{
+	"name" : "sap.watt.ideplatform.generationwizard.service.ComponentGeneration",
+	"description" : "Component Generation wizard services",
+	"methods" : {
+		"openComponentWizardWithTemplate" : {
+		    "description" : "Open a wizard from the second step",
+		    "params" :[
+	            	{
+	                	"name" : "oDocument", 
+	                	"type": "object",
+	                	"description" : "document"
+	                },
+	                {
+	                	"name" : "oTemplate", 
+	                	"type": "object",
+	                	"description" : "template"
+	                }
+	            ]
+		}
+	}
+	
+}

@@ -1,0 +1,20 @@
+{
+	
+	"name": "sap.watt.platform.qrcode",
+	"description": "The QR Code Plugin",
+	
+	"provides" : {
+		"services": {
+			"qrcode": {
+				"implements": "sap.watt.common.plugin.qrcode.service.QrCode",
+				"module": "sap.watt.platform.qrcode/service/QrCodeImpl"
+			}
+			
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.qrcode.service.QrCode": "sap.watt.platform.qrcode/service/QrCode"
+		}
+		
+	}
+}

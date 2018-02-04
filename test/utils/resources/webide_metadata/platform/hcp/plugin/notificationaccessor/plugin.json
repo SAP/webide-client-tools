@@ -1,0 +1,19 @@
+{
+
+	"name": "sap.watt.platform.hcp.notificationaccessor",
+	"description": "The Notification accessor plugin",
+
+	"requires": {
+		"services": [
+			"notification.manager",
+			"system"
+		]
+	},
+	"configures": {
+		"services": {
+			"notification.manager:accessor": {
+				"service": "sap.watt.platform.hcp.notificationaccessor/service/NotificationAccessor"
+			}
+		}
+	}
+}

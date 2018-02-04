@@ -1,0 +1,25 @@
+{
+	"name" : "sap.watt.platform.quickaccess.QuickAccess",
+	"description" : "Quick access service interface",
+	"extends" : ["sap.watt.common.service.selection.Provider","sap.watt.common.service.selection.TypedSelectionProvider"],
+	"methods" : {
+		"getProviders": {
+			"description": "Retrieve all quick access providers",
+			"returns": {
+				"type" : "object",
+				"description" : "returns a map of QuickAccessProvider by ID"
+			}
+		},
+		"_willOpenUI" : {
+			"description" : "Used internally from quick access dialog",
+			"visibility" : "hidden"
+		},
+		"_uiClosed" : {
+			"description" : "Used internally from quick access dialog",
+			"visibility" : "hidden"
+		}
+	},
+	"events" : {
+	}
+
+}

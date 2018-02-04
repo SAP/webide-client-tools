@@ -1,0 +1,330 @@
+{
+  "datasource" :
+  {
+    "type" : "odata",
+    "url" : ""
+  },
+  "claimProcessing":
+  {
+    "parameters" :
+    {
+      "AppCollection" :
+      {
+        "type" : "Entity",
+        "multiplicity" : "many",
+        "isRoot" : "true",
+        "binding" : "@datasource.entities",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required" : "true",
+          "title" : "mdWithAttachments_model_parameters_AppCollection_title"
+        }
+      },
+      "AttachmentNav" :
+      {
+        "type" : "Entity",
+        "multiplicity" : "many",
+        "isRoot" : "true",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.navigations",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentNav_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentNav_tooltip"
+        }
+      },
+      "AttachmentCollection":
+      {
+        "type" : "Entity",
+        "multiplicity" : "many",
+        "isRoot" : "true",
+        "binding" : "@datasource.entities",
+        "value" : "=@claimProcessing.parameters.AttachmentNav.value.elements.0.parent()",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentCollection_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentCollection_tooltip"
+        }
+      },
+      "MasterTitle" :
+      {
+        "type" : "string",
+        "value" : "@claimProcessing.parameters.AppCollection.value.name",
+        "wizard" :
+        {
+          "control" : "TextField",
+          "required" : "false",
+          "title" : "mdWithAttachments_model_parameters_MasterTitle_title"
+        }
+      },
+      "ItemTitle" :
+      {
+        "type" : "string",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required" : "true",
+          "title" : "mdWithAttachments_model_parameters_ItemTitle_title",
+          "tooltip" : "mdWithAttachments_model_parameters_ItemTitle_tooltip"
+        }
+      },
+      "IDAttribute" :
+      {
+        "type" : "Property.Key",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required" : "false",
+          "title" : "mdWithAttachments_model_parameters_IDAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_IDAttribute_tooltip"
+        }
+      },
+      "NumericAttribute" :
+      {
+        "type" : "Property.Number",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_NumericAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_NumericAttribute_tooltip"
+        }
+      },
+      "UnitsAttribute" :
+      {
+        "type" : "Property.String",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_UnitsAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_UnitsAttribute_tooltip"
+        }
+      },
+      "StatusAttribute" :
+      {
+        "type" : "Property.String",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_StatusAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_StatusAttribute_tooltip"
+        }
+      },
+      "DateAttribute" :
+      {
+        "type" : "Property.Date",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_DateAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_DateAttribute_tooltip"
+        }
+      },
+      "Attribute1" :
+      {
+        "type" : "string",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_Attribute1_title",
+          "tooltip" : "mdWithAttachments_model_parameters_Attribute1_tooltip"
+        }
+      },
+      "Attribute2" :
+      {
+        "type" : "string",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_Attribute2_title",
+          "tooltip" : "mdWithAttachments_model_parameters_Attribute2_tooltip"
+        }
+      },
+      "DetailTitle" :
+      {
+        "type" : "string",
+        "value" : "Details",
+        "wizard" :
+        {
+          "control" : "TextField",
+          "required" : "false",
+          "title" : "mdWithAttachments_model_parameters_DetailTitle_title"
+        }
+      },
+      "DateFormAttribute" :
+      {
+        "type" : "Property.Date",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_DateFormAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_DateFormAttribute_tooltip"
+        }
+      },
+      "NumberFormAttribute" :
+      {
+        "type" : "Property.Number",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_NumberFormAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_NumberFormAttribute_tooltip"
+        }
+      },
+      "TextFormAttribute" :
+      {
+        "type" : "Property.String",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AppCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "required": "false",
+          "title" : "mdWithAttachments_model_parameters_TextFormAttribute_title",
+          "tooltip" : "mdWithAttachments_model_parameters_TextFormAttribute_tooltip"
+        }
+      },
+      "EnableApproveReject" :
+      {
+        "type" : "boolean",
+        "value" : "true",
+        "wizard" :
+        {
+          "control" : "CheckBox",
+          "required" : true,
+          "title" : "mdWithAttachments_model_parameters_EnableApproveReject_title"
+        }
+      },
+      "AttachmentID" :
+      {
+        "type" : "Property.Key",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AttachmentCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentID_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentID_tooltip"
+        }
+      },
+      "AttachmentFileName" :
+      {
+        "type" : "Property.String",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AttachmentCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentFileName_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentFileName_tooltip"
+        }
+      },
+      "AttachmentContent" :
+      {
+        "type" : "Property.Binary",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AttachmentCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentContent_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentContent_tooltip"
+        }
+      },
+      "AttachmentContentType" :
+      {
+        "type" : "Property.String",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AttachmentCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentContentType_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentContentType_tooltip"
+        }
+      },
+      "AttachmentMainEntityID" :
+      {
+        "type" : "string",
+        "multiplicity" : "one",
+        "binding" : "@claimProcessing.parameters.AttachmentCollection.value.elements",
+        "value" : "",
+        "wizard" :
+        {
+          "control" : "ComboBox",
+          "title" : "mdWithAttachments_model_parameters_AttachmentMainEntityID_title",
+          "tooltip" : "mdWithAttachments_model_parameters_AttachmentMainEntityID_tooltip"
+        }
+      }
+    },
+    "forms" : [
+      {
+        "title" : "",
+        "groups" : [
+          {
+            "title" : "mdWithAttachments_model_form_groups_datasource_title",
+            "parameters": ["@claimProcessing.parameters.AppCollection",  "@claimProcessing.parameters.AttachmentNav"]
+          },
+          {
+            "title" : "mdWithAttachments_model_form_groups_master_title",
+            "parameters": ["@claimProcessing.parameters.MasterTitle"]
+          },
+          {
+            "title" : "mdWithAttachments_model_form_groups_detail_title",
+            "parameters": ["@claimProcessing.parameters.DetailTitle","@claimProcessing.parameters.EnableApproveReject"]
+          },
+          {
+            "title" : "mdWithAttachments_model_form_groups_attachment_title",
+            "parameters": ["@claimProcessing.parameters.AttachmentCollection", "@claimProcessing.parameters.AttachmentFileName",
+              "@claimProcessing.parameters.AttachmentContent", "@claimProcessing.parameters.AttachmentContentType", "@claimProcessing.parameters.AttachmentMainEntityID"]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.runneradapter",
+	"description": "Runner adapter for Web IDe on HCP",
+	"i18n": "sap.watt.saptoolsets.fiori.run.runneradapter/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"ideurlparameters",
+		  	"UI5VersionsUtil",
+			"FioriRunnerRuntime",
+			"fiorirunnerconfigui",
+			"ui5versionextension",
+			"componentpreloadextension",
+			"appcachebusterextension",
+			"heliumPreviewAdapter",
+			"reuselibsextension",
+			"destinationmappingextension",
+			"runconfig.ui5versions",
+			"runconfig.destinationmapping",
+			"runconfig.resourcemapping",
+			"destinationsutil",
+			"ui5librarymetadata",
+			"SandboxHtmlBuilder"
+		]
+	},
+	"provides": {
+		"services": {
+			"FioriRunnerAdapterCpDT": {
+				"implements": "sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterDT",
+				"module": "sap.watt.saptoolsets.fiori.run.runneradapter/service/FioriRunnerAdapterCpDT"
+			},
+			"FioriRunnerAdapterCpRT": {
+				"implements": "sap.watt.saptoolsets.runner.fiorirunner.service.FioriRunnerAdapterRT",
+				"module": "sap.watt.saptoolsets.fiori.run.runneradapter/service/FioriRunnerAdapterCpRT"
+			}
+		}
+	},
+	
+	"configures": {
+		"services": {
+			"runconfig.resourcemapping:externalservices": [{
+				"service": "@reuseLibsUtil"
+			}],
+			"FioriRunnerRuntime:fiorirunneradapterrt":{
+				"service": "@FioriRunnerAdapterCpRT"
+			},
+			"SandboxHtmlBuilder:fiorirunneradapterrt":{
+				"service": "@FioriRunnerAdapterCpRT"
+			},
+			"fiorirunnerconfigui:fiorirunneradapterdt":{
+				"service": "@FioriRunnerAdapterCpDT"
+			}
+		}
+	}
+}

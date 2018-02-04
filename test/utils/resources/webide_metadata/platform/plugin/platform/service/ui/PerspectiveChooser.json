@@ -1,0 +1,15 @@
+{
+
+	"name": "sap.watt.common.service.ui.PerspectiveChooser",
+	"description": "The <i>PerspectiveChooser</i> is an interface for services that choose a perspective",
+	"visibility" : "hidden",
+	"exposedAsInterface" : true,
+
+	"methods": {
+		"choosePerspective": {
+			"params": [],
+			"returns": "string",
+			"visibility" : "hidden"
+		}
+	}
+}

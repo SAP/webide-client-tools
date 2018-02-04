@@ -1,0 +1,41 @@
+{
+	"name" : "sap.watt.uitools.plugin.gitclient.service.GitLog",
+	"description" : "The GIT client History interface",
+	"extends" : ["sap.watt.common.service.ui.Part"]	,	
+	"methods" : {
+		"getLogHistory" : {
+		    "params" : [{
+	            "name" : "oDocument", 
+	            "type" : "object"
+		    }],
+			"returns" : "object"	           
+	     },
+		"searchInHistory" : {
+			"params" : [{
+				"name" : "sValue",
+				"type" : "string"
+			}, {
+	            "name" : "oDocument", 
+	            "type" : "object",
+	            "optional" : true
+	        }]
+		},
+	     "doUpdate" : {
+	        "params" : [{
+	            "name" : "oDocument", 
+	            "type" : "object",
+	            "optional" : true
+	        }],
+			"returns" : "object"	           
+	     },
+	     "isEnabled" : {
+            "params" : [
+            	{
+                	"name" : "aSelection", 
+                	"type" : "[object]"
+                }
+            ],
+            "returns" : "object"
+        }
+	}
+}

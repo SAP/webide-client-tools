@@ -1,0 +1,108 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.project.fiorireferenceapps",
+	"description": "Templates to create reference application projects for Fiori apps.",
+	"i18n" : "sap.watt.saptoolsets.fiori.project.fiorireferenceapps/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"template",
+			"document",
+			"filesystem.documentProvider",
+			"fioriRefAppsTermsFinishStep"
+		]
+	},
+	
+	"provides": {
+		"services" : {
+			"reftemplatevalidator": {
+				"implements": "sap.watt.uitools.plugin.fiorireferenceapps.service.referenceTemplateValidator",
+				"module": "sap.watt.saptoolsets.fiori.project.fiorireferenceapps/service/ReferenceTemplateValidator"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.uitools.plugin.fiorireferenceapps.service.referenceTemplateValidator": "sap.watt.saptoolsets.fiori.project.fiorireferenceapps/service/ReferenceTemplateValidator"
+		}
+		
+	},
+	
+	"configures": {
+  		"services": {
+  		    "template:categories" : [
+				 {
+				 	"id" : "fiori.reference.applications",
+					"name" : "{i18n>Config_category_fiori_reference_applications_name}",
+					"description" : "{i18n>Config_category_fiori_reference_applications_desc}"
+				}
+			],
+  			"template:templates" : [
+  				 {
+  				 	"id" : "fiorireferenceapps.approvePurchaseOrder",
+  					"template" : "sap.watt.saptoolsets.fiori.project.fiorireferenceapps/approvePurchaseOrder/approvePurchaseOrderTemplate",
+  					"name" : "{i18n>approve_purchase_order_name}",
+  					"description" : "{i18n>approve_purchase_order_desc}",
+  					"path" : "fiorireferenceapps/approvePurchaseOrder",
+  					"fileName" : "nw.epm.refapps.purchaseorders.approve.zip",
+  					"icon"	:"sap-icon://fiori/approve_purchase_order",
+  					"previewImage" : "image/approvePurchaseOrder.png",
+  					"internalOnly" : false,
+  					"requiresNeoApp" : true,
+  					"wizardSteps" : ["fioriRefAppsTermsFinishStep"],
+  					"templateType" : "referenceProject",
+  					"additionalData" : {
+  					    "projectName" : "nw.epm.refapps.ext.po.apv"
+  					},
+  					"category" : "fiori.reference.applications",
+  					"version" : "3.0.0",
+  					"orderPriority" : 220,
+  					"coreTemplate" : true,
+  					"beautifyFiles" : false
+  				},
+  				{
+  				 	"id" : "fiorireferenceapps.manageProducts",
+  					"template" : "sap.watt.saptoolsets.fiori.project.fiorireferenceapps/manageProducts/ManageProductsTemplate",
+  					"name" : "{i18n>manage_products_name}",
+  					"description" : "{i18n>manage_products_desc}",
+  					"path" : "fiorireferenceapps/manageProducts",
+  					"fileName" : "nw.epm.refapps.ext.prod.manage.zip",
+  					"icon"	:"sap-icon://fiori/manage_products",
+  					"previewImage" : "image/manageProducts.png",
+  					"internalOnly" : false,
+  					"requiresNeoApp" : true,
+  					"wizardSteps" : ["fioriRefAppsTermsFinishStep"],
+  					"templateType" : "referenceProject",
+  					"additionalData" : {
+  					    "projectName" : "nw.epm.refapps.ext.prod.manage"
+  					},
+  					"category" : "fiori.reference.applications",
+  					"version" : "2.0.14",
+  					"orderPriority" : 210,
+  					"coreTemplate" : true,
+  					"beautifyFiles" : false
+  				},
+  				{
+  				 	"id" : "fiorireferenceapps.shop",
+  					"template" : "sap.watt.saptoolsets.fiori.project.fiorireferenceapps/shop/shopTemplate",
+  					"name" : "{i18n>shop_name}",
+  					"description" : "{i18n>shop_desc}",
+  					"path" : "fiorireferenceapps/shop",
+  					"fileName" : "nw.epm.refapps.ext.shop.zip",
+  					"icon"	:"sap-icon://fiori/my_shops",
+  					"previewImage" : "image/shop.png",
+  					"internalOnly" : false,
+  					"requiresNeoApp" : true,
+  					"wizardSteps" : ["fioriRefAppsTermsFinishStep"],
+  					"templateType" : "referenceProject",
+  					"additionalData" : {
+  					    "projectName" : "nw.epm.refapps.ext.shop"
+  					},
+  					"category" : "fiori.reference.applications",
+  					"version" : "2.0.14",
+  					"orderPriority" : 200,
+  					"coreTemplate" : true,
+  					"beautifyFiles" : false
+  				}
+  			]
+  		}
+	}
+}

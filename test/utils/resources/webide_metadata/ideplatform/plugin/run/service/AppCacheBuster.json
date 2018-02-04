@@ -1,0 +1,31 @@
+{
+	"name" : "sap.watt.common.service.run.appcachebuster",
+	"description" : "The project setting interface",
+	
+	"configurationProperties" : {
+		"filesToIgnore" : {
+			"type" : ["string"],
+			"multiple" : false		
+		},
+		"foldersToIgnore" : {
+			"type" : ["string"],
+			"multiple" : false		
+		},
+		"ignore" : {
+			"type" : {
+				"service":"sap.watt.common.service.setting.Ignore"
+			},
+			"multiple" : false		
+		}
+	},
+	
+	"methods" : {
+	    "createAppCacheBusterFile" : {
+	        "params" : [{
+				"name" : "oProjectDocument",
+				"type" : "sap.watt.common.plugin.document.Document",
+				"description" : "executable document like index.html or Component.js"
+			}]
+	    }
+	}
+}

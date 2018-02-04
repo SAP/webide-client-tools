@@ -1,0 +1,27 @@
+{
+	"name" : "sap.watt.common.service.platform.NotificationManager",
+	"description" : "The Notification manager accessor",
+	"extends" : "sap.watt.common.service.ui.Part",
+	
+	"methods" : {
+	    "getNotifications" : {
+	        "description" : "Retreive all notifications from server",		
+			"returns" : {
+				"type" : "[object]",
+				"description" : "An array of notification objects"
+			}
+	    }
+	},
+	"configurationProperties" : {
+		"accessor" : {
+			"type" : {
+				"service" : "sap.watt.common.service.remote.NotificationAccessor"
+			},
+			"multiple" : false
+		},
+		"timeoutInMilliSeconds" : {
+			"type" : "number",
+			"multiple" : false
+		}
+	}
+}

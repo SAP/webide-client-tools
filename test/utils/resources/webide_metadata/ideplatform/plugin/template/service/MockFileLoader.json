@@ -1,0 +1,46 @@
+{
+	"name" : "sap.watt.common.plugin.template.service.MockFileLoader",
+	"description" : "The mock File Loader service interface provide an api for mocking file request using the mock server.",
+	"methods" : {
+	    "mockFromZipFile" : {
+			"description": "Creates Mock Server with a given regular expression and ZIP object with empty content",
+        	"params" : [
+			{
+				"name" : "sRegEx",
+				"type" : "string",
+				"description" : "The file content that will be returned, according to the regular expression string"
+			},
+			{
+				"name" : "oZip",
+				"type" : "object",
+				"description" : "The Zip file from which the content of the file will be returned"
+			}]
+	    },
+	    "mockXMLFromZipFile" : {
+			"description": "Creates Mock Server with XML file type string with a given ZIP object and empty content",
+        	"params" : [
+			{
+				"name" : "oZip",
+				"type" : "object",
+				"description" : "The Zip file from which the content of the file will be returned"
+			}]
+	    },
+	    "mockFile" : {
+		   "description": "Generates regular expression based on given URL and creates MockServer with the given content and generated regular expression",
+	       "params" : [
+			{
+				"name" : "sUrl",
+				"type" : "string",
+				"description" : "The url to be mocked using the Mock Server"
+			},
+			{
+				"name" : "sContent",
+				"type" : "string",
+				"description" : "The file content that will be returned, according to the regular expression string"
+			}] 
+	    },
+	    "stopMock" : {
+			"description": "Stops and destroy Mock Server"
+		}
+	}
+}

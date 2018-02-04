@@ -1,0 +1,40 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.run.ui5versionsutil.service.UI5VersionsUtil",
+	"description": "Receiving the UI5 Versions from HCP",
+	"methods": {
+		"getUi5VersionsList": {
+			"params": [{
+				"name": "oDocument",
+				"type": "object",
+				"description": "Selected document"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "UI5 Versions"
+			}
+		},
+		"getUI5CurrentVersion": {
+			"params": [{
+				"name": "oDocument",
+				"type": "object"
+			}, {
+				"name": "bIsNumber",
+				"type": "boolean"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "UI5 Version from the neo-app.json. if bIsNumber true returns version value, otherwise returns version display"
+			}
+		},
+		"getUI5VersionFromAppDescriptor": {
+			"params": [{
+				"name": "oDocument",
+				"type": "object"
+			}],
+			"returns": {
+				"type": "string",
+				"description": "Minimal UI5 Version from application descriptor"
+			}
+		}
+	}
+}

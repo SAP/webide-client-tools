@@ -1,0 +1,74 @@
+{
+	"name": "sap.watt.common.plugin.multieditor.service.MultiEditor",
+	"description": "Multi Editor interface",
+	"extends": [
+		"sap.watt.common.service.editor.Editor",
+		"sap.watt.common.service.editor.UndoRedo"
+	],
+	"configurationProperties": {
+		"editors": {
+			"type": [{
+				"name": "string",
+				"service": "sap.watt.common.service.editor.Editor"
+			}],
+			"multiple": false
+		},
+		"doNotLoadDefaultCss": {
+			"type": "boolean",
+			"multiple": false
+		},
+		"saveLastTab": {
+			"type": "boolean",
+			"description": "saves the last that the user selected",
+			"multiple": false
+		}
+	},
+	"methods": {
+		"containsEditor": {
+			"description": "This method returns whether the multi editor contains a certain editor",
+			"params": [{
+				"name": "oEditor",
+				"type": "sap.watt.common.service.editor.Editor",
+				"description": "Editor"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "Return True if contains editor, Else otherwise"
+			}
+		},
+		"getActiveEditor": {
+			"description": "This method returns the active editor",
+			"returns": {
+				"type": "sap.watt.common.service.editor.Editor",
+				"description": "Return active editor"
+			}
+		},
+		"getAllEditors": {
+			"description": "This method returns all editors",
+			"returns": {
+				"type": "[sap.watt.common.service.editor.Editor]",
+				"description": "Return all editors"
+			}
+		},
+		"hasDocument": {
+			"description": "This method returns whether the document exsits",
+			"params": [{
+				"name": "oDocument",
+				"type": "sap.watt.common.plugin.document.Document",
+				"description": "Documnet"
+			}],
+			"returns": {
+				"type": "boolean",
+				"description": "Return True if document exists, Else otherwise"
+			}
+		},
+		"hasDocuments": {
+			"description": "This method returns if the multieditor has documents or not",
+			"returns": {
+				"type": "boolean",
+				"description": "Return True if any document exists, Else otherwise"
+			}
+		}
+
+	}
+}

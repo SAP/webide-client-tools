@@ -1,0 +1,13 @@
+{
+    "name": "sap.watt.common.service.git.PrePushTask",
+	"description": "Git pre push interface",
+	"methods": {
+		"execute": {
+			"returns": {
+				"type": "object",
+				"default": null,
+				"description": "Returns object {domain: The domain of the task, runResult: Result of the run (true/false)}"
+			}
+		}
+	}
+}

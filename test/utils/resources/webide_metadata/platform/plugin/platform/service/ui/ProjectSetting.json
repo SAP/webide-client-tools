@@ -1,0 +1,39 @@
+{
+	"name" : "sap.watt.common.service.ui.ProjectSetting",
+	"extends" : ["sap.watt.common.service.ui.Part", "sap.watt.common.service.selection.Provider"],
+	"description" : "The project settings container interface",	
+	"configurationProperties" : {
+		"plugins" : {
+			"type" : {
+				"id":"string",
+				"group":"string",
+				"name":"string",
+				"title":"string",
+				"description":"string",
+				"service":"sap.watt.common.service.ui.Config",
+				"projectTypes": {
+					"type" : ["string"],
+					"description" : "An array of project types"
+				},
+				"availabilityService" : {
+					"type": "sap.watt.common.service.ui.ConfigAvailability"
+				}
+			},
+			"multiple" : true
+		},
+		"generation" : {
+			"type" : "sap.watt.common.service.ui.Part",
+			"multiple" : false
+		}
+	},	
+	"methods" : {
+		"getPlugins" : {
+			"params" : [],
+			"returns" : "object"
+		}
+	},
+	"events" :{
+		"pluginsLoaded":{ "description": "TODO"}
+		}
+	
+}

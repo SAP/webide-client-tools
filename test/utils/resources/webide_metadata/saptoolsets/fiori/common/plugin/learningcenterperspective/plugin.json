@@ -1,0 +1,64 @@
+{
+	"name" : "sap.watt.saptoolsets.fiori.common.learningcenterperspective",
+	"description" : "Learning Center Framework",
+	"i18n" : "sap.watt.saptoolsets.fiori.common.learningcenterperspective/i18n/i18n",
+	
+	"requires" : {
+		"services" : [
+			"perspective",
+			"command",
+			"commandGroup"
+		]
+	},
+	
+	"provides" : {
+		"services" : {
+			"LearningCenter" : {
+				"implements" : "sap.watt.saptoolsets.fiori.common.learningcenterperspective.service.LearningCenter",
+				"module" : "sap.watt.saptoolsets.fiori.common.learningcenterperspective/service/LearningCenter"
+			}
+		},
+		"interfaces": {
+			"sap.watt.saptoolsets.fiori.common.learningcenterperspective.service.LearningCenter": "sap.watt.saptoolsets.fiori.common.learningcenterperspective/service/LearningCenter"
+		}
+	},
+	
+	"configures" : {
+		"services" : {
+			"command:commands" : [
+				{
+					"id" : "tools.learning_center",
+					"label": "{i18n>command_learning_center}",
+					"icon" : "learning_center",
+					"service": {
+						"implements" : "sap.watt.common.service.ide.PerspectiveSwitcher",
+						"module" : "sap.watt.common.perspective/command/PerspectiveSwitcher",
+						"configuration" : { "id" : "tools.learning_center", "perspective" : "learning_center"}
+					},
+					"available" : {"and": [{"not" : {"equals" : [{"env":"server_type"},"java"]}},{"not" : {"equals" : [{"env":"server_type"},"local_hcproxy"]}}]}
+
+				}
+			],
+			"perspective:views": [
+				 { "id": "learningcenter_page", "service": "@LearningCenter", "cssclass": "explorer" }
+			],
+			"perspective:viewToAreaMapping": [
+				{ "view": "learningcenter_page", "perspective": "learning_center", "area": "learning_center" }
+			],
+			"perspective:perspectives": [
+				{"id": "learning_center"}
+			],
+			"perspective:areas": [
+				{
+					"id": "learning_center",
+					"position": "1",
+					"perspective":"learning_center",
+					"view":"learningcenter_page"
+				}
+			],
+			"commandGroup:items" : [
+				{ "parent": "tools.perspectives", "command": "tools.learning_center", "prio": 20 }
+			]
+		}
+	}
+}

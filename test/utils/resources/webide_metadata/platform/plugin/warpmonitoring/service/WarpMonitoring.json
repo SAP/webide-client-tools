@@ -1,0 +1,44 @@
+{
+	"name": "sap.watt.platform.warpmonitoring.WarpMonitoring",
+	"description": "The warp monitoring interface",
+
+	"configurationProperties": {
+		"configParams": {
+			"type": "object",
+			"multiple": false
+		}
+	},
+
+	"methods": {
+		"report": {
+			"description": "Report on custom event to WARP",
+			"params": [
+			    {
+					"name": "sEventComponent",
+					"type": "string",
+					"description": "The event component. (e.g. W5G, TEMPLATE, EDITOR)"
+                },
+				{
+					"name": "sEventType",
+					"type": "string",
+					"description": "The type of the event. (e.g. Search)"
+                },
+				{
+					"name": "sEventValue",
+					"type": "string",
+					"description": "The value of the event. (e.g. Project Name)"
+                }
+            ]
+		},
+		"setCustomProperties": {
+			"description": "set WARP additional custom properties",
+			"params": [
+				{
+					"name": "oIDEData",
+					"type": "object",
+					"description": "The object contains the specific information (e.g. user, account etc.)"
+                }
+            ]
+		}
+	}
+}

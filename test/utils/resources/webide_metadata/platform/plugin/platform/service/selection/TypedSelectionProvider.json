@@ -1,0 +1,20 @@
+{
+	"name" : "sap.watt.common.service.selection.TypedSelectionProvider",
+	"description" : "The interface for provider of selection providers",
+	"methods" : {
+        "getSelectionProvider" : {
+            "returns" : "sap.watt.common.service.selection.Provider"
+        }
+    },
+    "events": {
+        "selectionProviderChanged" : {
+        	"params" : [
+                        {
+                            "name" : "selectionProvider",
+                            "type" : "sap.watt.common.service.selection.Provider",
+                            "description" : "The new selection provider"
+                        }
+                    ]
+        }
+    }
+}

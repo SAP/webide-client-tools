@@ -1,0 +1,34 @@
+{
+	"name": "sap.watt.platform.clipboard",
+	"description": "The Clipboard Plugin",
+	"i18n" : "sap.watt.platform.clipboard/i18n/i18n",
+	
+	"requires": {
+		"services": [
+			"focus"
+		]
+	},
+	
+	"provides": {
+	
+		"services" : {
+			"clipboard": {
+				"implements": "sap.watt.common.service.ide.Clipboard",
+				"module" : "sap.watt.platform.clipboard/service/Clipboard"
+			},
+			"clipboard.filedialog": {
+				"implements": "sap.watt.common.service.ide.FileDialog",
+				"module" : "sap.watt.platform.clipboard/service/FileDialog"
+			},
+			"clipboard.filedialog.rename": {
+			  "implements": "sap.watt.common.service.ide.FileDialog",
+			  "module" : "sap.watt.platform.clipboard/service/FileDialogRename"
+			}
+		}
+		
+	},
+	"subscribes": {
+		"document:deleted": "clipboard:onDocumentDeleted"
+	}
+	
+}

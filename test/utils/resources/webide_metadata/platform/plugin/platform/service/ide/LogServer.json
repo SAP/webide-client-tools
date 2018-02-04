@@ -1,0 +1,19 @@
+{
+	"name" : "sap.watt.common.service.ide.LogServer",
+	"description": "The LogServer interface",
+
+	"configurationProperties" : {
+		"intervalInMilliSeconds" : {
+			"type" : "number",
+			"multiple" : false
+		},
+			"bufferOptimalLimit" : {
+			"type" : "number",
+			"multiple" : false
+		},
+			"bufferMaxLimit" : {
+			"type" : "number",
+			"multiple" : false
+		}
+	}
+}

@@ -1,0 +1,21 @@
+{
+	"name" : "sap.watt.common.repositorybrowser.utils.RepositoryBrowserUtils",
+	"description": "The repository browsers utils service interface",
+    
+	"methods" : {
+		"isRootIncludedInSelection" : {},
+		"assertBasicSelection" : {},
+		"isSingleFolderNotRootSelection" : {},
+		"isSingleFolderSelection" : {},
+		"isSingleNoRootSelection" : {},
+		"isSingleRootSelection" : {},
+		"isLevelOneIncludedInSelection" : {},
+		"isRootOrLevelOneFolderIncludedInSelection" : {},
+	  	"isSingleSelectionWithNoRootOrLevelOneFolderSelection" : {},
+        "isSingleFileSelection" : {},
+		"removeSelectedFilesUnderSelectedFolders" : {},
+		"isSingleFolderNotRootNotProjectSelection" : {},
+		"isSingleLevelOneSelection" : {}
+	}
+	
+}

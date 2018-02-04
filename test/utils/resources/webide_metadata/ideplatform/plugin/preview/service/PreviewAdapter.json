@@ -1,0 +1,36 @@
+{
+	"name" : "sap.watt.common.plugin.preview.service.PreviewAdapter",
+	"description" : "A preview adapter has to be provided by the underlying backend connectivity plugin. It's responsibility is to calculate the URL of the preview environment",
+	"methods" : {
+		"getPreviewUrl" : {
+			"deprecated" : {
+				"since" : "1.46",
+				"description" : "Use getBaseUrl"
+			},
+			"description": "Calculate the URL of the preview",
+			"params" : [
+			],
+			"returns" : {
+				"type" : "object",
+				"description" : "An URI object"
+			}
+		},
+		"getBaseUrl": {
+			"description": "Calculate the URL of the preview free of runner specific url parameters",
+			"params" : [{
+				"name" : "oRootFolder",
+				"type" : "object",
+				"description" : "project folder document"
+			},{
+				"name" : "sPreviewToken",
+				"type" : "string",
+				"optional" : true,
+				"description" : "string that is used to calculate preview token"
+			}],
+			"returns" : {
+				"type" : "object",
+				"description" : "Returns base URI object"
+			}
+		}
+	}
+}

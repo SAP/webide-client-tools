@@ -1,0 +1,119 @@
+{
+	"name" : "sap.watt.platform.plugin.pluginmanager.service.PluginManagement",
+	"description" : "The plugin management interface",
+	"configurationProperties" : {
+		"preferenceService" : {
+			"type" : {
+				"service" : "sap.watt.common.service.ui.Settings",
+				"node" : "string"
+			},
+			"multiple" : false
+		}
+	},
+	"methods" : {
+		"isPluginLoaded" : {
+		    "description" : "Checks if a given plugin is loaded",
+			"params" : [
+				{ 
+					"name" : "sPluginName",
+					"type" : "string",
+					"description" : "Name of plugin"
+				}
+			],
+			"returns" : {
+				"type" : "boolean",
+				"description" : "Indication whether the plugin is loaded"
+		    }
+		},
+		"getOptionalPluginsUI" : {
+		    "description" : "Gets the UI of optional plugins management",
+		    "returns" : {
+				"type" : "object",
+				"description" : "The content of the UI"
+		    }
+		},
+		"getAvailablePluginsUI" : {
+		    "description" : "Gets the UI of available plugins",
+		    "returns" : {
+				"type" : "object",
+				"description" : "The content of the UI"
+		    }
+		},
+		"updatePreferences" : {
+		    "description" : "Saves the updated preferences"
+		},
+		"removePluginsFromUserPreferences" : {
+			"description" : "Removes plugins from the user prefreneces",
+			"params" : [
+				{ 
+					"name" : "aPluginsToRemove",
+					"type" : "[string]",
+					"description" : "Array of plugin urls/paths"
+				}
+			]
+		},
+		"getPluginFile" : {
+			"description" : "Gets a file from a plugin",
+			"params" : [
+				{ 
+					"name" : "sPlugin",
+					"type" : "string",
+					"description" : "The plugin name"
+				},
+				{ 
+					"name" : "sFilePath",
+					"type" : "string",
+					"description" : "The relative file path in the plugin"
+				},
+				{ 
+					"name" : "bGetBlob",
+					"type" : "boolean",
+					"description" : "Indicator whether the content of the plugin file should be returned as blob"
+				}
+			],
+			"returns": {
+					"type" : "object",
+					"description" : "The content of the file"
+				}
+		},
+		"getPluginFileUrl" : {
+			"description" : "Gets a file from a plugin",
+			"deprecated" : {
+				"since" : "1.6.0",
+				"description" : "Use require.toUrl(<sPlugin>/<sFilePath>) instead"
+			},
+			"params" : [
+				{ 
+					"name" : "sPlugin",
+					"type" : "string",
+					"description" : "The plugin name"
+				},
+				{ 
+					"name" : "sFilePath",
+					"type" : "string",
+					"description" : "The relative file path in the plugin"
+				}
+			],
+			"returns": {
+					"type" : "string",
+					"description" : "The url of the file"
+				}
+		},
+		"getPluginPath" : {
+			"description" : "Gets the plugin path",
+			"params" : [
+				{ 
+					"name" : "sPluginName",
+					"type" : "string",
+					"optional" : true,
+					"description" : "The plugin name"
+				}
+			],
+			"returns": {
+					"type" : "string",
+					"description" : "The path of the plugin"
+				}
+		}
+		
+	}
+}

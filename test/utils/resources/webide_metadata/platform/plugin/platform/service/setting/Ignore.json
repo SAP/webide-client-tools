@@ -1,0 +1,20 @@
+{
+	"name" : "sap.watt.common.service.setting.Ignore",
+	"description" : "The ignore executer for user setting interface",
+	"methods" : {
+	    "setIgnore" : {
+	    	"description" : "Ignores the given document entity from the source control",
+			"params" : [{
+				"name" : "oEntity",
+				"type" : "object"
+			}]
+		},
+	    "setIgnoreSystemFiles" : {
+	    	"description" : "Ignores the system configured files from the source control",
+			"params" : [{
+				"name" : "oProjectDoc",
+				"type" : "object"
+			}]
+		}
+	}
+}

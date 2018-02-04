@@ -1,0 +1,82 @@
+{
+	"name" : "sap.watt.common.service.ui.Part",
+	"description" : "The UI <i>part</i> interface, which is the base interface for all visual components.",
+	"visibility" : "public",
+	"exposedAsInterface" : true,
+	"configurationProperties" : {
+		"styles" : {
+			"description" : "Allows loading a CSS file from a provided URI.",
+			"type" : [{
+				"uri" : "string",
+				"type" : "string"
+			}],
+			"multiple" : false,
+			"visibility" : "public"
+		}
+	},
+	"events" : {
+		"visibilityChanged" : {
+			"description" :"Fired when the visibility of the <i>part</i> interface is changed.",
+			"params" : [
+				{
+					"name" : "visible",
+					"type" : "boolean",
+					"description" :"The target visibility state of the <i>part</i> instance."
+				}
+			],
+			"visibility" : "public"
+		}
+	},
+	"methods" : {
+		"getContent" : {
+			"description" : "Calls the <i>getContent</i> method whenever the <i>part</i> instance content is required.",
+			"returns" : {
+				"type": "object",
+				"description": "The UI component of the <i>part</i> instance."
+			},
+			"visibility" : "public"
+		},
+		
+		"getFocusElement" : {
+			"returns" : {
+				"type": "object",
+				"description": ""
+			},
+			"visibility" : "hidden"
+		},
+		"getTitle" : {
+			"returns" : {
+				"type": "string",
+				"description": ""
+			},
+			"visibility" : "hidden"
+		},
+		"getTooltip" : {
+			"returns" : {
+				"type": "string",
+				"description": ""
+			},
+			"visibility" : "hidden"
+		},
+		"setVisible" : {
+			"description" : "Changes the visibility state of the <i>part</i> instance.",
+			"params" : [
+				{
+					"name" : "bVisible",
+					"type" : "boolean",
+					"description" : "The target visibility state of the <i>part</i> instance."
+				}
+			],
+			"visibility" : "private"
+		},
+
+		"isVisible" : {
+			"description" : "The visibility state of the <i>part</i> instance.",
+			"returns" : {
+				"type": "boolean",
+				"description": "Returns the visibility state of the <i>part</i> instance."
+			},
+			"visibility" : "public"
+		}
+	}
+}

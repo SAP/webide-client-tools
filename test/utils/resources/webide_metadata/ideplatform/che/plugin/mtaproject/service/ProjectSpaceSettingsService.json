@@ -1,0 +1,48 @@
+{
+  "name": "sap.watt.hana.common.projectspace.service.ProjectSpaceSettingsService",
+  "description": "Interface for ProjectSpaceSettingsService",
+  "methods": {
+    "getListOfUserSpaces": {
+      "returns": {
+        "type": "object",
+        "description": "Array of user's spaces"
+      }
+    },
+    "getProjectSpace": {
+      "params": [
+        {
+          "name": "sProjectName",
+          "type": "string",
+          "description": "Project Name for which to return the space"
+        }
+      ],
+      "returns": {
+        "type": "object",
+        "description": "The Project Space (name and guid) as configured on server"
+      }
+    },
+    "setProjectSpace": {
+      "params": [
+        {
+          "name": "sProjectSpace",
+          "type": "string",
+          "description": "The Project Space to configure on server"
+        },
+        {
+          "name": "sProjectName",
+          "type": "string",
+          "description": "The Project Name to configure its space on server"
+        }
+      ]
+    },
+    "removeProjectSpace": {
+	   "params": [
+		        {
+		          "name": "oEvent",
+		          "type": "object",
+		          "description": "The event that triggered space remove"
+		        }
+	   ]
+    }
+  }
+}

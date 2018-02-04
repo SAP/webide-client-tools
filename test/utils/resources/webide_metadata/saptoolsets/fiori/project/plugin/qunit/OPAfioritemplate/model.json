@@ -1,0 +1,35 @@
+{	
+	"datasource" : 
+	{
+		"type" : "odata",
+		"url" : ""
+	},
+    "qunitfioritemplate":
+    {
+        "parameters" : 
+        {
+			"SampleTextField" :
+            {
+           		"type" : "string",
+                "value" : "",
+                "wizard" : 
+                {
+                	"control" : "TextField",
+                	"required" : false,
+                	"title" : "qunitfioritemplate_model_field_title"
+                }                    
+            }
+        },
+        "forms" : [
+            {
+                "title" : "qunitfioritemplate_model_form_title",
+                "groups" : [
+                { 
+                    "title": "Sample",
+                    "parameters": ["@qunitfioritemplate.parameters.SampleTextField"]                    
+                }    
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,27 @@
+{
+	"name": "sap.watt.common.outlinepane.Outline",
+	"description": "The outline abstract interface",
+	"extends" : "sap.watt.common.service.ui.Part",
+	"methods": {
+		"canHandle" : {
+			"description" : "Check if outline service is responsible and can work with current selection event",
+			"params" : [
+				{
+					"name" : "oEvent",
+					"type" : "object"
+				}
+			]
+		},
+		"onSelectionChanged" : {
+			"description" : "Handler for selection:changed event",
+			"params" : [
+				{
+					"name" : "oEvent",
+					"type" : "object"
+				}
+			]
+		}
+	},
+	"events" : {
+	}
+}

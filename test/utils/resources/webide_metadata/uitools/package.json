@@ -1,0 +1,18 @@
+{
+	"preloadCapable": true,
+
+	"name": "sap.watt.uitools.feature",
+	"title": "Web IDE - uitools layer",
+	"version": "1.0.0",
+	"description": "Web IDE - uitools layer",
+
+	"deprecatedConfigIncludes": [
+		"file:/extendedplugins/config.json",
+		"file:/plugins/pluginrepository/config.json",
+		"file:/ui5templates/config.json?sap-ui-config-invalidate"
+	],
+
+	"bundledPlugins": {
+		"sap.watt.uitools.sapui5clientbuild": "file:plugin/sapui5clientbuild"
+	}
+}

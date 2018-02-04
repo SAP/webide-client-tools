@@ -1,0 +1,22 @@
+{
+    "name": "sap.watt.ideplatform.runtimeextensions.IdeUrlParameters",
+    "methods": {
+        "getIdeUrlParameters" : {
+            "description" : "Get URL parameters as set in the Web IDE window URL",
+            "params" : [
+                {
+                    "name" : "aQueryParameters",
+                    "type" : "object",
+                    "description" : "Array of required query parameters, for example \"['saml2idp']\""
+                }
+            ],
+            "returns" : {
+                "type": "object",
+                "description": "Array of the required URL parameters with their value as set in the Web IDE window URL, for example [{\"name\":\"saml2idp\", \"value\":\"idpname\"}]"
+            },
+            "visibility" : "private"
+        }
+    },
+    "configurationProperties": {
+    }
+}

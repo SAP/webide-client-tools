@@ -1,0 +1,67 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.hcp.deployment",
+	"description": "The deployment plugin.",
+	"i18n" : "sap.watt.saptoolsets.fiori.hcp.deployment/i18n/i18n",
+
+	"requires":{
+		"services": [
+			"command",
+			"filesystem.documentProvider",
+			"selection",
+			"system",
+			"commandGroup",
+			"git",
+			"gitdispatcher",
+			"fiorilaunchpad",
+			"gitclient",
+			"usernotification",
+			"resource",
+			"command",
+			"repositorybrowser",
+			"setting.project",
+			"hcpconnectivity",
+			"hcpauthentication",
+			"repositorybrowserUtils",
+			"log",
+			"decoration",
+			"usagemonitoring",
+			"neoapp",
+			"platform.builder",
+			"ui5projecthandler",
+			"keystorage"
+		]
+	},
+	"provides": {
+		"services": {
+			"deployment": {
+				"implements": "sap.watt.uitools.plugin.deployment.service.Deployment",
+				"module": "sap.watt.saptoolsets.fiori.hcp.deployment/service/Deployment"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.uitools.plugin.deployment.service.Deployment": "sap.watt.saptoolsets.fiori.hcp.deployment/service/Deployment"
+		}
+		
+	},
+	"configures" : {
+		"services" : {
+			"command:commands": [{
+				"id" : "deployment.deploy",
+				"label": "{i18n>command_deploytohelium}",
+				"service": "sap.watt.saptoolsets.fiori.hcp.deployment/command/DeployToHelium"
+			}],
+			"commandGroup:items": [
+				{
+					"parent": "deploy.actions",
+					"command": "deployment.deploy",
+					"prio": 40
+				}],
+			"usagemonitoring:reportParams": [
+			    {
+                    "components": ["deployment"],
+                    "eventTypes": ["deploy_to_hcp", "register_to_flp"]
+                }]
+		}
+	}
+}

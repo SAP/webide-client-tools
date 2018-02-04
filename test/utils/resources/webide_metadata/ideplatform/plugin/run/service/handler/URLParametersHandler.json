@@ -1,0 +1,14 @@
+{
+	"name": "sap.watt.ideplatform.plugin.run.service.URLParametersHandler",
+	"description": "URL Parameters section UI Handler interface",
+	"methods": {
+		"onParamNameChange": {},
+		"onParamValueChange": {},
+		"deleteParameterLine": {},
+		"validateParameterNameInput": {},
+		"onAfterParamNameRendering": {},
+		"createNewParameterLine": {},
+		"onBeforeURLParametersRendering" : {},
+		"checkUrlModelisValid" : {}
+	}
+}

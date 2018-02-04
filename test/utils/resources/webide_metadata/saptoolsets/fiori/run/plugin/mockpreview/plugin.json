@@ -1,0 +1,97 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.run.mockpreview",
+	"description": "The Mock Preview Plugin",
+	"i18n" : "sap.watt.saptoolsets.fiori.run.mockpreview/i18n/i18n",
+
+	"requires":{
+		"services": [
+			"command",
+			"commandGroup",
+			"filesystem.documentProvider",
+			"usernotification",
+			"selection",
+			"preview",
+			"setting.project",
+			"log",
+			"metadataHandler",
+			"projectsetting",
+			"ui5projecthandler",
+			"usagemonitoring",
+			"filefilter",
+			"git",
+			"htmlproducer"
+		]
+	},
+	"provides": {
+		"services": {
+			"mockpreview": {
+				"implements": "sap.watt.common.plugin.preview.service.MockPreview",
+				"module": "sap.watt.saptoolsets.fiori.run.mockpreview/service/MockPreviewImpl"
+			},
+			"mockpreview.config": {
+			    "implements" : "sap.watt.common.service.ui.Config",
+			    "module" : "sap.watt.saptoolsets.fiori.run.mockpreview/service/MockPreviewProjectConfig"
+			},
+			"appdescriptorutil": {
+				"implements": "sap.watt.common.plugin.preview.service.AppDescriptorUtil",
+				"module": "sap.watt.saptoolsets.fiori.run.mockpreview/service/AppDescriptorUtil"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.preview.service.MockPreview": "sap.watt.saptoolsets.fiori.run.mockpreview/service/MockPreview",
+			"sap.watt.common.plugin.preview.service.AppDescriptorUtil": "sap.watt.saptoolsets.fiori.run.mockpreview/service/AppDescriptorUtil"
+		}
+	},
+	
+	"configures" : {
+		"services" : {
+			"git:ignore" :[
+            	"mock_preview_sapui5.html",
+                          ".*/mock_preview_sapui5.html"
+            ],
+			"filefilter:alwaysHidden" : [{
+				"regExps": ["/{1}(mock_preview_sapui5.html)$"]
+			}],
+			"command:commands": [{
+				"id" : "mockpreview.runwithmock",
+				"label": "{i18n>command_run_mock}",
+				"windowTarget": "preview_mock",
+				"service": "sap.watt.saptoolsets.fiori.run.mockpreview/command/RunWithMock"
+			}],
+			"commandGroup:items": [
+				{
+					"parent": "run.otherPreviews",
+					"command": "mockpreview.runwithmock",
+					"prio": 20
+				}
+			],
+			"projectsetting:plugins" : [
+			    {
+			        "id": "mockServiceSettings",
+			        "name" : "{i18n>mock_service_proj_settings_title}",
+			        "title" : "{i18n>mock_service_proj_settings_title}",
+			        "description" : "{i18n>mock_service_proj_settings_desc}",
+			        "service": "@mockpreview.config",
+			        "projectTypes": ["sap.watt.uitools.ide.web", "sap.html5"]
+			    }
+			    
+			],
+			
+			"usagemonitoring:reportParams": [{
+				"components": ["runner"],
+				"eventTypes": ["run_with_mock_old"]
+            }],
+            
+            "htmlproducer:htmlProducers": [{
+				"id": "MockHtmlElementsProducer",
+				"htmlProducer": "sap.watt.saptoolsets.fiori.run.mockpreview/service/MockHtmlProducer"
+			}]
+		}
+	},
+	
+	"subscribes": {
+		"generation:generated": "mockpreview:onAfterGenerate"
+	}
+
+}

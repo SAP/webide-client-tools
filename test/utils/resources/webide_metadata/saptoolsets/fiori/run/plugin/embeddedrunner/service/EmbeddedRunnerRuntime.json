@@ -1,0 +1,28 @@
+{
+  "name": "sap.watt.saptoolsets.fiori.run.embeddedrunner.EmbeddedRunnerRuntime",
+  "methods": {
+    "run": {
+      "description": "Run an application using the Embedded Runner",
+      "params": [
+        {
+          "name": "oWindow",
+          "type": "object",
+          "description": "window for displaying the application preview"
+        },
+        {
+          "name": "oConfiguration",
+          "type": "object",
+          "description": "Run configuration"
+        },
+        {
+          "name": "oRunnableDocument",
+          "type": "object",
+          "description": "Document to run the application"
+        }
+      ],
+      "visibility": "private"
+    }
+  },
+  "configurationProperties": {
+  }
+}

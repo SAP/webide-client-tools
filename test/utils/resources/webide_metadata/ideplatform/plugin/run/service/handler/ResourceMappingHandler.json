@@ -1,0 +1,46 @@
+{
+	"name": "sap.watt.ideplatform.plugin.run.service.resourcemappinghandler",
+	"description": "Resource Mapping section UI Handler interface",
+	"methods": {
+		"setServiceData":{
+			"params" : [{
+				"name" : "oDocument",
+				"type" : "object",
+				"description" : "Selected document"
+			},
+			{
+				"name" : "extService",
+				"type" : "object",
+				"description" : "external service configured by runner"
+			}]
+		},
+		"getDocument":{
+			"params" : [],
+			"returns" : {
+				"type" : "object",
+				"description" : "Selected document"
+			}
+		},
+		"onResourceMappingChange":{
+			"params" : [{
+				"name" : "oEvent",
+				"type" : "object",
+				"description" : "Event data"
+			}]
+		},
+		"onGetLibsVersionsClick":{
+			"params" : [{
+				"name" : "oEvent",
+				"type" : "object",
+				"description" : "Event data"
+			}]
+		},
+		"onLibVersionChange":{
+			"params" : [{
+				"name" : "oEvent",
+				"type" : "object",
+				"description" : "Event data"
+			}]
+		}
+	}
+}

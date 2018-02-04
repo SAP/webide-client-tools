@@ -1,0 +1,41 @@
+{
+	"name": "sap.watt.platform.filesystem",
+	"description": "The filesystem Plugin",
+	
+	"requires": {
+		"services": [
+			"log",
+			"document"
+		]
+	},
+	
+	"provides": {
+		"services": {
+			"filesystem.documentProvider": {
+				"implements": "sap.watt.common.plugin.filesystem.service.FilesystemDocumentProvider",
+				"module":  "sap.watt.platform.filesystem/service/FilesystemDocumentProvider"
+			},
+			"filesystem.jsonProvider": {
+				"implements": "sap.watt.common.plugin.filesystem.service.FilesystemJsonProvider",
+				"module":  "sap.watt.platform.filesystem/service/FilesystemJsonProvider"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.filesystem.service.FilesystemDocumentProvider": "sap.watt.platform.filesystem/service/FilesystemDocumentProvider",
+			"sap.watt.common.plugin.filesystem.service.FilesystemJsonProvider": "sap.watt.platform.filesystem/service/FilesystemJsonProvider"
+		}
+	},
+	
+	"configures": {
+		"services": {
+			"document:providers":[{
+				"type" : "file",
+				"documentProvider" : "@filesystem.documentProvider"
+			},{
+				"type" : "folder",
+				"documentProvider" : "@filesystem.documentProvider"
+			}]
+		}
+	}
+}

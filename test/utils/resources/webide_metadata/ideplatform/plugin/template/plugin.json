@@ -1,0 +1,87 @@
+{
+	"name": "sap.watt.ideplatform.template",
+	"description": "The Template Plugin",
+	"i18n" : "sap.watt.ideplatform.template/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"document",
+			"filesystem.documentProvider",
+			"repositorybrowser",
+			"setting.project",
+			"usernotification",
+			"projectsetting",
+			"log",
+			"resource",
+			"projectType",
+			"beautifierProcessor",
+			"usagemonitoring",
+			"preferences",
+			"tipsandtricks",
+			"tipsandtricksviewsfactory",
+			"selecttemplatestepcontent"
+		]
+	},
+	
+	"provides": {
+		"services" : {
+			"template": {
+				"implements": "sap.watt.common.service.registry.Template",
+				"module": "sap.watt.ideplatform.template/service/Template"
+			},
+			"generation": {
+				"implements": "sap.watt.common.plugin.template.service.Generation",
+				"module": "sap.watt.ideplatform.template/service/Generation"
+			},
+			"mockFileLoader": {
+				"implements": "sap.watt.common.plugin.template.service.MockFileLoader",
+				"module": "sap.watt.ideplatform.template/service/MockFileLoader"
+			},
+			"modelHelper": {
+				"implements": "sap.watt.common.plugin.template.service.ModelHelper",
+				"module": "sap.watt.ideplatform.template/service/ModelHelper"
+			},
+			"neoapp": {
+				"implements": "sap.watt.common.plugin.template.service.Neoapp",
+				"module": "sap.watt.ideplatform.template/service/Neoapp"
+			},
+			"wizard": {
+				"implements": "sap.watt.common.plugin.template.service.Wizard",
+				"module": "sap.watt.ideplatform.template/service/Wizard"
+			}
+		},
+		
+		"interfaces": {
+			"sap.watt.common.plugin.template.service.Generation": "sap.watt.ideplatform.template/service/Generation",
+			"sap.watt.common.plugin.template.service.MockFileLoader": "sap.watt.ideplatform.template/service/MockFileLoader",
+			"sap.watt.common.plugin.template.service.ModelHelper": "sap.watt.ideplatform.template/service/ModelHelper",
+			"sap.watt.common.plugin.template.service.Neoapp": "sap.watt.ideplatform.template/service/Neoapp",
+			"sap.watt.common.plugin.template.service.Wizard": "sap.watt.ideplatform.template/service/Wizard"
+		}
+		
+	},
+	
+	"configures": {
+		"services": {
+			"wizard:styles":[
+				{
+					"uri" : "sap.watt.ideplatform.template/css/wizard.css"
+				},
+				{
+					"uri" : "sap.watt.ideplatform.template/css/templateWizard.css"
+				}
+			],
+			"tipsandtricks:tips": [
+				{
+					"id": "sap.watt.ideplatform.template.TemplateFavorites",
+					"service": "sap.watt.ideplatform.template/tips/TemplateFavoritesTip"
+				}
+			],
+			"projectsetting:generation": "@generation"
+		}
+	},				
+	
+	"subscribes": {
+		"generation:generated": ["neoapp:onAfterGeneration","template:onAfterGeneration"]
+	}
+}

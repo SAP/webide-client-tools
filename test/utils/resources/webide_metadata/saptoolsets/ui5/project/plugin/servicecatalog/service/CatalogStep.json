@@ -1,0 +1,13 @@
+{
+	"name" : "sap.watt.uitools.plugin.servicecatalog.service.CatalogStep",
+	"extends" : ["sap.watt.common.service.ui.WizardStep"],
+	"description": "The interface of the service selection wizard step",
+	"methods" : {},
+	"configurationProperties" : {
+        "repositoryBrowserExtensionFilters" : {
+            "type" : "[string]",
+            "multiple" : false
+        }
+    }
+	
+}

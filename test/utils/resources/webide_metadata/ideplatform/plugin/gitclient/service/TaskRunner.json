@@ -1,0 +1,30 @@
+{
+	"name": "sap.watt.idepplatform.plugin.gitclient.service.TaskRunner",
+	"description": "Git tasks runner",
+	"methods" : {
+		"setTask" : {
+			"params" : [
+				{
+					"name" : "sTask",
+					"type" : "string"
+				},
+				{
+					"name" : "aTasks",
+					"type" : "[object]"
+				}
+			]
+		},
+		"runTasks" : {
+			"params" : [
+				{
+					"name" : "sTask",
+					"type" : "string"
+				}
+			],
+			"returns" : "object"
+		},
+		"getPrePushName" : {
+			"returns":"string"
+		}
+	}
+}

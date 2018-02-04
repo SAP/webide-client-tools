@@ -1,0 +1,113 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n",
+	"description": "The go to i18n Plugin",
+	"i18n": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"document",
+			"command",
+			"commandGroup",
+			"usernotification",
+			"editor",
+			"aceeditor",
+			"content",
+            "projectsearchutil",
+            "ui5projecthandler",
+            "translation",
+            "selection",
+            "usagemonitoring"
+		]
+	},
+
+	"provides": {
+		"services": {
+			"gotoi18n": {
+				"implements": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n.service.GoToI18n",
+				"module": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/service/GoToI18n"
+			},
+			"pushtoi18n": {
+				"implements": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n.service.PushToI18n",
+				"module": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/service/PushToI18n"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.saptoolsets.ui5.common.plugin.goToI18n.service.GoToI18n": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/service/GoToI18n",
+			"sap.watt.saptoolsets.ui5.common.plugin.goToI18n.service.PushToI18n": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/service/PushToI18n"
+
+		}
+	},
+	"configures": {
+		"services": {
+			
+			"usagemonitoring:reportParams": [
+				{
+					"components": ["editor"],
+					"eventTypes": ["openi18n", "pushToI18n", "editi18n"]
+				}],
+				
+
+
+			"command:commands": [
+				{
+					"id": "openI18n.gotoi18n",
+					"keyBinding": "alt+i",
+					"label": "{i18n>command_gotoi18n}",
+					"service": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/command/GoToI18n",
+					"type": "action",
+					"enabled": true
+				},
+								{
+					"id": "openI18n.pushtoi18n",
+					"label": "{i18n>command_pushtoi18n}",
+					"service": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/command/PushToI18n",
+					"type": "action",
+					"enabled": true
+				},
+							{
+					"id": "openI18n.editi18n",
+					"label": "{i18n>command_editi18n}",
+					"service": "sap.watt.saptoolsets.ui5.common.plugin.goToI18n/command/EditI18n",
+					"type": "action"
+				}
+			],
+
+			"commandGroup:groups": [
+			   
+				{ "id" : "i18ncommands"}
+	
+				],
+			"commandGroup:items": [
+			{
+				"parent":"xmlContextMenu",
+				"group":"i18ncommands",
+				"type":"inline",
+				"prio" : 40
+			},
+			{
+	
+				"parent": "jsContextMenu",
+				"group": "i18ncommands",
+				"type": "inline",
+				"prio": 40
+			},
+			{
+				"parent": "i18ncommands",
+				"command": "openI18n.gotoi18n",
+				"prio": 10
+				},
+				{
+				"parent": "i18ncommands",
+				"command": "openI18n.pushtoi18n",
+				"prio": 10
+				},
+				{
+				"parent": "i18ncommands",
+				"command": "openI18n.editi18n",
+				"prio": 10
+				}
+		]
+		}
+	}
+}

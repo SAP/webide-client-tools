@@ -1,0 +1,13 @@
+{
+	"preloadCapable" : true,
+
+	"name" : "sap.watt.ideplatform.di.hidden.feature",
+	"title" : "Web IDE with DI - ideplatform layer - hidden features",
+	"version" : "1.0.0",
+	"description" : "Web IDE with DI - ideplatform layer - hidden features",
+
+
+	"bundledPlugins" : {
+	}
+
+}

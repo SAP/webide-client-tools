@@ -1,0 +1,24 @@
+{
+	"name" : "sap.watt.common.service.editor.HelpDataProvider",
+	"description" : "The HelpData interface",
+	"methods" : {
+		"getHelpData": {
+			"description": "returns help data to proposal",
+			"params": [{
+				"name": "oProposal",
+				"type": "object",
+				"description": "Proposal object to get the Help Data to"
+			}],
+			"returns": {
+				"type": "object",
+				"description": "Object containing Help Data properties"
+			}
+		}
+	},
+	"configurationProperties" : {
+		"helpUrlPrefix": {
+			"type": "string",
+			"multiple": false
+		}
+	}
+}

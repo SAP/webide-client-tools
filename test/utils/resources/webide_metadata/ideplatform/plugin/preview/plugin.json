@@ -1,0 +1,85 @@
+{
+
+	"name": "sap.watt.ideplatform.preview",
+	"description": "The Preview Plugin",
+	"i18n": "sap.watt.ideplatform.preview/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"command",
+			"commandGroup",
+			"filesystem.documentProvider",
+			"selection",
+			"setting.project",
+			"qrcode",
+			"translation",
+			"log",
+			"preferences",
+			"usagemonitoring",
+			"filefilter"
+		]
+	},
+	"provides": {
+		"services": {
+			"preview": {
+				"implements": "sap.watt.common.plugin.preview.service.Preview",
+				"module": "sap.watt.ideplatform.preview/service/PreviewImpl"
+			},
+			"appparams": {
+				"implements": "sap.watt.common.service.ui.Config",
+				"module": "sap.watt.ideplatform.preview/service/AppParamsProjectConfig"
+			},
+			"htmlbuilder": {
+				"implements": "sap.watt.common.plugin.preview.service.HTMLbuilder",
+				"module": "sap.watt.ideplatform.preview/service/HTMLbuilder"
+			},
+			"previewframerunner": {
+				"implements": "sap.watt.common.plugin.preview.service.PreviewRunner",
+				"module": "sap.watt.ideplatform.preview/service/PreviewFrameRunner"
+			},
+			"previewnoframerunner": {
+				"implements": "sap.watt.common.plugin.preview.service.PreviewRunner",
+				"module": "sap.watt.ideplatform.preview/service/PreviewNoFrameRunner"
+			}
+			
+		},
+
+		"interfaces": {
+			"sap.watt.common.plugin.preview.service.Preview": "sap.watt.ideplatform.preview/service/Preview",
+			"sap.watt.common.plugin.preview.service.PreviewAdapter": "sap.watt.ideplatform.preview/service/PreviewAdapter",
+			"sap.watt.common.plugin.preview.service.PreviewMode": "sap.watt.ideplatform.preview/service/PreviewMode",
+			"sap.watt.common.plugin.preview.service.PreviewRunner": "sap.watt.ideplatform.preview/service/PreviewRunner",
+			"sap.watt.common.plugin.preview.service.HTMLbuilder": "sap.watt.ideplatform.preview/service/HTMLbuilder",
+			"sap.watt.common.plugin.preview.service.PreviewPreProcessor": "sap.watt.ideplatform.preview/service/PreviewPreProcessor"
+		}
+	},
+
+	"configures": {
+		"services": {
+			"filefilter:alwaysHidden" : [{
+				"regExps": ["/{1}(preview_hidden.html)$"]
+			}],
+			"command:commands": [{
+				"id": "preview.runwoframe",
+				"label": "{i18n>command_run_wo_frame}",
+				"windowTarget": "preview_nf",
+				"service": "sap.watt.ideplatform.preview/command/RunWOFrame",
+				"keyBinding": "alt+shift+f5"
+			}],
+
+			"preview:runner": [{
+				"id": "frame",
+				"service": "@previewframerunner"
+			}, {
+				"id": "noFrame",
+				"service": "@previewnoframerunner"
+			}],
+
+			"usagemonitoring:reportParams": [{
+				"components": ["preview"],
+				"eventTypes": ["preview_size", "preview_language"]
+			}]
+		}
+	}
+
+}

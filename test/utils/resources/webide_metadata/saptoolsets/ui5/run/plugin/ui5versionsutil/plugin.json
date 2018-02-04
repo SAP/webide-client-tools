@@ -1,0 +1,32 @@
+{
+	"name": "sap.watt.saptoolsets.ui5.run.ui5versionsutil",
+	"description": "UI5 versions util plugin",
+	"i18n" : "sap.watt.saptoolsets.ui5.run.ui5versionsutil/i18n/i18n",
+
+	"requires": {
+		"services": [
+		    "log",
+		    "ui5projecthandler",
+		    "appmetadata",
+			"ui5librarymetadata"
+		]
+	}, 
+	"provides": {
+		"services": {
+			"UI5VersionsUtil": {
+				"implements": "sap.watt.uitools.plugin.ui5versionsutil.service.UI5VersionsUtil",
+				"module": "sap.watt.saptoolsets.ui5.run.ui5versionsutil/service/UI5VersionsUtil"
+			}
+		},
+		"interfaces": {
+			"sap.watt.uitools.plugin.ui5versionsutil.service.UI5VersionsUtil": "sap.watt.saptoolsets.ui5.run.ui5versionsutil/service/UI5VersionsUtil"
+		}	
+	},
+	
+ 	"configures" : {
+
+	},
+	"subscribes": {
+	
+	}
+}

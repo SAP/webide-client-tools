@@ -1,0 +1,10 @@
+{
+	"name" : "sap.watt.ideplatform.generationwizard.service.FilterAdapter",
+	"description" : "Filter Adapter interface",
+	"methods" : {
+		"getValuesForFilter" : {
+		    "description" : "get values for filter field",
+		    "returns" : "object"
+		}
+	}
+}

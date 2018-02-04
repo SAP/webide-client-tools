@@ -1,0 +1,380 @@
+{
+	"name": "sap.watt.saptoolsets.fiori.project.ui5template",
+	"description": "A collection of templates to create SAPUI5 starter applications and views.",
+	"i18n": "sap.watt.saptoolsets.fiori.project.ui5template/i18n/i18n",
+
+	"requires": {
+		"services": [
+			"log",
+			"template",
+			"templateCustomizationStep",
+			"odataAnnotationSelectionStep",
+			"catalogstep",
+			"odataProvider",
+			"offlinestep",
+			"setting.project",
+			"filesystem.documentProvider",
+			"componentConfirmStep",
+			"console",
+			"ui5projecthandler",
+			"astLibrary",
+			"csdlParser",
+			"wizard",
+			"modelHelper",
+			"projectType",
+			"annotation",
+			"mockFileLoader",
+			"translation",
+			"repositorybrowser",
+			"basicSAPUI5ApplicationProjectTemplateService"
+		]
+	},
+
+	"provides": { 
+		"services": {
+			"mdWithAttachmentsSettings": {
+				"implements": "sap.watt.uitools.plugin.ui5template.service.MDWithAttachmentsSettings",
+				"module": "sap.watt.saptoolsets.fiori.project.ui5template/service/MDWithAttachmentsSettings"
+			},
+			"smartTemplateHelper": {
+				"implements": "sap.watt.uitools.plugin.ui5template.service.SmartTemplateHelper",
+				"module": "sap.watt.saptoolsets.fiori.project.ui5template/service/SmartTemplateHelper"
+			},
+			"SmartExtension": {
+				"implements": "sap.watt.uitools.plugin.ui5template.service.SmartExtension",
+				"module": "sap.watt.saptoolsets.fiori.project.ui5template/service/SmartExtension"
+			},
+			"smartExtensionStep" : {
+				"implements": "sap.watt.common.service.ui.WizardPart",
+				"module": "sap.watt.saptoolsets.fiori.project.ui5template/smartExtensions/service/SmartExtensionStep"
+			}
+		},
+
+		"interfaces": {
+			"sap.watt.uitools.plugin.ui5template.service.MDWithAttachmentsSettings": "sap.watt.saptoolsets.fiori.project.ui5template/service/MDWithAttachmentsSettings",
+			"sap.watt.uitools.plugin.ui5template.service.SmartTemplateHelper": "sap.watt.saptoolsets.fiori.project.ui5template/service/SmartTemplateHelper",
+			"sap.watt.uitools.plugin.ui5template.service.SmartExtension": "sap.watt.saptoolsets.fiori.project.ui5template/service/SmartExtension"
+		}
+	},
+
+	"subscribes": {
+		"generation:generated": ["mdWithAttachmentsSettings:onAfterGeneration", "SmartExtension:onAfterGeneration", "smartTemplateHelper:onAfterGeneration"]
+	},
+
+	"configures": {
+		"services": {
+			"projectType:types" : [
+				{
+					"id" : "sap.watt.saptoolsets.fiori.project.ui5template.smartProject",
+					"displayName" : "{i18n>smart_type_name}",
+					"description" : "{i18n>smart_type_desc}"
+				}
+			],
+			"wizard:styles": [{
+				"uri": "sap.watt.saptoolsets.fiori.project.ui5template/css/ui5template.css"
+			}],
+			"template:categories": [{
+				"id": "Empty.SAPUI5.Project",
+				"name": "{i18n>Config_category_empty_SAPUI5_project_name}",
+				"description": "{i18n>Config_category_empty_SAPUI5_project_desc}"
+			}, {
+				"id": "SAPUI5.View",
+				"name": "{i18n>Config_category_SAPUI5_View_name}",
+				"description": "{i18n>Config_category_SAPUI5_View_desc}"
+			}, {
+				"id": "SAPUI5.Mobile.Applications",
+				"name": "{i18n>Config_category_SAPUI5_Mobile_App}",
+				"description": "{i18n>Config_category_SAPUI5_Mobile_App_desc}"
+			}, {
+				"id": "SAPUI5.Business.Applications",
+				"name": "{i18n>Config_category_SAPUI5_Business_App}",
+				"description": "{i18n>Config_category_SAPUI5_Business_App_desc}"
+			}, {
+				"id": "SAPUI5.Smart.Templates",
+				"name": "{i18n>smart_template_category_name}",
+				"description": "{i18n>smart_template_category_name}"
+			}],
+			"template:templates": [
+				{
+					"id": "ui5template.2masterdetailcrud",
+					"template": "sap.watt.saptoolsets.fiori.project.ui5template/masterDetailWithCRUD/2masterdetail",
+					"name": "{i18n>Config_mdWithCrud_name}",
+					"description": "{i18n>Config_mdWithCrud_desc}",
+					"path": "ui5template/masterDetailWithCRUD",
+					"fileName": "resources.zip",
+					"modelFileName": "model.json",
+					"modelRoot": "2masterdetail",
+					"category": "SAP.Fiori.Application",
+					"icon": "sap-icon://watt/fiori-app",
+					"previewImage": "image/crud_for_previewImage.png",
+					"templateCustomizationImage": "image/crud_for_templateCustomizationImage.png",
+					"wizardSteps": [
+						"catalogstep",
+						"templateCustomizationStep"
+					],
+					"templateType": "project",
+					"version": "1.38.11",
+					"versionLabel": "{i18n>Config_template_masterdetailscrud_stable_version_label}",
+					"UI5Version": "1.38.11",
+					"orderPriority": 1000,
+					"requiresNeoApp": true,
+					"metadataPath": "webapp/localService",
+					"beautifyFiles": true,
+					"targetProjectTypes": ["sap.watt.uitools.ide.fiori"],
+					"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+				},
+				{
+					"id": "ui5template.2masterdetailcrud",
+					"template": "sap.watt.saptoolsets.fiori.project.ui5template/masterDetailWithCRUD/2masterdetail",
+					"name": "{i18n>Config_mdWithCrud_name}",
+					"description": "{i18n>Config_mdWithCrud_desc}",
+					"path": "ui5template/masterDetailWithCRUD",
+					"fileName": "resources.zip",
+					"modelFileName": "model.json",
+					"modelRoot": "2masterdetail",
+					"category": "SAP.Fiori.Application",
+					"icon": "sap-icon://watt/fiori-app",
+					"previewImage": "image/crud_for_previewImage.png",
+					"templateCustomizationImage": "image/crud_for_templateCustomizationImage.png",
+					"wizardSteps": [
+						"catalogstep",
+						"templateCustomizationStep"
+					],
+					"templateType": "project",
+					"version": "1.40.12",
+					"versionLabel": "{i18n>Config_template_masterdetailscrud_latest_version_label}",
+					"orderPriority": 1000,
+					"requiresNeoApp": true,
+					"metadataPath": "webapp/localService",
+					"beautifyFiles": true,
+					"targetProjectTypes": ["sap.watt.uitools.ide.fiori"],
+					"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+				}
+				,{
+				"id": "ui5template.basicSAPUI5ApplicationProject",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/basicSAPUI5ApplicationProject/BasicSAPUI5ApplicationProjectTemplate",
+				"name": "{i18n>Config_template_basicSAPUI5ApplicationProject_name}",
+				"description": "{i18n>Config_template_basicSAPUI5ApplicationProject_desc}",
+				"path": "ui5template/basicSAPUI5ApplicationProject",
+				"icon": "sap-icon://watt/fiori-app",
+				"modelFileName": "model.json",
+				"modelRoot": "basicSAPUI5ApplicationProject",
+				"category": "SAP.Fiori.Application",
+				"requiredTemplates" : [{"id" : "ui5template.basicSAPUI5ApplicationProjectCommon", "version" : "1.28.1"}],
+				"requiresNeoApp": true,
+				"templateType": "project",
+				"wizardSteps": ["templateCustomizationStep"],
+				"version": "1.28.4",
+				"UI5Version":"1.28.4",
+				"versionLabel": "{i18n>Config_template_basicSAPUI5ApplicationProject_old_version_label}",
+				"orderPriority": 2001,
+				"coreTemplate": true,
+				"targetProjectTypes": ["sap.watt.uitools.ide.fiori"],
+				"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+			}, {
+				"id": "ui5template.basicSAPUI5ApplicationProject",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/basicSAPUI5ApplicationProject/BasicSAPUI5ApplicationProjectTemplate",
+				"name": "{i18n>Config_template_basicSAPUI5ApplicationProject_name}",
+				"description": "{i18n>Config_template_basicSAPUI5ApplicationProject_desc}",
+				"path": "ui5template/basicSAPUI5ApplicationProject",
+				"icon": "sap-icon://watt/fiori-app",
+				"previewImage": "image/SAPUI5-Application.png",
+				"modelFileName": "model.json",
+				"modelRoot": "basicSAPUI5ApplicationProject",
+				"category": ["SAP.Fiori.Application", "Common"],
+				"requiredTemplates" : [{"id" : "ui5template.basicSAPUI5ApplicationProjectCommon", "version" : "1.32.0"}],
+				"requiresNeoApp": true,
+				"templateType": "project",
+				"wizardSteps": ["templateCustomizationStep"],
+				"version": "1.38.11",
+				"UI5Version":"1.38.11",
+				"versionLabel": "{i18n>Config_template_basicSAPUI5ApplicationProject_stable_version_label}",
+				"orderPriority": 2001,
+				"coreTemplate": true,
+				"targetProjectTypes": ["sap.html5", "sap.watt.uitools.ide.fiori"],
+				"supportedProjectTypes": ["sap.html5", "com.sap.webide.hybrid.cordova"]
+			},
+			
+			{
+				"id": "ui5template.basicSAPUI5ApplicationProject",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/basicSAPUI5ApplicationProject/BasicSAPUI5ApplicationProjectTemplate",
+				"name": "{i18n>Config_template_basicSAPUI5ApplicationProject_name}",
+				"description": "{i18n>Config_template_basicSAPUI5ApplicationProject_desc}",
+				"path": "ui5template/basicSAPUI5ApplicationProject",
+				"icon": "sap-icon://watt/fiori-app",
+				"previewImage": "image/SAPUI5-Application.png",
+				"modelFileName": "model.json",
+				"modelRoot": "basicSAPUI5ApplicationProject",
+				"category": ["SAP.Fiori.Application", "Common"],
+				"requiredTemplates" : [{"id" : "ui5template.basicSAPUI5ApplicationProjectCommon", "version" : "1.32.0"}],
+				"requiresNeoApp": true,
+				"templateType": "project",
+				"wizardSteps": ["templateCustomizationStep"],
+				"version": "1.40.12",
+				"versionLabel": "{i18n>Config_template_basicSAPUI5ApplicationProject_new_version_label}",
+				"orderPriority": 2001,
+				"coreTemplate": true,
+				"targetProjectTypes": ["sap.html5", "sap.watt.uitools.ide.fiori"],
+				"supportedProjectTypes": ["sap.html5", "com.sap.webide.hybrid.cordova"]
+			},
+			
+			{
+				"id": "ui5template.basicSAPUI5ApplicationComponent",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/basicSAPUI5ApplicationComponent/BasicSAPUI5ApplicationComponentTemplate",
+				"name": "{i18n>Config_template_basicSAPUI5Application_Component_name}",
+				"description": "{i18n>Config_template_basicSAPUI5Application_Component_desc}",
+				"path": "ui5template/basicSAPUI5ApplicationComponent",
+				"fileName": "BasicSAPUI5ApplicationComponentTemplate.zip",
+				"modelFileName": "model.json",
+				"modelRoot": "basicSAPUI5ApplicationComponent",
+				"icon": "sap-icon://create",
+				"wizardSteps": ["templateCustomizationStep", "componentConfirmStep"],
+				"category": "SAP.Fiori.Application",
+				"templateType": "component",
+				"supportedProjectTypes": [],
+				"version": "1.4.0",
+				"orderPriority": 10,
+				"coreTemplate": true
+			}, {
+				"id": "sap.ui.ui5-template-plugin.2masterdetail",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/fioriMasterDetail/fioriMasterDetailTemplate",
+				"name": "{i18n>fiori_master_detail_name}",
+				"description": "{i18n>fiori_master_detail_desc}",
+				"path": "ui5template/fioriMasterDetail",
+				"fileName": "fioriMasterDetailTemplate.zip",
+				"modelFileName": "model.json",
+				"modelRoot": "fioriMasterDetail",
+				"icon": "sap-icon://watt/general",
+				"previewImage": "image/wattpreviewmd.PNG",
+				"templateCustomizationImage": "image/fioriMDCust.PNG",
+				"internalOnly": false,
+				"requiresNeoApp": true,
+				"wizardSteps": ["catalogstep", "templateCustomizationStep"],
+				"templateType": "project",
+				"version": "1.26.0",
+				"UI5Version":"1.26.3",
+				"versionLabel": "{i18n>fiori_master_detail_version_label}", 
+				"orderPriority": 2010,
+				"coreTemplate": true,
+				"targetProjectTypes": ["sap.watt.uitools.ide.fiori"],
+				"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+			}, {
+				"id": "sap.ui.ui5-template-plugin.1worklist",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/fioriFullScreen/fioriFullScreenTemplate",
+				"name": "{i18n>fiori_fullscreen_name}",
+				"description": "{i18n>fiori_fullscreen_desc}",
+				"path": "ui5template/fioriFullScreen",
+				"fileName": "fioriFullScreenTemplate.zip",
+				"modelFileName": "model.json",
+				"modelRoot": "fioriFullScreen",
+				"icon": "sap-icon://watt/general",
+				"previewImage": "image/fioriFullScreen.png",
+				"internalOnly": false,
+				"requiresNeoApp": true,
+				"wizardSteps": ["catalogstep", "templateCustomizationStep"],
+				"templateType": "project",
+				"version": "1.26.0",
+				"UI5Version":"1.26.3",
+				"versionLabel": "{i18n>fiori_fullscreen_version_label}",
+				"orderPriority": 2030,
+				"coreTemplate": true,
+				"targetProjectTypes": ["sap.watt.uitools.ide.fiori"],
+				"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+			}, {
+				"id": "sap.ui.ui5-template-plugin.2masterdetail",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/fioriMasterMasterDetail/fioriMasterMasterDetailTemplate",
+				"name": "{i18n>fiori_master_master_detail_name}",
+				"description": "{i18n>fiori_master_master_detail_desc}",
+				"path": "ui5template/fioriMasterMasterDetail",
+				"fileName": "fioriMasterMasterDetailTemplate.zip",
+				"modelFileName": "model.json",
+				"modelRoot": "fioriMasterMasterDetail",
+				"icon": "sap-icon://watt/general",
+				"previewImage": "image/wattpreviewmd.jpg",
+				"internalOnly": false,
+				"requiresNeoApp": true,
+				"wizardSteps": ["catalogstep", "templateCustomizationStep"],
+				"templateType": "project",
+				"version": "1.26.1",
+				"UI5Version":"1.26.3",
+				"versionLabel": "{i18n>fiori_master_master_detail_version_label}",
+				"coreTemplate": true,
+				"targetProjectTypes": ["sap.watt.uitools.ide.fiori"],
+				"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+			}, {
+				"id": "ui5template.smarttemplate",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/smartTemplate/SmartTemplate",
+				"name": "{i18n>smart_template_name}",
+				"description": "{i18n>smart_template_desc}",
+				"path": "ui5template/smartTemplate",
+				"fileName": "resources.zip",
+				"modelFileName": "model.json",
+				"modelRoot": "smartTemplate",
+				"previewImage": "image/smartTemplate.png",
+				"icon": "sap-icon://watt/fiori-smart",
+				"internalOnly": false,
+				"category": ["SAPUI5.Smart.Templates", "Common"],
+				"wizardSteps": ["catalogstep", "odataAnnotationSelectionStep", "templateCustomizationStep"],
+				"templateType": "project",
+				"version": "1.38.11",
+				"UI5Version": "1.38.11",
+				"versionLabel": "{i18n>Config_template_smarttemplate_old_version_label}",
+				"orderPriority": 1000,
+				"requiresNeoApp": true,
+				"targetProjectTypes": ["sap.html5","sap.watt.uitools.ide.fiori","sap.watt.saptoolsets.fiori.project.ui5template.smartProject" ],
+				"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+			},
+			{
+				"id": "ui5template.smarttemplate",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/smartTemplate/SmartTemplate",
+				"name": "{i18n>smart_template_name}",
+				"description": "{i18n>smart_template_desc}",
+				"path": "ui5template/smartTemplate",
+				"fileName": "resources.zip",
+				"modelFileName": "model.json",
+				"modelRoot": "smartTemplate",
+				"previewImage": "image/smartTemplate.png",
+				"icon": "sap-icon://watt/fiori-smart",
+				"internalOnly": false,
+				"category": ["SAPUI5.Smart.Templates", "Common"],
+				"wizardSteps": ["catalogstep", "odataAnnotationSelectionStep", "templateCustomizationStep"],
+				"templateType": "project",
+				"version": "1.40.12",
+				"versionLabel": "{i18n>Config_template_smarttemplate_new_version_label}",
+				"orderPriority": 1000,
+				"requiresNeoApp": true,
+				"targetProjectTypes": ["sap.html5","sap.watt.uitools.ide.fiori","sap.watt.saptoolsets.fiori.project.ui5template.smartProject" ],
+				"supportedProjectTypes": ["com.sap.webide.hybrid.cordova"]
+			},
+			{
+				"id": "ui5template.listreportextension",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/smartExtensions/listReport/ListReportTemplate",
+				"name": "{i18n>list_report_name}",
+				"description": "{i18n>list_report_desc}",
+				"path": "ui5template/smartExtensions/listReport",
+				"fileName": "resources.zip",
+				"previewImage": "image/listReport.PNG",
+				"icon": "sap-icon://watt/fiori-smart",
+				"category": "SAPUI5.Smart.Templates",
+				"wizardSteps": ["smartExtensionStep"],
+				"templateType": "smart_extension",
+				"version": "1.0.0",
+				"orderPriority": 1000
+			}, {
+				"id": "ui5template.objectpageextension",
+				"template": "sap.watt.saptoolsets.fiori.project.ui5template/smartExtensions/objectPage/ObjectPageTemplate",
+				"name": "{i18n>object_page_name}",
+				"description": "{i18n>object_page_desc}",
+				"path": "ui5template/smartExtensions/objectPage",
+				"fileName": "resources.zip",
+				"previewImage": "image/objectPage.PNG",
+				"icon": "sap-icon://watt/fiori-smart",
+				"category": "SAPUI5.Smart.Templates",
+				"wizardSteps": ["smartExtensionStep"],
+				"templateType": "smart_extension",
+				"version": "1.0.0",
+				"orderPriority": 1000
+			}]
+		}
+	}
+}

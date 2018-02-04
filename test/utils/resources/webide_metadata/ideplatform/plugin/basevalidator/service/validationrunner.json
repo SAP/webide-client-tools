@@ -1,0 +1,27 @@
+{
+	"name": "sap.watt.ideplatform.validation.validationrunner",
+	"description": "The validator runner interface",
+	"methods": {
+		"run": {
+			"returns": "object",
+			"params": [
+				{
+					"name": "validator",
+					"type": "string"
+				},
+				{
+					"name": "projectDocument",
+					"type": "object"
+				},
+				{
+					"name": "documents",
+					"type": "[object]"
+				},
+				{
+					"name": "contextState",
+					"type": "object"
+				}
+			]
+		}
+	}
+}

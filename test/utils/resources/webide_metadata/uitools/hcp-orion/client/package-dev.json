@@ -1,0 +1,18 @@
+{
+	"name": "sap.watt.uitools.orion.hcp.feature",
+	"title": "Web IDE with Orion on HCP - uitools layer - Development environment",
+	"version": "1.0.0",
+	"description": "Web IDE with Orion on HCP - uitools layer - Development environment",
+
+	"deprecatedConfigIncludes" : [
+		"file:{orion_server}prefs/user/watt/config-dev.json"
+	],
+
+	"bundledFeatures": {
+		"sap.watt.saptoolsets.fiori.orion.hcp.feature" : "file:../../../saptoolsets/fiori/package-hcp-orion.json",
+		"sap.watt.uitools.feature": "file:../../package.json"
+	},
+	"optionalBundledFeatures" : {
+		"sap.watt.external.local.feature": "file:/localextplugindev/package.json"
+	}
+}

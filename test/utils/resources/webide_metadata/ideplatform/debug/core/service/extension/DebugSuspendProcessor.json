@@ -1,0 +1,27 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.extension.DebugSuspendProcessor",
+  "description": "A debug suspend processor interface provides access to resume/suspend functionality.",
+  "extends": [],
+  "methods": {
+    "suspend": {
+      "description": "Stops on the next statement."
+    },
+    "resume": {
+      "description": "Resumes execution."
+    },
+    "canResume": {
+      "description": "Distinguishes whether resume can be processed.",
+      "returns": {
+        "type": "boolean",
+        "description": "<code>True</code> if resume can be processed, <code>false</code> otherwise."
+      }
+    },
+    "canSuspend": {
+      "description": "Distinguishes whether suspend can be processed.",
+      "returns": {
+        "type": "boolean",
+        "description": "<code>True</code> if suspend can be processed, <code>false</code> otherwise."
+      }
+    }
+  }
+}

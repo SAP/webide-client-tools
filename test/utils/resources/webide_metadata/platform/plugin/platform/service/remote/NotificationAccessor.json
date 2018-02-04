@@ -1,0 +1,14 @@
+{
+	"name" : "sap.watt.common.service.remote.NotificationAccessor",
+	"description" : "The Notification manager",
+	
+	"methods" : {
+	    "getNotifications" : {
+	        "description" : "Retreive all notifications from server",		
+			"returns" : {
+				"type" : "[object]",
+				"description" : "An array of notification objects"
+			}
+	    }
+	}
+}

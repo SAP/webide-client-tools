@@ -1,0 +1,20 @@
+{
+  "name": "sap.watt.ideplatform.debug.core.service.DocumentProvider",
+  "description": "Document Provider",
+  "methods": {
+    "getDocumentByModelElement": {
+      "description": "Returns the source document that corresponds to the given model element, or <code>null</code> if a source document could not be located.",
+      "params": [
+        {
+          "name": "element",
+          "type": "sap.watt.ideplatform.debug.core.model.managed.ManagedObjectBase",
+          "description": "The model element for which to locate the source."
+        }
+      ],
+      "returns": {
+        "type": "sap.watt.common.plugin.document.Document",
+        "description": "The source document in read-only or writable state."
+      }
+    }
+  }
+}

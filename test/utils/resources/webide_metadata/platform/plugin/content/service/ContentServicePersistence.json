@@ -1,0 +1,15 @@
+{
+	"name" : "sap.watt.common.content.service.ContentServicePersistence",
+	"description": "The content persistence service interface",
+    
+	"methods" : {
+		"add" : {},
+		"remove" : {},
+		"update" : {},
+		"clear" : {},
+		"getTabs" : {},
+		"getActiveTab" : {},
+		"setActiveTab" : {}
+	}
+	
+}
