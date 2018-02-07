@@ -2,13 +2,7 @@
 
 A Template for a WebIDE feature using the client-tools package
 
-Note that the **official** template is maintained at: 
-TBD: Should be released as open source too.
- 
 This is used as live docs and also for integration tests.
-But when starting a new webide feature project it is suggested
-to **start with** the official template first and use this template as
-additional docs for more advanced use cases.
 
 ### Demonstrated Flows
 
@@ -39,25 +33,21 @@ Nearly all APIs provided by the client-tools library can be customized.
 * The APIs provided by the client tools are programatic (not limited to CLI/GUI).
 * The [Config Object Pattern](https://stackoverflow.com/questions/7466817/javascript-configuration-pattern) is the de-facto standard for providing APIs by the client-tools (anything else is considered a **bug!**)
 
-For example: Lets assume we want to customize the Local DI instance starting flow.
+For example: Lets assume we want to bundle our feature.
 This example executes it by running:
-```npm run di_start```
+```npm run bundle```
 
-If we inspect the package.json of this example we will see the npm run command will execute the scripts/di_start.js.
+If we inspect the package.json of this example we will see the npm run command will execute the scripts/bundle.js.
 which in turns executes a programatic API of the client tools library.
 
 ```javascript
-const di = require("webide-client-tools").diBackend
+const di = require("webide-client-tools").bundling
 
-di.start()
+di.bundleFeature()
 ```
 
-This start commands accepts an optional config argument.
-Which is documented in the [JS Docs](http://sap.github.io/webide-client-tools/web/html_docs/diBackend.html)
-But more importantly (and easily) can be inspected simplify by opening the relevant client-tools library source.
-For example: in our case this would mean [opening node_modules/webide-client-tools/src/di_backend.js](https://github.com/SAP/webide-client-tools/blob/336735a2f3240133eb35ff076cfe51cb4e7be34d/src/di_backend.js#L188)
-or even better **stepping into** it in our debugger.
-
+This "bundleFeature" commands accepts an optional config argument.
+Which is documented in the [JS Docs](https://sap.github.io/webide-client-tools/web/html_docs/interfaces/_api_d_.bundlingapi.html#bundlefeature).
 
 
 ### <a name="DEV_SERVER"></a> Dev Server
@@ -92,41 +82,6 @@ Lets have a look at two variants to demonstrate the customizability:
 * [index_dist.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index_dist.html)
   Will start the WebIDE and load the example plugin from the dist folder (after bundling).
 
-* [index_di.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index_di.html)
-  Will start the WebIDE without the mock backend, thus requiring a local DI server to be started beforehand.
-
-
-
-### <a name="LOCAL_DI"></a> Local DI
-A Local DI instance is used to provide the backend APIs required by the WebIDE.
-This is currently limited to mainly the file system services.
-
-The Local DI is a Java Application which is not part of the client tools.
-Instead the client tools provide scripts to manage the life-cycle of the Local DI instance.
-
-* Downloading: ```npm run di_download```
-  - Will download the last snapshot version of the local DI server matching the WebIDE version used (in node_modules/webide).
-* Starting: ```npm run di_start```
-* Stopping: ```npm run di_stop```
-* cleaning(workspaces): ```npm run di_clean```
-
-Example Scenarios:
-* Local Dev Server with Local DI - To have a **persistent** local workspace.
- 1. Start Local DI
- 2. Start Dev Server
- 3. open localhost:3000/index_di.html
- 
-* Running Automated tests using a "real" backend (not mock in memory backend).
- 1. Download DI
- 2. Start DI.
- 3. Start Tests.
- 4. Stop DI.
- 5. Clean DI
-    - Cleaning is optional and depends on the persistance between sequencial runs of your automatation solution (docker/VMs/...).
-
-
-
-
 ### <a name="BUNDLING"></a> Bundling
 Bundling enables a feature to package it's contents to fewer files, thus allows faster loading in the end user's browser.
 There are three types of artifacts.
@@ -152,8 +107,6 @@ Relevant Resources:
 
 Also note that the require.js optimizer is only meant to bundle files using the AMD module pattern.
 See the [FAQ](https://github.com/SAP/webide-client-tools/blob/master/FAQ.md) for details on how to exclude files from bundling.
-
-
 
 
 ### <a name="TESTING"></a> Testing
