@@ -19,11 +19,7 @@ Tools and flows for developing client-side features and extensions for [SAP Web 
   * Provides fast feedback loops.
   * Runs the bundled version of your feature locally.
   * Uses the [Connect](https://github.com/senchalabs/connect) Node.js middleware layer.
-  
-- **Local DI (back end)** instance life cycle:
-  * Provides: download, start, and stop.
-  * Currently has only very limited capabilities (no builders, runners, or support).
-  * Local DI jar is not yet available outside SAP. 
+  * Uses an "in memory" backend mock.
 
 
 ## Requirements and Compatibility
@@ -58,9 +54,8 @@ For information, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 There are peer dependencies for the **usage** of this library which are still in the process
 of becoming available outside SAP corporate network. 
 
-The major peer dependency is SAP Web IDE itself. Without it, is not possible to run feature tests or the local development server.
-A minor peer dependency is the local DI back-end environment, without which tests are limited to those using a fake or mock back end.
-
+The major peer dependency is SAP Web IDE itself.
+Without it, is not possible to run feature tests or the local development server.
 
 ## License
 

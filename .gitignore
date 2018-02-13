@@ -44,3 +44,5 @@ jspm_packages
 
 /lib
 .DS_Store
+
+/package.lock

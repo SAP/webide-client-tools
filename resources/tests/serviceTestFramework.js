@@ -1,6 +1,5 @@
 // Needs to run in browser, but the eslint config here is for node.js (ES6).
 /* eslint-disable */
-// TODO: CDN for lodash or Local dep?
 define(
     "STF",
     [
@@ -32,11 +31,6 @@ define(
         // TODO: we are injecting this, perhaps wrap in UMD js resource to load via require.js?
         var localEnvJson = loadResourceSync(
             "./base/node_modules/webide-client-tools/resources/local_env/local_env.json",
-            "json"
-        )
-
-        var localEnvDiJson = loadResourceSync(
-            "./base/node_modules/webide-client-tools/resources/local_env/di_local_env.json",
             "json"
         )
 
@@ -290,18 +284,6 @@ define(
                     window.WEB_IDE_PLUGIN_REG[suiteName] = PluginRegistry
                     return iframe.contentWindow
                 })
-            },
-
-            startWebIdeWithDI: function(suiteName, options) {
-                const actualOptions = _.defaults(options, {
-                    mocks: [],
-                    urlParams: {
-                        username: "default_user",
-                        password: "passWord120"
-                    },
-                    env: localEnvDiJson
-                })
-                return STF.startWebIde(suiteName, actualOptions)
             },
 
             shutdownWebIde: function(suiteName) {

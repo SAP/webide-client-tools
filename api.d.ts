@@ -42,88 +42,6 @@ export interface DevServerAPI {
 export declare const devServer: DevServerAPI
 
 // ----------------------------------------------------------------
-// -------------------------- DI BackEnd --------------------------
-// ----------------------------------------------------------------
-
-export interface DiBackendAPI {
-    /**
-     * Downloads latest DI snapshot version.
-     */
-    download: (
-        options: {
-            /**
-             * The address from which to download DI from.
-             */
-            url: string
-
-            /**
-             * The get request options.
-             * Can be used to implement authentication or disable certain security options
-             * Such as disabling self signed certificates (when relevant).
-             * See: https://github.com/request/request for details.
-             */
-            requestGetOptions?: Object
-            /**
-             * File name to download to.
-             * Default value is: 'di.jar'
-             */
-            targetFile?: string
-            /**
-             * Directory name to download to.
-             * Default value is: './dev/di'
-             */
-            targetDir?: string
-            /**
-             * Function to invoke on successful completion.
-             */
-            successCallback?: Function
-        }
-    ) => void
-
-    /**
-     * Starts a local DI instance.
-     */
-    start: (
-        options?: {
-            /**
-             * DI jar file (including path) to execute.
-             * Default value is: './dev/di/di.jar'
-             */
-            targetFile?: string
-            /**
-             * Port the DI server will use.
-             * Default value is: 8888
-             */
-            port?: number
-            /**
-             * Should the DI process be started in a synchronized manner?
-             * Default value is: false
-             */
-            sync?: boolean
-        }
-    ) => void
-    /**
-     * Stops a DI server instance.
-     */
-    stop: () => void
-
-    /**
-     * Removes DI files/directory
-     */
-    clean: (
-        options?: {
-            /**
-             * Directory to clean (delete).
-             * Default value is: './dev/di'
-             */
-            targetDir?: string
-        }
-    ) => void
-}
-
-export declare const diBackend: DiBackendAPI
-
-// ----------------------------------------------------------------
 // -------------------------- Karma -------------------------------
 // ----------------------------------------------------------------
 
@@ -333,18 +251,6 @@ export interface STF_API {
              */
             urlParams?: { [key: string]: string }
         }
-    ) => Promise<void>
-
-    startWebIdeWithDI: (
-        /**
-         * Unique ID for this webide instance.
-         */
-        id: string,
-        /**
-         * Convenience method to start the webide without the backend mocks.
-         * @see STF.startWebIde for options details
-         */
-        options?: Object
     ) => Promise<void>
 
     shutdownWebIde(

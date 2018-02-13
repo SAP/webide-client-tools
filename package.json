@@ -13,14 +13,9 @@
     "http-proxy-middleware": "^0.17.4",
     "js-string-escape": "^1.0.1",
     "lodash": "4.17.4",
-    "mkdirp": "0.5.1",
     "optional-require": "^1.0.0",
-    "progress": "^2.0.0",
-    "ps-node": "^0.1.6",
-    "request": "^2.83.0",
     "requirejs": "^2.3.5",
-    "serve-static": "^1.13.1",
-    "xml2js": "^0.4.19"
+    "serve-static": "^1.13.1"
   },
   "peerDependencies": {
     "karma": "^1.7.0",
@@ -54,7 +49,7 @@
   "scripts": {
     "release": "git fetch && git rebase && node scripts/release.js",
     "lint": "npm run type_check && eslint 'src/**/*.js' 'test/**/*.js' 'example/integration_tests/**/*.js' && npm run docs  && npm run format_validate",
-    "test": "jest && echo 'skipping!!! node example/integration_tests/run_tests.js'",
+    "test": "jest",
     "test_examples": "jest --maxWorkers 1 --config example/integration_tests/jest.config.json",
     "docs": "shx rm -rf docs/web/html_docs && typedoc --tsconfig tsdocsconfig.json --out docs/web/html_docs --module commonjs --name WebideClientTools --excludeExternals --includeDeclarations",
     "format": "prettier --write \"**/*.js\"",

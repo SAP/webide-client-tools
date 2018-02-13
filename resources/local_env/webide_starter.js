@@ -61,10 +61,6 @@ var localEnvJson = loadResourceSync(
     "node_modules/webide-client-tools/resources/local_env/local_env.json",
     "json"
 )
-var diLocalEnvJson = loadResourceSync(
-    "node_modules/webide-client-tools/resources/local_env/di_local_env.json",
-    "json"
-)
 
 var WEBIDE_BACKEND_PRESETS = {
     DI: {
@@ -232,26 +228,4 @@ function startWebIDE(options) {
             contentWindow: iframe.contentWindow
         }
     })
-}
-
-var DEFAULT_DI_START_WEBIDE_OPTIONS = {
-    ui5_url: DEFAULT_UI5_URL,
-    base_index_html: actualOptions.webappPath + "index.html",
-    dev_mode: true,
-    extra_url_params: {
-        username: "default_user",
-        password: "passWord120"
-    },
-    backend: "DI",
-    env: diLocalEnvJson
-}
-
-/**
- * Convenience method to start WebIDE locally using DI backend.
- *
- * @param options - @see startWebIDE.options parameter
- */
-function startWebIDEWithDI(options) {
-    var actualOptions = _.defaults(options, DEFAULT_DI_START_WEBIDE_OPTIONS)
-    startWebIDE(actualOptions)
 }
