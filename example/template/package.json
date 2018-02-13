@@ -3,11 +3,7 @@
     "version": "6.6.6",
     "description": "Example use cases for client tools package - used as both Living Docs and Integration tests",
     "scripts": {
-        "test_di": "npm run di_stop && npm run di_download && npm run di_start && npm test && npm run di_stop",
         "test": "npm run bundle && node ./scripts/karma_ci --coverage --DIST",
-        "di_download": "node --preserve-symlinks ./scripts/di_download.js",
-        "di_start": "node ./scripts/di_start.js",
-        "di_stop": "node ./scripts/di_stop.js",
         "dev_server": "node ./scripts/dev_server.js",
         "bundle": "node ./scripts/bundle.js"
     },
@@ -36,7 +32,6 @@
         "minimist": "^1.2.0",
         "mocha": "3.4.2",
         "webide": "*",
-        "webide-client-tools": "^1.2.1",
-        "xml2js": "^0.4.19"
+        "webide-client-tools": "^1.2.1"
     }
 }

@@ -13,7 +13,6 @@ See the previous link for in-depth docs on npm script.
 * [Initial Setup](#SETUP)
 * [Customizing The Flows](#CUSTOMIZE)
 * [Dev Server](#DEV_SERVER)
-* [Local DI](#LOCAL_DI)
 * [Bundling](#BUNDLING)
 * [Testing](#TESTING)
 
@@ -41,9 +40,9 @@ If we inspect the package.json of this example we will see the npm run command w
 which in turns executes a programatic API of the client tools library.
 
 ```javascript
-const di = require("webide-client-tools").bundling
+const bundling = require("webide-client-tools").bundling
 
-di.bundleFeature()
+bundling.bundleFeature()
 ```
 
 This "bundleFeature" commands accepts an optional config argument.
@@ -65,7 +64,7 @@ in our favorites browser.
   - ```Tools --> Samples --> Helloworld```
   
 * Also Note that the WebIDE instance started will start with a mock backend
-  So no DI server is required.
+  So no backend server is required.
 
 
 #### How Does the Dev Server Work?
@@ -81,6 +80,7 @@ With several optional arguments.
 Lets have a look at two variants to demonstrate the customizability:
 * [index_dist.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index_dist.html)
   Will start the WebIDE and load the example plugin from the dist folder (after bundling).
+
 
 ### <a name="BUNDLING"></a> Bundling
 Bundling enables a feature to package it's contents to fewer files, thus allows faster loading in the end user's browser.
