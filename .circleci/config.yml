@@ -1,3 +1,4 @@
+# ------ jobs contents (what?) ------
 base-build: &base-build
   working_directory: ~/repo
   steps:
@@ -5,6 +6,19 @@ base-build: &base-build
     - run: yarn
     - run: yarn run ci_full_flow
 
+# YAML arrays cannot be merged, duplication needed...
+# https://stackoverflow.com/questions/24090177/how-to-merge-yaml-arrays
+deploy-build: &deploy-build
+  <<: *base-build
+  steps:
+    - checkout
+    - run: yarn
+    - run: yarn run ci_full_flow
+    - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+    - run: echo "npm publish"
+
+
+# ------  build configuration/setup (how?) ------
 version: 2
 jobs:
   build-node9:
@@ -25,7 +39,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:9.5-browsers
-    <<: *base-build
+    <<: *deploy-build
 
 workflows:
   version: 2
@@ -37,6 +51,6 @@ workflows:
       - deploy:
           filters:
             tags:
-              only: /v\/d+\.\d+\.\d+/
+              only: /^v[0-9]+(\.[0-9]+)*/
             branches:
               ignore: /.*/
