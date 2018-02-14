@@ -29,7 +29,8 @@ In this directory:
 Nearly all APIs provided by the client-tools library can be customized.
 
 * The APIs provided by the client-tools library are programmatic and not limited to CLI/GUI.
-* The [Configuration Object Pattern](https://stackoverflow.com/questions/7466817/javascript-configuration-pattern) is the de facto standard for providing APIs by the client-tools library. **NOTE**: Anything else is considered a **bug!**
+* The [Configuration Object Pattern](https://stackoverflow.com/questions/7466817/javascript-configuration-pattern) is the de facto standard for providing APIs by the client-tools library. 
+**NOTE**: Anything else is considered a **bug!**
 
 For example, let's assume we want to bundle our feature. The example executes it by running:
 
@@ -66,12 +67,12 @@ A local development server provides a static web server for hosting and serving 
 ### How Does the Development Server Work?
 
 _localhost:3000_ redirects to _localhost:3000/index.html_.
-This [index.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index.html) starts SAP Web IDE in an IFrame and injects configuration options, such as adding our example plugin's _package.json_ file to the root SAP Web IDE _featureConfig_.
+This [index.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index.html) starts SAP Web IDE in an iframe and injects configuration options, such as adding our example plugin's _package.json_ file to the root SAP Web IDE _featureConfig_.
 
 This is available as a programmatic API (**startWebIDE**) with several optional arguments.
 
 Let's have a look at two variants to demonstrate customizability:
-* [index_dist.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index_dist.html). This starts SAP Web IDE and loads the example plugin from the _dist_ folder after bundling.
+[index_dist.html](https://github.com/SAP/webide-client-tools/blob/master/example/template/index_dist.html). This starts SAP Web IDE and loads the example plugin from the _dist_ folder after bundling.
 
 
 ## <a name="BUNDLING"></a> Bundling
