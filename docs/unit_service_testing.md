@@ -1,128 +1,116 @@
-## Unit And Service testing for WebIDE features.
+# Unit and Service Testing for SAP Web IDE Features
 
-### Introduction
+## Introduction
 
-Terms and definitions:
- * [Karma](http://karma-runner.github.io/1.0/index.html) - is an open source
-  test **runner** for JavaScript capable of executing tests on browsers.
+**Terms and Definitions**
+ * [Karma](http://karma-runner.github.io/1.0/index.html) - is an open source test **runner** for JavaScript capable of executing tests on browsers.
   
- * [Mocha](https://mochajs.org/) - is an open source JavaScript testing framework. It provides APIs
-  for writing the test suites.
+ * [Mocha](https://mochajs.org/) - is an open source JavaScript testing framework. It provides APIs for writing the test suites.
   
- * [STF - Service Test Framework](../resources/tests/serviceTestFramework.js) - is a proprietary JavaScript module
-  which provides utilities for starting the SAP webide inside an iframe for testing purposes.
+ * [STF - Service Test Framework](../resources/tests/serviceTestFramework.js) - is a proprietary JavaScript module that provides utilities for starting SAP Web IDE inside an _iframe_ for testing purposes.
 
- * **Service test** - A test which manipulates WebIDE Service/s in a running WebIDE instance.
+ * **Service test** - A test that manipulates SAP Web IDE services in a running SAP Web IDE instance.
 
- * **Unit test** - A test which manipulates JavaScript modules directly (**No** WebIDE instance involved).
+ * **Unit test** - A test that manipulates JavaScript modules directly (**No** SAP Web IDE instance involved).
   
 
-The WebIDE client tools repository contains utilities and an [example](../example/template) on how to integrate
-the above tools to bootstrap a testing infrastructure for WebIDE features.
+The SAP Web IDE client tools repository contains utilities and an [example](../example/template) on how to integrate the above tools to bootstrap a testing infrastructure for SAP Web IDE features.
 
 
-### Running the provided example feature's tests.
+## Running Tests for the Provided Example Feature
   
-Prerequisites:
- * Node.js > 4
- * Chrome Browser
+**Prerequisites**
+ * Node.js 5 or later
+ * Google Chrome browser
 
-Step by Step:
- * Clone this repository.
- * open [example/template](../example/template) directory.
- * ```npm install```
- * ```npm test```
+**Procedure**
+ 1. Clone the repository.
+ 2. Open the [example/template](../example/template) directory.
+ 3. Run the following:
+     ```npm install```
+     ```npm test```
  
-Note that "karma_tests" is simply an npm script which triggers the karma command line command:
-```karma start --singleRun```
-Additional information on karma configurations and command line 
-can be found in the [official docs](http://karma-runner.github.io/1.0/intro/configuration.html)
+**Note**: "karma_tests" is simply an npm script that triggers the Karma command line command:
+    ```karma start --singleRun```
+    Additional information about karma configurations and command line commands can be found in the [official documentation](http://karma-runner.github.io/1.0/intro/configuration.html).
 
   
-### Debugging the provided example feature tests.
+## Debugging the Provided Example Feature Tests
 
-Additional Prerequisite:
- * karma-cli package installed **globally**
-   * npm install -g karma-cli
+**Additional Prerequisite**
+ * _karma-cli_ package installed **globally**
+    npm install -g karma-cli
    
-Step by Step:
- * open [example/template](../example/template) directory.
+**Procedure**
+1. Open [example/template](../example/template) directory.
  
- * ```karma start```
- 
- * A new chrome browser will open in a URL similar to: http://localhost:9877/?id=16652698
+    ```karma start```
+    
+    A new Chrome browser opens in a URL similar to: http://localhost:9877/?id=16652698
    - ![Karma Chrome Window](./imgs/karma_browser.png)
    
- * Press the "DEBUG" button at the top right corner.
-   - It will now open the URL: http://localhost:9877/debug.html
-   - ![Karma Debug Window](./imgs/karma_debug.png)
+2. Press the **DEBUG** button at the top right corner of the screen.
+    It now opens the URL: http://localhost:9877/debug.html
+    ![Karma Debug Window](./imgs/karma_debug.png)
        
- * Open Chrome Developer Tools and search for one of the test files, for example: **utilsUnitTestSpec.js**. 
+3. Open Chrome Developer Tools and search for one of the test files, for example: _utilsUnitTestSpec.js_. 
  
- * Set a breakpoint in that file.
+4. Set a breakpoint in that file.
  
- * Refresh the page.
+5. Refresh the page.
  
-Note that the UI/UX in the debug.html is quite useful:
- * Click on a test name to **only** run that test.
- 
- * Test failures will be shown with detailed error messages in the UI.
+**Note**: The UI/UX in the _debug.html_ file is quite useful. Click on a test name to **only** run that test. Test failures are shown with detailed error messages in the UI.
  
 
-### Integrating the testing infrastructure into another feature.
+## Integrating the Testing Infrastructure into Another Feature
   
-Instead of creating a very large step by step guide which will quickly
-become obsolete and incorrect, the components of the example will be listed with
-their purpose and will be used as **live docs**.
+Instead of creating a very large step-by-step guide which quickly becomes obsolete and incorrect, the components of the example are listed with their purpose and are used as **live docs**.
 
-The Components:
+### The Components:
 
 #### DevDependencies - [package.json](../package.json):
 
-  - The "karma-*" package dependencies are plugins for karma, for example: "karma-chrome-launcher" 
-    allows karma to launch chrome for testing, had we wanted to use Firefox we could have installed and configured
+  - The _karma-*_ package dependencies are plugins for Karma, for example: _karma-chrome-launcher_ 
+    allows Karma to launch Chrome for testing. However, if we want to use Firefox we can install and configure
     the [karma-firefox-launcher](https://www.npmjs.com/package/karma-firefox-launcher) plugin.
     
-  - The webide-client-tools package dependency is the **same** library developed in this repository.
-    * It is highly recommended to a more specific version range constraint, the usage of "*" (latest)
-      here is only for testing purposes.
+  - The _webide-client-tools_ package dependency is the **same** library developed in this repository.
+    It is highly recommended for a more specific version range constraint; the usage of "\*" (latest) here is only for testing purposes.
        
-  - The webide package dependency, provides the static resources needed to run the WebIDE locally.
+  - The _webide_ package dependency provides the static resources needed to run SAP Web IDE locally.
         
         
-#### karma configurations - [karma.conf.js](../example/template/karma.conf.js)        
+#### _karma_ configurations - [karma.conf.js](../example/template/karma.conf.js)        
  
-  - Defines the options for karma to use.
+  - Defines the options for Karma to use.
   
-  - The "webide-client-tools.karma.defaultProps()" is used to provide the default settings for the webide testing scenario.
+  - _webide-client-tools.karma.defaultProps()_ is used to provide the default settings for the SAP Web IDE testing scenario.
   
-  - It is possible to add/overwrite configurations to support different / expended scenarios.
+  - It is possible to add or overwrite configurations to support customized scenarios.
      
-  - Consult the [Official Docs for karma configurations](http://karma-runner.github.io/1.0/config/configuration-file.html)
+  - Consult the [official documentationi for Karma configurations](http://karma-runner.github.io/1.0/config/configuration-file.html)
     when making changes.
     
-  - By default end users must "include" a reference to their testSetup.js and "serve" their test and production resources.
-    * Note the inclusion of 'node_modules/chai/chai.js', This is an open source assertion library used in the example tests.
-      However it is **not** part of the testing infrastructure and must be manually included if needed.
+  - By default, end users must "include" a reference to their _testSetup.js_ file and "serve" their test and production resources.
+    **Note**: The _node_modules/chai/chai.js_ open source assertion library is used in the example tests.
+      However, it is **not** part of the testing infrastructure and must be manually included if needed.
       
       
-#### Tests runtime configurations - [testSetup.js][../example/template/test/testsSetup.js]
+## Tests Runtime Configurations - [testSetup.js][../example/template/test/testsSetup.js]
        
- - This file is loaded in the browser to configure globals (window props) to enable the tests bootstrapping.
+ - This file is loaded in the browser to configure globals (_window_ global object properties) for enabling the test bootstrapping.
  
- - The most important global is "**window.TEST_FILE_PATTERN**" which defines a regular Expression to identify
-   test files and load them as require.js dependencies.
+ - The most important global is _window.TEST_FILE_PATTERN_, which defines a regular expression for identifying test files and loading them as _require.js_ file dependencies.
  
- - Note that this file can also be used to define "end user" globals. In this example chai APIs
-   are exposed as globals.
+ - **Note**: This file can also be used to define "end user" globals. In this example, _chai_ APIs are exposed as globals.
           
          
-#### The tests themselves- [serviceTestSpec.js](../example/template/test/serviceTestSpec.js) & [utilsUnitTestSpec.js](../example/template/test/utilsUnitTestSpec.js)
+## The Tests Themselves- [serviceTestSpec.js](../example/template/test/serviceTestSpec.js) & [utilsUnitTestSpec.js](../example/template/test/utilsUnitTestSpec.js)
 
-  - The tests are written using Mocha bdd APIs (describe/it/before/...) with chai's expect APIs for assertions.
+  - The tests are written using Mocha _bdd_ APIs (describe/it/before/...) with _chai_ _expect_ APIs for assertions.
   
-  - The tests use require.js to load dependencies.
+  - The tests use _require.js_ files to load dependencies.
   
-  - The service test loads STF (Service Tests Framework) which exposed APIs for testing a WebIDE in an iframe.
+  - The service test loads STF (Service Tests Framework), which exposes APIs for testing SAP Web IDE in an _iframe_.
     * STF.startWebIDE(...)
-    * See [JSDocs in the source](../resources/tests/serviceTestFramework.js) for detailed APIs info. 
+    * See [JSDocs in the source](../resources/tests/serviceTestFramework.js) for detailed API info. 
