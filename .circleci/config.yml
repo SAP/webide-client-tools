@@ -10,22 +10,22 @@ jobs:
       - checkout
       - run: yarn
       - run: yarn run ci_full_flow
-   build-node8:
-     docker:
-       - image: circleci/node:8.9-browsers
-     working_directory: ~/repo
-     steps:
-       - checkout
-       - run: yarn
-       - run: yarn run ci_full_flow
-   build-node6:
-     docker:
-       - image: circleci/node:6.12-browsers
-     working_directory: ~/repo
-     steps:
-       - checkout
-       - run: yarn
-       - run: yarn run ci_full_flow
+  build-node8:
+    docker:
+      - image: circleci/node:8.9-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn run ci_full_flow
+  build-node6:
+    docker:
+      - image: circleci/node:6.12-browsers
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn run ci_full_flow
 
 workflows:
   version: 2
