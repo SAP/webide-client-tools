@@ -34,4 +34,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn run ci_full_build
+      - run: yarn run ci_full_flow
