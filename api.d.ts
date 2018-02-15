@@ -4,7 +4,7 @@
 
 /**
  *  A configuration of Connect Middleware functions.
- *  N0TE: The <path> property is optional
+ *  NOTE: The <path> property is optional
  *  and the middleware property may be an array.
  */
 import {Server} from "http";
@@ -72,7 +72,7 @@ export declare const karma: KarmaAPI
 
 export interface BundlingAPI {
     /**
-     * Bundles an SAP Web IDE feature, including JS sources, i18n file, and JSON metadata.
+     * Bundles an SAP Web IDE feature, including JS sources, “i18n” files, and JSON metadata.
      * It does not include the bundling of any SAPUI5 resources. Use tools provided by SAPUI5 to bundle those.
      *
      * Returns a promise with an object. The object properties:
@@ -111,7 +111,7 @@ export interface BundlingAPI {
             javaScriptOpts?: {
                 /**
                  * Custom configurations for the "require.js" optimizer.
-                 * For details, @see http://requirejs.org/docs/optimization.html#options.
+                 * For details, @link http://requirejs.org/docs/optimization.html#options.
                  */
                 optimizeOptions?: Object
 
@@ -128,7 +128,7 @@ export interface BundlingAPI {
                  * Ignored glob patterns, by default all JS resources (recursively)
                  * in the directory of the "plugin.json" file are bundled. However,
                  * some special edge cases may require exclusion.
-                 * For details about valid pattern syntax, @See https://github.com/isaacs/node-glob.
+                 * For details about valid pattern syntax, @link https://github.com/isaacs/node-glob.
                  */
                 ignore?: string | string[]
             }
@@ -138,7 +138,7 @@ export interface BundlingAPI {
              */
             metadataOpts?: {
                 /**
-                 * Prefix to apply to all plugin paths, such as "quickstart" --> "w5g/quickstart".
+                 * Prefix to apply to all plugin paths, such as "quickstart" --> "prefix/quickstart".
                  */
                 pluginsPrefix?: string
             }
