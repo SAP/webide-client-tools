@@ -41,7 +41,6 @@ See these examples:
 * [A feature demonstrating client-tool capabilities](https://github.com/SAP/webide-client-tools/tree/master/example/template).
 * [HTML version](http://sap.github.io/webide-client-tools/web/html_docs/modules/_api_d_.html).
 
-
 ## Support
 
 To get support, you can open [**issues**](https://github.com/SAP/webide-client-tools/issues) on Github.
@@ -52,13 +51,15 @@ To get support, you can open [**issues**](https://github.com/SAP/webide-client-t
 For information, see [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 
-## Limitations
+## Limitations & Known Issues
 
 There are peer dependencies for the **usage** of this library which are still in the process
 of becoming available outside SAP corporate network. 
-
+.
 The major peer dependency is SAP Web IDE itself.
 Without it, is not possible to run feature tests or the local development server.
+
+See [Known Bugs](https://github.com/SAP/webide-client-tools/issues?q=is%3Aissue+is%3Aopen+label%3Abug).
 
 ## License
 
