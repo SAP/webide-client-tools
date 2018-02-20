@@ -49,21 +49,15 @@ To get support, you can open [**issues**](https://github.com/SAP/webide-client-t
 
 ## Known Issues
 
-See [Known Bugs](https://github.com/SAP/webide-client-tools/issues?q=is%3Aissue+is%3Aopen+label%3Abug) on github issues page.
+Full usage of this library requires the webide package as an npm peerDependency.
+Specifically for testing and development server flows.
+This is **currently** not possible outside SAP's coporate network.
+Which means that the client-tools library can (**temporarily**) only be used for bundling flows.
 
 
 ## Contributing
 
 For information, see [CONTRIBUTING.md](./CONTRIBUTING.md).
-
-
-## Limitations
-
-There are peer dependencies for the **usage** of this library which are still in the process
-of becoming available outside SAP corporate network. 
-.
-The major peer dependency is SAP Web IDE itself.
-Without it, is not possible to run feature tests or the local development server.
 
 
 ## License
