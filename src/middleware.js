@@ -66,13 +66,12 @@ const middleware = {
                 context: "/che6"
             })
 
-            const resolved = which.sync("minikube")
+            const shellCommand = `${which.sync("minikube")} ip`
             const minikube =
                 actualOptions.ip ||
-                "http://" +
-                    execSync(resolved + " ip")
-                        .toString()
-                        .trim()
+                `http://${execSync(shellCommand)
+					.toString()
+					.trim()}`
 
             const proxyOptions = {
                 target: minikube,
