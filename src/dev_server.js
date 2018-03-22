@@ -65,7 +65,15 @@ const devServer = {
         }
         Object.freeze(DEFAULT_DI_MIDDLEWARE)
 
-        return [DEFAULT_DI_MIDDLEWARE]
+        const DEFAULT_MINIKUBE_MIDDLEWARE = {
+            path: "/che6",
+            middleware: [
+                middleware.getMinikubeMiddleware(actualOptions.minikubeIp)
+            ]
+        }
+        Object.freeze(DEFAULT_MINIKUBE_MIDDLEWARE)
+
+        return [DEFAULT_DI_MIDDLEWARE, DEFAULT_MINIKUBE_MIDDLEWARE]
     }
 }
 
