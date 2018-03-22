@@ -54,7 +54,7 @@ const devServer = {
         const DEFAULT_MIDDLEWARE_OPTIONS = {
             diPort: 8888
         }
-        let middlewares = []
+        const middlewares = []
 
         const actualOptions = _.defaults(options, DEFAULT_MIDDLEWARE_OPTIONS)
 
@@ -67,7 +67,7 @@ const devServer = {
         Object.freeze(DEFAULT_DI_MIDDLEWARE)
         middlewares.push(DEFAULT_DI_MIDDLEWARE)
 
-        let minikube = middleware.getMinikubeMiddleware(actualOptions)
+        const minikube = middleware.getMinikubeMiddleware(actualOptions)
         if (minikube) {
             const DEFAULT_MINIKUBE_MIDDLEWARE = {
                 path: "/che6",

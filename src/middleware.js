@@ -67,13 +67,14 @@ const middleware = {
             })
 
             const resolved = which.sync("minikube")
-            let minikube =
+            const minikube =
                 actualOptions.ip ||
                 "http://" +
                     execSync(resolved + " ip")
                         .toString()
                         .trim()
-            let proxyOptions = {
+
+            const proxyOptions = {
                 target: minikube,
                 pathRewrite: { "^/che6/(.*)$": "/$1" }
             }

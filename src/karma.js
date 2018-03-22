@@ -124,17 +124,16 @@ const karma = {
                         "factory",
                         /* istanbul ignore next - Tested as part of integration tests */
                         function() {
-                            let minikube = middleware.getMinikubeMiddleware({
+                            const minikube = middleware.getMinikubeMiddleware({
                                 context: "/che6"
                             })
                             // Minikube not always available or online
                             if (minikube) {
                                 return minikube
-                            } else {
-                                return function(req, res, next) {
-                                    //noop
-                                    next()
-                                }
+                            }
+                            return function(req, res, next) {
+                                // noop
+                                next()
                             }
                         }
                     ]
