@@ -9,9 +9,9 @@
     "jest": true
   },
   "rules": {
+    "arrow-body-style": 0,
     "strict": 0,
     "no-console": 0,
-    "semi": 0,
     "func-names": 0,
     "import/no-extraneous-dependencies": [
       2,

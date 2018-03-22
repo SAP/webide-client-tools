@@ -8,6 +8,7 @@
  *  and the middleware property may be an array.
  */
 import {Server} from "http";
+import {Configuration as WebpackConfiguration} from "webpack"
 
 export type MiddlewareOptions = {
     path?: string
@@ -88,6 +89,15 @@ export interface BundlingAPI {
     bundleFeature: (
         target: string,
         options?: {
+
+            /**
+             * Which JavaScript bundler to use.
+             * Note that each of the bundlers have their configuration key.
+             * - "javascriptOpts" for requirejs.
+             * - "webpackConfiguration" for webpack.
+             */
+            bundler?: "webpack" | "requirejs"
+
             /**
              * Output directory for the bundle.
              * Default value is "dist".
@@ -111,6 +121,7 @@ export interface BundlingAPI {
 
             /**
              * SubOptions for the javaScript bundling phase.
+             * The are only relevant when using the require.js optimizer for bundling.
              */
             javaScriptOpts?: {
                 /**
@@ -135,7 +146,17 @@ export interface BundlingAPI {
                  * For details about valid pattern syntax, @link https://github.com/isaacs/node-glob.
                  */
                 ignore?: string | string[]
-            }
+            },
+
+            /**
+             * The webpack configuration
+             * - Mutually exclusive with providing javaScriptOpts.
+             * - If not provided, will be loaded by default from CWD/webpack.config.js
+             * - For details see:
+             *   @link {https://webpack.js.org/concepts/}
+             *   @link {https://www.npmjs.com/package/@types/webpack}
+             */
+            webpackConfig?: WebpackConfiguration
 
             /**
              * SubOptions for the JSON file metadata bundling phase.
@@ -148,6 +169,13 @@ export interface BundlingAPI {
             }
         }
     ) => Promise<{ outDir: string }>
+
+    /**
+     * Returns the default configuration for bundling webide JavaScript resources
+     * Using webpack. Use this as the starting point in creating your own
+     * webpack.config.js file.
+     */
+    getDefaultWebpackConfig: (        target?: string) => WebpackConfiguration
 
     /**
      * Internal utilities to construct the "bundleFeature" flow.
