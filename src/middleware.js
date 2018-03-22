@@ -55,25 +55,36 @@ const middleware = {
 
     /**
 	 * Attempts to retrieve IP address of the minikube VM if no IP is predefined
-	 * @param {string} [ip] - The VM IP, without any protocol or port
+	 * @param {string} [options.ip] - The VM IP, without any protocol or port
+     * @param {string} [options.context] - @link {https://github.com/chimurai/http-proxy-middleware#context-matching}
 	 * @returns {object}
 	 */
-    getMinikubeMiddleware: function getMinikubeMiddleware(ip) {
+    getMinikubeMiddleware: function getMinikubeMiddleware(options) {
         try {
+            const actualOptions = _.defaults(options, {
+                port: 8888,
+                context: "/che6"
+            })
+
             const resolved = which.sync("minikube")
             let minikube =
-                ip ||
+                actualOptions.ip ||
                 "http://" +
                     execSync(resolved + " ip")
                         .toString()
                         .trim()
-            return proxy("/che6", {
+            let proxyOptions = {
                 target: minikube,
                 pathRewrite: { "^/che6/(.*)$": "/$1" }
-            })
+            }
+
+            if (actualOptions.context) {
+                return proxy(actualOptions.context, proxyOptions)
+            }
+            return proxy(proxyOptions)
         } catch (oError) {
             console.warn("minikube not found. No middleware to add")
-            return {}
+            return undefined
         }
     }
 }
