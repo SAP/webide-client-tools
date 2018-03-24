@@ -70,8 +70,8 @@ const middleware = {
             const minikube =
                 actualOptions.ip ||
                 `http://${execSync(shellCommand)
-					.toString()
-					.trim()}`
+                    .toString()
+                    .trim()}`
 
             const proxyOptions = {
                 target: minikube,
