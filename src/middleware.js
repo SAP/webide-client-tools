@@ -62,7 +62,6 @@ const middleware = {
     getMinikubeMiddleware: function getMinikubeMiddleware(options) {
         try {
             const actualOptions = _.defaults(options, {
-                port: 8888,
                 context: "/che6"
             })
 
