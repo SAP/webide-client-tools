@@ -52,6 +52,7 @@ const devServer = {
 
     getDefaultMiddleware: function getDefaultMiddleware(options) {
         const DEFAULT_MIDDLEWARE_OPTIONS = {
+            diHost: "localhost",
             diPort: 8888
         }
         const middlewares = []
@@ -61,7 +62,10 @@ const devServer = {
         const DEFAULT_DI_MIDDLEWARE = {
             path: "/di",
             middleware: [
-                middleware.getDiProxyMiddleware({ port: actualOptions.diPort })
+                middleware.getDiProxyMiddleware({
+                    host: actualOptions.diHost,
+                    port: actualOptions.diPort
+                })
             ]
         }
         Object.freeze(DEFAULT_DI_MIDDLEWARE)

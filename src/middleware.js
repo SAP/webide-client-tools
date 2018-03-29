@@ -20,6 +20,7 @@ const middleware = {
      *
      * @param [options]
      *
+     *   @param {string} [options.host = 'localhost'] - Host to use for di reverse proxy
      *   @param {number} [options.port = 8888] - Port to use for di reverse proxy.
      *   @param {string} [options.context] - @link {https://github.com/chimurai/http-proxy-middleware#context-matching}.
      *
@@ -28,12 +29,13 @@ const middleware = {
      */
     getDiProxyMiddleware: function getDiProxyMiddleware(options) {
         const actualOptions = _.defaults(options, {
+            host: "localhost",
             port: 8888,
             context: undefined
         })
 
         const proxyOpts = {
-            target: `http://localhost:${actualOptions.port}`,
+            target: `http://${actualOptions.host}:${actualOptions.port}`,
             changeOrigin: true,
             secure: false,
             /* istanbul ignore next - can only be tested in the context of integration tests */

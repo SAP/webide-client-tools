@@ -15,6 +15,7 @@ export type MiddlewareOptions = {
 }[]
 
 export type DefaultMiddlewareOptions = {
+    diHost?: string,
     diPort?: number,
     minikubeIp? :string
 }
