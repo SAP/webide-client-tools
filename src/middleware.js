@@ -82,7 +82,7 @@ const middleware = {
             }
             return proxy(proxyOptions)
         } catch (oError) {
-            console.warn("minikube not found. No middleware to add")
+            console.log("minikube not found. No middleware to add")
             return undefined
         }
     }
