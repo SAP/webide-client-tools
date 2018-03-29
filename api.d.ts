@@ -14,7 +14,10 @@ export type MiddlewareOptions = {
     middleware: Function | Array<Function>
 }[]
 
-export type DefaultMiddlewareOptions = { diPort?: number }
+export type DefaultMiddlewareOptions = {
+    diPort?: number,
+    minikubeIp? :string
+}
 
 export interface DevServerAPI {
     /**

@@ -118,9 +118,28 @@ const karma = {
                             })
                         }
                     ]
+                },
+                {
+                    "middleware:minikube": [
+                        "factory",
+                        /* istanbul ignore next - Tested as part of integration tests */
+                        function() {
+                            const minikube = middleware.getMinikubeMiddleware({
+                                context: "/che6"
+                            })
+                            // Minikube not always available or online
+                            if (minikube) {
+                                return minikube
+                            }
+                            return function(req, res, next) {
+                                // noop
+                                next()
+                            }
+                        }
+                    ]
                 }
             ],
-            middleware: ["di"]
+            middleware: ["di", "minikube"]
         }
     },
 

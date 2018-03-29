@@ -4,6 +4,8 @@
 const url = require("url")
 const proxy = require("http-proxy-middleware")
 const _ = require("lodash")
+const execSync = require("child_process").execSync
+const which = require("which")
 
 /**
  * middleware
@@ -49,6 +51,40 @@ const middleware = {
             return proxy(actualOptions.context, proxyOpts)
         }
         return proxy(proxyOpts)
+    },
+
+    /**
+	 * Attempts to retrieve IP address of the minikube VM if no IP is predefined
+	 * @param {string} [options.ip] - The VM IP, without any protocol or port
+     * @param {string} [options.context] - @link {https://github.com/chimurai/http-proxy-middleware#context-matching}
+	 * @returns {object}
+	 */
+    getMinikubeMiddleware: function getMinikubeMiddleware(options) {
+        try {
+            const actualOptions = _.defaults(options, {
+                context: "/che6"
+            })
+
+            const shellCommand = `${which.sync("minikube")} ip`
+            const minikube =
+                actualOptions.ip ||
+                `http://${execSync(shellCommand)
+                    .toString()
+                    .trim()}`
+
+            const proxyOptions = {
+                target: minikube,
+                pathRewrite: { "^/che6/(.*)$": "/$1" }
+            }
+
+            if (actualOptions.context) {
+                return proxy(actualOptions.context, proxyOptions)
+            }
+            return proxy(proxyOptions)
+        } catch (oError) {
+            console.log("minikube not found. No middleware to add")
+            return undefined
+        }
     }
 }
 
