@@ -54,11 +54,11 @@
             ui5Version:
                 "node_modules/webide/src/main/webapp/test-resources/sap/watt/sane-tests/ui5Version",
             STF:
-                "node_modules/webide-client-tools/resources/tests/serviceTestFramework",
+                "node_modules/@sap-devx/webide-client-tools/resources/tests/serviceTestFramework",
             coverage:
-                "node_modules/webide-client-tools/resources/tests/coverage",
+                "node_modules/@sap-devx/webide-client-tools/resources/tests/coverage",
             fakePlugins:
-                "node_modules/webide-client-tools/resources/local_env/fake_plugins"
+                "node_modules/@sap-devx/webide-client-tools/resources/local_env/fake_plugins"
         },
         window.CUSTOM_REQUIREJS_PATHS
     )

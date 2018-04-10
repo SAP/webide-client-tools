@@ -30,7 +30,7 @@ define(
         var pkg = loadResourceSync("./base/package.json", "json")
         // TODO: we are injecting this, perhaps wrap in UMD js resource to load via require.js?
         var localEnvJson = loadResourceSync(
-            "./base/node_modules/webide-client-tools/resources/local_env/local_env.json",
+            "./base/node_modules/@sap-devx/webide-client-tools/resources/local_env/local_env.json",
             "json"
         )
 
