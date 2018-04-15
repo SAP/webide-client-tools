@@ -1,5 +1,8 @@
 "use strict"
 
+// we reuse this pattern alot in this file...
+/* eslint no-param-reassign: 0 */
+
 const acorn = require("acorn")
 const stringEscape = require("js-string-escape")
 const _ = require("lodash")
@@ -10,6 +13,7 @@ const path = require("path")
 const utils = require("./utils/utils")
 const Promise = require("bluebird")
 const requirejs = require("requirejs")
+const webpack = require("webpack")
 
 function optimizeAsync(config) {
     return new Promise((resolve, reject) => {
@@ -44,21 +48,27 @@ const defaultJsOptimizeOptions = {
 
 const DEFAULT_PACKAGE_LOCATION = "./package.json"
 const DEFAULT_OUT_DIR = "dist"
-const DEFAULT_CLEAN_OUT_DIR = true
 const CACHED_FEATURE_SUFFIX = ".cached"
 
+const DEFAULT_BUNDLE_FEATURE_OPTS = {
+    bundler: "requirejs",
+    outDir: DEFAULT_OUT_DIR,
+    enableCaching: true,
+    cleanOutDir: true
+}
 /** @type {webideClientTools.BundlingAPI} */
 const bundling = {
     bundleFeature: function bundleFeature(target, options) {
-        const timeStamp = new Date().getTime()
-
-        let actualTarget = target
-        /* istanbul ignore next - difficult to test without modifying CWD, should be tested in example repo */
-        if (_.isUndefined(actualTarget)) {
-            actualTarget = DEFAULT_PACKAGE_LOCATION
+        /* istanbul ignore next */
+        if (target === undefined) {
+            target = DEFAULT_PACKAGE_LOCATION
+        } else {
+            target = utils.backslashesToSlashes(target)
         }
 
-        const file = utils.readJsonSync(actualTarget)
+        const timeStamp = new Date().getTime()
+
+        const file = utils.readJsonSync(target)
         const version = file.version
         const cacheFolderName = `v${version}_${timeStamp}`
 
@@ -68,55 +78,43 @@ const bundling = {
             )
         }
 
-        let actualOptions = options
-        /* istanbul ignore next - difficult to test without modifying CWD, should be tested in example repo */
-        if (_.isUndefined(actualOptions)) {
-            actualOptions = {}
+        const actualOptions = _.defaults(options, DEFAULT_BUNDLE_FEATURE_OPTS)
+        const originalOutDir = actualOptions.outDir
+        if (actualOptions.enableCaching) {
+            actualOptions.outDir += `/${cacheFolderName}`
         }
 
-        if (_.isUndefined(actualOptions.enableCaching)) {
-            actualOptions.enableCaching = true
-        }
-
-        let originalOutDir
-        /* istanbul ignore next - difficult to test without modifying CWD, should be tested in example repo */
-        if (_.isUndefined(actualOptions.outDir)) {
-            originalOutDir = DEFAULT_OUT_DIR
-            actualOptions.outDir =
-                DEFAULT_OUT_DIR +
-                (actualOptions.enableCaching ? `/${cacheFolderName}` : "")
-        } else {
-            originalOutDir = actualOptions.outDir
-            if (actualOptions.enableCaching) {
-                actualOptions.outDir += `/${cacheFolderName}`
+        if (actualOptions.bundler === "requirejs") {
+            _.set(actualOptions, "javaScriptOpts.outDir", actualOptions.outDir)
+            // this flow creates several types of artifacts, without the keepBuildDir the require.js optimizer
+            // will delete the previously created artifacts in the output directory(dist)...
+            _.set(
+                actualOptions,
+                "javaScriptOpts.optimizeOptions.keepBuildDir",
+                true
+            )
+        } else if (actualOptions.bundler === "webpack") {
+            if (actualOptions.webpackConfig === undefined) {
+                console.log(
+                    "<webpackConfig> option not provided, using default webpack configuration"
+                )
+                actualOptions.webpackConfig = bundling.getDefaultWebpackConfig(
+                    target
+                )
             }
         }
 
-        if (_.isUndefined(actualOptions.cleanOutDir)) {
-            actualOptions.cleanOutDir = DEFAULT_CLEAN_OUT_DIR
-        }
-
-        // TODO: would outDir in javaScriptOpts still be needed after refactor?
-        _.set(actualOptions, "javaScriptOpts.outDir", actualOptions.outDir)
-        // this flow creates several types of artifacts, without the keepBuildDir the require.js optimizer
-        // will delete the previously created artifacts in the output directory(dist)...
-        _.set(
-            actualOptions,
-            "javaScriptOpts.optimizeOptions.keepBuildDir",
-            true
-        )
         _.set(actualOptions, "metadataOpts.outDir", actualOptions.outDir)
         _.set(actualOptions, "i18nOpts.outDir", actualOptions.outDir)
 
+        // Begin Execution Flow
         if (actualOptions.cleanOutDir) {
             fs.emptyDirSync(originalOutDir)
         }
 
-        bundling.internal.bundleMetadata(
-            actualTarget,
-            actualOptions.metadataOpts
-        )
-        bundling.internal.bundleI18n(actualTarget, actualOptions)
+        bundling.internal.bundleMetadata(target, actualOptions.metadataOpts)
+        bundling.internal.bundleI18n(target, actualOptions)
+
         if (actualOptions.enableCaching) {
             bundling.internal.bundleCachePackageWrapper(
                 file,
@@ -125,28 +123,107 @@ const bundling = {
             )
         }
 
-        return bundling.internal
-            .bundleJavaScriptSources(actualTarget, actualOptions.javaScriptOpts)
-            .then(() => {
-                if (actualOptions.enableCaching) {
-                    const packageJsonFileName = path.basename(target)
-                    const packageContents = utils.readJsonSync(
-                        `${actualOptions.outDir}/${packageJsonFileName}`
-                    )
-                    packageContents.name += CACHED_FEATURE_SUFFIX
-                    const newPackageContents = JSON.stringify(
-                        packageContents,
-                        null,
-                        "\t"
-                    )
-                    fs.writeFileSync(
-                        `${actualOptions.outDir}/package.json`,
-                        newPackageContents
-                    )
-                }
+        if (actualOptions.bundler === "requirejs") {
+            return bundling.internal
+                .bundleJavaScriptSources(target, actualOptions.javaScriptOpts)
+                .then(() => {
+                    if (actualOptions.enableCaching) {
+                        bundling.internal.modifyWrappedCachedPackage(
+                            target,
+                            actualOptions.outDir
+                        )
+                    }
 
-                return { outDir: actualOptions.outDir }
-            })
+                    return { outDir: actualOptions.outDir }
+                })
+        } else if (actualOptions.bundler === "webpack") {
+            bundling.internal.createWebpackEntryPoint(target)
+
+            return bundling.internal
+                .bundleJavaScriptSourcesWebpack(actualOptions.webpackConfig)
+                .then(() => {
+                    try {
+                        const targetDir = path.resolve(path.dirname(target))
+                        fs.copySync(targetDir, actualOptions.outDir, {
+                            overwrite: true,
+                            filter: src => {
+                                if (
+                                    // avoids infinite recursion by not copying outDir into itself
+                                    src.endsWith(
+                                        path.relative(
+                                            targetDir,
+                                            actualOptions.outDir
+                                        )
+                                    ) ||
+                                    src.indexOf("node_modules") !== -1
+                                ) {
+                                    return false
+                                }
+                                return true
+                            }
+                        })
+
+                        if (actualOptions.enableCaching) {
+                            bundling.internal.modifyWrappedCachedPackage(
+                                target,
+                                actualOptions.outDir
+                            )
+                        }
+                    } finally {
+                        bundling.internal.cleanWebpackEntryPoint(target)
+                    }
+
+                    return { outDir: actualOptions.outDir }
+                })
+        }
+        throw Error(
+            `unrecognized <bundler> option value: <${actualOptions.bundler}>`
+        )
+    },
+
+    getDefaultWebpackConfig(target) {
+        /* istanbul ignore next */
+        if (target === undefined) {
+            target = DEFAULT_PACKAGE_LOCATION
+        }
+
+        const targetFolderPath = path.resolve(path.dirname(target))
+        /** @type {any} - False positives in type checks */
+        const config = {
+            context: targetFolderPath,
+
+            mode: "production",
+
+            devtool: "source-map",
+
+            // entry point to your app
+            // it's possible to have multiple entry points (see docs)
+            // this is relative to the context dir above
+            entry: `./webpack.entry.js`,
+
+            output: {
+                path: targetFolderPath,
+                filename: "config-preload.js",
+                libraryTarget: "amd"
+            },
+
+            externals: [
+                function(context, request, /** @type {any} */ callback) {
+                    // Every module prefixed with "sap/" becomes external
+                    if (/^sap\/watt\//.test(request)) {
+                        return callback(null, `amd ${request}`)
+                    }
+                    return callback()
+                }
+            ]
+
+            // uncommenting this will disable minification.
+            // optimization: {
+            //     minimizer: []
+            // }
+        }
+
+        return config
     },
 
     internal: {
@@ -693,6 +770,20 @@ const bundling = {
             fs.writeFileSync(`${outDir}/package.json`, wrapperStringContents)
         },
 
+        modifyWrappedCachedPackage(target, outDir) {
+            const packageJsonFileName = path.basename(target)
+            const packageContents = utils.readJsonSync(
+                `${outDir}/${packageJsonFileName}`
+            )
+            packageContents.name += CACHED_FEATURE_SUFFIX
+            const newPackageContents = JSON.stringify(
+                packageContents,
+                null,
+                "\t"
+            )
+            fs.writeFileSync(`${outDir}/package.json`, newPackageContents)
+        },
+
         /**
          * Checks that a bundled require.js artifact does not contain any none AMD resources.
          * This means that all the top level statements / expressions in the source file
@@ -726,6 +817,131 @@ const bundling = {
             const errorOffsets = _.map(errorNodes, node => node.loc.start)
 
             return errorOffsets
+        },
+
+        bundleJavaScriptSourcesWebpack(webpackOptions) {
+            return new Promise((resolve, reject) => {
+                webpack(webpackOptions, (
+                    /** @type {any} */
+                    err,
+                    stats
+                ) => {
+                    /* istanbul ignore next - I believe this branch only be entered due to internal error in webpack */
+                    if (err) {
+                        console.error(err.stack || err)
+                        if (err.details) {
+                            console.error(err.details)
+                            reject(err.details)
+                        } else {
+                            reject(err)
+                        }
+                    }
+
+                    const info = stats.toJson()
+
+                    if (stats.hasErrors()) {
+                        console.error(info.errors)
+                        reject(info.errors.join("\n"))
+                    }
+
+                    if (stats.hasWarnings()) {
+                        // TODO: consider - should we be less strict and not reject on warnings?
+                        console.error(info.warnings)
+                        reject(info.warnings.join("\n"))
+                    }
+
+                    resolve()
+                })
+            })
+        },
+
+        /**
+         * Creates an AMD adapter entry point for webpack bundling
+         * The entryPoint will be created in the <target> package.json directory.
+         *
+         * The entryPoint re-exports the feature services and commands as AMD modules
+         * Thus enabling the loading of services/commands by the web ide which assumes they are available
+         * as AMD modules with specific names.
+         */
+        createWebpackEntryPoint(target) {
+            // TODO: this snippet to read the metadata is duplicated several times in bundling.js
+            let packageJsonFullPath
+            /* istanbul ignore next - difficult to test without modifying CWD, should be tested in example repo */
+            if (_.isUndefined(target)) {
+                packageJsonFullPath = DEFAULT_PACKAGE_LOCATION
+            } else {
+                packageJsonFullPath = utils.backslashesToSlashes(target)
+            }
+
+            const pathAndFile = utils.splitPathAndFile(packageJsonFullPath)
+            const pkgPath = pathAndFile.path
+            const pkgFile = pathAndFile.file
+            const metadata = metadataReader(pkgPath, pkgFile)
+
+            const amdModulesAndPaths = []
+            _.forEach(metadata.pluginsMeta, plugin => {
+                const relativePluginPath = `./${path.relative(
+                    pkgPath,
+                    plugin.baseURI
+                )}`
+                const pluginName = plugin.name
+
+                _.forEach(plugin.provides.services, service => {
+                    const module = service.module
+                    const modulePath = `${relativePluginPath}${module.substr(
+                        pluginName.length
+                    )}.js`
+                    amdModulesAndPaths.push({ module, modulePath })
+                })
+
+                _.forEach(
+                    plugin.configures.services["command:commands"],
+                    commandConfig => {
+                        const module = commandConfig.service
+                        const modulePath = `${relativePluginPath}${module.substr(
+                            pluginName.length
+                        )}.js`
+                        amdModulesAndPaths.push({ module, modulePath })
+                    }
+                )
+            })
+
+            const imports = _.map(
+                amdModulesAndPaths,
+                ({ modulePath }, idx) =>
+                    `var m${idx} = require("${modulePath}");`
+            )
+            const exports = _.map(
+                amdModulesAndPaths,
+                ({ module }, idx) => `window.define("${module}", [], m${idx})`
+            )
+
+            let header =
+                "// This is a generated file, ignore it in .gitignore\n"
+            header += "/* eslint-disable */\n\n"
+            let entryPointText = header
+            entryPointText += imports.join("\n")
+            entryPointText += "\n\n"
+            entryPointText += exports.join("\n")
+            fs.writeFileSync(
+                `${pkgPath}/webpack.entry.js`,
+                utils.normalizelf(entryPointText)
+            )
+        },
+
+        cleanWebpackEntryPoint(target) {
+            // TODO: this snippet to read the metadata is duplicated several times in bundling.js
+            let packageJsonFullPath
+            /* istanbul ignore next - difficult to test without modifying CWD, should be tested in example repo */
+            if (_.isUndefined(target)) {
+                packageJsonFullPath = DEFAULT_PACKAGE_LOCATION
+            } else {
+                packageJsonFullPath = utils.backslashesToSlashes(target)
+            }
+
+            const pathAndFile = utils.splitPathAndFile(packageJsonFullPath)
+            const pkgPath = pathAndFile.path
+            fs.removeSync(`${pkgPath}/webpack.entry.js`)
         }
     }
 }

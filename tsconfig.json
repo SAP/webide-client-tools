@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "removeComments": false,
-    "target": "ES5",
+    "target": "ES6",
     "sourceMap": true,
     "checkJs": true,
     "allowJs": true,

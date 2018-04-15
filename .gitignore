@@ -46,3 +46,5 @@ jspm_packages
 .DS_Store
 
 /package.lock
+
+config-preload.js
