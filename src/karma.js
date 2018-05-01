@@ -17,7 +17,7 @@ const karma = {
                 // by prefixing entries before this list
                 "node_modules/requirejs/require.js",
                 "node_modules/karma-requirejs/lib/adapter.js",
-                "node_modules/@sap-devx/webide-client-tools/resources/tests/testSetupUtils.js",
+                "node_modules/@sap-webide/webide-client-tools/resources/tests/testSetupUtils.js",
                 {
                     pattern: "node_modules/webide/src/main/webapp/*",
                     served: true,
@@ -31,7 +31,7 @@ const karma = {
                 },
                 {
                     pattern:
-                        "node_modules/@sap-devx/webide-client-tools/resources/tests/*.js",
+                        "node_modules/@sap-webide/webide-client-tools/resources/tests/*.js",
                     served: true,
                     included: false
                 },
@@ -50,14 +50,14 @@ const karma = {
                 },
                 {
                     pattern:
-                        "node_modules/@sap-devx/webide-client-tools/resources/local_env/**/*",
+                        "node_modules/@sap-webide/webide-client-tools/resources/local_env/**/*",
                     served: true,
                     included: false
                 },
                 // must serve the package.json because the core forces us to read it's name
                 // as they do not allow bypassing that validation
                 { pattern: "./package.json", served: true, included: false },
-                "node_modules/@sap-devx/webide-client-tools/resources/tests/included/test-main.js"
+                "node_modules/@sap-webide/webide-client-tools/resources/tests/included/test-main.js"
             ],
             // frameworks to use
             // available frameworks: https://npmjs.org/browse/keyword/karma-adapter

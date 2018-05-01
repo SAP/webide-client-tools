@@ -48,7 +48,7 @@ loadResourceSync("https://unpkg.com/lodash@4.17.2/lodash.min.js", "js")
 var actualOptions = _.defaults(window.CUSTOM_OPTIONS, DEFAULT_OPTIONS)
 
 loadResourceSync(
-    "node_modules/@sap-devx/webide-client-tools/resources/local_env/fake_plugins.js",
+    "node_modules/@sap-webide/webide-client-tools/resources/local_env/fake_plugins.js",
     "js"
 )
 loadResourceSync(
@@ -58,7 +58,7 @@ loadResourceSync(
 )
 
 var localEnvJson = loadResourceSync(
-    "node_modules/@sap-devx/webide-client-tools/resources/local_env/local_env.json",
+    "node_modules/@sap-webide/webide-client-tools/resources/local_env/local_env.json",
     "json"
 )
 
