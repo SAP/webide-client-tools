@@ -83,6 +83,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.bundlingapi.html#bundlefeature" class="tsd-kind-icon">bundle<wbr>Feature</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.bundlingapi.html#getdefaultwebpackconfig" class="tsd-kind-icon">get<wbr>Default<wbr>Webpack<wbr>Config</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.bundlingapi.html#internal" class="tsd-kind-icon">internal</a></li>
 							</ul>
 						</section>
@@ -97,18 +98,18 @@
 					<div class="tsd-signature tsd-kind-icon">bundle<wbr>Feature<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L167">api.d.ts:167</a></li>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L89">api.d.ts:89</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Bundles A WebIDE Feature, This includes JS Sources, i18n and JSON metadata.
-							It does not include bundling of any UI5 resources. Use tools provided by UI5 to bundle those...</p>
+							<p>Bundles an SAP Web IDE feature, including JS sources, “i18n” files, and JSON metadata.
+							It does not include the bundling of any SAPUI5 resources. Use tools provided by SAPUI5 to bundle those.</p>
 						</div>
-						<p>returns a promise with an object. The object properties:
+						<p>Returns a promise with an object. The object properties:
 							outDir: output directory containing the bundled files. The output directory&#39;s name may not be known
 							in advance as it may include a timestamp when the caching option is enabled. By exposing the
-						exact name, custom post processing steps may be more easily implemented by the user.</p>
+						exact name, custom post-processing steps may be more easily implemented by the user.</p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -128,13 +129,26 @@
 												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">object</span></h5>
 												<ul class="tsd-parameters">
 													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> bundler<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"webpack"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"requirejs"</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>Which JavaScript bundler to use.
+																Note that each of the bundlers have their configuration key.</p>
+																<ul>
+																	<li>&quot;javascriptOpts&quot; for requirejs.</li>
+																	<li>&quot;webpackConfiguration&quot; for webpack.</li>
+																</ul>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> clean<wbr>Out<wbr>Dir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Should the output directory be cleaned prior to the bundling.
-																	This is enabled by default, if you have custom code which creates additional
-																	packaged artifacts to this directory, disabling this option should be considered.
-																default value is true</p>
+																<p>Should the output directory be cleaned prior to the bundling?
+																	This is enabled by default. If you have custom code that creates additional
+																	packaged artifacts in this directory, disabling this option should be considered.
+																Default value is &quot;true&quot;.</p>
 															</div>
 														</div>
 													</li>
@@ -142,9 +156,9 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> enable<wbr>Caching<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p> bundle into &#39;outDir/[VERSION]_[TIMESTAMP]/&#39; instead of &#39;outDir/&#39;
-																	and create a wrapper package.json in outDir/package.json to enable caching support.
-																default value is true.</p>
+																<p> Bundle into &quot;outDir/[VERSION]_[TIMESTAMP]/&quot; instead of &quot;outDir/&quot;
+																	and create a wrapper &quot;package.json&quot; file in the &quot;outDir/package.json&quot; file to enable caching support.
+																Default value is &quot;true&quot;.</p>
 															</div>
 														</div>
 													</li>
@@ -152,7 +166,8 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> java<wbr>Script<wbr>Opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>SubOptions for the javaScript bundling phase.</p>
+																<p>SubOptions for the javaScript bundling phase.
+																The are only relevant when using the require.js optimizer for bundling.</p>
 															</div>
 														</div>
 														<ul class="tsd-parameters">
@@ -161,24 +176,20 @@
 																<div class="tsd-comment tsd-typography">
 																	<div class="lead">
 																		<p>Ignored glob patterns, by default all JS resources (recursively)
-																			in the directory of the plugin.json will be bundled. However,
-																		some special edge cases may require exclusion.</p>
+																			in the directory of the &quot;plugin.json&quot; file are bundled. However,
+																			some special edge cases may require exclusion.
+																		For details about valid pattern syntax, @link <a href="https://github.com/isaacs/node-glob">https://github.com/isaacs/node-glob</a>.</p>
 																	</div>
-																	<dl class="tsd-comment-tags">
-																		<dt>see</dt>
-																		<dd><p><a href="https://github.com/isaacs/node-glob">https://github.com/isaacs/node-glob</a>
-																			for details on valid patterns syntax.</p>
-																		</dd>
-																	</dl>
 																</div>
 															</li>
 															<li class="tsd-parameter">
 																<h5><span class="tsd-flag ts-flagOptional">Optional</span> ignore<wbr>Validations<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 																<div class="tsd-comment tsd-typography">
 																	<div class="lead">
-																		<p> Will only log validations errors on the bundled artifacts
-																			Instead of throwing an error (rejecting the promise).
-																			Should only be enabled if you know what you are doing...
+																		<p> Will only log validation errors on the bundled artifacts
+																			instead of throwing an error that rejects the promise.
+																			Enable it only if you are an advanced user and understand
+																			the ramifications.
 																		@link {<a href="https://github.com/SAP/webide-client-tools/blob/master/FAQ.md#VALIDATE">https://github.com/SAP/webide-client-tools/blob/master/FAQ.md#VALIDATE</a></p>
 																	</div>
 																</div>
@@ -187,13 +198,9 @@
 																<h5><span class="tsd-flag ts-flagOptional">Optional</span> optimize<wbr>Options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span></h5>
 																<div class="tsd-comment tsd-typography">
 																	<div class="lead">
-																		<p>custom configurations for the require.js optimizer.</p>
+																		<p>Custom configurations for the &quot;require.js&quot; optimizer.
+																		For details, @link <a href="http://requirejs.org/docs/optimization.html#options">http://requirejs.org/docs/optimization.html#options</a>.</p>
 																	</div>
-																	<dl class="tsd-comment-tags">
-																		<dt>see</dt>
-																		<dd><p><a href="http://requirejs.org/docs/optimization.html#options">http://requirejs.org/docs/optimization.html#options</a> for details.</p>
-																		</dd>
-																	</dl>
 																</div>
 															</li>
 														</ul>
@@ -202,7 +209,7 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata<wbr>Opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>SubOptions for the JSON metadata bundling phase.</p>
+																<p>SubOptions for the JSON file metadata bundling phase.</p>
 															</div>
 														</div>
 														<ul class="tsd-parameters">
@@ -210,7 +217,7 @@
 																<h5><span class="tsd-flag ts-flagOptional">Optional</span> plugins<wbr>Prefix<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 																<div class="tsd-comment tsd-typography">
 																	<div class="lead">
-																		<p>Prefix to apply to all plugins paths, for example &quot;quickstart&quot; --&gt; &quot;w5g/quickstart&quot;</p>
+																		<p>Prefix to apply to all plugin paths, such as &quot;quickstart&quot; --&gt; &quot;prefix/quickstart&quot;.</p>
 																	</div>
 																</div>
 															</li>
@@ -221,7 +228,22 @@
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
 																<p>Output directory for the bundle.
-																default value is &#39;dist&#39;.</p>
+																Default value is &quot;dist&quot;.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> webpack<wbr>Config<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">WebpackConfiguration</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>The webpack configuration</p>
+																<ul>
+																	<li>Mutually exclusive with providing javaScriptOpts.</li>
+																	<li>If not provided, will be loaded by default from CWD/webpack.config.js</li>
+																	<li>For details see:
+																		@link {<a href="https://webpack.js.org/concepts/}">https://webpack.js.org/concepts/}</a>
+																	@link {<a href="https://www.npmjs.com/package/@types/webpack}">https://www.npmjs.com/package/@types/webpack}</a></li>
+																</ul>
 															</div>
 														</div>
 													</li>
@@ -236,19 +258,57 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getdefaultwebpackconfig" class="tsd-anchor"></a>
+					<h3>get<wbr>Default<wbr>Webpack<wbr>Config</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Webpack<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L178">api.d.ts:178</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Returns the default configuration for bundling webide JavaScript resources
+								Using webpack. Use this as the starting point in creating your own
+							webpack.config.js file.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">WebpackConfiguration</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> target: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">WebpackConfiguration</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="internal" class="tsd-anchor"></a>
 					<h3>internal</h3>
 					<div class="tsd-signature tsd-kind-icon">internal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L236">api.d.ts:236</a></li>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L185">api.d.ts:185</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Internal utilities to construct the bundleFeature flow.
-								These are exposed as un-official APIs to enable the creation of advanced flows by end users.
-							However they do receive the same level of support as the true official APIs.</p>
+							<p>Internal utilities to construct the &quot;bundleFeature&quot; flow.
+								These are exposed as unofficial APIs to enable the creation of advanced flows by end users.
+							However, they receive the same level of support as the official APIs.</p>
 						</div>
 					</div>
 				</section>
@@ -276,6 +336,9 @@
 								<a href="_api_d_.bundlingapi.html#bundlefeature" class="tsd-kind-icon">bundle<wbr>Feature</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_api_d_.bundlingapi.html#getdefaultwebpackconfig" class="tsd-kind-icon">get<wbr>Default<wbr>Webpack<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_api_d_.bundlingapi.html#internal" class="tsd-kind-icon">internal</a>
 							</li>
 						</ul>
@@ -284,9 +347,6 @@
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_api_d_.devserverapi.html" class="tsd-kind-icon">Dev<wbr>ServerAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_d_.dibackendapi.html" class="tsd-kind-icon">Di<wbr>BackendAPI</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_api_d_.karmaapi.html" class="tsd-kind-icon">KarmaAPI</a>
@@ -323,9 +383,6 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="../modules/_api_d_.html#devserver" class="tsd-kind-icon">dev<wbr>Server</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_api_d_.html#dibackend" class="tsd-kind-icon">di<wbr>Backend</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="../modules/_api_d_.html#karma" class="tsd-kind-icon">karma</a>

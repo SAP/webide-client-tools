@@ -83,7 +83,6 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.stf_api.html#startwebide" class="tsd-kind-icon">start<wbr>WebIDE</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.stf_api.html#startwebidewithdi" class="tsd-kind-icon">start<wbr>Web<wbr>Ide<wbr>WithDI</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -107,7 +106,7 @@
 					<div class="tsd-signature tsd-kind-icon">start<wbr>WebIDE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L276">api.d.ts:276</a></li>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L225">api.d.ts:225</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -121,8 +120,8 @@
 								}</p>
 							</dd>
 							<dt>returns</dt>
-							<dd><p>For the window in which the WebIde is running.
-								This will be resolved when the WebIde core has finished loading (all_plugins_started)</p>
+							<dd><p>For the window where SAP Web Ide is running.
+								This is resolved when the SAP Web IDE core has finished loading (all_plugins_started).</p>
 							</dd>
 						</dl>
 					</div>
@@ -147,7 +146,7 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> env<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>A Webide env.json object (NOT a url to one).</p>
+																<p>An SAP Web IDE &quot;env.json&quot; object (NOT a URL link to one).</p>
 															</div>
 														</div>
 													</li>
@@ -155,8 +154,8 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> feature<wbr>Config<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>A Webide feature config to be used as
-																the root configuration when starting the webide.</p>
+																<p>An SAP Web IDE feature configuration to be used as
+																the root configuration when starting SAP Web IDE.</p>
 															</div>
 														</div>
 													</li>
@@ -164,7 +163,7 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> html<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Default value is: &#39;/base/node_modules/webide/src/main/webapp/index.html&#39;</p>
+																<p>Default value is: &quot;/base/node_modules/webide/src/main/webapp/index.html&quot;.</p>
 															</div>
 														</div>
 													</li>
@@ -172,7 +171,7 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> ide<wbr>Debug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Flag to enable/disable the use of &#39;sap-ide-debug=true&#39; flag in the WebIde&#39;s url.</p>
+																<p>Flag to enable or disable the use of the &quot;sap-ide-debug=true&quot; flag in the SAP Web IDE URL.</p>
 															</div>
 														</div>
 													</li>
@@ -180,8 +179,8 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> mocks<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#mockpresets" class="tsd-signature-type">MockPresets</a><span class="tsd-signature-symbol">[]</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Common presets for using pluginsTransformDef to mock (replace) WebIDE capabilities.
-																	Most commonly used to mock the backend service to allow testing with an &quot;in-memory&quot;
+																<p>Common presets for using &quot;pluginsTransformDef&quot; to mock (i.e., replace) SAP Web IDE capabilities.
+																	Most commonly used to mock the back-end service to allow testing with an &quot;in-memory&quot;
 																fake file system.</p>
 															</div>
 														</div>
@@ -190,9 +189,9 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> plugins<wbr>Transform<wbr>Def<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#pluginstransformdef" class="tsd-signature-type">PluginsTransformDef</a></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Definition of WebIDE plugins transformation which happen BEFORE
-																	any plugins are registered in the pluginRegistry. This allows using mock
-																plugins or adding plugins to the WebIDE &quot;instance&quot; started during the tests.</p>
+																<p>Definition of SAP Web IDE plugin transformation that happens BEFORE
+																	any plugins are registered in the &quot;pluginRegistry&quot;. This allows using mock
+																plugins or adding plugins to the SAP Web IDE instance that starts during tests.</p>
 															</div>
 														</div>
 													</li>
@@ -200,7 +199,7 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> ui5<wbr>Debug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Flag to enable/disable the use of &#39;sap-ui-debug=true&#39; flag in the WebIde&#39;s url.</p>
+																<p>Flag to enable or disable the use of the &quot;sap-ui-debug=true&quot; flag in the SAP Web IDE URL.</p>
 															</div>
 														</div>
 													</li>
@@ -208,7 +207,7 @@
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> ui5<wbr>Root<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
-																<p>Path to load ui5 from for this &#39;instance&#39; of the webIDE.</p>
+																<p>Path to load SAPUI5 from this instance of SAP Web IDE.</p>
 															</div>
 														</div>
 													</li>
@@ -239,40 +238,6 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="startwebidewithdi" class="tsd-anchor"></a>
-					<h3>start<wbr>Web<wbr>Ide<wbr>WithDI</h3>
-					<div class="tsd-signature tsd-kind-icon">start<wbr>Web<wbr>Ide<wbr>WithDI<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L338">api.d.ts:338</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-								</ul>
-								<ul class="tsd-descriptions">
-									<li class="tsd-description">
-										<h4 class="tsd-parameters-title">Parameters</h4>
-										<ul class="tsd-parameters">
-											<li>
-												<h5>id: <span class="tsd-signature-type">string</span></h5>
-											</li>
-											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">Object</span></h5>
-											</li>
-										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
@@ -286,12 +251,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L360">api.d.ts:360</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L297">api.d.ts:297</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Exposes a service from WebIDE &#39;instance&#39;</p>
+									<p>Exposes a service from the SAP Web IDE instance.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -317,13 +282,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L372">api.d.ts:372</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L309">api.d.ts:309</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Utility to get a partial <getService> function with a bound suiteName argument.
-									This can be used to reduce verbosity and mistakes due to copy paste.</p>
+									<p>Utility to get a partial <getService> function with a bound &quot;suiteName&quot; argument.
+									This can be used to reduce verbosity and mistakes coming from copying pasting.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -364,12 +329,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L385">api.d.ts:385</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L322">api.d.ts:322</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Exposes the original AMD module of a WebIDE service proxy.
+									<p>Exposes the original AMD module of an SAP Web IDE service proxy.
 									This can allow accessing &quot;private&quot; methods on a service.</p>
 								</div>
 							</div>
@@ -393,12 +358,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L379">api.d.ts:379</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L316">api.d.ts:316</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>exposes require.js AMD modules from the WwebIDE&#39;s instance&#39;s iframe</p>
+									<p>Exposes the &quot;require.js&quot; AMD modules from the &quot;iframe&quot; of the SAP Web IDE instance.</p>
 								</div>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -424,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/c27e8d6/api.d.ts#L350">api.d.ts:350</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/34b2e34/api.d.ts#L287">api.d.ts:287</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -459,9 +424,6 @@
 						<a href="_api_d_.devserverapi.html" class="tsd-kind-icon">Dev<wbr>ServerAPI</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_d_.dibackendapi.html" class="tsd-kind-icon">Di<wbr>BackendAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_api_d_.karmaapi.html" class="tsd-kind-icon">KarmaAPI</a>
 					</li>
 				</ul>
@@ -471,9 +433,6 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_api_d_.stf_api.html#startwebide" class="tsd-kind-icon">start<wbr>WebIDE</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_d_.stf_api.html#startwebidewithdi" class="tsd-kind-icon">start<wbr>Web<wbr>Ide<wbr>WithDI</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="_api_d_.stf_api.html#getservice" class="tsd-kind-icon">get<wbr>Service</a>
@@ -523,9 +482,6 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="../modules/_api_d_.html#devserver" class="tsd-kind-icon">dev<wbr>Server</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="../modules/_api_d_.html#dibackend" class="tsd-kind-icon">di<wbr>Backend</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="../modules/_api_d_.html#karma" class="tsd-kind-icon">karma</a>

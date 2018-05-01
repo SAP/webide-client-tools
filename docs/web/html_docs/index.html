@@ -62,60 +62,54 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<p><a href="https://circleci.com/gh/SAP/webide-client-tools"><img src="https://circleci.com/gh/SAP/webide-client-tools.svg?style=svg&amp;circle-token=3b17f31fb0d03686ffbabab018fab13b24e1e581" alt="CircleCI"></a></p>
 				<h1 id="webide-client-tools">webide-client-tools</h1>
-				<h3 id="description">Description</h3>
-				<p>Tools &amp; Dev-Flows for developing client side features/extensions for the <a href="https://www.sap.com/germany/developer/topics/sap-webide.html">SAP WebIDE</a>.
-				based around npm eco-system and standard OSS packages.</p>
+				<h2 id="description">Description</h2>
+				<p>Tools and flows for developing client-side features and extensions for <a href="https://www.sap.com/germany/developer/topics/sap-webide.html">SAP Web IDE</a> based on npm ecosystem and standard OSS packages.</p>
 				<h2 id="features">Features</h2>
 				<ul>
-					<li><p>Bundling &amp; Minification of WebIDE Features.</p>
+					<li><p><strong>Bundling and Minification</strong> of SAP Web IDE features:</p>
 						<ul>
-							<li>Mainly using <a href="http://requirejs.org/docs/optimization.html">require.js optimizer</a>.</li>
+							<li>Mainly uses <a href="http://requirejs.org/docs/optimization.html">require.js optimizer</a>.</li>
 						</ul>
 					</li>
-					<li><p>Testing.</p>
+					<li><p><strong>Testing</strong></p>
 						<ul>
-							<li>Using <a href="https://github.com/karma-runner/karma">Karma Test runner</a></li>
-							<li>And our home brewed APIs which allow programmatic access to the WebIDE Services (a.k.a Service Test Framework).</li>
+							<li>Uses <a href="https://github.com/karma-runner/karma">Karma Test runner</a>.</li>
+							<li>Uses our home-brewed APIs, which allows programmatic access to SAP Web IDE Services (Service Test Framework).</li>
 						</ul>
 					</li>
-					<li><p>Local development server for static resources.</p>
+					<li><p><strong>Local development server</strong> for static resources:</p>
 						<ul>
-							<li>Fast feedback loops.</li>
-							<li>Also run the bundled version of your feature locally.</li>
-							<li>Using <a href="https://github.com/senchalabs/connect">Connect</a> Node.js middleware layer.</li>
-						</ul>
-					</li>
-					<li><p>Local Di instance Life Cycle.</p>
-						<ul>
-							<li>Download/Start/Stop.</li>
-							<li>This currently has only very limited capabilities (no builders/runners support).</li>
-							<li>Local DI jar is <strong>not</strong> yet available outside SAP. </li>
+							<li>Provides fast feedback loops.</li>
+							<li>Runs the bundled version of your feature locally.</li>
+							<li>Uses the <a href="https://github.com/senchalabs/connect">Connect</a> Node.js middleware layer.</li>
+							<li>Uses an &quot;in memory&quot; backend mock.</li>
 						</ul>
 					</li>
 				</ul>
-				<h2 id="requirements-compatibility">Requirements &amp; Compatibility</h2>
+				<h2 id="requirements-and-compatibility">Requirements and Compatibility</h2>
 				<ul>
-					<li>A <a href="https://github.com/nodejs/Release">maintained version</a> of node.js
-					this currently means node.js &gt; 4.</li>
+					<li>A <a href="https://github.com/nodejs/Release">maintained version</a> of node.js for versions later than 4.</li>
 				</ul>
 				<h2 id="installation">Installation</h2>
-				<p><code>npm install @devx/webide-client-tools --save-dev</code></p>
-				<h2 id="usage-documentation">Usage &amp; Documentation</h2>
+				<p>Run this command:
+				<code>npm install @devx/webide-client-tools --save-dev</code></p>
+				<h2 id="usage-and-documentation">Usage and Documentation</h2>
+				<p>See these examples:</p>
 				<ul>
-					<li><a href="https://github.com/SAP/webide-client-tools/tree/master/example/template">An Example Feature demonstrating the client-tools capabilities</a></li>
-					<li><a href="http://sap.github.io/webide-client-tools/web/html_docs/modules/_api_d_.html">Html Docs</a></li>
+					<li><a href="https://github.com/SAP/webide-client-tools/tree/master/example/template">A feature demonstrating client-tool capabilities</a>.</li>
+					<li><a href="http://sap.github.io/webide-client-tools/web/html_docs/modules/_api_d_.html">HTML version</a>.</li>
 				</ul>
 				<h2 id="support">Support</h2>
-				<p>Please open <a href="https://github.com/SAP/webide-client-tools/"><strong>issues</strong></a> on github to obtain support.</p>
+				<p>To get support, you can open <a href="https://github.com/SAP/webide-client-tools/issues"><strong>issues</strong></a> on Github.</p>
+				<h2 id="known-issues">Known Issues</h2>
+				<p>Full usage of this library requires the webide package as an npm peerDependency.
+					Specifically for testing and development server flows.
+					This is <strong>currently</strong> not possible outside SAP&#39;s coporate network.
+				Which means that the client-tools library can (<strong>temporarily</strong>) only be used for bundling flows.</p>
 				<h2 id="contributing">Contributing</h2>
-				<p>See <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
-				<h2 id="limitations">Limitations</h2>
-				<p>There are peer-dependencies for the <strong>usage</strong> of this library which are still in the process
-				of becoming available outside SAP. </p>
-				<p>The major one is the webide itself, without it is not possible to run feature tests or the local dev-server.
-					And the minor one being the local env DI backend, without it the tests are limited to
-				those using a &quot;fake&quot; backend mock.</p>
+				<p>For information, see <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
 				<h2 id="license">License</h2>
 				<p>Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
 				This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the <a href="./LICENSE">LICENSE file</a>.</p>
