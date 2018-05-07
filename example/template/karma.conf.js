@@ -19,7 +19,7 @@ if (withDi) {
     console.log("running karma in 'with_di' mode")
 }
 
-const karmaTools = require("webide-client-tools").karma
+const karmaTools = require("@sap-webide/webide-client-tools").karma
 
 module.exports = function(config) {
     const webideConfig = karmaTools.defaultProps()
