@@ -33,7 +33,7 @@ Tools and flows for developing client-side features and extensions for [SAP Web 
 ## Installation
 
 Run this command:
-```npm install @devx/webide-client-tools --save-dev```
+```npm install @sap-webide/webide-client-tools --save-dev```
 
 
 ## Usage and Documentation
