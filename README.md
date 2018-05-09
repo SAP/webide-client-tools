@@ -27,7 +27,7 @@ Tools and flows for developing client-side features and extensions for [SAP Web 
 
 
 ## Requirements and Compatibility
-* A [maintained version](https://github.com/nodejs/Release) of node.js for versions later than 4.
+* A [maintained version](https://github.com/nodejs/Release) of node.js.
   
   
 ## Installation
