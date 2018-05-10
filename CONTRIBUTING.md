@@ -72,7 +72,7 @@ Additionally **integration tests** are used to test webide-client-tools as an en
 2. Ensure a clean git working directory.
 
 3. Run the release script:
-   * ```yarn run release [patch|minor|major]```
+   * ```npm run release -- [patch|minor|major]```
 
 
 #### Under the Hood
