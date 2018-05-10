@@ -44,8 +44,6 @@ For ease of use see prettier's [editor integrations](https://prettier.io/docs/en
 Linting is done using ESLint.
 ```npm run lint```
 
-** TBD - update npm scripts once external CI is active**
-
 
 #### Testing
 
@@ -53,17 +51,42 @@ webide-client-tools uses several different types of tests to promote high qualit
 
 The most basic ones are the **jest unit tests**, which are also the most relevant ones.
 * ```npm run test```
- 
-Additionally **integration tests** are used to test webide-client-tools as an end user with the help of **npm link**  
+
+Additionally **integration tests** are used to test webide-client-tools as an end user with the help of **npm link**
 * ```npm run test_examples```
 
 
-#### Running the central CI flow locally.
+#### Running the whole central CI flow locally.
 
-**TBD** - create full flow once external CI is created on circle-ci.
+* ```npm run ci_full_flow```
 
 
-#### Legal
+## Releasing new Version
+
+#### Usage
+
+1. Update the CHANGELOG.MD:
+   * It must start with "## X.Y.Z (INSERT_DATE_HERE)"
+   * Use this [example change log](https://github.com/SAP/chevrotain/blob/master/docs/changes/CHANGELOG.md) as a reference.
+
+2. Ensure a clean git working directory.
+
+3. Run the release script:
+   * ```yarn run release [patch|minor|major]```
+
+
+#### Under the Hood
+
+The release script will:
+
+1. Update versions and dates in appropiate places.
+2. Commit those changes to the master branch.
+3. Create a git tag for the new version.
+4. Push that tag to the github.com repo.
+5. Pushing the tag will trigger a [deploy to npm](https://circleci.com/docs/1.0/npm-continuous-deployment/) build on circle-ci.
+
+
+## Legal
 
 All Contributors must sign the [CLA][cla].
 The process is completely automated using https://cla-assistant.io/
