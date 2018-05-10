@@ -6,7 +6,6 @@
   "dependencies": {
     "@types/webpack": "^4.1.1",
     "acorn": "^5.2.1",
-    "bluebird": "^3.5.1",
     "connect": "^3.6.5",
     "fs-extra": "^4.0.2",
     "glob": "^7.1.2",

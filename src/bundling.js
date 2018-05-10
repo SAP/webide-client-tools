@@ -11,7 +11,6 @@ const glob = require("glob")
 const metadataReader = require("./utils/meta_data_reader")
 const path = require("path")
 const utils = require("./utils/utils")
-const Promise = require("bluebird")
 const requirejs = require("requirejs")
 const webpack = require("webpack")
 
