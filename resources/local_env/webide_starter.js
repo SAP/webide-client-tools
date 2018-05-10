@@ -138,7 +138,7 @@ function startWebIDE(options) {
 
     window.WEB_IDE_DEFERRED[id] = deferred
 
-    var actualOptions = _.defaults(options, DEFAULT_START_WEBIDE_OPTIONS)
+    var actualOptions = _.defaultsDeep(options, DEFAULT_START_WEBIDE_OPTIONS)
 
     var iframe = document.createElement("iframe")
 

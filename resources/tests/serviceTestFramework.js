@@ -170,7 +170,7 @@ define(
                 }
                 usedSuiteNames[suiteName] = true
 
-                var actualOptions = _.defaults(
+                var actualOptions = _.defaultsDeep(
                     options,
                     DEFAULT_START_WEBIDE_OPTIONS
                 )
