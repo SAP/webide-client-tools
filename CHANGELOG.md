@@ -1,6 +1,6 @@
 ## X.Y.Z (INSERT_DATE_HERE)
 
-#### Minor Changes
+#### Bug Fixes
 
 - [STF.startWebIDE function nested defaults handling.](https://github.com/SAP/webide-client-tools/issues/37)
 
