@@ -63,6 +63,7 @@
   "files": [
     "src",
     "docs",
+    "example/template",
     "resources",
     "README.md",
     "api.d.ts"
