@@ -17,6 +17,17 @@ deploy-build: &deploy-build
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - run: npm publish --access=public
 
+# YAML arrays cannot be merged, duplication needed...
+# https://stackoverflow.com/questions/24090177/how-to-merge-yaml-arrays
+deploy-build: &deploy-build-next
+  <<: *base-build
+  steps:
+    - checkout
+    - run: yarn
+    - run: yarn run ci_full_flow
+    - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+    - run: npm publish --tag next --access=public
+
 
 # ------  build configuration/setup (how?) ------
 version: 2
@@ -41,6 +52,11 @@ jobs:
       - image: circleci/node:9.5-browsers
     <<: *deploy-build
 
+  deploy-next:
+    docker:
+      - image: circleci/node:9.5-browsers
+    <<: *deploy-build-next
+
 workflows:
   version: 2
   build:
@@ -51,6 +67,12 @@ workflows:
       - deploy:
           filters:
             tags:
-              only: /^v[0-9]+(\.[0-9]+)*/
+              only: /^v[0-9]+(\.[0-9]+)*$/
+            branches:
+              ignore: /.*/
+      - deploy-next:
+          filters:
+            tags:
+              only: /^v[0-9]+(\.[0-9]+)*-next$/
             branches:
               ignore: /.*/
