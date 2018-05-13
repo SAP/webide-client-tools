@@ -32,5 +32,6 @@
         "minimist": "^1.2.0",
         "mocha": "3.4.2",
         "webpack": "^4.2.0"
-    }
+    },
+    "dependencies": {}
 }

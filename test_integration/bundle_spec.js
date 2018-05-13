@@ -5,21 +5,20 @@ const fs = require("fs-extra")
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 15000
 
-/* eslint-disable no-unused-expressions, prefer-arrow-callback */
 describe("Bundling integration tests", () => {
     beforeAll(() => {
-        fs.removeSync(path.resolve(__dirname, "../template/dist"))
+        fs.removeSync(path.resolve(__dirname, "../example/dist"))
     })
 
-    it("can bundle a sample feature", function() {
-        const templateDir = path.resolve(__dirname, "../template")
-        childProcess.execSync("node scripts/bundle.js", {
-            cwd: templateDir,
+    it("can bundle a sample feature", () => {
+        const exampleDir = path.resolve(__dirname, "../example")
+        childProcess.execSync("npm run bundle", {
+            cwd: exampleDir,
             stdio: "inherit"
         })
 
         // Find the cached dir name
-        const distFolder = path.join(templateDir, "dist")
+        const distFolder = path.join(exampleDir, "dist")
         const foldersInDist = fs
             .readdirSync(distFolder)
             .filter(file =>
@@ -40,6 +39,6 @@ describe("Bundling integration tests", () => {
     })
 
     afterAll(() => {
-        fs.removeSync(path.resolve(__dirname, "../template/dist"))
+        fs.removeSync(path.resolve(__dirname, "../example/dist"))
     })
 })
