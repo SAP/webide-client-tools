@@ -6,7 +6,7 @@ var path = require("path")
 // arguments.
 var pkgPath = path.resolve(__dirname, "../package.json")
 require("@sap-webide/webide-client-tools")
-    .bundling.bundleFeature(pkgPath, { bundler: "webpack" })
+    .bundling.bundleFeature(pkgPath, { enableCaching: false })
     // bundleFeature is async and returns a promise, in case of an error we want to exit the process with
     // an error code and terminate any future steps
 

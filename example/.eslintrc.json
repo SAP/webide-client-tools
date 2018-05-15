@@ -1,0 +1,7 @@
+{
+	"plugins": ["@sap/webide-feature"],
+	"extends": "plugin:@sap/webide-feature/recommended",
+	"rules": {
+		"@sap/webide-feature/package-json-exists": "off"
+	}
+}

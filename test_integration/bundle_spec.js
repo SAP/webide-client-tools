@@ -19,14 +19,8 @@ describe("Bundling integration tests", () => {
 
         // Find the cached dir name
         const distFolder = path.join(exampleDir, "dist")
-        const foldersInDist = fs
-            .readdirSync(distFolder)
-            .filter(file =>
-                fs.statSync(path.join(distFolder, file)).isDirectory()
-            )
-        expect(foldersInDist.length).to.equal(1)
-        const timeStamp = foldersInDist[0]
-        const distTimeStamp = `${distFolder}/${timeStamp}`
+        expect(fs.existsSync(distFolder)).to.be.true
+        const distTimeStamp = `${distFolder}`
 
         // Check the preload files exist
         expect(fs.existsSync(path.join(distTimeStamp, "config-preload.js"))).to
@@ -39,6 +33,7 @@ describe("Bundling integration tests", () => {
     })
 
     afterAll(() => {
-        fs.removeSync(path.resolve(__dirname, "../example/dist"))
+        // TODO uncomment this and build the example from outside after the test
+        // fs.removeSync(path.resolve(__dirname, "../example/dist"))
     })
 })

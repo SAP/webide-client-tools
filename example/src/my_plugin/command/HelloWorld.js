@@ -5,6 +5,14 @@
  */
 define({
     execute: function() {
-        return this.context.service.sample.sayHello("World")
+        return this.context.service.my_plugin.sample.sayHello("World")
+    },
+
+    isAvailable: function() {
+        return true
+    },
+
+    isEnabled: function() {
+        return true
     }
 })
