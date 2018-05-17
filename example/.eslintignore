@@ -1,0 +1,4 @@
+# Ignore all files except the root package.json and those in the src directory
+/*
+!/src
+!package.json

@@ -1,0 +1,62 @@
+{
+	"name": "my_plugin",
+	"description": "",
+	"i18n": "my_plugin/i18n/i18n",
+	"requires": {
+		"services": [
+			"usernotification",
+			"log",
+			"command",
+			"commandGroup"
+		]
+	},
+	"provides": {
+		"services": {
+			"my_plugin.sample": {
+				"implements": "my_plugin.service.Sample",
+				"module": "my_plugin/service/Sample"
+			}
+		},
+
+		"interfaces": {
+			"my_plugin.service.Sample": "my_plugin/service/Sample"
+		}
+	},
+	"configures": {
+		"services": {
+			"command:commands": [{
+				"id": "my_plugin.helloWorld",
+				"label": "{i18n>command_helloWorld}",
+				"service": "my_plugin/command/HelloWorld"
+			}],
+
+			"commandGroup:groups": [{
+				"id": "tools.my_plugin.sample",
+				"label": "{i18n>commandgroup_sample}"
+			}, {
+				"id": "tools.my_plugin.sample.helloWorld"
+			}],
+
+			"commandGroup:items": [{
+				"parent": "tools",
+				"type": "menu",
+				"group": "tools.my_plugin.sample",
+				"prio": 100
+			}, {
+				"parent": "tools.my_plugin.sample",
+				"type": "inline",
+				"group": "tools.my_plugin.sample.helloWorld",
+				"prio": 10
+			}, {
+				"parent": "tools.my_plugin.sample.helloWorld",
+				"type": "action",
+				"command": "my_plugin.helloWorld",
+				"prio": 10
+			}]
+		}
+	},
+
+	"subscribes": {
+		"my_plugin.sample:notificationDisplayed": "my_plugin.sample:onAfterNotificationDisplayed"
+	}
+}
