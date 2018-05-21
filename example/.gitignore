@@ -11,3 +11,5 @@
 config-preload.js
 config-preload.js.map
 
+yarn.lock
+

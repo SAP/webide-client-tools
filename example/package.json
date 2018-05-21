@@ -1,0 +1,49 @@
+{
+    "name": "my_feature",
+    "title": "My Feature",
+    "version": "0.0.1",
+    "description": "Example feature",
+    "scripts": {
+        "test": "npm run bundle && node ./scripts/karma_ci --coverage --DIST",
+        "dev_server": "node ./scripts/dev_server.js",
+        "bundle": "node ./scripts/bundle.js",
+        "lint": "eslint . --ext=.js,.json",
+        "postinstall": "npm run bundle && npm run lint"
+    },
+    "files": [
+        "i18n",
+        "src",
+        "config-preload.js",
+        "config-preload.json",
+        "package.json"
+    ],
+    "devDependencies": {
+        "@sap/eslint-plugin-webide-feature": "1.3.7",
+        "chai": "^3.5.0",
+        "eslint": "4.12.1",
+        "karma": "^1.7.0",
+        "karma-chrome-launcher": "^2.1.1",
+        "karma-coverage": "^1.1.1",
+        "karma-firefox-launcher": "^1.0.1",
+        "karma-mocha": "^1.3.0",
+        "karma-mocha-reporter": "^2.2.3",
+        "karma-openui5": "^0.2.2",
+        "karma-requirejs": "^1.1.0",
+        "minimist": "^1.2.0",
+        "mocha": "3.4.2",
+        "webpack": "^4.2.0",
+        "@sap-webide/webide-client-tools": "latest"
+    },
+    "bundledPlugins": {
+        "my_plugin": "file:src/my_plugin"
+    },
+    "webidePreloads": {
+        "js": [
+            "config-preload.js",
+            "i18n/config-preload.js"
+        ],
+        "config": [
+            "config-preload.json"
+        ]
+    }
+}

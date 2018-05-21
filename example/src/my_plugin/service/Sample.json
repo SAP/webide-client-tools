@@ -1,5 +1,5 @@
 {
-	"name": "sap.webide.example.plugin.service.Sample",
+	"name": "my_plugin.service.Sample",
 	"description": "The sample service interface",
 	"methods": {
 		"modifyVar": {
