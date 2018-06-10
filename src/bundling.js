@@ -753,6 +753,7 @@ const bundling = {
                 name: orgPkgContents.name,
                 title: orgPkgContents.title,
                 description: orgPkgContents.description,
+                version: orgPkgContents.version,
                 technical: true,
                 bundledFeatures: {}
             }
