@@ -880,9 +880,9 @@ const bundling = {
 
             const amdModulesAndPaths = []
             _.forEach(metadata.pluginsMeta, plugin => {
-                const relativePluginPath = `./${path.relative(
+                const relativePluginPath = `./${path.posix.relative(
                     pkgPath,
-                    plugin.baseURI
+                    utils.backslashesToSlashes(plugin.baseURI)
                 )}`
                 const pluginName = plugin.name
 
