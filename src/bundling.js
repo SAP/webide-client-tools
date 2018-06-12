@@ -138,42 +138,50 @@ const bundling = {
         } else if (actualOptions.bundler === "webpack") {
             bundling.internal.createWebpackEntryPoint(target)
 
-            return bundling.internal
-                .bundleJavaScriptSourcesWebpack(actualOptions.webpackConfig)
-                .then(() => {
-                    try {
-                        const targetDir = path.resolve(path.dirname(target))
-                        fs.copySync(targetDir, actualOptions.outDir, {
-                            overwrite: true,
-                            filter: src => {
-                                if (
-                                    // avoids infinite recursion by not copying outDir into itself
-                                    src.endsWith(
-                                        path.relative(
-                                            targetDir,
-                                            actualOptions.outDir
-                                        )
-                                    ) ||
-                                    src.indexOf("node_modules") !== -1
-                                ) {
-                                    return false
+            return (
+                bundling.internal
+                    .bundleJavaScriptSourcesWebpack(actualOptions.webpackConfig)
+                    .then(() => {
+                        try {
+                            const targetDir = path.resolve(path.dirname(target))
+                            fs.copySync(targetDir, actualOptions.outDir, {
+                                overwrite: true,
+                                filter: src => {
+                                    if (
+                                        // avoids infinite recursion by not copying outDir into itself
+                                        src.endsWith(
+                                            path.relative(
+                                                targetDir,
+                                                actualOptions.outDir
+                                            )
+                                        ) ||
+                                        src.indexOf("node_modules") !== -1
+                                    ) {
+                                        return false
+                                    }
+                                    return true
                                 }
-                                return true
+                            })
+
+                            if (actualOptions.enableCaching) {
+                                bundling.internal.modifyWrappedCachedPackage(
+                                    target,
+                                    actualOptions.outDir
+                                )
                             }
-                        })
-
-                        if (actualOptions.enableCaching) {
-                            bundling.internal.modifyWrappedCachedPackage(
-                                target,
-                                actualOptions.outDir
-                            )
+                        } finally {
+                            bundling.internal.cleanWebpackEntryPoint(target)
                         }
-                    } finally {
-                        bundling.internal.cleanWebpackEntryPoint(target)
-                    }
 
-                    return { outDir: actualOptions.outDir }
-                })
+                        return { outDir: actualOptions.outDir }
+                    })
+                    // this is actually a finally clause not a catch clause
+                    // but finally is not yet available with native promises.
+                    .catch(err => {
+                        bundling.internal.cleanWebpackEntryPoint(target)
+                        throw err
+                    })
+            )
         }
         throw Error(
             `unrecognized <bundler> option value: <${actualOptions.bundler}>`
