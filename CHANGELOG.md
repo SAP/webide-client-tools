@@ -1,4 +1,4 @@
-## X.Y.Z (INSERT_DATE_HERE)
+## 2.2.0 (6-12-2018)
 
 #### Minor Changes
 - The example for using client-tools feature is less nested (no 'template' folder).
