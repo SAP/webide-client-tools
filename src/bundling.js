@@ -894,22 +894,28 @@ const bundling = {
                 )}`
                 const pluginName = plugin.name
 
+                function addModuleAndPath(module) {
+                    // avoids bundling modules defined outside the current plugin.
+                    if (_.startsWith(module, pluginName)) {
+                        const modulePath = `${relativePluginPath}${module.substr(
+                            pluginName.length
+                        )}.js`
+                        amdModulesAndPaths.push({ module, modulePath })
+                    }
+                }
+
+                if (plugin.module) {
+                    addModuleAndPath(plugin.module)
+                }
+
                 _.forEach(plugin.provides.services, service => {
-                    const module = service.module
-                    const modulePath = `${relativePluginPath}${module.substr(
-                        pluginName.length
-                    )}.js`
-                    amdModulesAndPaths.push({ module, modulePath })
+                    addModuleAndPath(service.module)
                 })
 
                 _.forEach(
                     plugin.configures.services["command:commands"],
                     commandConfig => {
-                        const module = commandConfig.service
-                        const modulePath = `${relativePluginPath}${module.substr(
-                            pluginName.length
-                        )}.js`
-                        amdModulesAndPaths.push({ module, modulePath })
+                        addModuleAndPath(commandConfig.service)
                     }
                 )
             })
