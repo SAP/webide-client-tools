@@ -698,6 +698,82 @@ describe("The, Exported bundling APIs", () => {
                     })
                 })
 
+                describe("webpack bundling plugin module", () => {
+                    const pluginModuleBundle = path.resolve(
+                        __dirname,
+                        "resources/plugin_module_property/package.json"
+                    )
+
+                    it("Will add the plugin module to the bundle ", () => {
+                        // the promise will be rejected if we could not resolve the
+                        // ""sap/watt/something/somewhere/somehow.js" amd dependency in b2.js
+                        return bundlingApi
+                            .bundleFeature(pluginModuleBundle, {
+                                bundler,
+                                outDir: distFolder,
+                                enableCaching: false
+                            })
+                            .then(() => {
+                                const expectedOutputFile = `${distFolder}/config-preload.js`
+                                const outputContents = fs.readFileSync(
+                                    expectedOutputFile,
+                                    "UTF-8"
+                                )
+                                expect(outputContents).to.include(
+                                    "from plugin.js yey"
+                                )
+                            })
+                    })
+
+                    afterEach(() => {
+                        const jsOut = path.resolve(
+                            `${path.dirname(
+                                pluginModuleBundle
+                            )}/config-preload.js`
+                        )
+                        fs.removeSync(jsOut)
+                        fs.removeSync(`${jsOut}.map`)
+                    })
+                })
+
+                describe("webpack ignoring modules from outside the plugin", () => {
+                    const pluginModuleBundle = path.resolve(
+                        __dirname,
+                        "resources/module_outside_plugin/package.json"
+                    )
+
+                    it("Will add the plugin module to the bundle ", () => {
+                        // the promise will be rejected if we could not resolve the
+                        // ""sap/watt/something/somewhere/somehow.js" amd dependency in b2.js
+                        return bundlingApi
+                            .bundleFeature(pluginModuleBundle, {
+                                bundler,
+                                outDir: distFolder,
+                                enableCaching: false
+                            })
+                            .then(() => {
+                                const expectedOutputFile = `${distFolder}/config-preload.js`
+                                const outputContents = fs.readFileSync(
+                                    expectedOutputFile,
+                                    "UTF-8"
+                                )
+                                expect(outputContents).to.not.include(
+                                    "from plugin.js yey"
+                                )
+                            })
+                    })
+
+                    afterEach(() => {
+                        const jsOut = path.resolve(
+                            `${path.dirname(
+                                pluginModuleBundle
+                            )}/config-preload.js`
+                        )
+                        fs.removeSync(jsOut)
+                        fs.removeSync(`${jsOut}.map`)
+                    })
+                })
+
                 describe("webpack error reporting", () => {
                     it("will fail & report an invalid webpack config", () => {
                         const myConfig = bundlingApi.getDefaultWebpackConfig(

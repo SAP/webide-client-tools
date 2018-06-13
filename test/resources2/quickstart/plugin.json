@@ -11,11 +11,11 @@
     },"services": {
       "sample": {
         "implements": "sap.webide.example.plugin.service.Sample",
-        "module": "sap.webide.example.plugin/service/2"
+        "module": "sap.watt.bamba.quickstart/service/2"
       },
       "sample2": {
         "implements": "sap.webide.example.plugin.service.Sample",
-        "module": "sap.webide.example.plugin/service/3"
+        "module": "sap.watt.bamba.quickstart/service/3"
       }
     }
   },
