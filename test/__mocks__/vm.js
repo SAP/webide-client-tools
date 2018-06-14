@@ -6,7 +6,7 @@ const vm = jest.genMockFromModule("vm")
 // but when running under jest it does not work as expected.
 // This assumes nothing else calls this method during the tests...
 vm.runInThisContext = function() {
-    return undefined
+  return undefined
 }
 
 module.exports = vm

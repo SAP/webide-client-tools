@@ -16,6 +16,6 @@ API.karma = karma
 API.devServer = devServer
 
 API.VERSION = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, "../package.json"), "UTF-8")
+  fs.readFileSync(path.resolve(__dirname, "../package.json"), "UTF-8")
 ).version
 module.exports = API

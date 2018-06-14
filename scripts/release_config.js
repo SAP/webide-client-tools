@@ -13,23 +13,23 @@ const changeLogString = fs.readFileSync(changeLogPath, "utf8").toString()
 
 let mode
 if (_.includes(process.argv, "patch")) {
-    mode = "patch"
+  mode = "patch"
 } else if (_.includes(process.argv, "minor")) {
-    mode = "minor"
+  mode = "minor"
 } else if (_.includes(process.argv, "major")) {
-    mode = "major"
+  mode = "major"
 } else {
-    console.log("release mode (patch|minor|major) not provided")
-    process.exit(-1)
+  console.log("release mode (patch|minor|major) not provided")
+  process.exit(-1)
 }
 
 module.exports = {
-    packagePath,
-    changeLogPath,
-    htmlDocsPath: "docs/web/html_docs",
-    pkgJson,
-    changeLogString,
-    currVersion: pkgJson.version,
-    mode,
-    tagPrefix: "v"
+  packagePath,
+  changeLogPath,
+  htmlDocsPath: "docs/web/html_docs",
+  pkgJson,
+  changeLogString,
+  currVersion: pkgJson.version,
+  mode,
+  tagPrefix: "v"
 }

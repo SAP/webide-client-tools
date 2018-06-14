@@ -1,15 +1,15 @@
 {
-    "name": "core",
+  "name": "core",
 
-    "requires": {
-        "services": []
-    },
+  "requires": {
+    "services": []
+  },
 
-    "provides": {
-        "services": {
-            "core_service": {
-                "module": "somewhere"
-            }
-        }
+  "provides": {
+    "services": {
+      "core_service": {
+        "module": "somewhere"
+      }
     }
+  }
 }

@@ -1,11 +1,11 @@
 {
-    "compilerOptions": {
-        "mode": "file",
-        "module": "commonjs",
-        "removeComments": false,
-        "target": "ES5",
-        "sourceMap": true,
-        "noEmit": true
-    },
-    "files": ["api.d.ts"]
+  "compilerOptions": {
+    "mode": "file",
+    "module": "commonjs",
+    "removeComments": false,
+    "target": "ES5",
+    "sourceMap": true,
+    "noEmit": true
+  },
+  "files": ["api.d.ts"]
 }

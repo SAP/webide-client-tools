@@ -4,5 +4,5 @@
 jquery.sap.define("foo")
 
 define(["./2"], function() {
-    console.log("BAR")
+  console.log("BAR")
 })

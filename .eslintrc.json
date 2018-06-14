@@ -1,33 +1,33 @@
 {
-    "extends": ["airbnb-base", "prettier"],
-    "env": {
-        "browser": true,
-        "node": true,
-        "jest": true
-    },
-    "rules": {
-        "arrow-body-style": 0,
-        "strict": 0,
-        "no-console": 0,
-        "func-names": 0,
-        "import/no-extraneous-dependencies": [
-            2,
-            {
-                "devDependencies": true
-            }
-        ],
-        "prefer-destructuring": 0,
-        "no-buffer-constructor": 0
-    },
-    "globals": {
-        "describe": true,
-        "context": true,
-        "before": true,
-        "beforeEach": true,
-        "after": true,
-        "afterEach": true,
-        "it": true,
-        "jest": true,
-        "jasmine": true
-    }
+  "extends": ["airbnb-base", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "arrow-body-style": 0,
+    "strict": 0,
+    "no-console": 0,
+    "func-names": 0,
+    "import/no-extraneous-dependencies": [
+      2,
+      {
+        "devDependencies": true
+      }
+    ],
+    "prefer-destructuring": 0,
+    "no-buffer-constructor": 0
+  },
+  "globals": {
+    "describe": true,
+    "context": true,
+    "before": true,
+    "beforeEach": true,
+    "after": true,
+    "afterEach": true,
+    "it": true,
+    "jest": true,
+    "jasmine": true
+  }
 }

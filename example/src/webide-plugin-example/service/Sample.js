@@ -17,59 +17,57 @@
  *
  */
 define(["./helloUtils"], function(utils) {
-    return {
-        _iNotificationCount: null,
+  return {
+    _iNotificationCount: null,
 
-        modifyMe: "sample",
+    modifyMe: "sample",
 
-        init: function() {
-            this._iNotificationCount = 0
-        },
+    init: function() {
+      this._iNotificationCount = 0
+    },
 
-        sayHello: function(sName) {
-            var that = this
-            this._iNotificationCount++
-            var sMessage = this.context.i18n.getText(
-                "i18n",
-                "sample_helloMessage",
-                [sName]
-            )
+    sayHello: function(sName) {
+      var that = this
+      this._iNotificationCount++
+      var sMessage = this.context.i18n.getText("i18n", "sample_helloMessage", [
+        sName
+      ])
 
-            var angryMessage = utils.addAngryMode(sMessage)
-            // Display greeting notification and fire event
-            return this.context.service.usernotification
-                .info(angryMessage)
-                .then(function() {
-                    return that.context.event.fireNotificationDisplayed({
-                        notificationCount: that.getNotificationCount()
-                    })
-                })
-        },
+      var angryMessage = utils.addAngryMode(sMessage)
+      // Display greeting notification and fire event
+      return this.context.service.usernotification
+        .info(angryMessage)
+        .then(function() {
+          return that.context.event.fireNotificationDisplayed({
+            notificationCount: that.getNotificationCount()
+          })
+        })
+    },
 
-        getNotificationCount: function() {
-            return this._iNotificationCount
-        },
+    getNotificationCount: function() {
+      return this._iNotificationCount
+    },
 
-        onAfterNotificationDisplayed: function(oEvent) {
-            var iCount = oEvent.params.notificationCount
-            // Display log message to the SAP Web IDE console (accessed via 'View->Console' menu)
-            // Log messages don't need to be translatable
-            this.context.service.log
-                .info(
-                    "Sample",
-                    "Number of Hello notifications shown so far: " + iCount,
-                    ["user"]
-                )
-                .done()
-        },
+    onAfterNotificationDisplayed: function(oEvent) {
+      var iCount = oEvent.params.notificationCount
+      // Display log message to the SAP Web IDE console (accessed via 'View->Console' menu)
+      // Log messages don't need to be translatable
+      this.context.service.log
+        .info(
+          "Sample",
+          "Number of Hello notifications shown so far: " + iCount,
+          ["user"]
+        )
+        .done()
+    },
 
-        modifyVar: function(sName) {
-            this.setModifyMe(sName)
-            return this.modifyMe
-        },
+    modifyVar: function(sName) {
+      this.setModifyMe(sName)
+      return this.modifyMe
+    },
 
-        setModifyMe: function(sName) {
-            this.modifyMe = sName + "ModifiedSample"
-        }
+    setModifyMe: function(sName) {
+      this.modifyMe = sName + "ModifiedSample"
     }
+  }
 })

@@ -1,6 +1,6 @@
 /* eslint-disable */
 define([], function() {
-    return function someHelper(x, y) {
-        return x + y
-    }
+  return function someHelper(x, y) {
+    return x + y
+  }
 })

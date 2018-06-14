@@ -5,7 +5,7 @@ window.TEST_FILE_PATTERN = /test\/.*Spec\.js$/
 // This custom requirejs path allows requiring resources using requirejs easily in test files.
 // "define(['webide-plugin-example/service/helloUtils'], function (helloUtils) {..."
 window.CUSTOM_REQUIREJS_PATHS = {
-    "webide-plugin-example": "/base/src/webide-plugin-example"
+  "webide-plugin-example": "/base/src/webide-plugin-example"
 }
 
 // optional: exposing some globals for our tests

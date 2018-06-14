@@ -1,6 +1,7 @@
 ## X.Y.Z (INSERT_DATE_HERE)
 
 #### Minor Changes
+
 #### Bug Fixes
 
 ## 2.2.0 (6-12-2018)
@@ -16,7 +17,6 @@
 
 - The example for using client-tools feature is included in the npm package.
 
-
 ## 2.0.1 (2018-5-10)
 
 #### Bug Fixes
@@ -30,7 +30,11 @@
 - First npm Release.
 
 ## Template
+
 #### Breaking Changes
+
 #### Major Changes
+
 #### Minor Changes
+
 #### Bug Fixes

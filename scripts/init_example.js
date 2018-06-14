@@ -8,6 +8,6 @@ const rootDir = path.resolve(__dirname, "../")
 childProcess.execSync("yarn", { cwd: exampleDir, stdio: "inherit" })
 childProcess.execSync("yarn link", { cwd: rootDir, stdio: "inherit" })
 childProcess.execSync("yarn link @sap-webide/webide-client-tools", {
-    cwd: exampleDir,
-    stdio: "inherit"
+  cwd: exampleDir,
+  stdio: "inherit"
 })

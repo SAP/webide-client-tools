@@ -1,4 +1,4 @@
 /* eslint-disable */
 define([], function() {
-    console.log("FOO!")
+  console.log("FOO!")
 })

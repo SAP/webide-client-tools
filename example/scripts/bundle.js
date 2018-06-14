@@ -6,15 +6,15 @@ var path = require("path")
 // arguments.
 var pkgPath = path.resolve(__dirname, "../package.json")
 require("@sap-webide/webide-client-tools")
-    .bundling.bundleFeature(pkgPath, { bundler: "webpack" })
-    // bundleFeature is async and returns a promise, in case of an error we want to exit the process with
-    // an error code and terminate any future steps
+  .bundling.bundleFeature(pkgPath, { bundler: "webpack" })
+  // bundleFeature is async and returns a promise, in case of an error we want to exit the process with
+  // an error code and terminate any future steps
 
-    // if we were using bundleFeature in a task runner (grunt/gulp) we would have to create
-    // specific task runner errors
-    // for example:
-    // https://gruntjs.com/api/grunt.fail
-    .catch(e => {
-        console.log(e)
-        process.exit(1)
-    })
+  // if we were using bundleFeature in a task runner (grunt/gulp) we would have to create
+  // specific task runner errors
+  // for example:
+  // https://gruntjs.com/api/grunt.fail
+  .catch(e => {
+    console.log(e)
+    process.exit(1)
+  })
