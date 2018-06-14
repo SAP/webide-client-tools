@@ -2,7 +2,13 @@
 
 #### Minor Changes
 
+- Experimental Webpack bundling - [use a plugin's module property as an entry point](https://github.com/SAP/webide-client-tools/pull/45).
+
 #### Bug Fixes
+
+- [Updated transitive dependencies to avoid an issue when running under node.js version 10](https://github.com/SAP/webide-client-tools/commit/c2e99e8a556a7054cde2fcb62ef4e06605f803ce).
+- [Fixed experimental webpack bundling under windows 10](https://github.com/SAP/webide-client-tools/commit/233bfaf761cb0443daed697c6b0fd5ebb7891074).
+- [experimental webpack bundling ensure cleanup of generated entry point](https://github.com/SAP/webide-client-tools/commit/dcf702af5195aa6504631df82206d530d56f3b65).
 
 ## 2.2.0 (6-12-2018)
 
