@@ -1,9 +1,0 @@
-{
-    "name": "sap.watt.uitools.plugin.ui5template.service.MDWithAttachmentsSettings",
-    "description": "Interface for configure the project settings of the Master-Detail with Attachments template",
-    "methods": {
-		"onAfterGeneration" : {
-		    "params" : [{"name" : "oEvent", "type": "object"}]
-		}
-    }
-}

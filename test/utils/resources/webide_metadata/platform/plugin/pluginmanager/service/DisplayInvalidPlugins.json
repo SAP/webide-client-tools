@@ -1,9 +1,0 @@
-{
-	"name" : "sap.watt.platform.plugin.pluginmanager.service.DisplayInvalidPlugins",
-	"description" : "Display invalid plugin management interface",
-	"methods" : {
-		"onAfterPluginsStarted" : {
-		    "description" : "Event handler when plugins are loaded"
-		}
-	}
-}

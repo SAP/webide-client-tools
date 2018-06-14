@@ -1,15 +1,15 @@
 {
-	"name": "common",
+    "name": "common",
 
-	"requires": {
-		"services": ["w5geditor", "editor", "core_service"]
-	},
+    "requires": {
+        "services": ["w5geditor", "editor", "core_service"]
+    },
 
-	"provides": {
-		"services": {
-			"profiler" : {
-				"module" : "somewhere"
-			}
-		}
-	}
+    "provides": {
+        "services": {
+            "profiler": {
+                "module": "somewhere"
+            }
+        }
+    }
 }

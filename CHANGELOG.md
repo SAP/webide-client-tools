@@ -1,6 +1,12 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+#### Bug Fixes
+
 ## 2.2.0 (6-12-2018)
 
 #### Minor Changes
+
 - The example for using client-tools feature is less nested (no 'template' folder).
 - The package.json created for caching contains the feature's version.
 

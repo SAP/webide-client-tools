@@ -1,5 +1,0 @@
-{
-	"name": "sap.watt.common.service.remote.Preferences",
-	"description": "The user specific preferences remote service interface",
-	"extends" : "sap.watt.common.service.ui.Settings"
-}

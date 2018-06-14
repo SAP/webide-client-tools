@@ -1,15 +1,20 @@
 {
-  "tags": {
-    "allowUnknownTags": true,
-    "dictionaries": ["jsdoc","closure"]
-  },
-  "source": {
-    "include": ["./src/bundling.js", "./src/di_backend.js", "./src/dev_server.js", "resources/tests/serviceTestFramework.js"],
-    "exclude": ""
-  },
-  "plugins": [],
-  "templates": {
-    "cleverLinks": false,
-    "monospaceLinks": false
-  }
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc", "closure"]
+    },
+    "source": {
+        "include": [
+            "./src/bundling.js",
+            "./src/di_backend.js",
+            "./src/dev_server.js",
+            "resources/tests/serviceTestFramework.js"
+        ],
+        "exclude": ""
+    },
+    "plugins": [],
+    "templates": {
+        "cleverLinks": false,
+        "monospaceLinks": false
+    }
 }

@@ -1,8 +1,0 @@
-{
-	"name": "sap.watt.common.plugin.xml.service.XMLValidator",
-	"description": "The XML Validator interface",
-	"extends" : ["sap.watt.common.service.editor.Validator"],
-	"methods": {
-	},
-	"events" : {}
-}

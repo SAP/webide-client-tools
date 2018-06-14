@@ -1,9 +1,0 @@
-{
-    "name": "sap.watt.uitools.plugin.servicecatalog.service.Connectivity",
-    "description": "The Connectivity interface",
-    "methods": {
-		"onAfterGeneration" : {
-		    "params" : [{"name" : "oEvent", "type": "object"}]
-		}
-    }
-}

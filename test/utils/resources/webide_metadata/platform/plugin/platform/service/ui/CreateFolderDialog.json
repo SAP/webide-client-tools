@@ -1,9 +1,0 @@
-{
-	"name" : "sap.watt.common.service.ui.CreateFolderDialog",
-	"description": "The filedialog interface for create folder in repository browser",
-	"methods" : {
-		"openCreateUI" : {},
-		"createFolder" : {},
-		"cancel" : {}
-	}
-}

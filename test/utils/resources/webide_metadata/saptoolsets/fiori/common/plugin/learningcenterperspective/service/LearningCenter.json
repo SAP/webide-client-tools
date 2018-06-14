@@ -1,5 +1,0 @@
-{
-	"name" : "sap.watt.saptoolsets.fiori.common.learningcenterperspective.service.LearningCenter",
-	"description": "The main service of the learningcenter perspective",
-	"extends" : ["sap.watt.common.service.ui.Part", "sap.watt.common.service.selection.Provider","sap.watt.common.service.selection.TypedSelectionProvider"]
-}

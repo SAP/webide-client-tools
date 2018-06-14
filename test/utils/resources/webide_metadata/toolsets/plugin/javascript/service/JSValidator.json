@@ -1,7 +1,0 @@
-{
-	"name": "sap.watt.common.javascript.JSValidator",
-	"description": "The Javascript Validator interface",
-	"extends" : ["sap.watt.common.service.editor.PortableValidator"],
-	"methods": {},
-	"events" : {}
-}

@@ -1,9 +1,0 @@
-{
-    "name": "sap.watt.uitools.plugin.ui5template.service.SmartExtension",
-    "description": "Interface for set selection to the generated extension files",
-    "methods": {
-		"onAfterGeneration" : {
-		    "params" : [{"name" : "oEvent", "type": "object"}]
-		}
-    }
-}

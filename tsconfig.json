@@ -1,15 +1,12 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "removeComments": false,
-    "target": "ES6",
-    "sourceMap": true,
-    "checkJs": true,
-    "allowJs": true,
-    "noEmit": true
-  },
-  "include": [
-    "src/**/*.js",
-    "api.d.ts"
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "removeComments": false,
+        "target": "ES6",
+        "sourceMap": true,
+        "checkJs": true,
+        "allowJs": true,
+        "noEmit": true
+    },
+    "include": ["src/**/*.js", "api.d.ts"]
 }

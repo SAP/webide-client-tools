@@ -1,7 +1,0 @@
-{
-	"name": "sap.watt.ideplatform.validation.annotaions",
-	"description": "service for writing issues",
-	"methods": {
-		"onNewIssues": {}
-	}
-}

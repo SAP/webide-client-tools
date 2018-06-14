@@ -1,4 +1,4 @@
 {
-  "testRegex": ".*spec\\.js$",
-  "collectCoverage":false
+    "testRegex": ".*spec\\.js$",
+    "collectCoverage": false
 }

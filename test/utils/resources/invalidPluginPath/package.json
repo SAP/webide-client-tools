@@ -1,6 +1,6 @@
 {
-	"name" : "invalid.plugin.path",
-	"bundledPlugins" : {
-		"common" : "common"
-	}
+    "name": "invalid.plugin.path",
+    "bundledPlugins": {
+        "common": "common"
+    }
 }

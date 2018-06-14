@@ -1,8 +1,0 @@
-{
-	"name" : "sap.watt.common.service.ui.WizardFinishStep",
-	"extends" : ["sap.watt.common.service.ui.WizardPart"],
-	"description": "The interface for the last step of a wizard. Any wizard final step is a <i>WizardPart</i> interface whose <i>getContent</i> method initiates the step UI (extending the <i>sap.watt.uitools.plugin.template.ui.wizard.WizardStepContent</i> parameter) with the <i>this.context</i> property. The <i>getContent</i> method then returns the result of the <i>getWizardStep</i> method of the wizard service with the <i>WizardStep</i> interface content object.",
-	"exposedAsInterface":true,
-	"visibility": "public",
-	"methods" : {}
-}

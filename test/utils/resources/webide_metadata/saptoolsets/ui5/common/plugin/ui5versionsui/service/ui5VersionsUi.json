@@ -1,7 +1,0 @@
-{
-    "name": "sap.watt.saptoolsets.ui5.common.ui5VersionsUi",
-	"description": "The ui5Versions ui",
-	"extends" : ["sap.watt.common.service.ui.Config",
-				"sap.watt.common.service.ui.ConfigAvailability"
-	]
-}

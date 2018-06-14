@@ -1,8 +1,0 @@
-{
-	"name" : "sap.watt.common.service.ide.StatefullCommand",
-	"extends" : ["sap.watt.common.service.ide.Command"],
-	"description": "A statefull command can tell a client whether its actually active or not",
-	"methods" : {
-		"isActive" : {}
-	}
-}

@@ -1,7 +1,0 @@
-{
-	"name": "sap.watt.bamba.fioriJsValidator.service.JSValidator",
-	"description": "Fiori Javascript Validator interface",
-	"extends" : ["sap.watt.common.service.editor.PortableValidator"],
-	"methods": {},
-	"events" : {}
-}

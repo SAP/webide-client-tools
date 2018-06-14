@@ -1,8 +1,0 @@
-{
-	"name" : "sap.watt.common.service.ide.ProjectType",
-	"description": "The project type interface",
-	"methods" : {
-		"isAvailable" : {},
-		"isEnabled" : {}
-	}
-}

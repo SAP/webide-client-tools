@@ -1,9 +1,0 @@
-{
-	"name" : "sap.watt.saptoolsets.fiori.common.tipsandtricksopener.service.TipsAndTricksOpener",
-	"description" : "Responsible for opening the tips and trips on startup",
-	"methods" : {
-	},
-
-	"events" : {
-	}
-}

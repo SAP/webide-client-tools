@@ -1,6 +1,0 @@
-{
-	"name" : "sap.watt.common.service.remote.Project",
-	"description" : "The project remote service interface (not yet implemented)",
-	"methods" : {
-	}
-}

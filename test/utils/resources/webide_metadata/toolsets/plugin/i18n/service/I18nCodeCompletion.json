@@ -1,7 +1,0 @@
-{
-	"name" : "sap.watt.common.i18n.I18nCodeCompletion",
-	"description" : "The i18n code completion interface",
-	"extends" : [
-		"sap.watt.common.service.editor.CodeCompletion"
-	]
-}

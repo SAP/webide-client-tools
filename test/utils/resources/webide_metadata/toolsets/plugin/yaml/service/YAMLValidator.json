@@ -1,8 +1,0 @@
-{
-	"name": "sap.watt.toolsets.plugin.yaml.service.yamlValidator",
-	"description": "The YAML Validator interface",
-	"extends" : ["sap.watt.common.service.editor.Validator"],
-	"methods": {
-	},
-	"events" : {}
-}

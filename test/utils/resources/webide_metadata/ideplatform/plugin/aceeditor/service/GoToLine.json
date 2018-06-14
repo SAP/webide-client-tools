@@ -1,9 +1,0 @@
-{
-	"name" : "sap.watt.ideplatform.plugin.aceeditor.service.GoToLine",
-	"description" : "Go to line service",
-	"methods" : {
-		"openGoToLine" : {
-			"description": "open go to line"
-		}
-	}
-}
