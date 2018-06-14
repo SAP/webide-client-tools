@@ -37,5 +37,6 @@ describe("Bundling integration tests", () => {
 
   afterAll(() => {
     fs.removeSync(path.resolve(__dirname, "../example/dist"))
+    fs.removeSync(path.resolve(__dirname, "../example/config-preload.js"))
   })
 })
