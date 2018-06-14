@@ -794,9 +794,7 @@ const bundling = {
           }
 
           if (stats.hasWarnings()) {
-            // TODO: consider - should we be less strict and not reject on warnings?
-            console.error(info.warnings)
-            reject(info.warnings.join("\n"))
+            console.warn(info.warnings)
           }
 
           resolve()

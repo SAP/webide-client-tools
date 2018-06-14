@@ -774,15 +774,13 @@ describe("The, Exported bundling APIs", () => {
               "resources/webpack_warning/package.json"
             )
 
-            it("will fail & report a static analysis warning", () => {
+            it("will NOT fail & report a static analysis warning", () => {
               return expect(
                 bundlingApi.bundleFeature(warnningSample, {
                   bundler,
                   outDir: distFolder
                 })
-              ).to.be.rejectedWith(
-                "Critical dependency: the request of a dependency is an expression"
-              )
+              ).to.be.fulfilled
             })
 
             afterEach(() => {

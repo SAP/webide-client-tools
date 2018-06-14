@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Bug Fixes
+
+- Experimental Webpack bundling - don't reject on warnings, only warn.
+
 ## 2.3.0 (6-14-2018)
 
 #### Minor Changes
