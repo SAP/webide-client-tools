@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Bug Fixes
+
+- Experimental Webpack bundling - Module Loading must be lazy.
+
 ## 2.3.1 (6-14-2018)
 
 #### Bug Fixes
