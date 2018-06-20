@@ -859,20 +859,15 @@ const bundling = {
         )
       })
 
-      const imports = _.map(
-        amdModulesAndPaths,
-        ({ modulePath }, idx) => `var m${idx} = require("${modulePath}");`
-      )
       const exports = _.map(
         amdModulesAndPaths,
-        ({ module }, idx) => `window.define("${module}", [], m${idx})`
+        ({ module, modulePath }) =>
+          `window.define("${module}", [], function() { return require("${modulePath}") })`
       )
 
       let header = "// This is a generated file, ignore it in .gitignore\n"
       header += "/* eslint-disable */\n\n"
       let entryPointText = header
-      entryPointText += imports.join("\n")
-      entryPointText += "\n\n"
       entryPointText += exports.join("\n")
       fs.writeFileSync(
         `${pkgPath}/webpack.entry.js`,
