@@ -151,7 +151,6 @@ export interface BundlingAPI {
             /**
              * The webpack configuration
              * - Mutually exclusive with providing javaScriptOpts.
-             * - If not provided, will be loaded by default from CWD/webpack.config.js
              * - For details see:
              *   @link {https://webpack.js.org/concepts/}
              *   @link {https://www.npmjs.com/package/@types/webpack}
