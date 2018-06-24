@@ -46,10 +46,11 @@
     "semver": "^5.4.1",
     "shx": "^0.2.2",
     "typedoc": "^0.8.0",
-    "typescript": "2.7.2"
+    "typescript": "2.7.2",
+    "vuepress": "^0.10.2"
   },
   "scripts": {
-    "ci_full_flow": "npm-run-all format_validate type_check lint test test_integration docs",
+    "ci_full_flow": "npm-run-all format_validate type_check lint test test_integration docs website:build",
     "ci_full_flow_no_docs": "npm-run-all format_validate type_check lint test",
     "release": "git fetch && git rebase && npm-run-all ci_full_flow_no_docs && node scripts/release.js",
     "lint": "eslint 'src/**/*.js' 'test/**/*.js' 'example/integration_tests/**/*.js'",
@@ -61,7 +62,9 @@
     "docs": "shx rm -rf docs/web/html_docs && typedoc --tsconfig tsdocsconfig.json --out docs/web/html_docs --module commonjs --name WebideClientTools --excludeExternals --includeDeclarations",
     "format": "prettier --write \"**/*.@(js|json|md)\"",
     "format_validate": "prettier --list-different \"**/*.@(js|json|md)\"",
-    "type_check": "tsc"
+    "type_check": "tsc",
+    "website:dev": "vuepress dev docs",
+    "website:build": "vuepress build docs"
   },
   "files": [
     "src",
