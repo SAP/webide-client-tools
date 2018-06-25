@@ -2,7 +2,7 @@
 sidebar: auto
 ---
 
-## FAQ
+# FAQ
 
 - [Requirejs Bundling: How to ignore AMD resources which should only be resolved at runtime?](#RUNTIME_RESOURCES)
 - [Requirejs Bundling: How to ignore None AMD(require.js) resources?](#IGNORE_JS)
