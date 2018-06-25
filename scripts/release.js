@@ -56,6 +56,8 @@ const changeLogDate = config.changeLogString.replace(
 fs.writeFileSync(config.changeLogPath, changeLogDate)
 
 childProcess.execSync("npm run docs", { stdio: "inherit" })
+childProcess.execSync("npm run website:build", { stdio: "inherit" })
+
 
 // Create commit and push to master
 const newTagName = config.tagPrefix + newVersion
