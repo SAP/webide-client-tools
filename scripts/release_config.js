@@ -27,7 +27,7 @@ module.exports = {
   packagePath,
   changeLogPath,
   htmlDocsPath: "docs/web/html_docs",
-  websitePath: "docs/web/website",
+  websitePath: "docs/web/site",
   pkgJson,
   changeLogString,
   currVersion: pkgJson.version,
