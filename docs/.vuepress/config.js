@@ -10,7 +10,7 @@ const slugMap = {
 
 module.exports = {
   title: "SAP Web IDE Client Tools",
-  base: "/webide-client-tools/web/site",
+  base: "/webide-client-tools/web/site/",
   description: "Tools & Flows for SAP Web IDE Client Side Features.",
   dest: "docs/web/site",
   markdown: {
