@@ -52,7 +52,7 @@
   "scripts": {
     "ci_full_flow": "npm-run-all format_validate type_check lint test test_integration docs website:build",
     "ci_full_flow_no_docs": "npm-run-all format_validate type_check lint test",
-    "release": "git fetch && git rebase && npm-run-all ci_full_flow_no_docs && node scripts/release.js",
+    "release": "git fetch && git rebase && npm-run-all ci_full_flow && node scripts/release.js",
     "lint": "eslint 'src/**/*.js' 'test/**/*.js' 'example/integration_tests/**/*.js'",
     "test": "jest",
     "test_integration": "npm-run-all init_example execute_integration_tests unlink_example",
