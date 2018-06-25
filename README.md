@@ -38,8 +38,8 @@ Run this command:
 
 See these examples:
 
+- [Documentation Website](https://sap.github.io/webide-client-tools/web/site/)
 - [A feature demonstrating client-tool capabilities](https://github.com/SAP/webide-client-tools/tree/master/example).
-- [HTML version](http://sap.github.io/webide-client-tools/web/html_docs/modules/_api_d_.html).
 
 ## Support
 
