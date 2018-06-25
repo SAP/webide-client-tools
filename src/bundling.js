@@ -416,7 +416,7 @@ const bundling = {
                 ", "
               )}]`
               fileMessages +=
-                "\nsee: https://github.com/SAP/webide-client-tools/blob/master/FAQ.md#VALIDATE_AMD"
+                "\nsee: https://sap.github.io/webide-client-tools/web/site/FAQ.html#VALIDATE_AMD"
               fileMessages += " for details."
               result.push(fileMessages)
             }

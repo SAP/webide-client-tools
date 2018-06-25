@@ -6,7 +6,7 @@ const path = require("path")
 const _ = require("lodash")
 
 const packagePath = path.join(__dirname, "../package.json")
-const changeLogPath = path.join(__dirname, "../CHANGELOG.md")
+const changeLogPath = path.join(__dirname, "../docs/changes/CHANGELOG.md")
 
 const pkgJson = jf.readFileSync(packagePath)
 const changeLogString = fs.readFileSync(changeLogPath, "utf8").toString()

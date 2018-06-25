@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Bug Fixes
+
+- Fixed none AMD sources error message details link to point ot new docs website.
+
 ## 2.3.2 (6-20-2018)
 
 #### Bug Fixes
