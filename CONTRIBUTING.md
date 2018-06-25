@@ -61,15 +61,18 @@ Additionally **integration tests** are used to test webide-client-tools as an en
 
 #### Usage
 
-1.  Update the CHANGELOG.md:
+1.  Update the [CHANGELOG.md](./docs/changes/CHANGELOG.md).
 
     - It must start with "## X.Y.Z (INSERT_DATE_HERE)"
     - Use this [example change log](https://github.com/SAP/chevrotain/blob/master/docs/changes/CHANGELOG.md) as a reference.
-    - Commit and push the new CHANGELOG.md before the next step.
 
-2.  Ensure a clean git working directory.
+2.  Update the [BREAKING_CHANGES.md](./docs/changes/BREAKING_CHANGES.md).
 
-3.  Run the release script:
+3.  Commit and push the modifications from the previous steps.
+
+4.  Ensure a clean git working directory.
+
+5.  Run the release script:
     - `npm run release -- [patch|minor|major]`
 
 #### Under the Hood

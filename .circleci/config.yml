@@ -6,6 +6,15 @@ base-build: &base-build
     - run: yarn
     - run: yarn run ci_full_flow
 
+base-build: &base-build-node6
+  working_directory: ~/repo
+  steps:
+    - checkout
+    # cannot install/run vuepress on node.js 6
+    - run: yarn remove vuepress
+    - run: yarn
+    - run: yarn run ci_full_flow_no_docs
+
 # YAML arrays cannot be merged, duplication needed...
 # https://stackoverflow.com/questions/24090177/how-to-merge-yaml-arrays
 deploy-build: &deploy-build
@@ -16,18 +25,6 @@ deploy-build: &deploy-build
     - run: yarn run ci_full_flow
     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
     - run: npm publish --access=public
-
-# YAML arrays cannot be merged, duplication needed...
-# https://stackoverflow.com/questions/24090177/how-to-merge-yaml-arrays
-deploy-build: &deploy-build-next
-  <<: *base-build
-  steps:
-    - checkout
-    - run: yarn
-    - run: yarn run ci_full_flow
-    - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-    - run: npm publish --tag next --access=public
-
 
 # ------  build configuration/setup (how?) ------
 version: 2
@@ -45,17 +42,12 @@ jobs:
   build-node6:
     docker:
       - image: circleci/node:6-browsers
-    <<: *base-build
+    <<: *base-build-node6
 
   deploy:
     docker:
       - image: circleci/node:10-browsers
     <<: *deploy-build
-
-  deploy-next:
-    docker:
-      - image: circleci/node:9.5-browsers
-    <<: *deploy-build-next
 
 workflows:
   version: 2
@@ -68,11 +60,5 @@ workflows:
           filters:
             tags:
               only: /^v[0-9]+(\.[0-9]+)*$/
-            branches:
-              ignore: /.*/
-      - deploy-next:
-          filters:
-            tags:
-              only: /^v[0-9]+(\.[0-9]+)*-next$/
             branches:
               ignore: /.*/

@@ -60,7 +60,12 @@ childProcess.execSync("npm run docs", { stdio: "inherit" })
 // Create commit and push to master
 const newTagName = config.tagPrefix + newVersion
 
-myRepo.addSync([config.packagePath, config.changeLogPath, config.htmlDocsPath])
+myRepo.addSync([
+  config.packagePath,
+  config.changeLogPath,
+  config.htmlDocsPath,
+  config.websitePath
+])
 
 myRepo.commitSync(`release ${newVersion}`)
 myRepo.createTagSync(newTagName)

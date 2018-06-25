@@ -49,3 +49,5 @@ jspm_packages
 config-preload.js
 .idea/markdown-navigator.xml
 .idea/markdown-navigator/
+
+/docs/.vuepress/dist
