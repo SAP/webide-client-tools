@@ -39,6 +39,9 @@ define("STF", [
   var BUILT_IN_MOCKS = {}
   BUILT_IN_MOCKS[IN_MEMORY_BACKEND] = {
     remove: [
+      "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
+      "sap.watt.saptoolsets.mta.common.deployToCF",
+      "sap.watt.saptoolsets.templates.common.hanatemplates",
       "sap.watt.ideplatform.orion.orionbackend",
       "sap.watt.saptoolsets.orionmigration",
       /^sap\.watt\.ideplatform\.che/

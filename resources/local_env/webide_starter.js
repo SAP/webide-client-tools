@@ -71,7 +71,10 @@ var WEBIDE_BACKEND_PRESETS = {
     remove: [
       /^sap\.watt\.ideplatform\.che/,
       "sap.watt.saptoolsets.orionmigration",
-      "sap.watt.ideplatform.orion.orionbackend"
+      "sap.watt.ideplatform.orion.orionbackend",
+      "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
+      "sap.watt.saptoolsets.mta.common.deployToCF",
+      "sap.watt.saptoolsets.templates.common.hanatemplates"
     ]
   }
 }
