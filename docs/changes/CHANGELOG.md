@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Bug Fixes
+
+- Fixed "In Memory" mode in Tests and Local Env for Web IDE 1.84+
+
 ## 2.3.3 (6-25-2018)
 
 #### Bug Fixes
