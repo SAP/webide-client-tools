@@ -20,7 +20,7 @@
     ]
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.1.2",
     "karma": "^2.0.4",
     "karma-chrome-launcher": "^2.1.1",
     "karma-coverage": "^1.1.1",
@@ -30,7 +30,7 @@
     "karma-openui5": "^0.2.2",
     "karma-requirejs": "^1.1.0",
     "minimist": "^1.2.0",
-    "mocha": "3.4.2",
+    "mocha": "5.2.0",
     "webpack": "^4.2.0"
   },
   "dependencies": {}
