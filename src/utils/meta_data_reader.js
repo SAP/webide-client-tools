@@ -192,6 +192,7 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
         )
         assertFileExists(
           fullInterfacePath,
+          // @ts-ignore
           currPathAndReferencedBy.referencedBy
         )
         const currInterfaceMeta = utils.readJsonSync(fullInterfacePath)
