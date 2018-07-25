@@ -1,12 +1,12 @@
 jest.mock("vm")
 
 // testing via the API intentionally
-const bundlingApi = require("../src/api").bundling
 const chai = require("chai")
 const path = require("path")
 const fs = require("fs-extra")
 const _ = require("lodash")
 const chaiAsPromised = require("chai-as-promised")
+const bundlingApi = require("../src/api").bundling
 
 chai.use(chaiAsPromised)
 chai.use(require("chai-string"))

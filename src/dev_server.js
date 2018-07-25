@@ -4,8 +4,8 @@
 const connect = require("connect")
 const http = require("http")
 const serveStatic = require("serve-static")
-const middleware = require("./middleware")
 const _ = require("lodash")
+const middleware = require("./middleware")
 
 /** @type {webideClientTools.DevServerAPI} */
 const devServer = {

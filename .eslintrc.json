@@ -6,6 +6,8 @@
     "jest": true
   },
   "rules": {
+    "no-else-return": 0,
+    "linebreak-style": 0,
     "arrow-body-style": 0,
     "strict": 0,
     "no-console": 0,
@@ -19,15 +21,5 @@
     "prefer-destructuring": 0,
     "no-buffer-constructor": 0
   },
-  "globals": {
-    "describe": true,
-    "context": true,
-    "before": true,
-    "beforeEach": true,
-    "after": true,
-    "afterEach": true,
-    "it": true,
-    "jest": true,
-    "jasmine": true
-  }
+  "globals": {}
 }

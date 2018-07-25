@@ -1,8 +1,8 @@
 jest.mock("vm")
 
-const api = require("../src/api")
 const expect = require("chai").expect
 const _ = require("lodash")
+const api = require("../src/api")
 
 describe("The Exported tools APIs", () => {
   it("All API functions are exposed with the same name they have been defined with", () => {

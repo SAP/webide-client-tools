@@ -1,7 +1,7 @@
 const expect = require("chai").expect
-const metadataReader = require("../../src/utils/meta_data_reader")
 const _ = require("lodash")
 const path = require("path")
+const metadataReader = require("../../src/utils/meta_data_reader")
 
 /* eslint-disable no-unused-expressions */
 describe("The metaDataReader", () => {

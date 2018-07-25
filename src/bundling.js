@@ -8,11 +8,11 @@ const stringEscape = require("js-string-escape")
 const _ = require("lodash")
 const fs = require("fs-extra")
 const glob = require("glob")
-const metadataReader = require("./utils/meta_data_reader")
 const path = require("path")
-const utils = require("./utils/utils")
 const requirejs = require("requirejs")
 const webpack = require("webpack")
+const metadataReader = require("./utils/meta_data_reader")
+const utils = require("./utils/utils")
 
 function optimizeAsync(config) {
   return new Promise((resolve, reject) => {
