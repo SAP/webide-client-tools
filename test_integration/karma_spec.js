@@ -6,8 +6,7 @@ const fs = require("fs-extra")
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 120000
 
-// skipped because webide package not available publicly.
-describe.skip("karma integration tests", () => {
+describe("karma integration tests", () => {
   function clean() {
     fs.removeSync(path.resolve(__dirname, "../example/coverage"))
   }

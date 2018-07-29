@@ -50,8 +50,7 @@
     "vuepress": "0.12.0"
   },
   "scripts": {
-    "ci_full_flow": "npm-run-all format_validate type_check lint test test_integration docs website:build",
-    "ci_full_flow_no_docs": "npm-run-all format_validate type_check lint test",
+    "ci_full_flow": "npm-run-all format_validate type_check lint test docs website:build",
     "release": "git fetch && git rebase && npm-run-all ci_full_flow_no_docs && node scripts/release.js",
     "lint": "eslint src/**/*.js test/**/*.js test_integration/**/*.js",
     "test": "jest",
