@@ -15,7 +15,7 @@ describe("karma integration tests", () => {
 
   it("can test a sample feature", () => {
     const exampleDir = path.resolve(__dirname, "../example")
-    childProcess.execSync("npm run test_di", {
+    childProcess.execSync("npm run test", {
       cwd: exampleDir,
       stdio: "inherit"
     })
