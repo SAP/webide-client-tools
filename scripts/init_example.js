@@ -5,9 +5,9 @@ const exampleDir = path.resolve(__dirname, "../example")
 const rootDir = path.resolve(__dirname, "../")
 
 // setup
-childProcess.execSync("yarn", { cwd: exampleDir, stdio: "inherit" })
-childProcess.execSync("yarn link", { cwd: rootDir, stdio: "inherit" })
-childProcess.execSync("yarn link @sap-webide/webide-client-tools", {
+childProcess.execSync("npm install", { cwd: exampleDir, stdio: "inherit" })
+childProcess.execSync("npm link", { cwd: rootDir, stdio: "inherit" })
+childProcess.execSync("npm link @sap-webide/webide-client-tools", {
   cwd: exampleDir,
   stdio: "inherit"
 })
