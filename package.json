@@ -45,7 +45,7 @@
     "prettier": "1.13.7",
     "semver": "5.5.0",
     "shx": "0.3.2",
-    "typedoc": "0.11.1",
+    "typedoc": "0.12.0",
     "typescript": "2.9.2",
     "vuepress": "0.12.0"
   },
