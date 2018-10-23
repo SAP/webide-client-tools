@@ -11,7 +11,10 @@ define(["STF"], function(STF) {
       // but without the che backend related plugins, so it runs in "in memory" mode.
       // See the docs for "startWebIde" for customization options
       // http://sap.github.io/webide-client-tools/web/html_docs/module-STF.html
-      return STF.startWebIde(suiteName)
+      // TODO: temp devOps related workaround
+      return STF.startWebIde(suiteName, {
+        ui5Root: "https://sapui5.int.sap.hana.ondemand.com/1.52.4/resources"
+      })
     })
 
     it("Will successfully invoke a service method", function() {
@@ -46,8 +49,12 @@ define(["STF"], function(STF) {
         // allow optionally disabling this validation.
         config.featureConfig.bundledFeatures["client-tools-example"] =
           "file:../../../../../dist/package.json"
+
+        // temp devOps related workaround
+        config.ui5Root = "https://sapui5.hana.ondemand.com/1.52.4/resources"
       }
 
+      // TODO: temp devOps related workaround
       return STF.startWebIde(suiteName, config)
     })
 
