@@ -1,0 +1,176 @@
+{
+  "Interfaces": {
+    "sap.webide.example.plugin.service.Sample": {
+      "name": "Interfaces.sap.webide.example.plugin.service.Sample",
+      "basename": "sap.webide.example.plugin.service.Sample",
+      "visibility": "public",
+      "kind": "interface",
+      "description": "The sample service interface",
+      "component": "CA-WDE-FPM",
+      "events": {
+        "notificationDisplayed": {
+          "description": "the event is triggered when the notification",
+          "params": [
+            {
+              "name": "notificationCount",
+              "type": "number",
+              "description": "The number of greeting notifications displayed so far"
+            }
+          ],
+          "visibility": "public",
+          "example": "      var sampleService = getService(\"sample\")\r\n      var mSample = {\r\n        subscribes: {\r\n          \"sample:notificationDisplayed\":\r\n            \"sampleService:myNotificationDisplayedHandler\"\r\n        }\r\n      }\r\n      sampleService.prototype.myNotificationDisplayedHandler = function(\r\n        notificationCount\r\n      ) {\r\n        var notificationNumberSoFar = notificationCount\r\n      }"
+        }
+      },
+      "methods": {
+        "modifyVar": {
+          "description": "Display a greeting message notification",
+          "params": [
+            {
+              "name": "sName",
+              "type": "string",
+              "description": "The name of the user to greet"
+            }
+          ],
+          "visibility": "public",
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      expect(sampleService.modifyVar(\"Elad\").to.equal(\"EladModifiedSample\"))"
+        },
+        "sayHello": {
+          "description": "Display a greeting message notification",
+          "params": [
+            {
+              "name": "sName",
+              "type": "string",
+              "description": "The name of the user to greet"
+            }
+          ],
+          "visibility": "public",
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.sayHello(\"Elad\").then(function(notiCount) {\r\n        expect(notiCount.notificationCount).to.equal(1)\r\n      })"
+        },
+        "getNotificationCount": {
+          "description": "Get the number of greeting notifications displayed so far",
+          "returns": {
+            "type": "number",
+            "description": "Number of greeting notifications displayed so far"
+          },
+          "visibility": "public",
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.getNotificationCount().then(function(notiCount) {\r\n        expect(notiCount).to.equal(0)\r\n      })"
+        }
+      },
+      "configurationProperties": {
+        "notificationObject": {
+          "description": "notification object to organize the count",
+          "type": {
+            "notificationCount": {
+              "type": "number",
+              "description": "it is used to configure the number notification counter will start from"
+            }
+          },
+          "multiple": true,
+          "visibility": "public",
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.configure({ notificationCount: 3 })"
+        }
+      }
+    }
+  },
+  "Services": {
+    "sample": {
+      "name": "Services.sample",
+      "basename": "sample",
+      "visibility": "public",
+      "kind": "service",
+      "description": "The <i>Sample</i> service manages functionality related to Our Example.",
+      "component": "CA-WDE-FPM",
+      "events": {
+        "notificationDisplayed": {
+          "name": "notificationDisplayed",
+          "visibility": "public",
+          "static": true,
+          "description": "Fired when the notification message was displayed",
+          "params": [
+            {
+              "name": "notificationCount",
+              "type": "integer",
+              "description": "The number of greeting notifications displayed so far."
+            }
+          ],
+          "example": "      var sampleService = getService(\"sample\")\r\n      var mSample = {\r\n        subscribes: {\r\n          \"sample:notificationDisplayed\":\r\n            \"sampleService:myNotificationDisplayedHandler\"\r\n        }\r\n      }\r\n      sampleService.prototype.myNotificationDisplayedHandler = function(\r\n        notificationCount\r\n      ) {\r\n        var notificationNumberSoFar = notificationCount\r\n      }"
+        }
+      },
+      "methods": {
+        "getNotificationCount": {
+          "name": "getNotificationCount",
+          "visibility": "internal",
+          "static": true,
+          "description": "gets the notification counter",
+          "returns": {
+            "type": "Integer",
+            "description": "the notification counter"
+          },
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.getNotificationCount().then(function(notiCount) {\r\n        expect(notiCount).to.equal(0)\r\n      })"
+        },
+        "modifyVar": {
+          "name": "modifyVar",
+          "visibility": "public",
+          "static": true,
+          "description": "Modifies the variable 'modifyMe'",
+          "params": [
+            {
+              "name": "sName",
+              "type": "string",
+              "optional": "false",
+              "description": "A value for 'modifyMe'"
+            }
+          ],
+          "returns": {
+            "type": "string",
+            "description": "the modifyMe value"
+          },
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      expect(sampleService.modifyVar(\"Elad\").to.equal(\"EladModifiedSample\"))"
+        },
+        "sayHello": {
+          "name": "sayHello",
+          "visibility": "internal",
+          "static": true,
+          "description": "Displays greeting notification and fires 'notificationDisplayed' event",
+          "params": [
+            {
+              "name": "sName",
+              "type": "string",
+              "optional": "false",
+              "description": "An appendix to the Hello"
+            }
+          ],
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.sayHello(\"Elad\").then(function(notiCount) {\r\n        expect(notiCount.notificationCount).to.equal(1)\r\n      })"
+        }
+      },
+      "configurationProperties": {
+        "notificationObject": {
+          "name": "notificationObject",
+          "type": "Object[]",
+          "description": "notification object to organize the count",
+          "params": [
+            {
+              "name": "notificationCount",
+              "type": "number",
+              "description": "a notification count to start the service from."
+            }
+          ],
+          "visibility": "public",
+          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.configure({ notificationCount: 3 })"
+        }
+      }
+    }
+  },
+  "Classes": {
+    "helloUtils": {
+      "name": "Classes.helloUtils",
+      "basename": "helloUtils",
+      "visibility": "public",
+      "kind": "class",
+      "description": "The <i>helloUtils</i> class manages functionality related to Our Example.",
+      "component": "CA-WDE-FPM",
+      "events": {},
+      "methods": {}
+    }
+  }
+}

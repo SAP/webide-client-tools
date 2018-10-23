@@ -1,0 +1,66 @@
+{
+  "name": "sap.webide.example.plugin.service.Sample",
+  "description": "The sample service interface",
+  "visibility": "public",
+  "component": "CA-WDE-FPM",
+  "configurationProperties": {
+    "notificationObject": {
+      "description": "notification object to organize the count",
+      "type": {
+        "notificationCount": {
+          "type": "number",
+          "description":
+            "it is used to configure the number notification counter will start from"
+        }
+      },
+      "multiple": true,
+      "visibility": "public"
+    }
+  },
+  "methods": {
+    "modifyVar": {
+      "description": "Display a greeting message notification",
+      "params": [
+        {
+          "name": "sName",
+          "type": "string",
+          "description": "The name of the user to greet"
+        }
+      ],
+      "visibility": "public"
+    },
+    "sayHello": {
+      "description": "Display a greeting message notification",
+      "params": [
+        {
+          "name": "sName",
+          "type": "string",
+          "description": "The name of the user to greet"
+        }
+      ],
+      "visibility": "public"
+    },
+    "getNotificationCount": {
+      "description":
+        "Get the number of greeting notifications displayed so far",
+      "returns": {
+        "type": "number",
+        "description": "Number of greeting notifications displayed so far"
+      },
+      "visibility": "public"
+    }
+  },
+  "events": {
+    "notificationDisplayed": {
+      "description": "the event is triggered when the notification",
+      "params": [
+        {
+          "name": "notificationCount",
+          "type": "number",
+          "description": "The number of greeting notifications displayed so far"
+        }
+      ],
+      "visibility": "public"
+    }
+  }
+}

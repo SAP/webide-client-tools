@@ -187,6 +187,53 @@ export interface BundlingAPI {
 export declare const bundling: BundlingAPI
 
 // ----------------------------------------------------------------
+// -------------------------- SDK ----------------------------
+// ----------------------------------------------------------------
+
+export interface SdkAPI {
+  /**
+   * create SDK json files
+   */
+  generateSdkDocumentation: (
+    target: string,
+    options?: {
+      /**
+       * Output directory for the sdk.
+       * Default value is "dist".
+       */
+      outDir?: string
+
+      /**
+       * Source files to create the sdk from.
+       * Default value is "\w+\.json".
+       */
+      sourcesExcludePattern?: string
+
+      /**
+       * example files to create the sdk from.
+       * Default value is "/.+\/test\/\w+.js/".
+       */
+      examplesIncludePattern?: string
+
+      /**
+       * Sources directory for the sdk.
+       * Default value is "src".
+       */
+      sourcesDir?: string
+
+      /**
+       * Examples directory for the sdk.
+       * Default value is "test".
+       */
+      examplesDir?: string
+      }
+  ) => void
+}
+
+export declare const sdk: SdkAPI
+
+
+// ----------------------------------------------------------------
 // -------------------------- STF ---------------------------------
 // ----------------------------------------------------------------
 

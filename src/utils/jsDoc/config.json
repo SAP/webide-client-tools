@@ -1,0 +1,28 @@
+{
+  "plugins": [
+    "C:\\Git\\webide-client-tools\\src\\utils\\jsDoc\\lib\\sapui5-jsdoc3-plugin\\sapui5-jsdoc3.js"
+  ],
+  "opts": {
+    "destination":
+      "C:\\Git\\webide-client-tools\\test\\generate_sdk_documentation\\resources\\test1\\api_json",
+    "recurse": true,
+    "lenient": true,
+    "template":
+      "C:\\Git\\webide-client-tools\\src\\utils\\jsDoc\\lib\\sapui5-jsdoc3-template",
+    "sapui5": {
+      "saveSymbols": false
+    }
+  },
+  "source": {
+    "include": [
+      "C:\\Git\\webide-client-tools\\test\\generate_sdk_documentation\\resources\\test1\\feature\\client\\testplugin1"
+    ],
+    "excludePattern": ""
+  },
+  "templates": {
+    "sapui5-jsdoc3": {
+      "outputSourceFiles": false,
+      "variants": ["apijson"]
+    }
+  }
+}
