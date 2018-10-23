@@ -31,7 +31,7 @@ based on npm ecosystem and standard OSS packages.
 
 ## Installation
 
-Run this command:
+Run this TEST@@@!!!!!!!!!!!!!!!!!!!!!!!!@#!# command:
 `npm install @sap-webide/webide-client-tools --save-dev`
 
 ## Usage and Documentation
