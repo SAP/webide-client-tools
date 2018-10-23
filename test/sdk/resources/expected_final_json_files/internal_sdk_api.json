@@ -14,11 +14,13 @@
             {
               "name": "notificationCount",
               "type": "number",
-              "description": "The number of greeting notifications displayed so far"
+              "description":
+                "The number of greeting notifications displayed so far"
             }
           ],
           "visibility": "public",
-          "example": "      var sampleService = getService(\"sample\")\r\n      var mSample = {\r\n        subscribes: {\r\n          \"sample:notificationDisplayed\":\r\n            \"sampleService:myNotificationDisplayedHandler\"\r\n        }\r\n      }\r\n      sampleService.prototype.myNotificationDisplayedHandler = function(\r\n        notificationCount\r\n      ) {\r\n        var notificationNumberSoFar = notificationCount\r\n      }"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n      var mSample = {\r\n        subscribes: {\r\n          \"sample:notificationDisplayed\":\r\n            \"sampleService:myNotificationDisplayedHandler\"\r\n        }\r\n      }\r\n      sampleService.prototype.myNotificationDisplayedHandler = function(\r\n        notificationCount\r\n      ) {\r\n        var notificationNumberSoFar = notificationCount\r\n      }"
         }
       },
       "methods": {
@@ -32,7 +34,8 @@
             }
           ],
           "visibility": "public",
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      expect(sampleService.modifyVar(\"Elad\").to.equal(\"EladModifiedSample\"))"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      expect(sampleService.modifyVar(\"Elad\").to.equal(\"EladModifiedSample\"))"
         },
         "sayHello": {
           "description": "Display a greeting message notification",
@@ -44,16 +47,19 @@
             }
           ],
           "visibility": "public",
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.sayHello(\"Elad\").then(function(notiCount) {\r\n        expect(notiCount.notificationCount).to.equal(1)\r\n      })"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.sayHello(\"Elad\").then(function(notiCount) {\r\n        expect(notiCount.notificationCount).to.equal(1)\r\n      })"
         },
         "getNotificationCount": {
-          "description": "Get the number of greeting notifications displayed so far",
+          "description":
+            "Get the number of greeting notifications displayed so far",
           "returns": {
             "type": "number",
             "description": "Number of greeting notifications displayed so far"
           },
           "visibility": "public",
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.getNotificationCount().then(function(notiCount) {\r\n        expect(notiCount).to.equal(0)\r\n      })"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.getNotificationCount().then(function(notiCount) {\r\n        expect(notiCount).to.equal(0)\r\n      })"
         }
       },
       "configurationProperties": {
@@ -62,12 +68,14 @@
           "type": {
             "notificationCount": {
               "type": "number",
-              "description": "it is used to configure the number notification counter will start from"
+              "description":
+                "it is used to configure the number notification counter will start from"
             }
           },
           "multiple": true,
           "visibility": "public",
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.configure({ notificationCount: 3 })"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.configure({ notificationCount: 3 })"
         }
       }
     }
@@ -78,7 +86,8 @@
       "basename": "sample",
       "visibility": "public",
       "kind": "service",
-      "description": "The <i>Sample</i> service manages functionality related to Our Example.",
+      "description":
+        "The <i>Sample</i> service manages functionality related to Our Example.",
       "component": "CA-WDE-FPM",
       "events": {
         "notificationDisplayed": {
@@ -90,10 +99,12 @@
             {
               "name": "notificationCount",
               "type": "integer",
-              "description": "The number of greeting notifications displayed so far."
+              "description":
+                "The number of greeting notifications displayed so far."
             }
           ],
-          "example": "      var sampleService = getService(\"sample\")\r\n      var mSample = {\r\n        subscribes: {\r\n          \"sample:notificationDisplayed\":\r\n            \"sampleService:myNotificationDisplayedHandler\"\r\n        }\r\n      }\r\n      sampleService.prototype.myNotificationDisplayedHandler = function(\r\n        notificationCount\r\n      ) {\r\n        var notificationNumberSoFar = notificationCount\r\n      }"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n      var mSample = {\r\n        subscribes: {\r\n          \"sample:notificationDisplayed\":\r\n            \"sampleService:myNotificationDisplayedHandler\"\r\n        }\r\n      }\r\n      sampleService.prototype.myNotificationDisplayedHandler = function(\r\n        notificationCount\r\n      ) {\r\n        var notificationNumberSoFar = notificationCount\r\n      }"
         }
       },
       "methods": {
@@ -106,7 +117,8 @@
             "type": "Integer",
             "description": "the notification counter"
           },
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.getNotificationCount().then(function(notiCount) {\r\n        expect(notiCount).to.equal(0)\r\n      })"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.getNotificationCount().then(function(notiCount) {\r\n        expect(notiCount).to.equal(0)\r\n      })"
         },
         "modifyVar": {
           "name": "modifyVar",
@@ -125,13 +137,15 @@
             "type": "string",
             "description": "the modifyMe value"
           },
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      expect(sampleService.modifyVar(\"Elad\").to.equal(\"EladModifiedSample\"))"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      expect(sampleService.modifyVar(\"Elad\").to.equal(\"EladModifiedSample\"))"
         },
         "sayHello": {
           "name": "sayHello",
           "visibility": "internal",
           "static": true,
-          "description": "Displays greeting notification and fires 'notificationDisplayed' event",
+          "description":
+            "Displays greeting notification and fires 'notificationDisplayed' event",
           "params": [
             {
               "name": "sName",
@@ -140,7 +154,8 @@
               "description": "An appendix to the Hello"
             }
           ],
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.sayHello(\"Elad\").then(function(notiCount) {\r\n        expect(notiCount.notificationCount).to.equal(1)\r\n      })"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.sayHello(\"Elad\").then(function(notiCount) {\r\n        expect(notiCount.notificationCount).to.equal(1)\r\n      })"
         }
       },
       "configurationProperties": {
@@ -156,7 +171,8 @@
             }
           ],
           "visibility": "public",
-          "example": "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.configure({ notificationCount: 3 })"
+          "example":
+            "      var sampleService = getService(\"sample\")\r\n\r\n      return sampleService.configure({ notificationCount: 3 })"
         }
       }
     }
@@ -167,7 +183,8 @@
       "basename": "helloUtils",
       "visibility": "public",
       "kind": "class",
-      "description": "The <i>helloUtils</i> class manages functionality related to Our Example.",
+      "description":
+        "The <i>helloUtils</i> class manages functionality related to Our Example.",
       "component": "CA-WDE-FPM",
       "events": {},
       "methods": {}

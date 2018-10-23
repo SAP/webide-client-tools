@@ -25,9 +25,8 @@ const _TYPE_AGGREGATIONS = {
 }
 
 const _REGEXP = /\/\/\s*EXAMPLE_START:([\w.]+):(\w+):(\w+)$([\s\S]*?)\s*\/\/\s*EXAMPLE_END\s*$/gm
-const internalJsonFileName = "internal_sdk_api.json";
+const internalJsonFileName = "internal_sdk_api.json"
 const publicJsonFileName = "public_sdk_api.json"
-
 
 function filterPropertiesByVisibility(oProperties, aVisibility) {
   if (oProperties) {
@@ -67,7 +66,7 @@ function generateExamples(sTestFileContent, oResultJson) {
 function generateExamplesJsonRec(sPath, oExampleFileRegex, oResultJson) {
   if (fs.existsSync(sPath)) {
     fs.readdirSync(sPath).forEach(function(file) {
-      const curPath = path.resolve(__dirname, sPath + "/" + file);
+      const curPath = path.resolve(__dirname, sPath + "/" + file)
       if (fs.lstatSync(curPath).isDirectory()) {
         // folder
         generateExamplesJsonRec(curPath, oExampleFileRegex, oResultJson)
@@ -79,7 +78,9 @@ function generateExamplesJsonRec(sPath, oExampleFileRegex, oResultJson) {
     })
   } else {
     throw new Error(
-      "Error: The path given to the Examples files: " + sPath + " does not exists"
+      "Error: The path given to the Examples files: " +
+        sPath +
+        " does not exists"
     )
   }
 
@@ -88,12 +89,17 @@ function generateExamplesJsonRec(sPath, oExampleFileRegex, oResultJson) {
 
 function generateExamplesJson(sPath, oExampleFileRegex, oResultJson) {
   // run recursion function
-  const oExamplesJson = generateExamplesJsonRec(sPath, oExampleFileRegex, oResultJson);
+  const oExamplesJson = generateExamplesJsonRec(
+    sPath,
+    oExampleFileRegex,
+    oResultJson
+  )
 
   // check if examples were given
   if (_.isEmpty(oExamplesJson)) {
     throw new Error(
-      "Error: No examples were found in the path: " + path.resolve(__dirname, sPath + "/test")
+      "Error: No examples were found in the path: " +
+        path.resolve(__dirname, sPath + "/test")
     )
   }
 
@@ -101,33 +107,27 @@ function generateExamplesJson(sPath, oExampleFileRegex, oResultJson) {
 }
 
 function addExamplesFromJsDoc(oSdkAPI, oExampleForType, sApiName, oSdkAPIName) {
-  if(oSdkAPI.examples && oSdkAPI.examples[0] && !oExampleForType[sApiName]) {
+  if (oSdkAPI.examples && oSdkAPI.examples[0] && !oExampleForType[sApiName]) {
     console.error(
       "Taking example for " +
-      oSdkAPIName +
-      "." +
-      sApiName +
-      " from jsdoc. Note: this will soon be removed. Please move the example to a test file."
+        oSdkAPIName +
+        "." +
+        sApiName +
+        " from jsdoc. Note: this will soon be removed. Please move the example to a test file."
     )
     oExampleForType[sApiName] = oSdkAPI.examples[0].text
   }
 }
 
-function addExamples(
-  oSDK,
-  oExamples,
-  sApiType,
-  sExampleType,
-  strictMode
-) {
+function addExamples(oSDK, oExamples, sApiType, sExampleType, strictMode) {
   const oSdkTypeAPIs = oSDK && oSDK[sApiType]
-  const oSdkAPIName = oSDK.name;
+  const oSdkAPIName = oSDK.name
   if (oSdkTypeAPIs) {
     const oExampleForType = (oExamples && oExamples[sExampleType]) || {}
     _.forEach(oSdkTypeAPIs, function(oSdkAPI, sApiName) {
       // Allow examples from jsDoc only in non strict mode
       if (!strictMode) {
-        addExamplesFromJsDoc(oSdkAPI, oExampleForType, sApiName, oSdkAPIName);
+        addExamplesFromJsDoc(oSdkAPI, oExampleForType, sApiName, oSdkAPIName)
       }
       const oExample = oExampleForType[sApiName]
       if (oExample) {
@@ -136,21 +136,21 @@ function addExamples(
         if (strictMode) {
           throw new Error(
             sApiType +
-            ": " +
-            oSDK.name +
-            "." +
-            sApiName +
-            " is public and does not have an example"
-          );
+              ": " +
+              oSDK.name +
+              "." +
+              sApiName +
+              " is public and does not have an example"
+          )
         } else {
           console.error(
             sApiType +
-            ": " +
-            oSDK.name +
-            "." +
-            sApiName +
-            " is public and does not have an example"
-          );
+              ": " +
+              oSDK.name +
+              "." +
+              sApiName +
+              " is public and does not have an example"
+          )
         }
       }
     })
@@ -210,7 +210,9 @@ function generateApiJson(
           sType + " " + sApiName + " does not have a component defined"
         )
       } else {
-        console.error(sType + " " + sApiName + " does not have a component defined");
+        console.error(
+          sType + " " + sApiName + " does not have a component defined"
+        )
       }
     }
     oSdkApi.component = oApiMeta.component
@@ -225,38 +227,32 @@ function generateApiJson(
 
     // Validate that if mApiTypeToExampleType fields are public and they have an example
     // If so add them to oSdkApi.example
-    addExamples(
-      oSdkApi,
-      oAPIExample,
-      sApiType,
-      sExampleType,
-      strictMode
-    )
+    addExamples(oSdkApi, oAPIExample, sApiType, sExampleType, strictMode)
     // Validate that all mApiTypeToExampleType fields have a description
     _.forEach(oSdkApi[sApiType], function(oSdkAPI, sApiTypeName) {
       if (!oSdkAPI.description || !oSdkAPI.description.trim()) {
         if (strictMode) {
           throw new Error(
             sExampleType +
-            " " +
-            sApiTypeName +
-            " from " +
-            sType +
-            " " +
-            sApiName +
-            " is missing a description"
-          );
+              " " +
+              sApiTypeName +
+              " from " +
+              sType +
+              " " +
+              sApiName +
+              " is missing a description"
+          )
         } else {
           console.error(
             sExampleType +
-            " " +
-            sApiTypeName +
-            " from " +
-            sType +
-            " " +
-            sApiName +
-            " is missing a description"
-          );
+              " " +
+              sApiTypeName +
+              " from " +
+              sType +
+              " " +
+              sApiName +
+              " is missing a description"
+          )
         }
       }
     })
@@ -270,7 +266,9 @@ function generateApiJson(
     )
     if (aBadExampleTypes && aBadExampleTypes.length > 0) {
       throw new Error(
-        "Examples with type: " + aBadExampleTypes + ", are not allowed for: " +
+        "Examples with type: " +
+          aBadExampleTypes +
+          ", are not allowed for: " +
           oSdkApi.name
       )
     }
@@ -323,7 +321,12 @@ function generateSdkServices(
   return oServicesJson
 }
 
-function generateSdkClasses(oJSDocClasses, oExamplesJson, strictMode, aVisibility) {
+function generateSdkClasses(
+  oJSDocClasses,
+  oExamplesJson,
+  strictMode,
+  aVisibility
+) {
   _.forEach(oJSDocClasses, function(oClassJsDoc, sClassName) {
     oJSDocClasses[sClassName] = generateApiJson(
       "class",
@@ -338,7 +341,12 @@ function generateSdkClasses(oJSDocClasses, oExamplesJson, strictMode, aVisibilit
   return oJSDocClasses
 }
 
-function generateSdkInterfaces(oInterfacesMeta, oExamplesJson, strictMode, aVisibility) {
+function generateSdkInterfaces(
+  oInterfacesMeta,
+  oExamplesJson,
+  strictMode,
+  aVisibility
+) {
   const oInterfacesJson = {}
 
   const interfacesMetaFilteredByVisibilty = filterPropertiesByVisibility(
@@ -377,30 +385,28 @@ function filterArrayByVisibility(aSymbols, aVisibility) {
 }
 
 function findProperty(obj, prop, str) {
-  if(obj.hasOwnProperty(prop)){
-    return str;
+  if (obj.hasOwnProperty(prop)) {
+    return str
   }
   let result, p
   for (p in obj) {
-    if(obj.hasOwnProperty(p) && typeof obj[p] === 'object' ) {
-      result = findProperty(obj[p], prop, str + "." + p.toString());
-      if(result){
-        return result;
+    if (obj.hasOwnProperty(p) && typeof obj[p] === "object") {
+      result = findProperty(obj[p], prop, str + "." + p.toString())
+      if (result) {
+        return result
       }
     }
   }
-  return result;
+  return result
 }
 
 function filterEqualeValuesToArray(array) {
   const count = names =>
-    names.reduce((a, b) =>
-      Object.assign(a, {[b]: (a[b] || 0) + 1}), {})
+    names.reduce((a, b) => Object.assign(a, { [b]: (a[b] || 0) + 1 }), {})
 
-  const duplicates = dict =>
-    Object.keys(dict).filter((a) => dict[a] > 1)
+  const duplicates = dict => Object.keys(dict).filter(a => dict[a] > 1)
 
-  return duplicates(count(array));
+  return duplicates(count(array))
 }
 
 // TODO: break to smaller functions
@@ -475,13 +481,13 @@ function generateSdkJSDoc(aVisibility, oApiJson, strictMode) {
     }
   })
 
-  const classNames = classes.map(classObject => classObject.name);
-  const sameClassNames = filterEqualeValuesToArray(classNames);
+  const classNames = classes.map(classObject => classObject.name)
+  const sameClassNames = filterEqualeValuesToArray(classNames)
   if (Array.isArray(sameClassNames) && sameClassNames.length) {
-    throw new Error (
+    throw new Error(
       "Service and class with the same name exist, " +
-      "this could lead to inconsistencies in SDK navigation and in the service and class examples: " +
-      _.join(sameClassNames, ",")
+        "this could lead to inconsistencies in SDK navigation and in the service and class examples: " +
+        _.join(sameClassNames, ",")
     )
   }
 
@@ -490,12 +496,18 @@ function generateSdkJSDoc(aVisibility, oApiJson, strictMode) {
   if (strictMode) {
     let classPrefix, objectName
     _.forEach(classesMap, function(oClass) {
-      classPrefix = oClass.isService ? "Service" : "Class";
-      objectName = findProperty(oClass, "examples", classPrefix + "." + oClass.name);
-      if(objectName) {
-        throw new Error ("Error: @example is not allowed, found in: " + objectName);
+      classPrefix = oClass.isService ? "Service" : "Class"
+      objectName = findProperty(
+        oClass,
+        "examples",
+        classPrefix + "." + oClass.name
+      )
+      if (objectName) {
+        throw new Error(
+          "Error: @example is not allowed, found in: " + objectName
+        )
       }
-    });
+    })
   }
 
   const oJSDocObjects = {
@@ -522,12 +534,20 @@ function generateApiJsonFile(oOptions) {
   // Paths specified inside the config are relative to this path
   const sWorkingDirectoryPath = __dirname
   const config = {
-    plugins: [path.resolve(__dirname, "utils/jsDoc/lib/sapui5-jsdoc3-plugin/sapui5-jsdoc3.js")],
+    plugins: [
+      path.resolve(
+        __dirname,
+        "utils/jsDoc/lib/sapui5-jsdoc3-plugin/sapui5-jsdoc3.js"
+      )
+    ],
     opts: {
       destination: tempArtifactsDir,
       recurse: true,
       lenient: true,
-      template: path.resolve(__dirname, "utils/jsDoc/lib/sapui5-jsdoc3-template"),
+      template: path.resolve(
+        __dirname,
+        "utils/jsDoc/lib/sapui5-jsdoc3-template"
+      ),
       sapui5: {
         saveSymbols: false
       }
@@ -567,7 +587,7 @@ function generateApiJsonFile(oOptions) {
   }
   if (childStatus.status === 0) {
     console.info("SDK: Generated api.json")
-    return path.resolve(__dirname, tempArtifactsDir + "/api.json");
+    return path.resolve(__dirname, tempArtifactsDir + "/api.json")
   } else {
     const message =
       "JSDoc returned with error code " +
@@ -581,16 +601,26 @@ function generateApiJsonFile(oOptions) {
 function eraseFilesFromSystem(filesPath) {
   const apiJsonPath = path.resolve(__dirname, filesPath + "/api.json")
   try {
-    fs.unlinkSync(apiJsonPath);
-  } catch(error) {
-    console.warn("temp SDK file: " + apiJsonPath + " was NOT deleted\n\t" + error.message);
+    fs.unlinkSync(apiJsonPath)
+  } catch (error) {
+    console.warn(
+      "temp SDK file: " + apiJsonPath + " was NOT deleted\n\t" + error.message
+    )
   }
 
-  const symbolsJsonPath = path.resolve(__dirname, filesPath + "/symbols-pruned-ui5.json")
+  const symbolsJsonPath = path.resolve(
+    __dirname,
+    filesPath + "/symbols-pruned-ui5.json"
+  )
   try {
-    fs.unlinkSync(symbolsJsonPath);
-  } catch(error) {
-    console.warn("temp SDK file: " + symbolsJsonPath + " was NOT deleted\n\t" + error.message);
+    fs.unlinkSync(symbolsJsonPath)
+  } catch (error) {
+    console.warn(
+      "temp SDK file: " +
+        symbolsJsonPath +
+        " was NOT deleted\n\t" +
+        error.message
+    )
   }
 }
 
@@ -608,7 +638,7 @@ function getApiJson(target, outDir, sourcesExcludePattern) {
   var oApiJson = JSON.parse(fs.readFileSync(sApiJsonFilePath, "utf8"))
 
   // erase api.json and symbols-pruned-ui5.json files
-  eraseFilesFromSystem(outDir);
+  eraseFilesFromSystem(outDir)
 
   return oApiJson
 }
@@ -709,9 +739,15 @@ function writeJsonToFiles(outDir, publicAndInternalWebIdeJsonObject) {
     4
   )
 
-  fs.writeFileSync(path.resolve(__dirname, outDir + "/" + publicJsonFileName), publicWebIdeJson)
+  fs.writeFileSync(
+    path.resolve(__dirname, outDir + "/" + publicJsonFileName),
+    publicWebIdeJson
+  )
 
-  fs.writeFileSync(path.resolve(__dirname, outDir + "/" + internalJsonFileName), internalWebIdeJson)
+  fs.writeFileSync(
+    path.resolve(__dirname, outDir + "/" + internalJsonFileName),
+    internalWebIdeJson
+  )
 }
 
 function generateSdkDocumentation(target, options) {
@@ -719,7 +755,8 @@ function generateSdkDocumentation(target, options) {
   const oInterfacesAndServeries = getInterfacesAndServices(target)
 
   // execute JSDoc and parse result
-  const sourcesDir = options.sourcesDir || path.resolve(__dirname, target + "/src");
+  const sourcesDir =
+    options.sourcesDir || path.resolve(__dirname, target + "/src")
   const oApiJson = getApiJson(
     sourcesDir,
     options.outDir,
@@ -727,8 +764,11 @@ function generateSdkDocumentation(target, options) {
   )
 
   // create json object from uniting the api.json, serveries and interfaces
-  const examplesDir = options.examplesDir || path.resolve(__dirname, target + "/test");
-  const strictMode = options.hasOwnProperty("strictMode") ? options.strictMode : true;
+  const examplesDir =
+    options.examplesDir || path.resolve(__dirname, target + "/test")
+  const strictMode = options.hasOwnProperty("strictMode")
+    ? options.strictMode
+    : true
   const publicAndInternalWebIdeJsonObject = generateSdkDocumentationObjects(
     oInterfacesAndServeries.servicesMeta,
     oInterfacesAndServeries.interfacesMeta,
