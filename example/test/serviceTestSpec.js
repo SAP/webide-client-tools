@@ -13,7 +13,7 @@ define(["STF"], function(STF) {
       // http://sap.github.io/webide-client-tools/web/html_docs/module-STF.html
       // TODO: temp devOps related workaround
       return STF.startWebIde(suiteName, {
-        ui5Root: "https://sapui5.int.sap.hana.ondemand.com/1.52.4/resources/"
+        ui5Root: "https://sapui5.hana.ondemand.com/1.52.4/resources/"
       })
     })
 
