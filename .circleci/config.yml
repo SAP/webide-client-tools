@@ -6,15 +6,6 @@ base-build: &base-build
     - run: yarn
     - run: yarn run ci_full_flow
 
-base-build: &base-build-node6
-  working_directory: ~/repo
-  steps:
-    - checkout
-    # cannot install/run vuepress on node.js 6
-    - run: yarn remove vuepress
-    - run: yarn
-    - run: yarn run ci_full_flow_no_docs
-
 # YAML arrays cannot be merged, duplication needed...
 # https://stackoverflow.com/questions/24090177/how-to-merge-yaml-arrays
 deploy-build: &deploy-build
@@ -39,11 +30,6 @@ jobs:
       - image: circleci/node:8-browsers
     <<: *base-build
 
-  build-node6:
-    docker:
-      - image: circleci/node:6-browsers
-    <<: *base-build-node6
-
   deploy:
     docker:
       - image: circleci/node:10-browsers
@@ -55,7 +41,6 @@ workflows:
     jobs:
       - build-node10
       - build-node8
-      - build-node6
       - deploy:
           filters:
             tags:
