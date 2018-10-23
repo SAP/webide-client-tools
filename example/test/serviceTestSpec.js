@@ -13,7 +13,7 @@ define(["STF"], function(STF) {
       // http://sap.github.io/webide-client-tools/web/html_docs/module-STF.html
       // TODO: temp devOps related workaround
       return STF.startWebIde(suiteName, {
-        ui5Root: "https://sapui5.int.sap.hana.ondemand.com/1.52.4/resources"
+        ui5Root: "https://sapui5.int.sap.hana.ondemand.com/1.52.4/resources/"
       })
     })
 
@@ -38,6 +38,8 @@ define(["STF"], function(STF) {
     before(function() {
       // empty config will re-use defaults
       var config = {}
+      // temp devOps related workaround
+      config.ui5Root = "https://sapui5.hana.ondemand.com/1.52.4/resources/"
 
       // this is injected via the karma.conf.js config property
       if (__karma__.config.DIST) {
@@ -49,9 +51,6 @@ define(["STF"], function(STF) {
         // allow optionally disabling this validation.
         config.featureConfig.bundledFeatures["client-tools-example"] =
           "file:../../../../../dist/package.json"
-
-        // temp devOps related workaround
-        config.ui5Root = "https://sapui5.hana.ondemand.com/1.52.4/resources"
       }
 
       // TODO: temp devOps related workaround
