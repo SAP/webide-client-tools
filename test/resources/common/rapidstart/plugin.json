@@ -4,8 +4,7 @@
   "i18n": "sap.watt.bamba.rapidstart/i18n/i18n",
   "provides": {
     "interfaces": {
-      "sap.watt.bamba.rapidstart.rapidstartService":
-        "sap.watt.bamba.rapidstart/service/W5GOutline"
+      "sap.watt.bamba.rapidstart.rapidstartService": "sap.watt.bamba.rapidstart/service/W5GOutline"
     },
     "services": {
       "sample": {

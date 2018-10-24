@@ -6,7 +6,8 @@
     "sourceMap": true,
     "checkJs": true,
     "allowJs": true,
-    "noEmit": true
+    "noEmit": true,
+    "strict": false
   },
-  "include": ["src/**/*.js", "api.d.ts"]
+  "include": ["api.d.ts"]
 }

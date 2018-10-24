@@ -7,8 +7,7 @@
       "returns": "object"
     },
     "quickStartWithLayoutEditor": {
-      "description":
-        "Generates a simple application and opens it with layout editor."
+      "description": "Generates a simple application and opens it with layout editor."
     }
   }
 }

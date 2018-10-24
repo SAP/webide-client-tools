@@ -1,7 +1,6 @@
 {
   "name": "sap.webide.example.plugin",
-  "description":
-    "This is a sample plugin that demonstrates some SAP web IDE capabilities like adding a menu item and firing an event",
+  "description": "This is a sample plugin that demonstrates some SAP web IDE capabilities like adding a menu item and firing an event",
   "i18n": "sap.webide.example.plugin/i18n/i18n",
   "requires": {
     "services": ["usernotification", "log", "command", "commandGroup"]
@@ -15,8 +14,7 @@
     },
 
     "interfaces": {
-      "sap.webide.example.plugin.service.Sample":
-        "sap.webide.example.plugin/service/Sample"
+      "sap.webide.example.plugin.service.Sample": "sap.webide.example.plugin/service/Sample"
     }
   },
   "configures": {

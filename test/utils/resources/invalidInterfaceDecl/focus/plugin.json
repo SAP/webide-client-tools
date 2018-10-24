@@ -3,8 +3,7 @@
   "description": "The Focus Plugin",
   "provides": {
     "interfaces": {
-      "sap.watt.common.plugin.focus.service.Focus":
-        "sap.watt.common.oops/service/Focus"
+      "sap.watt.common.plugin.focus.service.Focus": "sap.watt.common.oops/service/Focus"
     }
   },
   "subscribes": {}

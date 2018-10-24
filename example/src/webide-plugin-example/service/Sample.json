@@ -23,8 +23,7 @@
       ]
     },
     "getNotificationCount": {
-      "description":
-        "Get the number of greeting notifications displayed so far",
+      "description": "Get the number of greeting notifications displayed so far",
       "returns": {
         "type": "number",
         "description": "Number of greeting notifications displayed so far"

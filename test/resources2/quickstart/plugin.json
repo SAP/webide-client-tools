@@ -7,8 +7,7 @@
   },
   "provides": {
     "interfaces": {
-      "sap.watt.bamba.quickstart.QuickStartService":
-        "sap.watt.bamba.quickstart/service/QuickStartService"
+      "sap.watt.bamba.quickstart.QuickStartService": "sap.watt.bamba.quickstart/service/QuickStartService"
     },
     "services": {
       "sample": {
