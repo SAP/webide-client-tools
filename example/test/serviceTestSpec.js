@@ -11,10 +11,7 @@ define(["STF"], function(STF) {
       // but without the che backend related plugins, so it runs in "in memory" mode.
       // See the docs for "startWebIde" for customization options
       // http://sap.github.io/webide-client-tools/web/html_docs/module-STF.html
-      // TODO: temp devOps related workaround
-      return STF.startWebIde(suiteName, {
-        ui5Root: "https://sapui5.hana.ondemand.com/1.52.4/resources/"
-      })
+      return STF.startWebIde(suiteName)
     })
 
     it("Will successfully invoke a service method", function() {
@@ -38,8 +35,6 @@ define(["STF"], function(STF) {
     before(function() {
       // empty config will re-use defaults
       var config = {}
-      // temp devOps related workaround
-      config.ui5Root = "https://sapui5.hana.ondemand.com/1.52.4/resources/"
 
       // this is injected via the karma.conf.js config property
       if (__karma__.config.DIST) {
@@ -53,7 +48,6 @@ define(["STF"], function(STF) {
           "file:../../../../../dist/package.json"
       }
 
-      // TODO: temp devOps related workaround
       return STF.startWebIde(suiteName, config)
     })
 
