@@ -1,4 +1,5 @@
 const config = require("./release_config")
+const git = require("gitty")
 
 const myRepo = git("")
 const status = myRepo.statusSync()
