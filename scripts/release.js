@@ -6,39 +6,8 @@ const _ = require("lodash")
 const semver = require("semver")
 const jf = require("jsonfile")
 const fs = require("fs")
-const childProcess = require("child_process")
 
 const myRepo = git("")
-const status = myRepo.statusSync()
-
-// Checks and Validations
-if (
-  !_.isEmpty(status.staged) ||
-  !_.isEmpty(status.unstaged) ||
-  !_.isEmpty(status.untracked)
-) {
-  console.log(
-    "Error: git working directory must be clean in order to perform a release"
-  )
-  process.exit(-1)
-}
-
-const branchesInfo = myRepo.getBranchesSync()
-
-if (branchesInfo.current !== "master") {
-  console.log(
-    "Error: can only perform release job from master or temp_master branch"
-  )
-  process.exit(-1)
-}
-
-const dateTemplateRegExp = /^(## X\.Y\.Z )\(INSERT_DATE_HERE\)/
-if (!dateTemplateRegExp.test(config.changeLogString)) {
-  console.log(
-    "CHANGELOG.md must have first line in the format '## X.Y.Z (INSERT_DATE_HERE)'"
-  )
-  process.exit(-1)
-}
 
 // bump package.json
 const newVersion = semver.inc(config.currVersion, config.mode)
@@ -50,13 +19,10 @@ jf.writeFileSync(config.packagePath, bumpedPkgJson, { spaces: 2, EOL: "\r\n" })
 const nowDate = new Date()
 const nowDateString = nowDate.toLocaleDateString().replace(/\//g, "-")
 const changeLogDate = config.changeLogString.replace(
-  dateTemplateRegExp,
+  config.dateTemplateRegExp,
   `## ${newVersion} (${nowDateString})`
 )
 fs.writeFileSync(config.changeLogPath, changeLogDate)
-
-childProcess.execSync("npm run docs", { stdio: "inherit" })
-childProcess.execSync("npm run website:build", { stdio: "inherit" })
 
 // Create commit and push to master
 const newTagName = config.tagPrefix + newVersion

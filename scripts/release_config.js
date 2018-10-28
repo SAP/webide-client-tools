@@ -23,6 +23,8 @@ if (_.includes(process.argv, "patch")) {
   process.exit(-1)
 }
 
+const dateTemplateRegExp = /^(## X\.Y\.Z )\(INSERT_DATE_HERE\)/
+
 module.exports = {
   packagePath,
   changeLogPath,
@@ -32,5 +34,6 @@ module.exports = {
   changeLogString,
   currVersion: pkgJson.version,
   mode,
-  tagPrefix: "v"
+  tagPrefix: "v",
+  dateTemplateRegExp
 }
