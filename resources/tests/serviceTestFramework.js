@@ -144,7 +144,8 @@ define("STF", [
     mocks: [IN_MEMORY_BACKEND],
     env: localEnvJson,
     html: "/base/node_modules/webide/src/main/webapp/index.html",
-    ui5Root: ui5Version.baseURL + ui5Version.version + "/resources/",
+    ui5Root:
+      "https://sapui5.hana.ondemand.com/" + ui5Version.version + "/resources/",
     ui5Debug: false,
     ideDebug: true,
     urlParams: undefined

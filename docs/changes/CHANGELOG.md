@@ -1,3 +1,11 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- UI5 will be loaded from a globally available resource **by default**
+  in startWebIDE flows. To change this, see: "ui5Root" config option in
+  ["startWebIDE"](https://sap.github.io/webide-client-tools/web/html_docs/interfaces/_api_d_.stf_api.html#startwebide).
+
 ## 2.3.4 (6-27-2018)
 
 #### Bug Fixes

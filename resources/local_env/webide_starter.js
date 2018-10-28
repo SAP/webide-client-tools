@@ -80,7 +80,9 @@ var WEBIDE_BACKEND_PRESETS = {
 }
 
 var DEFAULT_UI5_URL =
-  WEBIDE_LOCAL_DEV_UI5.baseURL + WEBIDE_LOCAL_DEV_UI5.version + "/resources/"
+  "https://sapui5.hana.ondemand.com/" +
+  WEBIDE_LOCAL_DEV_UI5.version +
+  "/resources/"
 
 var DEFAULT_START_WEBIDE_OPTIONS = {
   ui5_url: DEFAULT_UI5_URL,
