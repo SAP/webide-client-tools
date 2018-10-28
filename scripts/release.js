@@ -9,8 +9,20 @@ const fs = require("fs")
 
 const myRepo = git("")
 
+let mode
+if (_.includes(process.argv, "patch")) {
+  mode = "patch"
+} else if (_.includes(process.argv, "minor")) {
+  mode = "minor"
+} else if (_.includes(process.argv, "major")) {
+  mode = "major"
+} else {
+  console.log("release mode (patch|minor|major) not provided")
+  process.exit(-1)
+}
+
 // bump package.json
-const newVersion = semver.inc(config.currVersion, config.mode)
+const newVersion = semver.inc(config.currVersion, mode)
 const bumpedPkgJson = _.clone(config.pkgJson)
 bumpedPkgJson.version = newVersion
 jf.writeFileSync(config.packagePath, bumpedPkgJson, { spaces: 2, EOL: "\r\n" })
