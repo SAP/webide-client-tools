@@ -1,6 +1,6 @@
 {
   "name": "@sap-webide/webide-client-tools",
-  "version": "2.3.4",
+  "version": "2.4.0",
   "license": "Apache-2.0",
   "main": "src/api.js",
   "dependencies": {
