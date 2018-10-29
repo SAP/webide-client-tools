@@ -2,7 +2,7 @@
 
 #### Minor Changes
 
-- Add missing service to test framework
+- Add missing mock to test framework
 
 ## 2.4.0 (10-28-2018)
 
