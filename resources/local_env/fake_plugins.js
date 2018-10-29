@@ -44,6 +44,11 @@
           pluginName: "qunit.common.util.fakeMTA",
           sURI: prefixPath + "fakeMTA",
           required: true
+        },
+        {
+          pluginName: "qunit.common.util.fakeProjectSpaceSettings",
+          sURI: prefixPath + "fakeSpaceSettings",
+          required: true
         }
       ]
     }
