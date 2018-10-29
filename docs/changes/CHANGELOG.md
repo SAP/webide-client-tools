@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Add missing mock to test framework
+
 ## 2.4.0 (10-28-2018)
 
 #### Minor Changes
