@@ -5,7 +5,7 @@
   "main": "src/api.js",
   "dependencies": {
     "@types/webpack": "4.4.17",
-    "acorn": "6.0.2",
+    "acorn": "6.0.3",
     "connect": "3.6.6",
     "fs-extra": "4.0.2",
     "glob": "7.1.3",
