@@ -143,6 +143,7 @@ define("STF", [
     pluginsTransformDef: { add: [], remove: [] },
     mocks: [IN_MEMORY_BACKEND],
     env: localEnvJson,
+    flags: {},
     html: "/base/node_modules/webide/src/main/webapp/index.html",
     ui5Root:
       "https://sapui5.hana.ondemand.com/" + ui5Version.version + "/resources/",
@@ -257,7 +258,11 @@ define("STF", [
       )
       iframe.contentWindow.WEB_IDE_FEATURE_CONFIG_OVERRIDE =
         actualOptions.featureConfig
-      iframe.contentWindow.WEB_IDE_ENV_JSON_OVERRIDE = actualOptions.env
+      iframe.contentWindow.WEB_IDE_ENV_JSON_OVERRIDE = _.assign(
+        {},
+        actualOptions.env,
+        { flags: actualOptions.flags }
+      )
 
       return serviceRegistryDeferred.promise.then(function(PluginRegistry) {
         window.WEB_IDE_PLUGIN_REG[suiteName] = PluginRegistry
