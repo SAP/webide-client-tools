@@ -48,7 +48,7 @@ loadResourceSync("https://unpkg.com/lodash@4.17.2/lodash.min.js", "js")
 var actualOptions = _.defaults(window.CUSTOM_OPTIONS, DEFAULT_OPTIONS)
 
 loadResourceSync(
-  "node_modules/@sap-webide/webide-client-tools/resources/local_env/fake_plugins.js",
+  "node_modules/@sap-webide/webide-client-tools/resources/local_env/mock_conf.js",
   "js"
 )
 loadResourceSync(
@@ -67,15 +67,8 @@ var WEBIDE_BACKEND_PRESETS = {
     remove: []
   },
   IN_MEMORY: {
-    add: fakePlugins.defaultFakePlugins(false, actualOptions.webappPath),
-    remove: [
-      /^sap\.watt\.ideplatform\.che/,
-      "sap.watt.saptoolsets.orionmigration",
-      "sap.watt.ideplatform.orion.orionbackend",
-      "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
-      "sap.watt.saptoolsets.mta.common.deployToCF",
-      "sap.watt.saptoolsets.templates.common.hanatemplates"
-    ]
+    add: mockConf.defaultFakePlugins(false, actualOptions.webappPath),
+    remove: mockConf.pluginsToRemove()
   }
 }
 

@@ -11,7 +11,7 @@
     module.exports = factory()
   } else {
     // Browser globals (root is window)
-    root.fakePlugins = factory()
+    root.mockConf = factory()
   }
 })(this, function() {
   return {
@@ -50,6 +50,16 @@
           sURI: prefixPath + "fakeSpaceSettings",
           required: true
         }
+      ]
+    },
+    pluginsToRemove: function() {
+      return [
+        "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
+        "sap.watt.saptoolsets.mta.common.deployToCF",
+        "sap.watt.saptoolsets.templates.common.hanatemplates",
+        "sap.watt.ideplatform.orion.orionbackend",
+        "sap.watt.saptoolsets.orionmigration",
+        /^sap\.watt\.ideplatform\.che/
       ]
     }
   }

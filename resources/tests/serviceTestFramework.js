@@ -3,9 +3,9 @@
 define("STF", [
   "ui5Version",
   "coverage",
-  "fakePlugins",
+  "mockConf",
   "https://unpkg.com/lodash@4.17.2/lodash.min.js"
-], function(ui5Version, coverage, fakePlugins, _) {
+], function(ui5Version, coverage, mockConf, _) {
   "use strict"
   // Hack to sync load deps
   // TODO: can this be extracted? or must it bbe duplicated for every file using it?
@@ -38,15 +38,8 @@ define("STF", [
   var IN_MEMORY_BACKEND = "IN_MEMORY_BACKEND"
   var BUILT_IN_MOCKS = {}
   BUILT_IN_MOCKS[IN_MEMORY_BACKEND] = {
-    remove: [
-      "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
-      "sap.watt.saptoolsets.mta.common.deployToCF",
-      "sap.watt.saptoolsets.templates.common.hanatemplates",
-      "sap.watt.ideplatform.orion.orionbackend",
-      "sap.watt.saptoolsets.orionmigration",
-      /^sap\.watt\.ideplatform\.che/
-    ],
-    add: fakePlugins.defaultFakePlugins(true)
+    remove: mockConf.pluginsToRemove(),
+    add: mockConf.defaultFakePlugins(true)
   }
   Object.freeze(BUILT_IN_MOCKS)
 

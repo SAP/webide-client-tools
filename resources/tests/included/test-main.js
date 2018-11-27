@@ -57,8 +57,8 @@
         "node_modules/@sap-webide/webide-client-tools/resources/tests/serviceTestFramework",
       coverage:
         "node_modules/@sap-webide/webide-client-tools/resources/tests/coverage",
-      fakePlugins:
-        "node_modules/@sap-webide/webide-client-tools/resources/local_env/fake_plugins"
+      mockConf:
+        "node_modules/@sap-webide/webide-client-tools/resources/local_env/mock_conf"
     },
     window.CUSTOM_REQUIREJS_PATHS
   )
