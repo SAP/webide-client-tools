@@ -15,7 +15,7 @@
   }
 })(this, function() {
   return {
-    defaultFakePlugins: function(isKarma, webappPath) {
+    getDefaultFake: function(isKarma, webappPath) {
       if (webappPath === undefined) {
         webappPath = "node_modules/webide/src/main/webapp/"
       }
@@ -24,7 +24,7 @@
       var prefixPath =
         prefixDir + "/" + webappPath + "test-resources/sap/watt/util/"
 
-      return [
+      return {plugins: [
         {
           pluginName: "qunit.common.util.fakeFileBackend",
           sURI: prefixPath + "fakeFileBackend",
@@ -50,17 +50,15 @@
           sURI: prefixPath + "fakeSpaceSettings",
           required: true
         }
-      ]
-    },
-    pluginsToRemove: function() {
-      return [
-        "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
-        "sap.watt.saptoolsets.mta.common.deployToCF",
-        "sap.watt.saptoolsets.templates.common.hanatemplates",
-        "sap.watt.ideplatform.orion.orionbackend",
-        "sap.watt.saptoolsets.orionmigration",
-        /^sap\.watt\.ideplatform\.che/
-      ]
+      ], remove: [
+          "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
+          "sap.watt.saptoolsets.mta.common.deployToCF",
+          "sap.watt.saptoolsets.templates.common.hanatemplates",
+          "sap.watt.ideplatform.orion.orionbackend",
+          "sap.watt.saptoolsets.orionmigration",
+          /^sap\.watt\.ideplatform\.che/
+        ]
+      }
     }
   }
 })
