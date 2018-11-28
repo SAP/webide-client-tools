@@ -61,7 +61,7 @@ var localEnvJson = loadResourceSync(
   "json"
 )
 
-var defaultFake =  mockConf.getDefaultFake(false, actualOptions.webappPath);
+var defaultFake = mockConf.getDefaultFake(false, actualOptions.webappPath)
 var WEBIDE_BACKEND_PRESETS = {
   DI: {
     add: [],

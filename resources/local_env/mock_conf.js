@@ -24,33 +24,35 @@
       var prefixPath =
         prefixDir + "/" + webappPath + "test-resources/sap/watt/util/"
 
-      return {plugins: [
-        {
-          pluginName: "qunit.common.util.fakeFileBackend",
-          sURI: prefixPath + "fakeFileBackend",
-          required: true
-        },
-        {
-          pluginName: "fakeValidationDAO",
-          sURI: prefixPath + "fakeCodeValidationDAO",
-          required: true
-        },
-        {
-          pluginName: "qunit.common.util.fakeDestination",
-          sURI: prefixPath + "fakeDestination",
-          required: true
-        },
-        {
-          pluginName: "qunit.common.util.fakeMTA",
-          sURI: prefixPath + "fakeMTA",
-          required: true
-        },
-        {
-          pluginName: "qunit.common.util.fakeProjectSpaceSettings",
-          sURI: prefixPath + "fakeSpaceSettings",
-          required: true
-        }
-      ], remove: [
+      return {
+        plugins: [
+          {
+            pluginName: "qunit.common.util.fakeFileBackend",
+            sURI: prefixPath + "fakeFileBackend",
+            required: true
+          },
+          {
+            pluginName: "fakeValidationDAO",
+            sURI: prefixPath + "fakeCodeValidationDAO",
+            required: true
+          },
+          {
+            pluginName: "qunit.common.util.fakeDestination",
+            sURI: prefixPath + "fakeDestination",
+            required: true
+          },
+          {
+            pluginName: "qunit.common.util.fakeMTA",
+            sURI: prefixPath + "fakeMTA",
+            required: true
+          },
+          {
+            pluginName: "qunit.common.util.fakeProjectSpaceSettings",
+            sURI: prefixPath + "fakeSpaceSettings",
+            required: true
+          }
+        ],
+        remove: [
           "sap.watt.saptoolsets.mta.serverplatform.neo.hcpprojectspace",
           "sap.watt.saptoolsets.mta.common.deployToCF",
           "sap.watt.saptoolsets.templates.common.hanatemplates",

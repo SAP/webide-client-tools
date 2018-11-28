@@ -35,7 +35,7 @@ define("STF", [
   window.WEB_IDE_DEFERRED = {}
   window.WEB_IDE_PLUGIN_REG = {}
 
-  var defaultFake =  mockConf.getDefaultFake(true);
+  var defaultFake = mockConf.getDefaultFake(true)
   var IN_MEMORY_BACKEND = "IN_MEMORY_BACKEND"
   var BUILT_IN_MOCKS = {}
   BUILT_IN_MOCKS[IN_MEMORY_BACKEND] = {
