@@ -2,7 +2,7 @@
 
 #### Breaking Changes
 
-- [BREAKING_CHANGES For V3.0](https://sap.github.io/webide-client-tools/docs/changes/BREAKING_CHANGES.html#_3-0-0)
+- [BREAKING_CHANGES For V3.0](https://github.com/SAP/webide-client-tools/blob/master/docs/changes/BREAKING_CHANGES.md#_3-0-0)
 
 ## 2.4.4 (2018-11-29)
 
