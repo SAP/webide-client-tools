@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Skip stale versions (3.0.0, 3.0.1)
+
 ## 3.0.0 (2018-11-29)
 
 #### Breaking Changes
