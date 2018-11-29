@@ -1,3 +1,9 @@
+## 2.4.2 (2018-11-28)
+
+#### Minor Changes
+
+- Use webide services mock data from the webide package. Requires webide package > 1.97.0
+
 ## 2.4.1 (2018-10-29)
 
 #### Minor Changes
