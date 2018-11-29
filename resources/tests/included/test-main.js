@@ -58,7 +58,7 @@
       coverage:
         "node_modules/@sap-webide/webide-client-tools/resources/tests/coverage",
       mockConf:
-        "node_modules/webide/src/main/webapp/test-resources/sap/watt/util/mock_conf"
+        "node_modules/@sap-webide/webide-client-tools/resources/local_env/mock_conf"
     },
     window.CUSTOM_REQUIREJS_PATHS
   )

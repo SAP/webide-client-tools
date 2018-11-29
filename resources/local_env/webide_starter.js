@@ -48,7 +48,7 @@ loadResourceSync("https://unpkg.com/lodash@4.17.2/lodash.min.js", "js")
 var actualOptions = _.defaults(window.CUSTOM_OPTIONS, DEFAULT_OPTIONS)
 
 loadResourceSync(
-  actualOptions.webappPath + "test-resources/sap/watt/util/mock_conf.js",
+  "node_modules/@sap-webide/webide-client-tools/resources/local_env/mock_conf.js",
   "js"
 )
 loadResourceSync(
