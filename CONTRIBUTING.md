@@ -25,21 +25,21 @@ Examine the [package.json][./package] scripts for all the available tasks:
 
 #### Initial Setup
 
-- `npm install`
+- `yarn install`
 
 #### Type Checking, Code Formatting & Linting
 
 Type checks are done by [combining TypeScript interfaces and JSDocs annotations](https://github.com/bd82/typescript_for_public_apis).
-`npm run type_check`
+`yarn run type_check`
 
 webide-client-tools uses **prettier** to avoid caring about code formatting...
 To format your new code use:
-`npm run format`
+`yarn run format`
 
 For ease of use see prettier's [editor integrations](https://prettier.io/docs/en/editors.html)
 
 Linting is done using ESLint.
-`npm run lint`
+`yarn run lint`
 
 #### Testing
 
@@ -47,15 +47,15 @@ webide-client-tools uses several different types of tests to promote high qualit
 
 The most basic ones are the **jest unit tests**, which are also the most relevant ones.
 
-- `npm run test`
+- `yarn run test`
 
 Additionally **integration tests** are used to test webide-client-tools as an end user with the help of **npm link**
 
-- `npm run test_examples`
+- `yarn run test_examples`
 
 #### Running the whole central CI flow locally.
 
-- `npm run ci_full_flow`
+- `yarn run ci_full_flow`
 
 ## Releasing new Version
 
@@ -73,7 +73,7 @@ Additionally **integration tests** are used to test webide-client-tools as an en
 4.  Ensure a clean git working directory.
 
 5.  Run the release script:
-    - `npm run release -- [patch|minor|major]`
+    - `yarn run release [patch|minor|major]`
 
 #### Under the Hood
 
