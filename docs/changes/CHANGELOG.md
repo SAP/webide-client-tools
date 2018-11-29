@@ -2,7 +2,7 @@
 
 #### Minor Changes
 
-- Revert version 2.4.3 as it has breaking changes
+- Override version 2.4.3 as it has breaking changes
 
 ## 2.4.3 (2018-11-29)
 
