@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Revert version 2.4.3 as it has breaking changes
+
 ## 2.4.3 (2018-11-29)
 
 #### Minor Changes
