@@ -30,7 +30,7 @@
     "karma-openui5": "^0.2.2",
     "karma-requirejs": "^1.1.0",
     "minimist": "^1.2.0",
-    "mocha": "5.2.0",
+    "mocha": "6.1.2",
     "webpack": "^4.23.0"
   },
   "dependencies": {}
