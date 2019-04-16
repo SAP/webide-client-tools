@@ -710,9 +710,13 @@ const bundling = {
     bundleCachePackageWrapper(orgPkgContents, outDir, cacheFolderName) {
       const wrapperPkgObj = {
         name: orgPkgContents.name,
+        icon: orgPkgContents.icon,
+        author: orgPkgContents.author,
+        homepage: orgPkgContents.homepage,
         title: orgPkgContents.title,
         description: orgPkgContents.description,
         version: orgPkgContents.version,
+        license: orgPkgContents.license,
         technical: true,
         bundledFeatures: {}
       }
