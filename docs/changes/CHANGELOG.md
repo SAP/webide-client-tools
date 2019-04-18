@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Add more fields as part of the bundling
+
 ## 3.0.2 (2018-11-30)
 
 #### Minor Changes
