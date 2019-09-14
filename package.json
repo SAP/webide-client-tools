@@ -46,7 +46,7 @@
     "shx": "0.3.2",
     "typedoc": "0.13.0",
     "typescript": "3.1.3",
-    "vuepress": "0.14.4"
+    "vuepress": "1.1.0"
   },
   "scripts": {
     "ci_full_flow": "npm-run-all format_validate type_check lint test docs website:build",
