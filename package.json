@@ -37,7 +37,7 @@
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-config-prettier": "3.2.0",
     "eslint-plugin-import": "2.14.0",
-    "gitty": "3.6.0",
+    "gitty": "3.7.1",
     "jest": "23.6.0",
     "jsonfile": "5.0.0",
     "npm-run-all": "4.1.3",
