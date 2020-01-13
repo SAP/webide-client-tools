@@ -10,6 +10,7 @@ based on npm ecosystem and standard OSS packages.
 
 ## Features
 
+
 - **Bundling and Minification** of SAP Web IDE features:
 
   - Mainly uses [require.js optimizer](http://requirejs.org/docs/optimization.html).
