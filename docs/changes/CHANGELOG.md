@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- [Security issue] - upgrade lodash minor version
+
 ## 3.0.3 (2019-4-18)
 
 #### Minor Changes
