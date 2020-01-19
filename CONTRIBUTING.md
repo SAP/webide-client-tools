@@ -51,7 +51,7 @@ The most basic ones are the **jest unit tests**, which are also the most relevan
 
 Additionally **integration tests** are used to test webide-client-tools as an end user with the help of **npm link**
 
-- `yarn run test_examples`
+- `yarn run test_integration`
 
 #### Running the whole central CI flow locally.
 
