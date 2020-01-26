@@ -1,3 +1,10 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Security alerts fixes for yarn.lock by updating vuepress, webpack, eslint, eslint-config-airbnb-base, eslint-config-prettier, eslint-plugin-import and typedoc
+- Security alerts fixes for yarn.lock by introducing resolutions for mixin-deep and set-value in package.json
+
 ## 3.0.4 (2020-1-15)
 
 #### Minor Changes
