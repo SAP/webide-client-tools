@@ -1,4 +1,4 @@
-const { slugify } = require('@vuepress/shared-utils')
+const { slugify } = require("@vuepress/shared-utils")
 
 const slugMap = {
   "Requirejs Bundling: How to ignore resources which should only be resolved at runtime?":
