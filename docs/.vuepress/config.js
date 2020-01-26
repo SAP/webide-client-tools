@@ -1,4 +1,4 @@
-const vueSlugify = require("vuepress/lib/markdown/slugify")
+const { slugify } = require('@vuepress/shared-utils')
 
 const slugMap = {
   "Requirejs Bundling: How to ignore resources which should only be resolved at runtime?":
@@ -20,7 +20,7 @@ module.exports = {
         return mappedSlug
       }
 
-      return vueSlugify(str)
+      return slugify(str)
     }
   },
   themeConfig: {
