@@ -1,0 +1,460 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>BundlingAPI | WebideClientTools</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">WebideClientTools</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_api_d_.html">&quot;api.d&quot;</a>
+				</li>
+				<li>
+					<a href="_api_d_.bundlingapi.html">BundlingAPI</a>
+				</li>
+			</ul>
+			<h1>Interface BundlingAPI</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">BundlingAPI</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.bundlingapi.html#bundlefeature" class="tsd-kind-icon">bundle<wbr>Feature</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.bundlingapi.html#getdefaultwebpackconfig" class="tsd-kind-icon">get<wbr>Default<wbr>Webpack<wbr>Config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_d_.bundlingapi.html#internal" class="tsd-kind-icon">internal</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="bundlefeature" class="tsd-anchor"></a>
+					<h3>bundle<wbr>Feature</h3>
+					<div class="tsd-signature tsd-kind-icon">bundle<wbr>Feature<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L89">api.d.ts:89</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Bundles an SAP Web IDE feature, including JS sources, “i18n” files, and JSON metadata.
+							It does not include the bundling of any SAPUI5 resources. Use tools provided by SAPUI5 to bundle those.</p>
+						</div>
+						<p>Returns a promise with an object. The object properties:
+							outDir: output directory containing the bundled files. The output directory&#39;s name may not be known
+							in advance as it may include a timestamp when the caching option is enabled. By exposing the
+						exact name, custom post-processing steps may be more easily implemented by the user.</p>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>target: <span class="tsd-signature-type">string</span></h5>
+											</li>
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">object</span></h5>
+												<ul class="tsd-parameters">
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> bundler<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">"webpack"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"requirejs"</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>Which JavaScript bundler to use.
+																Note that each of the bundlers have their configuration key.</p>
+																<ul>
+																	<li>&quot;javascriptOpts&quot; for requirejs.</li>
+																	<li>&quot;webpackConfiguration&quot; for webpack.</li>
+																</ul>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> clean<wbr>Out<wbr>Dir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>Should the output directory be cleaned prior to the bundling?
+																	This is enabled by default. If you have custom code that creates additional
+																	packaged artifacts in this directory, disabling this option should be considered.
+																Default value is &quot;true&quot;.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> enable<wbr>Caching<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p> Bundle into &quot;outDir/[VERSION]_[TIMESTAMP]/&quot; instead of &quot;outDir/&quot;
+																	and create a wrapper &quot;package.json&quot; file in the &quot;outDir/package.json&quot; file to enable caching support.
+																Default value is &quot;true&quot;.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> java<wbr>Script<wbr>Opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>SubOptions for the javaScript bundling phase.
+																The are only relevant when using the require.js optimizer for bundling.</p>
+															</div>
+														</div>
+														<ul class="tsd-parameters">
+															<li class="tsd-parameter">
+																<h5><span class="tsd-flag ts-flagOptional">Optional</span> ignore<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+																<div class="tsd-comment tsd-typography">
+																	<div class="lead">
+																		<p>Ignored glob patterns, by default all JS resources (recursively)
+																			in the directory of the &quot;plugin.json&quot; file are bundled. However,
+																			some special edge cases may require exclusion.
+																		For details about valid pattern syntax, @link <a href="https://github.com/isaacs/node-glob">https://github.com/isaacs/node-glob</a>.</p>
+																	</div>
+																</div>
+															</li>
+															<li class="tsd-parameter">
+																<h5><span class="tsd-flag ts-flagOptional">Optional</span> ignore<wbr>Validations<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span></h5>
+																<div class="tsd-comment tsd-typography">
+																	<div class="lead">
+																		<p> Will only log validation errors on the bundled artifacts
+																			instead of throwing an error that rejects the promise.
+																			Enable it only if you are an advanced user and understand
+																			the ramifications.
+																		@link {<a href="https://github.com/SAP/webide-client-tools/blob/master/FAQ.md#VALIDATE">https://github.com/SAP/webide-client-tools/blob/master/FAQ.md#VALIDATE</a></p>
+																	</div>
+																</div>
+															</li>
+															<li class="tsd-parameter">
+																<h5><span class="tsd-flag ts-flagOptional">Optional</span> optimize<wbr>Options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span></h5>
+																<div class="tsd-comment tsd-typography">
+																	<div class="lead">
+																		<p>Custom configurations for the &quot;require.js&quot; optimizer.
+																		For details, @link <a href="http://requirejs.org/docs/optimization.html#options">http://requirejs.org/docs/optimization.html#options</a>.</p>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> metadata<wbr>Opts<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>SubOptions for the JSON file metadata bundling phase.</p>
+															</div>
+														</div>
+														<ul class="tsd-parameters">
+															<li class="tsd-parameter">
+																<h5><span class="tsd-flag ts-flagOptional">Optional</span> plugins<wbr>Prefix<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+																<div class="tsd-comment tsd-typography">
+																	<div class="lead">
+																		<p>Prefix to apply to all plugin paths, such as &quot;quickstart&quot; --&gt; &quot;prefix/quickstart&quot;.</p>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> out<wbr>Dir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>Output directory for the bundle.
+																Default value is &quot;dist&quot;.</p>
+															</div>
+														</div>
+													</li>
+													<li class="tsd-parameter">
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> webpack<wbr>Config<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">WebpackConfiguration</span></h5>
+														<div class="tsd-comment tsd-typography">
+															<div class="lead">
+																<p>The webpack configuration</p>
+																<ul>
+																	<li>Mutually exclusive with providing javaScriptOpts.</li>
+																	<li>For details see:
+																		@link {<a href="https://webpack.js.org/concepts/%7D">https://webpack.js.org/concepts/}</a>
+																	@link {<a href="https://www.npmjs.com/package/@types/webpack%7D">https://www.npmjs.com/package/@types/webpack}</a></li>
+																</ul>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="getdefaultwebpackconfig" class="tsd-anchor"></a>
+					<h3>get<wbr>Default<wbr>Webpack<wbr>Config</h3>
+					<div class="tsd-signature tsd-kind-icon">get<wbr>Default<wbr>Webpack<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L177">api.d.ts:177</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Returns the default configuration for bundling webide JavaScript resources
+								Using webpack. Use this as the starting point in creating your own
+							webpack.config.js file.</p>
+						</div>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">WebpackConfiguration</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> target: <span class="tsd-signature-type">string</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">WebpackConfiguration</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="internal" class="tsd-anchor"></a>
+					<h3>internal</h3>
+					<div class="tsd-signature tsd-kind-icon">internal<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L184">api.d.ts:184</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Internal utilities to construct the &quot;bundleFeature&quot; flow.
+								These are exposed as unofficial APIs to enable the creation of advanced flows by end users.
+							However, they receive the same level of support as the official APIs.</p>
+						</div>
+					</div>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../globals.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_api_d_.html">"api.d"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_api_d_.bundlingapi.html" class="tsd-kind-icon">BundlingAPI</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_api_d_.bundlingapi.html#bundlefeature" class="tsd-kind-icon">bundle<wbr>Feature</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_api_d_.bundlingapi.html#getdefaultwebpackconfig" class="tsd-kind-icon">get<wbr>Default<wbr>Webpack<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_api_d_.bundlingapi.html#internal" class="tsd-kind-icon">internal</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_api_d_.devserverapi.html" class="tsd-kind-icon">Dev<wbr>ServerAPI</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_api_d_.karmaapi.html" class="tsd-kind-icon">KarmaAPI</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_api_d_.stf_api.html" class="tsd-kind-icon">STF_<wbr>API</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#amdmodule" class="tsd-kind-icon">AMDModule</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#defaultmiddlewareoptions" class="tsd-kind-icon">Default<wbr>Middleware<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#middlewareoptions" class="tsd-kind-icon">Middleware<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#mockpresets" class="tsd-kind-icon">Mock<wbr>Presets</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#plugindescription" class="tsd-kind-icon">Plugin<wbr>Description</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#pluginstransformdef" class="tsd-kind-icon">Plugins<wbr>Transform<wbr>Def</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#webideserviceproxy" class="tsd-kind-icon">WebIDEService<wbr>Proxy</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#stf" class="tsd-kind-icon">STF</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#bundling" class="tsd-kind-icon">bundling</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#devserver" class="tsd-kind-icon">dev<wbr>Server</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_api_d_.html#karma" class="tsd-kind-icon">karma</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
