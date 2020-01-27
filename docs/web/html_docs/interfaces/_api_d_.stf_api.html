@@ -103,10 +103,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="startwebide" class="tsd-anchor"></a>
 					<h3>start<wbr>WebIDE</h3>
-					<div class="tsd-signature tsd-kind-icon">start<wbr>WebIDE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<div class="tsd-signature tsd-kind-icon">start<wbr>WebIDE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>env<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">; </span>featureConfig<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">; </span>html<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>ideDebug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>mocks<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#mockpresets" class="tsd-signature-type">MockPresets</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>pluginsTransformDef<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#pluginstransformdef" class="tsd-signature-type">PluginsTransformDef</a><span class="tsd-signature-symbol">; </span>ui5Debug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>ui5Root<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>urlParams<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L224">api.d.ts:224</a></li>
+							<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/1992a39/api.d.ts#L224">api.d.ts:224</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -129,8 +129,8 @@
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-siganture">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>env<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">; </span>featureConfig<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">; </span>html<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>ideDebug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>mocks<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#mockpresets" class="tsd-signature-type">MockPresets</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>pluginsTransformDef<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#pluginstransformdef" class="tsd-signature-type">PluginsTransformDef</a><span class="tsd-signature-symbol">; </span>ui5Debug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>ui5Root<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>urlParams<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
@@ -140,7 +140,7 @@
 												<h5>id: <span class="tsd-signature-type">string</span></h5>
 											</li>
 											<li>
-												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">object</span></h5>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-symbol">{ </span>env<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">; </span>featureConfig<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">; </span>html<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>ideDebug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>mocks<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#mockpresets" class="tsd-signature-type">MockPresets</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>pluginsTransformDef<span class="tsd-signature-symbol">?: </span><a href="../modules/_api_d_.html#pluginstransformdef" class="tsd-signature-type">PluginsTransformDef</a><span class="tsd-signature-symbol">; </span>ui5Debug<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span>ui5Root<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>urlParams<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> }</span></h5>
 												<ul class="tsd-parameters">
 													<li class="tsd-parameter">
 														<h5><span class="tsd-flag ts-flagOptional">Optional</span> env<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Object</span></h5>
@@ -212,7 +212,7 @@
 														</div>
 													</li>
 													<li class="tsd-parameter">
-														<h5><span class="tsd-flag ts-flagOptional">Optional</span> url<wbr>Params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span></h5>
+														<h5><span class="tsd-flag ts-flagOptional">Optional</span> url<wbr>Params<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{}</span></h5>
 														<div class="tsd-comment tsd-typography">
 															<div class="lead">
 																<p>Additional url params passed to the webide instance for example:
@@ -251,7 +251,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L296">api.d.ts:296</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/1992a39/api.d.ts#L296">api.d.ts:296</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -276,13 +276,13 @@
 					<a name="getservicepartial" class="tsd-anchor"></a>
 					<h3>get<wbr>Service<wbr>Partial</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Service<wbr>Partial<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Service<wbr>Partial<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>serviceName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_api_d_.html#webideserviceproxy" class="tsd-signature-type">WebIDEServiceProxy</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L308">api.d.ts:308</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/1992a39/api.d.ts#L308">api.d.ts:308</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,10 +297,10 @@
 									<h5>id: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">function</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span>serviceName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_api_d_.html#webideserviceproxy" class="tsd-signature-type">WebIDEServiceProxy</a><span class="tsd-signature-symbol">&gt;</span></h4>
 							<ul class="tsd-parameters">
 								<li class="tsd-parameter-siganture">
-									<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+									<ul class="tsd-signatures tsd-kind-type-literal">
 										<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>serviceName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_api_d_.html#webideserviceproxy" class="tsd-signature-type">WebIDEServiceProxy</a><span class="tsd-signature-symbol">&gt;</span></li>
 									</ul>
 									<ul class="tsd-descriptions">
@@ -329,7 +329,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L321">api.d.ts:321</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/1992a39/api.d.ts#L321">api.d.ts:321</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -358,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L315">api.d.ts:315</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/1992a39/api.d.ts#L315">api.d.ts:315</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -389,7 +389,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/9e44825/api.d.ts#L286">api.d.ts:286</a></li>
+									<li>Defined in <a href="https://github.com/SAP/webide-client-tools/blob/1992a39/api.d.ts#L286">api.d.ts:286</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -411,7 +411,7 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_api_d_.html">"api.d"</a>
+						<a href="../modules/_api_d_.html">&quot;api.d&quot;</a>
 					</li>
 				</ul>
 			</nav>
@@ -503,6 +503,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -551,7 +552,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
