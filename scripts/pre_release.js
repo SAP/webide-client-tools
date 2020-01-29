@@ -19,12 +19,12 @@ if (
 
 const branchesInfo = myRepo.getBranchesSync()
 
-if (branchesInfo.current !== "master") {
-  console.log(
-    "Error: can only perform release job from master or temp_master branch"
-  )
-  process.exit(-1)
-}
+// if (branchesInfo.current !== "master") {
+//   console.log(
+//     "Error: can only perform release job from master or temp_master branch"
+//   )
+//   process.exit(-1)
+// }
 
 if (!config.dateTemplateRegExp.test(config.changeLogString)) {
   console.log(
