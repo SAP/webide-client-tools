@@ -64,7 +64,6 @@ Additionally **integration tests** are used to test webide-client-tools as an en
 1.  Update the [CHANGELOG.md](./docs/changes/CHANGELOG.md).
 
     - It must start with "## X.Y.Z (INSERT_DATE_HERE)"
-    - Use this [example change log](https://github.com/SAP/chevrotain/blob/master/docs/changes/CHANGELOG.md) as a reference.
 
 2.  Update the [BREAKING_CHANGES.md](./docs/changes/BREAKING_CHANGES.md).
 
