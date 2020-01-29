@@ -54,9 +54,9 @@ Which means that the client-tools library can (**temporarily**) only be used for
 
 ## Contributing
 
-For information, see [CONTRIBUTING.md](./CONTRIBUTING.md).
+For information, see [CONTRIBUTING.md](https://github.com/SAP/webide-client-tools/tree/master/CONTRIBUTING.md).
 
 ## License
 
 Copyright (c) 2018 SAP SE or an SAP affiliate company. All rights reserved.
-This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the [LICENSE file](./LICENSE).
+This file is licensed under the Apache Software License, v. 2 except as noted otherwise in the [LICENSE file](https://github.com/SAP/webide-client-tools/tree/master/LICENSE).
