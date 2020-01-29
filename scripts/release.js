@@ -27,15 +27,6 @@ const bumpedPkgJson = _.clone(config.pkgJson)
 bumpedPkgJson.version = newVersion
 jf.writeFileSync(config.packagePath, bumpedPkgJson, { spaces: 2, EOL: "\r\n" })
 
-// update CHANGELOG.md date
-const nowDate = new Date()
-const nowDateString = nowDate.toLocaleDateString().replace(/\//g, "-")
-const changeLogDate = config.changeLogString.replace(
-  config.dateTemplateRegExp,
-  `## ${newVersion} (${nowDateString})`
-)
-fs.writeFileSync(config.changeLogPath, changeLogDate)
-
 // Create commit and push to master
 const newTagName = config.tagPrefix + newVersion
 

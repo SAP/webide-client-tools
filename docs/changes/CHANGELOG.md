@@ -1,3 +1,10 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Fixed some broken links in [npmjs](https://www.npmjs.com/package/@sap-webide/webide-client-tools/v/3.0.5)
+- Fixed latest version not being published correctly in official docs website
+
 ## 3.0.5 (1-27-2020)
 
 #### Minor Changes
