@@ -54,7 +54,7 @@
   },
   "scripts": {
     "ci_full_flow": "npm-run-all format_validate type_check lint test docs website:build",
-    "release": "node scripts/pre_release.js && npm-run-all ci_full_flow && node scripts/release.js",
+    "release": "node scripts/pre_release.js && node scripts/update_changelog.js && npm-run-all ci_full_flow && node scripts/release.js",
     "lint": "eslint src/**/*.js test/**/*.js test_integration/**/*.js",
     "test": "jest",
     "test_integration": "npm-run-all init_example execute_integration_tests unlink_example",
