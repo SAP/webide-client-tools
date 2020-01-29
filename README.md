@@ -5,7 +5,7 @@
 
 ## Description
 
-Tools and flows for developing client-side features and extensions for [SAP Web IDE](https://www.sap.com/germany/developer/topics/sap-webide.html)
+Tools and flows for developing client-side features and extensions for [SAP Web IDE](https://developers.sap.com/topics/sap-webide.html)
 based on npm ecosystem and standard OSS packages.
 
 ## Features
