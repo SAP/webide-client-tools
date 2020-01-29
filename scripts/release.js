@@ -30,18 +30,18 @@ jf.writeFileSync(config.packagePath, bumpedPkgJson, { spaces: 2, EOL: "\r\n" })
 // Create commit and push to master
 const newTagName = config.tagPrefix + newVersion
 
-// myRepo.addSync([
-//   config.packagePath,
-//   config.changeLogPath,
-//   config.htmlDocsPath,
-//   config.websitePath
-// ])
+myRepo.addSync([
+  config.packagePath,
+  config.changeLogPath,
+  config.htmlDocsPath,
+  config.websitePath
+])
 
-// myRepo.commitSync(`release ${newVersion}`)
-// myRepo.createTagSync(newTagName)
-// myRepo.push("origin", "master", () => {
-//   console.log("finished push to branch")
-// })
-// myRepo.push("origin", newTagName, () => {
-//   console.log("finished push tag")
-// })
+myRepo.commitSync(`release ${newVersion}`)
+myRepo.createTagSync(newTagName)
+myRepo.push("origin", "master", () => {
+  console.log("finished push to branch")
+})
+myRepo.push("origin", newTagName, () => {
+  console.log("finished push tag")
+})
