@@ -3912,9 +3912,10 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gitty@3.6.0:
-  version "3.6.0"
-  resolved "https://registry.yarnpkg.com/gitty/-/gitty-3.6.0.tgz#4a001a6cb2f749cc28f7fbe2ca9ed415d71c1e53"
+gitty@3.7.2:
+  version "3.7.2"
+  resolved "https://registry.yarnpkg.com/gitty/-/gitty-3.7.2.tgz#81634085f18d347f885b01d1bbd1713fe8ce743e"
+  integrity sha512-ywg8ic2arweoBSXJCrsAWDxDnyRzobGt6YYAXvyVL9E7vQMGtqz4AUBJin5+uW6EepCahrk+D2LY72cuLQpomw==
 
 glob-base@^0.3.0:
   version "0.3.0"
