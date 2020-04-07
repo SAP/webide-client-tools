@@ -1,3 +1,9 @@
+## 3.1.1 (2020-4-07)
+
+#### Minor Changes
+
+- Security alerts fixes for yarn.lock by updating acorn
+
 ## 3.1.0 (2020-1-29)
 
 #### Minor Changes
