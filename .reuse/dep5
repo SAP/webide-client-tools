@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: webide-client-tools
+Upstream-Contact: Ido Goren <ido.goren@sap.com>
+Source: https://github.com/SAP/webide-client-tools
+
+Files: *
+Copyright: 2018-2020 SAP SE or an SAP affiliate company and webide-client-tools contributors
+License: Apache-2.0

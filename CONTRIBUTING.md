@@ -84,10 +84,3 @@ The release script will:
 4.  Push that tag to the github.com repo.
 5.  Pushing the tag will trigger a [deploy to npm](https://circleci.com/docs/1.0/npm-continuous-deployment/) build on circle-ci.
 
-## Legal
-
-All Contributors must sign the [CLA][cla].
-The process is completely automated using https://cla-assistant.io/
-simply follow the instructions in the pull request.
-
-[cla]: https://cla-assistant.io/SAP/webide-client-tools
