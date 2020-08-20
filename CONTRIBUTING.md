@@ -83,4 +83,3 @@ The release script will:
 3.  Create a git tag for the new version.
 4.  Push that tag to the github.com repo.
 5.  Pushing the tag will trigger a [deploy to npm](https://circleci.com/docs/1.0/npm-continuous-deployment/) build on circle-ci.
-
