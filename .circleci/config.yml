@@ -35,6 +35,18 @@ jobs:
       - image: circleci/node:10-browsers
     <<: *deploy-build
 
+  compliance:
+    docker:
+      - image: circleci/python:3.6.4
+    working_directory: ~/workdir
+    steps:
+      - checkout
+      - run:
+          name: compliance check
+          command: |
+            pip3 install --user reuse
+            ~/.local/bin/reuse lint
+
 workflows:
   version: 2
   build:
@@ -47,3 +59,8 @@ workflows:
               only: /^v[0-9]+(\.[0-9]+)*$/
             branches:
               ignore: /.*/
+      - compliance:
+          filters:
+            branches:
+              ignore: master
+
