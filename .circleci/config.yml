@@ -20,19 +20,14 @@ deploy-build: &deploy-build
 # ------  build configuration/setup (how?) ------
 version: 2
 jobs:
-  build-node10:
+  build-node14:
     docker:
-      - image: circleci/node:10-browsers
-    <<: *base-build
-
-  build-node8:
-    docker:
-      - image: circleci/node:8-browsers
+      - image: circleci/node:14-browsers
     <<: *base-build
 
   deploy:
     docker:
-      - image: circleci/node:10-browsers
+      - image: circleci/node:14-browsers
     <<: *deploy-build
 
   compliance:
@@ -51,8 +46,7 @@ workflows:
   version: 2
   build:
     jobs:
-      - build-node10
-      - build-node8
+      - build-node14
       - deploy:
           filters:
             tags:
