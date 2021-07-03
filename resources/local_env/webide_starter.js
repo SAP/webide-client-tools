@@ -85,6 +85,7 @@ var DEFAULT_START_WEBIDE_OPTIONS = {
   extra_url_params: {},
   backend: "IN_MEMORY",
   env: localEnvJson,
+  flags: {},
   featureConfig: DEFAULT_FEATURE_CONFIG
 }
 
@@ -217,7 +218,11 @@ function startWebIDE(options) {
     actualOptions.featureConfig
   )
 
-  iframe.contentWindow.WEB_IDE_ENV_JSON_OVERRIDE = actualOptions.env
+  iframe.contentWindow.WEB_IDE_ENV_JSON_OVERRIDE = _.assign(
+    {},
+    actualOptions.env,
+    { flags: actualOptions.flags }
+  )
 
   return deferred.promise.then(function(PluginRegistry) {
     return {

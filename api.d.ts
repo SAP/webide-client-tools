@@ -239,6 +239,11 @@ export interface STF_API {
             env?: Object
 
             /**
+             * A flags object override for testing with specific feature toggle setting.
+             */
+            flags?: Object
+
+            /**
              * Definition of SAP Web IDE plugin transformation that happens BEFORE
              * any plugins are registered in the "pluginRegistry". This allows using mock
              * plugins or adding plugins to the SAP Web IDE instance that starts during tests.
