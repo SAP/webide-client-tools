@@ -1,5 +1,6 @@
 [![npm version](https://badge.fury.io/js/%40sap-webide%2Fwebide-client-tools.svg)](https://badge.fury.io/js/%40sap-webide%2Fwebide-client-tools)
 [![CircleCI](https://circleci.com/gh/SAP/webide-client-tools.svg?style=svg&circle-token=3b17f31fb0d03686ffbabab018fab13b24e1e581)](https://circleci.com/gh/SAP/webide-client-tools) [![Greenkeeper badge](https://badges.greenkeeper.io/SAP/webide-client-tools.svg)](https://greenkeeper.io/)
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP/webide-client-tools)](https://api.reuse.software/info/github.com/SAP/webide-client-tools)
 
 # webide-client-tools
 
@@ -55,3 +56,7 @@ Which means that the client-tools library can (**temporarily**) only be used for
 ## Contributing
 
 For information, see [CONTRIBUTING.md](https://github.com/SAP/webide-client-tools/tree/master/CONTRIBUTING.md).
+
+## Licensing
+
+Please see our [LICENSE](LICENSE) for copyright and license information. Detailed information including third-party components and their licensing/copyright information is available [via the REUSE tool](https://api.reuse.software/info/github.com/SAP/webide-client-tools).
