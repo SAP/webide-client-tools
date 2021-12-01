@@ -61,7 +61,7 @@
     "init_example": "node scripts/init_example.js",
     "execute_integration_tests": "jest --maxWorkers 1 --config test_integration/jest.config.json",
     "unlink_example": "cd ./example && npm unlink @sap-webide/webide-client-tools",
-    "docs": "shx rm -rf docs/web/html_docs && typedoc --tsconfig tsdocsconfig.json --out docs/web/html_docs --module commonjs --name WebideClientTools --excludeExternals --includeDeclarations",
+    "docs": "shx rm -rf docs/web/html_docs && typedoc api.d.ts --tsconfig tsdocsconfig.json --out docs/web/html_docs  --name WebideClientTools --excludeNotDocumented",
     "format": "prettier --write \"**/*.@(js|json|md)\"",
     "format_validate": "prettier --list-different \"**/*.@(js|json|md)\"",
     "type_check": "tsc",

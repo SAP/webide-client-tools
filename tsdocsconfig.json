@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "mode": "file",
     "module": "commonjs",
     "removeComments": false,
     "target": "ES6",
