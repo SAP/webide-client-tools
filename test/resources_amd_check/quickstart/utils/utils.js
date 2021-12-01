@@ -1,5 +1,5 @@
 /* eslint-disable */
-define([], function() {
+define([], function () {
   return function someHelper(x, y) {
     return x + y
   }

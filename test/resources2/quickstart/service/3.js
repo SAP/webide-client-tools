@@ -1,4 +1,4 @@
 /* eslint-disable */
-define(["./2"], function() {
+define(["./2"], function () {
   console.log("BAR")
 })

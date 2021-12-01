@@ -14,14 +14,14 @@ describe("Bundling integration tests", () => {
     const exampleDir = path.resolve(__dirname, "../example")
     childProcess.execSync("npm run bundle", {
       cwd: exampleDir,
-      stdio: "inherit"
+      stdio: "inherit",
     })
 
     // Find the cached dir name
     const distFolder = path.join(exampleDir, "dist")
     const foldersInDist = fs
       .readdirSync(distFolder)
-      .filter(file => fs.statSync(path.join(distFolder, file)).isDirectory())
+      .filter((file) => fs.statSync(path.join(distFolder, file)).isDirectory())
     expect(foldersInDist.length).to.equal(1)
     const timeStamp = foldersInDist[0]
     const distTimeStamp = `${distFolder}/${timeStamp}`

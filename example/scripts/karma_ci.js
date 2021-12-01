@@ -9,7 +9,7 @@ const karmaConfig = config.parseConfig(
 karmaConfig.singleRun = true
 karmaConfig.browsers = ["ChromeHeadless"]
 
-const server = new Server(karmaConfig, exitCode => {
+const server = new Server(karmaConfig, (exitCode) => {
   console.error(`Karma has exited with ${exitCode}`)
   process.exit(exitCode)
 })

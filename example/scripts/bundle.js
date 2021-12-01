@@ -14,7 +14,7 @@ require("@sap-webide/webide-client-tools")
   // specific task runner errors
   // for example:
   // https://gruntjs.com/api/grunt.fail
-  .catch(e => {
+  .catch((e) => {
     console.log(e)
     process.exit(1)
   })

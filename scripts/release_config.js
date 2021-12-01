@@ -22,5 +22,5 @@ module.exports = {
   changeLogString,
   currVersion: pkgJson.version,
   tagPrefix: "v",
-  dateTemplateRegExp
+  dateTemplateRegExp,
 }

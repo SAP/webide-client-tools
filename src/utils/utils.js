@@ -12,7 +12,7 @@ if (process.platform === "win32") {
 
 const utils = {
   linefeed,
-  normalizelf: inputString => inputString.replace(/\r\n|\n/g, utils.linefeed),
+  normalizelf: (inputString) => inputString.replace(/\r\n|\n/g, utils.linefeed),
   /**
    * Replace back slashes (Windows-based file path format) with forward slashes (*nix-based file path format) so that
    * libraries that rely on forward slashes will receive the proper input
@@ -67,7 +67,7 @@ const utils = {
     const resolvedPath = pathUtils.resolve(normalizedPath)
     const file = fs.readFileSync(resolvedPath, "utf8")
     return JSON.parse(file)
-  }
+  },
 }
 
 module.exports = utils

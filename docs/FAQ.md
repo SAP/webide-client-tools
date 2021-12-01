@@ -28,16 +28,16 @@ Resolving only at runtime can be accomplished using the **empty:** directive in 
   ```javascript
   const requireJsOptions = {
     paths: {
-      "sap.watt.saptoolsets.ui5.common.docuutils": "empty:"
-    }
+      "sap.watt.saptoolsets.ui5.common.docuutils": "empty:",
+    },
   }
 
   const bundling = require("webide-client-tools").bundling
   bundling.bundleFeature("src/package-fiori.json", {
     outDir: "dist/fiori/client",
     javaScriptOpts: {
-      optimizeOptions: requireJsOptions
-    }
+      optimizeOptions: requireJsOptions,
+    },
   })
   ```
 
@@ -60,8 +60,8 @@ It is possible to ignore certain file patterns:
   ```javascript
   bundling.bundleFeature("path_to_package.json", {
     javaScriptOpts: {
-      ignore: ["**/myPlugin/resources/**.js", "client/plugin/gruntfile.js"]
-    }
+      ignore: ["**/myPlugin/resources/**.js", "client/plugin/gruntfile.js"],
+    },
   })
   ```
 
@@ -110,9 +110,9 @@ It is possible to create an unminified artifact for easier debugging by modifyin
 bundling.bundleFeature("path_to_package.json", {
   javaScriptOpts: {
     optimizeOptions: {
-      optimize: "none"
-    }
-  }
+      optimize: "none",
+    },
+  },
 })
 ```
 
@@ -126,8 +126,8 @@ using the **ignoreValidations** option.
 ```javascript
 bundling.bundleFeature("path_to_package.json", {
   javaScriptOpts: {
-    ignoreValidations: true
-  }
+    ignoreValidations: true,
+  },
 })
 ```
 

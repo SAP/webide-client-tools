@@ -17,7 +17,7 @@ describe("karma integration tests", () => {
     const exampleDir = path.resolve(__dirname, "../example")
     childProcess.execSync("npm run test", {
       cwd: exampleDir,
-      stdio: "inherit"
+      stdio: "inherit",
     })
 
     // todo: check coverage dir contents

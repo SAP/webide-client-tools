@@ -33,11 +33,11 @@ const extPluginFileName = "plugin.ext.json"
 const servicesAssumedToExist = {
   // the core service is registered manually on WATT startup
   core: undefined,
-  featureConfig: undefined
+  featureConfig: undefined,
 }
 
 /* eslint-disable no-use-before-define */
-module.exports = function(rootConfigFolder, rootConfigFIleName) {
+module.exports = function (rootConfigFolder, rootConfigFIleName) {
   const actualRootConfigFolder = `${
     pathUtils.isAbsolute(rootConfigFolder)
       ? rootConfigFolder
@@ -67,9 +67,9 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
           "{innovation_config_path}",
           "w5g",
           "s8d",
-          "uiadaptation"
+          "uiadaptation",
         ],
-        currExclude => currInclude.indexOf(currExclude) !== -1
+        (currExclude) => currInclude.indexOf(currExclude) !== -1
       )
     }
 
@@ -93,13 +93,13 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
       configWithDefaults.deprecatedConfigIncludes,
       isExcluded
     )
-    localDeprecatedConfigIncludes.forEach(configInclude => {
+    localDeprecatedConfigIncludes.forEach((configInclude) => {
       console.warn(
         `Deprecated config file ${configInclude} included in ${fullPath} is skipped`
       )
     })
 
-    const localIncludesPathsAndFiles = _.map(localIncludes, currInclude => {
+    const localIncludesPathsAndFiles = _.map(localIncludes, (currInclude) => {
       const currIncludeNoPrefix = removeFilePrefix(currInclude)
       const currFullPath = pathUtils.join(path, currIncludeNoPrefix)
       const currPathOnly = pathUtils.dirname(currFullPath)
@@ -108,7 +108,7 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
     })
 
     // recursive calls for included configs
-    _.forEach(localIncludesPathsAndFiles, pathAndFile => {
+    _.forEach(localIncludesPathsAndFiles, (pathAndFile) => {
       readConfigsMeta(pathAndFile.path, pathAndFile.file, fullPath)
     })
 
@@ -131,7 +131,7 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
       configsToPluginMeta[configPath].push(pluginMeta)
     }
 
-    _.forEach(pluginPaths, currPluginPath => {
+    _.forEach(pluginPaths, (currPluginPath) => {
       const currPluginPathNoPrefix = removeFilePrefix(currPluginPath)
       const currPlugins = {}
       const currDirPath = pathUtils.join(path, currPluginPathNoPrefix)
@@ -163,7 +163,7 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
             interfaceToPlugin[interfaceName] = currPlugin.name
             return {
               interfacePath: currInterfacePath,
-              referencedBy: currPlugin.baseURI
+              referencedBy: currPlugin.baseURI,
             }
           }
         )
@@ -202,10 +202,10 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
 
     configsToInterfaceMeta = _.mapValues(
       configUriToInterfaceNames,
-      interfacesNames =>
+      (interfacesNames) =>
         _.map(
           interfacesNames,
-          currInterfaceName => interfacesMeta[currInterfaceName]
+          (currInterfaceName) => interfacesMeta[currInterfaceName]
         )
     )
   }
@@ -248,7 +248,7 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
       deprecatedConfigIncludes: [],
       bundledFeatures: {},
       optionalBundledFeatures: {},
-      baseURI: configPath
+      baseURI: configPath,
     })
   }
 
@@ -258,12 +258,12 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
       requires: { services: [] },
       provides: {
         services: {},
-        interfaces: {}
+        interfaces: {},
       },
       configures: {
-        services: {}
+        services: {},
       },
-      subscribes: {}
+      subscribes: {},
     })
   }
 
@@ -273,7 +273,7 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
       extends: [],
       configurationProperties: {},
       methods: {},
-      events: {}
+      events: {},
     })
   }
 
@@ -300,6 +300,6 @@ module.exports = function(rootConfigFolder, rootConfigFIleName) {
     configsMeta,
     configsToPluginMeta,
     configsToInterfaceMeta,
-    layers
+    layers,
   }
 }
