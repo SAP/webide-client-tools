@@ -21,42 +21,42 @@ const karma = {
         {
           pattern: "node_modules/webide/src/main/webapp/*",
           served: true,
-          included: false
+          included: false,
         },
         {
           pattern: "node_modules/webide/src/main/webapp/resources/**/*",
           served: true,
-          included: false
+          included: false,
         },
         {
           pattern:
             "node_modules/@sap-webide/webide-client-tools/resources/tests/*.js",
           served: true,
-          included: false
+          included: false,
         },
         {
           pattern:
             "node_modules/webide/src/main/webapp/test-resources/sap/watt/sane-tests/ui5Version.js",
           served: true,
-          included: false
+          included: false,
         },
         // This webide folder contains many fake plugin implementations..
         {
           pattern:
             "node_modules/webide/src/main/webapp/test-resources/sap/watt/util/**/*",
           served: true,
-          included: false
+          included: false,
         },
         {
           pattern:
             "node_modules/@sap-webide/webide-client-tools/resources/local_env/**/*",
           served: true,
-          included: false
+          included: false,
         },
         // must serve the package.json because the core forces us to read it's name
         // as they do not allow bypassing that validation
         { pattern: "./package.json", served: true, included: false },
-        "node_modules/@sap-webide/webide-client-tools/resources/tests/included/test-main.js"
+        "node_modules/@sap-webide/webide-client-tools/resources/tests/included/test-main.js",
       ],
       // frameworks to use
       // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -65,7 +65,7 @@ const karma = {
 
       openui5: {
         path: karma.getUi5VersionUrl(undefined, undefined),
-        useMockServer: false
+        useMockServer: false,
       },
 
       // test results reporter to use
@@ -74,13 +74,13 @@ const karma = {
       reporters: ["progress", "coverage"],
 
       coverageReporter: {
-        includeAllSources: true
+        includeAllSources: true,
       },
 
       client: {
         mocha: {
-          reporter: "html"
-        }
+          reporter: "html",
+        },
       },
       // web server port
       port: 9877,
@@ -111,41 +111,41 @@ const karma = {
           "middleware:di": [
             "factory",
             /* istanbul ignore next - Tested as part of integration tests */
-            function() {
+            function () {
               return middleware.getDiProxyMiddleware({
-                context: "/di"
+                context: "/di",
               })
-            }
-          ]
+            },
+          ],
         },
         {
           "middleware:minikube": [
             "factory",
             /* istanbul ignore next - Tested as part of integration tests */
-            function() {
+            function () {
               const minikube = middleware.getMinikubeMiddleware({
-                context: "/che6"
+                context: "/che6",
               })
               // Minikube not always available or online
               if (minikube) {
                 return minikube
               }
-              return function(req, res, next) {
+              return function (req, res, next) {
                 // noop
                 next()
               }
-            }
-          ]
-        }
+            },
+          ],
+        },
       ],
-      middleware: ["di", "minikube"]
+      middleware: ["di", "minikube"],
     }
   },
 
   getUi5VersionUrl: function getUi5VersionUrl(version, baseUrl) {
     const defaultUi5Version = {
       version: "",
-      baseURL: "https://sapui5.hana.ondemand.com/"
+      baseURL: "https://sapui5.hana.ondemand.com/",
     }
     const webideUi5VersionPath =
       "webide/src/main/webapp/test-resources/sap/watt/sane-tests/ui5Version"
@@ -169,7 +169,7 @@ const karma = {
     )
 
     return `${actualObj.baseURL + actualObj.version}/resources/sap-ui-core.js`
-  }
+  },
 }
 
 module.exports = karma

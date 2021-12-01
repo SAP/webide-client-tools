@@ -34,7 +34,7 @@ myRepo.addSync([
   config.packagePath,
   config.changeLogPath,
   config.htmlDocsPath,
-  config.websitePath
+  config.websitePath,
 ])
 
 myRepo.commitSync(`release ${newVersion}`)

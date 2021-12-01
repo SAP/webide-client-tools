@@ -6,7 +6,7 @@ define({
    * @param {string} msg
    * @return {string}
    */
-  addAngryMode: function(msg) {
+  addAngryMode: function (msg) {
     return msg + "!??!!?"
-  }
+  },
 })

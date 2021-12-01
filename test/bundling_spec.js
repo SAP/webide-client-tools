@@ -28,7 +28,7 @@ describe("The, Exported bundling APIs", () => {
     expect(actual.paths).to.include({
       "sap.watt.bamba.quickstart": "../resources2/quickstart",
       "sap.watt.bamba.slowstart": "slowstart",
-      sap: "empty:"
+      sap: "empty:",
     })
   }
 
@@ -48,7 +48,7 @@ describe("The, Exported bundling APIs", () => {
         "sap.watt.bamba.slowstart/extra/extra1",
         "sap.watt.bamba.slowstart/extra/extra2",
         "sap.watt.bamba.rapidstart/service/b2",
-        "sap.watt.bamba.rapidstart/command/b1"
+        "sap.watt.bamba.rapidstart/command/b1",
       ])
 
       expect(actual.dir).to.equal("dist")
@@ -57,7 +57,7 @@ describe("The, Exported bundling APIs", () => {
 
     it("can create optimize options using ignore option", () => {
       const actual = internalApi.createRequireJSOptimizeOptions(pkg, {
-        ignore: "**/extra/*.js"
+        ignore: "**/extra/*.js",
       })
 
       expect(actual.modules[0].include).to.have.members([
@@ -70,7 +70,7 @@ describe("The, Exported bundling APIs", () => {
         "sap.watt.bamba.slowstart/service/7",
         "sap.watt.bamba.slowstart/command/5",
         "sap.watt.bamba.rapidstart/service/b2",
-        "sap.watt.bamba.rapidstart/command/b1"
+        "sap.watt.bamba.rapidstart/command/b1",
       ])
 
       expect(actual.dir).to.equal("dist")
@@ -80,7 +80,7 @@ describe("The, Exported bundling APIs", () => {
     it("Will throw an error when using the deprecated <additionalResources> option", () => {
       const bundleFunc = () =>
         internalApi.createRequireJSOptimizeOptions(pkg, {
-          additionalResources: "bamba"
+          additionalResources: "bamba",
         })
       expect(bundleFunc).to.throw(
         "<additionalResources> is no longer supported since version 0.5.0"
@@ -101,19 +101,19 @@ describe("The, Exported bundling APIs", () => {
     it("can create optimize options using custom (standard) requireJS Options", () => {
       const customOptions = {
         paths: {
-          "sap.watt.saptoolsets.ui5.common.docuutils": "empty:"
+          "sap.watt.saptoolsets.ui5.common.docuutils": "empty:",
         },
         uglify2: {
-          mangle: false
-        }
+          mangle: false,
+        },
       }
       const actual = internalApi.createRequireJSOptimizeOptions(pkg, {
         optimizeOptions: customOptions,
-        outDir: "bamba"
+        outDir: "bamba",
       })
       expect(actual.dir).to.equal("bamba")
       expect(actual.paths).to.include({
-        "sap.watt.saptoolsets.ui5.common.docuutils": "empty:"
+        "sap.watt.saptoolsets.ui5.common.docuutils": "empty:",
       })
       expect(actual.uglify2).to.include({ mangle: false })
       sharedAssertions(actual)
@@ -132,8 +132,8 @@ describe("The, Exported bundling APIs", () => {
       internalApi
         .bundleJavaScriptSources(pkg, {
           optimizeOptions: {
-            dir: distFolder
-          }
+            dir: distFolder,
+          },
         })
         .then(() => {
           const outputContents = fs.readFileSync(expectedOutputFile, "UTF-8")
@@ -150,7 +150,7 @@ describe("The, Exported bundling APIs", () => {
   describe("bundleI18n API", () => {
     const distFolder = path.resolve(__dirname, "dist")
     const jQuery = {
-      sap: {}
+      sap: {},
     }
 
     beforeEach(() => {
@@ -164,12 +164,12 @@ describe("The, Exported bundling APIs", () => {
         "UTF-8"
       )
       // haxxxx to test evaluated code
-      jQuery.sap.registerPreloadedModules = function(i18nContents) {
+      jQuery.sap.registerPreloadedModules = function (i18nContents) {
         expect(i18nContents.version).to.equal("2.0")
         expect(_.keys(i18nContents.modules)).include.members([
           "sap/watt/bamba/quickstart/i18n/i18n.properties",
           "sap/watt/bamba/slowstart/i18n/i18n.properties",
-          "sap/watt/bamba/rapidstart/i18n/i18n.properties"
+          "sap/watt/bamba/rapidstart/i18n/i18n.properties",
         ])
         expect(_.keys(i18nContents.modules)).to.have.lengthOf(3)
         expect(
@@ -212,12 +212,12 @@ describe("The, Exported bundling APIs", () => {
         "UTF-8"
       )
       // haxxxx to test evaluated code
-      jQuery.sap.registerPreloadedModules = function(i18nContents) {
+      jQuery.sap.registerPreloadedModules = function (i18nContents) {
         expect(i18nContents.version).to.equal("2.0")
         expect(_.keys(i18nContents.modules))
           .include.members([
             "sap/watt/bamba/quickstart/i18n/i18n.properties",
-            "sap/watt/bamba/slowstart/i18n/i18n.properties"
+            "sap/watt/bamba/slowstart/i18n/i18n.properties",
           ])
           .and // this property file was filtered out.
           .to.not.include.members(["i/am/external/i18n/i18n.properties"])
@@ -234,7 +234,7 @@ describe("The, Exported bundling APIs", () => {
       )
       const bundlei18nFunc = () =>
         internalApi.bundleI18n(pkgi18n, {
-          additionalResources: "bamba"
+          additionalResources: "bamba",
         })
       const missingi18nFilePath = path.resolve(
         __dirname,
@@ -269,14 +269,14 @@ describe("The, Exported bundling APIs", () => {
       expect(actual.plugins).to.include.keys([
         "../resources2/quickstart",
         "slowstart",
-        "common/rapidstart"
+        "common/rapidstart",
       ])
       expect(_.keys(actual.plugins)).to.have.lengthOf(3)
 
       expect(actual.interfaces).to.include.keys([
         "sap.watt.bamba.quickstart.QuickStartService",
         "sap.watt.bamba.slowstart.W5GOutline",
-        "sap.watt.bamba.rapidstart.W5GOutline"
+        "sap.watt.bamba.rapidstart.W5GOutline",
       ])
       expect(_.keys(actual.interfaces)).to.have.lengthOf(3)
 
@@ -288,23 +288,23 @@ describe("The, Exported bundling APIs", () => {
         actual.interfaces["sap.watt.bamba.slowstart.W5GOutline"]
           .configurationProperties
       ).to.deep.equal({
-        contextMenu: { type: "string", multiple: false }
+        contextMenu: { type: "string", multiple: false },
       })
     })
 
     it("can bundle metadata with pluginPrefix option", () => {
       const actual = internalApi.createMetadataJson(pkg, {
-        pluginsPrefix: "PREFIX_"
+        pluginsPrefix: "PREFIX_",
       })
       expect(actual.plugins).to.include.keys([
         "PREFIX_../resources2/quickstart",
         "PREFIX_slowstart",
-        "PREFIX_common/rapidstart"
+        "PREFIX_common/rapidstart",
       ])
       expect(actual.interfaces).to.include.keys([
         "sap.watt.bamba.quickstart.QuickStartService",
         "sap.watt.bamba.slowstart.W5GOutline",
-        "sap.watt.bamba.rapidstart.W5GOutline"
+        "sap.watt.bamba.rapidstart.W5GOutline",
       ])
 
       expect(actual.plugins.PREFIX_slowstart.description).to.include("Bamba")
@@ -312,7 +312,7 @@ describe("The, Exported bundling APIs", () => {
         actual.interfaces["sap.watt.bamba.slowstart.W5GOutline"]
           .configurationProperties
       ).to.deep.equal({
-        contextMenu: { type: "string", multiple: false }
+        contextMenu: { type: "string", multiple: false },
       })
 
       expect(actual.plugins["PREFIX_common/rapidstart"].description).to.include(
@@ -348,12 +348,12 @@ describe("The, Exported bundling APIs", () => {
       expect(actualOutputJson.plugins).to.include.keys([
         "../resources2/quickstart",
         "slowstart",
-        "common/rapidstart"
+        "common/rapidstart",
       ])
       expect(actualOutputJson.interfaces).to.include.keys([
         "sap.watt.bamba.quickstart.QuickStartService",
         "sap.watt.bamba.slowstart.W5GOutline",
-        "sap.watt.bamba.rapidstart.W5GOutline"
+        "sap.watt.bamba.rapidstart.W5GOutline",
       ])
 
       expect(
@@ -364,7 +364,7 @@ describe("The, Exported bundling APIs", () => {
         actualOutputJson.interfaces["sap.watt.bamba.slowstart.W5GOutline"]
           .configurationProperties
       ).to.deep.equal({
-        contextMenu: { type: "string", multiple: false }
+        contextMenu: { type: "string", multiple: false },
       })
 
       expect(_.keys(actualOutputJson.plugins)).to.have.lengthOf(3)
@@ -394,9 +394,9 @@ describe("The, Exported bundling APIs", () => {
           .bundleFeature(pkg, {
             outDir: distFolder,
             enableCaching: false,
-            bundler
+            bundler,
           })
-          .then(result => {
+          .then((result) => {
             const jsOutputContents = fs.readFileSync(
               expectedJSOutputFile,
               "UTF-8"
@@ -408,7 +408,7 @@ describe("The, Exported bundling APIs", () => {
             )
             expect(metadataOutputContents.plugins).to.include.keys([
               "../resources2/quickstart",
-              "slowstart"
+              "slowstart",
             ])
 
             const i18nOutputContents = fs.readFileSync(
@@ -425,13 +425,13 @@ describe("The, Exported bundling APIs", () => {
       it("can perform full Feature bundling with caching capability", () => {
         const deferred = bundlingApi.bundleFeature(pkg, {
           outDir: distFolder,
-          bundler
+          bundler,
         })
 
-        deferred.then(result => {
+        deferred.then((result) => {
           const foldersInDist = fs
             .readdirSync(distFolder)
-            .filter(file =>
+            .filter((file) =>
               fs.statSync(path.join(distFolder, file)).isDirectory()
             )
           // should only be one timestamp folder...
@@ -453,7 +453,7 @@ describe("The, Exported bundling APIs", () => {
           )
           expect(metadataOutputContents.plugins).to.include.keys([
             "../resources2/quickstart",
-            "slowstart"
+            "slowstart",
           ])
 
           const i18nOutputContents = fs.readFileSync(
@@ -491,7 +491,7 @@ describe("The, Exported bundling APIs", () => {
           .bundleFeature(pkg.replace(/\//g, "\\"), {
             outDir: distFolder,
             enableCaching: false,
-            bundler
+            bundler,
           })
           .then(() => {
             const jsOutputContents = fs.readFileSync(
@@ -505,7 +505,7 @@ describe("The, Exported bundling APIs", () => {
             )
             expect(metadataOutputContents.plugins).to.include.keys([
               "../resources2/quickstart",
-              "slowstart"
+              "slowstart",
             ])
 
             const i18nOutputContents = fs.readFileSync(
@@ -526,7 +526,7 @@ describe("The, Exported bundling APIs", () => {
 
           const deferred = bundlingApi.bundleFeature(pkg, {
             outDir: distFolder,
-            bundler
+            bundler,
           })
 
           deferred.then(() => {
@@ -546,7 +546,7 @@ describe("The, Exported bundling APIs", () => {
           const deferred = bundlingApi.bundleFeature(pkg, {
             outDir: distFolder,
             cleanOutDir: false,
-            bundler
+            bundler,
           })
 
           deferred.then(() => {
@@ -566,7 +566,7 @@ describe("The, Exported bundling APIs", () => {
 
           it("Will detect AND reject none AMD resources in bundled artifacts", () => {
             const deferred = bundlingApi.bundleFeature(pkgAmd, {
-              outDir: distFolder
+              outDir: distFolder,
             })
             return expect(deferred).to.be.rejectedWith(
               "None amd source at location"
@@ -577,8 +577,8 @@ describe("The, Exported bundling APIs", () => {
             const deferred = bundlingApi.bundleFeature(pkgAmd, {
               outDir: distFolder,
               javaScriptOpts: {
-                ignoreValidations: true
-              }
+                ignoreValidations: true,
+              },
             })
             return expect(deferred).to.be.fulfilled
           })
@@ -601,7 +601,7 @@ describe("The, Exported bundling APIs", () => {
               .bundleFeature(pkg, {
                 bundler,
                 outDir: distFolder,
-                webpackConfig: customConfig
+                webpackConfig: customConfig,
               })
               .then(() => {
                 expect(fs.existsSync(`${customConfig.output.path}/bamba.js`)).to
@@ -623,7 +623,7 @@ describe("The, Exported bundling APIs", () => {
           it("won't go into endless loop", () =>
             bundlingApi.bundleFeature(pkg, {
               bundler,
-              outDir: nestedDistFolder
+              outDir: nestedDistFolder,
             }))
 
           afterEach(() => {
@@ -643,7 +643,7 @@ describe("The, Exported bundling APIs", () => {
             expect(
               bundlingApi.bundleFeature(runtimeDepPkg, {
                 bundler,
-                outDir: distFolder
+                outDir: distFolder,
               })
             ).to.be.fulfilled)
 
@@ -669,7 +669,7 @@ describe("The, Exported bundling APIs", () => {
               .bundleFeature(pluginModuleBundle, {
                 bundler,
                 outDir: distFolder,
-                enableCaching: false
+                enableCaching: false,
               })
               .then(() => {
                 const expectedOutputFile = `${distFolder}/config-preload.js`
@@ -703,7 +703,7 @@ describe("The, Exported bundling APIs", () => {
               .bundleFeature(pluginModuleBundle, {
                 bundler,
                 outDir: distFolder,
-                enableCaching: false
+                enableCaching: false,
               })
               .then(() => {
                 const expectedOutputFile = `${distFolder}/config-preload.js`
@@ -733,7 +733,7 @@ describe("The, Exported bundling APIs", () => {
               bundlingApi.bundleFeature(pkg, {
                 bundler,
                 webpackConfig: myConfig,
-                outDir: distFolder
+                outDir: distFolder,
               })
             ).to.be.rejectedWith(
               "Webpack has been initialised using a configuration object that does not match the API schema"
@@ -750,7 +750,7 @@ describe("The, Exported bundling APIs", () => {
               return expect(
                 bundlingApi.bundleFeature(webpackErrOPkg, {
                   bundler,
-                  outDir: distFolder
+                  outDir: distFolder,
                 })
               ).to.be.rejectedWith(
                 "./rapidstart/service/b2.js\nModule not found: Error: Can't resolve 'bamba'"
@@ -778,7 +778,7 @@ describe("The, Exported bundling APIs", () => {
               return expect(
                 bundlingApi.bundleFeature(warnningSample, {
                   bundler,
-                  outDir: distFolder
+                  outDir: distFolder,
                 })
               ).to.be.fulfilled
             })
@@ -815,7 +815,7 @@ describe("The, Exported bundling APIs", () => {
       expect(() =>
         bundlingApi.bundleFeature(pkg, {
           bundler: "bamba",
-          outDir: distFolder
+          outDir: distFolder,
         })
       ).to.throw("unrecognized <bundler> option value: <bamba>")
     })

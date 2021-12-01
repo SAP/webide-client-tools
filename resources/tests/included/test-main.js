@@ -1,7 +1,7 @@
 // Needs to run in browser, but the eslint config here is for node.js (ES6).
 /* eslint-disable */
 "use strict"
-;(function() {
+;(function () {
   if (!window.TEST_FILE_PATTERN) {
     throw new Error("Missing <window.TEST_FILE_PATTERN> RegExp property")
   }
@@ -43,22 +43,20 @@
   }
 
   mocha.setup({
-    timeout: actualTestTimeout
+    timeout: actualTestTimeout,
   })
 
   var paths = merge_objects(
     {
       sap: "node_modules/webide/src/main/webapp/resources/sap",
-      ui5:
-        "node_modules/webide/src/main/webapp/resources/sap/watt/ui5/UI5RequirejsPlugin",
+      ui5: "node_modules/webide/src/main/webapp/resources/sap/watt/ui5/UI5RequirejsPlugin",
       ui5Version:
         "node_modules/webide/src/main/webapp/test-resources/sap/watt/sane-tests/ui5Version",
-      STF:
-        "node_modules/@sap-webide/webide-client-tools/resources/tests/serviceTestFramework",
+      STF: "node_modules/@sap-webide/webide-client-tools/resources/tests/serviceTestFramework",
       coverage:
         "node_modules/@sap-webide/webide-client-tools/resources/tests/coverage",
       mockConf:
-        "node_modules/webide/src/main/webapp/test-resources/sap/watt/util/mock_conf"
+        "node_modules/webide/src/main/webapp/test-resources/sap/watt/util/mock_conf",
     },
     window.CUSTOM_REQUIREJS_PATHS
   )
@@ -74,6 +72,6 @@
     // start test run, once Require.js is done
     callback: window.__karma__.start,
 
-    waitSeconds: actualRequireJSWaitSeconds
+    waitSeconds: actualRequireJSWaitSeconds,
   })
 })()

@@ -14,7 +14,7 @@ const devServer = {
     const DEFAULT_CONNECT_OPTIONS = {
       port: 3000,
       customMiddlewares: [],
-      builtInMiddlewareOpts: {}
+      builtInMiddlewareOpts: {},
     }
     Object.freeze(DEFAULT_CONNECT_OPTIONS)
     const actualOptions = _.defaultsDeep(options, DEFAULT_CONNECT_OPTIONS)
@@ -26,11 +26,11 @@ const devServer = {
     )
     const app = connect()
 
-    _.forEach(allMiddlewares, middlewareDef => {
+    _.forEach(allMiddlewares, (middlewareDef) => {
       const path = middlewareDef.path
       const middlewares = _.flatten([middlewareDef.middleware])
 
-      _.forEach(middlewares, currMiddleware => {
+      _.forEach(middlewares, (currMiddleware) => {
         if (path) {
           app.use(path, currMiddleware)
         } else {
@@ -53,7 +53,7 @@ const devServer = {
   getDefaultMiddleware: function getDefaultMiddleware(options) {
     const DEFAULT_MIDDLEWARE_OPTIONS = {
       diHost: "localhost",
-      diPort: 8888
+      diPort: 8888,
     }
     const middlewares = []
 
@@ -64,9 +64,9 @@ const devServer = {
       middleware: [
         middleware.getDiProxyMiddleware({
           host: actualOptions.diHost,
-          port: actualOptions.diPort
-        })
-      ]
+          port: actualOptions.diPort,
+        }),
+      ],
     }
     Object.freeze(DEFAULT_DI_MIDDLEWARE)
     middlewares.push(DEFAULT_DI_MIDDLEWARE)
@@ -75,14 +75,14 @@ const devServer = {
     if (minikube) {
       const DEFAULT_MINIKUBE_MIDDLEWARE = {
         path: "/che6",
-        middleware: [minikube]
+        middleware: [minikube],
       }
       Object.freeze(DEFAULT_MINIKUBE_MIDDLEWARE)
       middlewares.push(DEFAULT_MINIKUBE_MIDDLEWARE)
     }
 
     return middlewares
-  }
+  },
 }
 
 module.exports = devServer

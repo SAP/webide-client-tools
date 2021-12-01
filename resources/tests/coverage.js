@@ -1,22 +1,22 @@
 /* eslint-disable */
-define(["https://unpkg.com/lodash@4.17.2/lodash.min.js"], function(_) {
-  var mergeCoverageOccurrences = _.partialRight(_.mergeWith, function(
-    objBVal,
-    srcBVal
-  ) {
-    // times entered
-    if (_.isNumber(objBVal)) {
-      return objBVal + srcBVal // aggregate
-    } else {
-      throw new Error("expecting number in coverage occurrences")
+define(["https://unpkg.com/lodash@4.17.2/lodash.min.js"], function (_) {
+  var mergeCoverageOccurrences = _.partialRight(
+    _.mergeWith,
+    function (objBVal, srcBVal) {
+      // times entered
+      if (_.isNumber(objBVal)) {
+        return objBVal + srcBVal // aggregate
+      } else {
+        throw new Error("expecting number in coverage occurrences")
+      }
     }
-  })
+  )
 
   function mergeSingleFileCoverageInfo(obj, src) {
-    _.mergeWith(obj.b, src.b, function(objBVal, srcBVal) {
+    _.mergeWith(obj.b, src.b, function (objBVal, srcBVal) {
       // branches arrs
       if (_.isArray(objBVal)) {
-        return _.map(objBVal, function(objBranchesInt, key) {
+        return _.map(objBVal, function (objBranchesInt, key) {
           return objBranchesInt + srcBVal[key]
         })
       } else {
@@ -31,7 +31,7 @@ define(["https://unpkg.com/lodash@4.17.2/lodash.min.js"], function(_) {
   }
 
   function mergeIstanbulCoverageData(obj, src) {
-    _.assignWith(obj, src, function(objectValue, sourceValue) {
+    _.assignWith(obj, src, function (objectValue, sourceValue) {
       // data only exists on source
       if (_.isUndefined(objectValue)) {
         return sourceValue
@@ -46,6 +46,6 @@ define(["https://unpkg.com/lodash@4.17.2/lodash.min.js"], function(_) {
   }
 
   return {
-    mergeIstanbulCoverageData: mergeIstanbulCoverageData
+    mergeIstanbulCoverageData: mergeIstanbulCoverageData,
   }
 })

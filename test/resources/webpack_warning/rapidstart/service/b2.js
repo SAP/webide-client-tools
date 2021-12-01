@@ -3,4 +3,4 @@
  */
 // webpack warning because the dependency cannot be statically computed.
 var bamba = "bam" + "ba"
-define([bamba], function(runtimeDep) {})
+define([bamba], function (runtimeDep) {})

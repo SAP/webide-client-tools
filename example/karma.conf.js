@@ -21,7 +21,7 @@ if (withDi) {
 
 const karmaTools = require("@sap-webide/webide-client-tools").karma
 
-module.exports = function(config) {
+module.exports = function (config) {
   const webideConfig = karmaTools.defaultProps()
 
   const userFiles =
@@ -43,20 +43,20 @@ module.exports = function(config) {
         served: true,
         included: false,
         // nocache prevents usage of coverage preprocessor
-        nocache: !coverageMode
+        nocache: !coverageMode,
       },
       {
         pattern: "test/**/*",
         served: true,
         included: false,
-        nocache: true
+        nocache: true,
       },
       {
         pattern: "dist/**/*",
         served: true,
         included: false,
-        nocache: true
-      }
+        nocache: true,
+      },
     ]
 
   webideConfig.files = userFiles.concat(webideConfig.files)
@@ -68,7 +68,7 @@ module.exports = function(config) {
       // source files, that you wanna generate coverage for
       // do not include tests or libraries
       // (these files will be instrumented by Istanbul)
-      "src/**/*.js": ["coverage"]
+      "src/**/*.js": ["coverage"],
     }
 
     webideConfig.preprocessors = Object.assign(
@@ -89,9 +89,9 @@ module.exports = function(config) {
             statements: 10,
             branches: 10,
             functions: 10,
-            lines: 10
-          }
-        }
+            lines: 10,
+          },
+        },
       }
     )
   }
