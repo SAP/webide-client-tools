@@ -138,21 +138,7 @@ const bundling = {
           .then(() => {
             try {
               const targetDir = path.resolve(path.dirname(target))
-              fs.copySync(targetDir, actualOptions.outDir, {
-                overwrite: true,
-                filter: (src) => {
-                  if (
-                    // avoids infinite recursion by not copying outDir into itself
-                    src.endsWith(
-                      path.relative(targetDir, actualOptions.outDir)
-                    ) ||
-                    src.indexOf("node_modules") !== -1
-                  ) {
-                    return false
-                  }
-                  return true
-                },
-              })
+              fs.copySync(targetDir, actualOptions.outDir, { overwrite: true })
 
               if (actualOptions.enableCaching) {
                 bundling.internal.modifyWrappedCachedPackage(
@@ -759,7 +745,7 @@ const bundling = {
         return [item]
       }
 
-      const ast = acorn.parse(jsText, { locations: true })
+      const ast = acorn.parse(jsText, { ecmaVersion: 2020, locations: true })
       const topLevels = _.flatMap(ast.body, extractTopElements)
 
       const errorNodes = _.reject(
