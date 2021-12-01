@@ -18,16 +18,16 @@ deploy-build: &deploy-build
     - run: npm publish --access=public
 
 # ------  build configuration/setup (how?) ------
-version: 2
+version: 2.1
 jobs:
   build-node14:
     docker:
-      - image: circleci/node:14-browsers
+      - image: cimg/node:14.18-browsers
     <<: *base-build
 
   deploy:
     docker:
-      - image: circleci/node:14-browsers
+      - image: cimg/node:14.18-browsers
     <<: *deploy-build
 
   compliance:
