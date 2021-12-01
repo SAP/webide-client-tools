@@ -32,7 +32,7 @@ jobs:
 
   compliance:
     docker:
-      - image: circleci/python:3.6.4
+      - image: cimg/python:3.8.1
     working_directory: ~/workdir
     steps:
       - checkout
