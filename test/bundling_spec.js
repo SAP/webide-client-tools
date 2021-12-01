@@ -164,7 +164,7 @@ describe("The, Exported bundling APIs", () => {
         "UTF-8"
       )
       // haxxxx to test evaluated code
-      jQuery.sap.registerPreloadedModules = function(i18nContents) {
+      jQuery.sap.registerPreloadedModules = function (i18nContents) {
         expect(i18nContents.version).to.equal("2.0")
         expect(_.keys(i18nContents.modules)).include.members([
           "sap/watt/bamba/quickstart/i18n/i18n.properties",
@@ -212,7 +212,7 @@ describe("The, Exported bundling APIs", () => {
         "UTF-8"
       )
       // haxxxx to test evaluated code
-      jQuery.sap.registerPreloadedModules = function(i18nContents) {
+      jQuery.sap.registerPreloadedModules = function (i18nContents) {
         expect(i18nContents.version).to.equal("2.0")
         expect(_.keys(i18nContents.modules))
           .include.members([
@@ -621,10 +621,12 @@ describe("The, Exported bundling APIs", () => {
           const nestedDistFolder = path.resolve(__dirname, "resources/dist")
 
           it("won't go into endless loop", () =>
-            bundlingApi.bundleFeature(pkg, {
-              bundler,
-              outDir: nestedDistFolder
-            }))
+            expect(
+              bundlingApi.bundleFeature(pkg, {
+                bundler,
+                outDir: nestedDistFolder
+              })
+            ).to.be.rejectedWith("Cannot copy"))
 
           afterEach(() => {
             fs.removeSync(nestedDistFolder)

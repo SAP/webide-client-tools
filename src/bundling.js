@@ -138,21 +138,7 @@ const bundling = {
           .then(() => {
             try {
               const targetDir = path.resolve(path.dirname(target))
-              fs.copySync(targetDir, actualOptions.outDir, {
-                overwrite: true,
-                filter: src => {
-                  if (
-                    // avoids infinite recursion by not copying outDir into itself
-                    src.endsWith(
-                      path.relative(targetDir, actualOptions.outDir)
-                    ) ||
-                    src.indexOf("node_modules") !== -1
-                  ) {
-                    return false
-                  }
-                  return true
-                }
-              })
+              fs.copySync(targetDir, actualOptions.outDir, { overwrite: true })
 
               if (actualOptions.enableCaching) {
                 bundling.internal.modifyWrappedCachedPackage(
@@ -206,7 +192,7 @@ const bundling = {
       },
 
       externals: [
-        function(context, request, /** @type {any} */ callback) {
+        function (context, request, /** @type {any} */ callback) {
           // Every module prefixed with "sap/" becomes external
           if (/^sap\/watt\//.test(request)) {
             return callback(null, `amd ${request}`)
@@ -260,7 +246,7 @@ const bundling = {
       if (!_.isUndefined(actualOptions.additionalResources)) {
         throw Error(
           "<additionalResources> is no longer supported since version 0.5.0, All JS resources are now bundled.\n" +
-            "use the <ignore> option to explicitly exclude specific resources"
+          "use the <ignore> option to explicitly exclude specific resources"
         )
       }
 
@@ -565,11 +551,11 @@ const bundling = {
       const i18ArtifactContents = utils.normalizelf(
         // eslint-disable-next-line
         "jQuery.sap.registerPreloadedModules({\n" +
-          '\t"name":"",\n' +
-          '\t"version":"2.0",\n' +
-          '\t"modules":{\n' +
-          aI18nConfigs.join(",") +
-          "}})\n"
+        '\t"name":"",\n' +
+        '\t"version":"2.0",\n' +
+        '\t"modules":{\n' +
+        aI18nConfigs.join(",") +
+        "}})\n"
       )
 
       fs.writeFileSync(`${i18OutDir}/config-preload.js`, i18ArtifactContents)
@@ -759,7 +745,7 @@ const bundling = {
         return [item]
       }
 
-      const ast = acorn.parse(jsText, { locations: true })
+      const ast = acorn.parse(jsText, { ecmaVersion: "latest", locations: true })
       const topLevels = _.flatMap(ast.body, extractTopElements)
 
       const errorNodes = _.reject(
