@@ -31,7 +31,7 @@ const middleware = {
     const actualOptions = _.defaults(options, {
       host: "localhost",
       port: 8888,
-      context: undefined
+      context: undefined,
     })
 
     const proxyOpts = {
@@ -46,7 +46,7 @@ const middleware = {
           `${urlParts.query.username}:${urlParts.query.password}`
         ).toString("base64")}`
         proxyReq.setHeader("Authorization", auth)
-      }
+      },
     }
 
     if (actualOptions.context) {
@@ -64,19 +64,16 @@ const middleware = {
   getMinikubeMiddleware: function getMinikubeMiddleware(options) {
     try {
       const actualOptions = _.defaults(options, {
-        context: "/che6"
+        context: "/che6",
       })
 
       const shellCommand = `${which.sync("minikube")} ip`
       const minikube =
-        actualOptions.ip ||
-        `http://${execSync(shellCommand)
-          .toString()
-          .trim()}`
+        actualOptions.ip || `http://${execSync(shellCommand).toString().trim()}`
 
       const proxyOptions = {
         target: minikube,
-        pathRewrite: { "^/che6/(.*)$": "/$1" }
+        pathRewrite: { "^/che6/(.*)$": "/$1" },
       }
 
       if (actualOptions.context) {
@@ -87,7 +84,7 @@ const middleware = {
       console.log("minikube not found. No middleware to add")
       return undefined
     }
-  }
+  },
 }
 
 module.exports = middleware

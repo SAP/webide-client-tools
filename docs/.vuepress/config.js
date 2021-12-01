@@ -5,7 +5,7 @@ const slugMap = {
     "RUNTIME_RESOURCES",
   "Requirejs Bundling: How to ignore None AMD resources?": "IGNORE_JS",
   "Require.js Bundling: How to handle failures due to automatic detection of None AMD(require.js) resources?":
-    "VALIDATE_AMD"
+    "VALIDATE_AMD",
 }
 
 module.exports = {
@@ -14,14 +14,14 @@ module.exports = {
   description: "Tools & Flows for SAP Web IDE Client Side Features.",
   dest: "docs/web/site",
   markdown: {
-    slugify: function(str) {
+    slugify: function (str) {
       const mappedSlug = slugMap[str]
       if (mappedSlug) {
         return mappedSlug
       }
 
       return slugify(str)
-    }
+    },
   },
   themeConfig: {
     repo: "SAP/webide-client-tools",
@@ -34,11 +34,10 @@ module.exports = {
       { text: "Guide", link: "/guide/testing" },
       {
         text: "APIs",
-        link:
-          "https://sap.github.io/webide-client-tools/web/html_docs/modules/_api_d_.html"
+        link: "https://sap.github.io/webide-client-tools/web/html_docs/modules/_api_d_.html",
       },
       { text: "FAQ", link: "/FAQ" },
-      { text: "Changes", link: "/changes/changelog" }
+      { text: "Changes", link: "/changes/changelog" },
     ],
     sidebar: {
       "/guide/": [
@@ -48,9 +47,9 @@ module.exports = {
           children: [
             ["testing", "Testing"],
             ["bundling", "Bundling"],
-            ["local_env", "Environment"]
-          ]
-        }
+            ["local_env", "Environment"],
+          ],
+        },
       ],
       "/changes/": [
         {
@@ -58,10 +57,10 @@ module.exports = {
           collapsable: false,
           children: [
             ["CHANGELOG", "ChangeLog"],
-            ["BREAKING_CHANGES", "Breaking Changes"]
-          ]
-        }
-      ]
-    }
-  }
+            ["BREAKING_CHANGES", "Breaking Changes"],
+          ],
+        },
+      ],
+    },
+  },
 }

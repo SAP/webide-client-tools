@@ -34,15 +34,15 @@ const defaultJsOptimizeOptions = {
   throwWhen: { optimize: true },
   optimize: "uglify2",
   paths: {
-    sap: "empty:"
+    sap: "empty:",
   },
   modules: [
     {
       name: "config-preload",
-      create: true
-    }
+      create: true,
+    },
   ],
-  fileExclusionRegExp: /^(\.|dist|node_modules|test)/
+  fileExclusionRegExp: /^(\.|dist|node_modules|test)/,
 }
 
 const DEFAULT_PACKAGE_LOCATION = "./package.json"
@@ -53,7 +53,7 @@ const DEFAULT_BUNDLE_FEATURE_OPTS = {
   bundler: "requirejs",
   outDir: DEFAULT_OUT_DIR,
   enableCaching: true,
-  cleanOutDir: true
+  cleanOutDir: true,
 }
 /** @type {webideClientTools.BundlingAPI} */
 const bundling = {
@@ -154,7 +154,7 @@ const bundling = {
           })
           // this is actually a finally clause not a catch clause
           // but finally is not yet available with native promises.
-          .catch(err => {
+          .catch((err) => {
             bundling.internal.cleanWebpackEntryPoint(target)
             throw err
           })
@@ -188,7 +188,7 @@ const bundling = {
       output: {
         path: targetFolderPath,
         filename: "config-preload.js",
-        libraryTarget: "amd"
+        libraryTarget: "amd",
       },
 
       externals: [
@@ -198,8 +198,8 @@ const bundling = {
             return callback(null, `amd ${request}`)
           }
           return callback()
-        }
-      ]
+        },
+      ],
 
       // uncommenting this will disable minification.
       // optimization: {
@@ -246,7 +246,7 @@ const bundling = {
       if (!_.isUndefined(actualOptions.additionalResources)) {
         throw Error(
           "<additionalResources> is no longer supported since version 0.5.0, All JS resources are now bundled.\n" +
-          "use the <ignore> option to explicitly exclude specific resources"
+            "use the <ignore> option to explicitly exclude specific resources"
         )
       }
 
@@ -289,30 +289,31 @@ const bundling = {
 
       const pluginsNamesAndAbsolutePaths = _.mapValues(
         metadata.pluginsMeta,
-        currPlugin => utils.backslashesToSlashes(currPlugin.baseURI)
+        (currPlugin) => utils.backslashesToSlashes(currPlugin.baseURI)
       )
       const pluginsNamesAndRelativePaths = _.mapValues(
         pluginsNamesAndAbsolutePaths,
-        currAbsPath =>
+        (currAbsPath) =>
           utils.backslashesToSlashes(path.relative(pathPrefix, currAbsPath))
       )
 
-      const filePatterns = _.flatMap(pluginsNamesAndAbsolutePaths, currPath => [
-        `${currPath}/**/*.js`
-      ])
+      const filePatterns = _.flatMap(
+        pluginsNamesAndAbsolutePaths,
+        (currPath) => [`${currPath}/**/*.js`]
+      )
 
       const expandedPatterns = _.uniq(
-        _.flatMap(filePatterns, currPattern =>
+        _.flatMap(filePatterns, (currPattern) =>
           glob.sync(utils.backslashesToSlashes(currPattern), {
-            ignore: actualIgnore
+            ignore: actualIgnore,
           })
         )
       )
 
-      const expandedFiles = _.filter(expandedPatterns, currPattern =>
+      const expandedFiles = _.filter(expandedPatterns, (currPattern) =>
         fs.statSync(currPattern).isFile()
       )
-      const expandedFilesNoSuffix = _.map(expandedFiles, currExpandedFile =>
+      const expandedFilesNoSuffix = _.map(expandedFiles, (currExpandedFile) =>
         currExpandedFile.replace(/.js$/, "")
       )
 
@@ -323,10 +324,10 @@ const bundling = {
       )
       const expandedFilesWithDotPrefixNames = _.map(
         expandedFilesNoSuffix,
-        currExpandedFile => {
+        (currExpandedFile) => {
           const matchingPair = _.find(
             nameAndBaseURIPairsSorted,
-            currNameAndUri => {
+            (currNameAndUri) => {
               /** @type {any} */
               const assertedCurrExpandedFile = currExpandedFile
               return assertedCurrExpandedFile.startsWith(currNameAndUri[1])
@@ -334,8 +335,8 @@ const bundling = {
           )
 
           /* istanbul ignore next - Code should never enter this if. this is for edge cases like windows/linux slash bugs
-                 *  can't think of a way to reproduce this....
-                 * */
+           *  can't think of a way to reproduce this....
+           * */
           if (matchingPair === undefined) {
             throw Error(
               `Trying to bundle a JS resource which is not part of a plugin: <${currExpandedFile}>.`
@@ -355,9 +356,9 @@ const bundling = {
           paths: pluginsNamesAndRelativePaths,
           modules: [
             {
-              include: expandedFilesWithDotPrefixNames
-            }
-          ]
+              include: expandedFilesWithDotPrefixNames,
+            },
+          ],
         },
         defaultJsOptimizeOptions,
         customOptimizeOptions
@@ -376,7 +377,7 @@ const bundling = {
      */
     bundleJavaScriptSources: function bundleJavaScriptSources(target, options) {
       const defaultOptions = {
-        optimizeOptions: {}
+        optimizeOptions: {},
       }
 
       const actualOptions = _.defaults(options, defaultOptions)
@@ -393,9 +394,8 @@ const bundling = {
           (result, currModule) => {
             const orgTarget = path.resolve(config.dir, `${currModule.name}.js`)
             const bundledContents = fs.readFileSync(orgTarget, "UTF-8")
-            const errorLocations = bundling.internal.findNoneAmdSource(
-              bundledContents
-            )
+            const errorLocations =
+              bundling.internal.findNoneAmdSource(bundledContents)
             if (errorLocations.length > 0) {
               const errorLocationsText = _.map(errorLocations, JSON.stringify)
               let fileMessages = `file: <${orgTarget}> \nNone amd source at locations: [${errorLocationsText.join(
@@ -462,8 +462,8 @@ const bundling = {
       const metadata = metadataReader(pkgPath, pkgFile)
 
       const bundledPluginNames = _.keys(metadata.pluginsMeta)
-      const startWithBundledPluginPredicate = i18FileName =>
-        _.some(bundledPluginNames, currPluginName =>
+      const startWithBundledPluginPredicate = (i18FileName) =>
+        _.some(bundledPluginNames, (currPluginName) =>
           i18FileName.startsWith(currPluginName)
         )
       const i18Resources =
@@ -473,7 +473,7 @@ const bundling = {
           _.flatten(
             // Not all plugins have i18n resources, remove "undefined" values.
             _.compact(
-              _.map(metadata.pluginsMeta, currPlugin => {
+              _.map(metadata.pluginsMeta, (currPlugin) => {
                 if (!_.has(currPlugin, "i18n")) {
                   return undefined
                 }
@@ -503,10 +503,10 @@ const bundling = {
       const bundledPluginNamesByLength = utils.sortByLength(bundledPluginNames)
       const bundledI18nResourcesRealPathsAndNames = _.map(
         bundledI18nResources,
-        currI18nResource => {
+        (currI18nResource) => {
           const pluginNameOfI18nResource = _.find(
             bundledPluginNamesByLength,
-            currPluginName => currI18nResource.startsWith(currPluginName)
+            (currPluginName) => currI18nResource.startsWith(currPluginName)
           )
           const pluginUri =
             metadata.pluginsMeta[pluginNameOfI18nResource].baseURI
@@ -523,7 +523,7 @@ const bundling = {
 
       const aI18nConfigs = _.map(
         bundledI18nResourcesRealPathsAndNames,
-        currPathAndName => {
+        (currPathAndName) => {
           const currI18nPath = currPathAndName.path
           const currI18nOrgKey = currPathAndName.name
 
@@ -551,11 +551,11 @@ const bundling = {
       const i18ArtifactContents = utils.normalizelf(
         // eslint-disable-next-line
         "jQuery.sap.registerPreloadedModules({\n" +
-        '\t"name":"",\n' +
-        '\t"version":"2.0",\n' +
-        '\t"modules":{\n' +
-        aI18nConfigs.join(",") +
-        "}})\n"
+          '\t"name":"",\n' +
+          '\t"version":"2.0",\n' +
+          '\t"modules":{\n' +
+          aI18nConfigs.join(",") +
+          "}})\n"
       )
 
       fs.writeFileSync(`${i18OutDir}/config-preload.js`, i18ArtifactContents)
@@ -631,12 +631,12 @@ const bundling = {
 
       const transformedConfigsToPluginMeta = _.mapValues(
         configsToPluginMeta,
-        currPluginsForJson =>
+        (currPluginsForJson) =>
           transformPluginNameAndRemoveBaseURI(currPluginsForJson)
       )
       const transformedConfigsToInterfaceMeta = _.mapValues(
         configsToInterfaceMeta,
-        currInterfacesToJson => transformInterfaces(currInterfacesToJson)
+        (currInterfacesToJson) => transformInterfaces(currInterfacesToJson)
       )
 
       // Assuming that each config will always contains at least one plugin
@@ -645,7 +645,7 @@ const bundling = {
         (currPluginsForJson, currConfigJsonPath) => {
           const actualJsonPreloadToReturn = {
             plugins: {},
-            interfaces: {}
+            interfaces: {},
           }
           actualJsonPreloadToReturn.plugins = currPluginsForJson
           actualJsonPreloadToReturn.interfaces =
@@ -704,7 +704,7 @@ const bundling = {
         version: orgPkgContents.version,
         license: orgPkgContents.license,
         technical: true,
-        bundledFeatures: {}
+        bundledFeatures: {},
       }
 
       wrapperPkgObj.bundledFeatures[
@@ -745,50 +745,57 @@ const bundling = {
         return [item]
       }
 
-      const ast = acorn.parse(jsText, { ecmaVersion: "latest", locations: true })
+      const ast = acorn.parse(jsText, {
+        ecmaVersion: "latest",
+        locations: true,
+      })
       const topLevels = _.flatMap(ast.body, extractTopElements)
 
       const errorNodes = _.reject(
         topLevels,
-        node => node.type === "CallExpression" && node.callee.name === "define"
+        (node) =>
+          node.type === "CallExpression" && node.callee.name === "define"
       )
 
-      const errorOffsets = _.map(errorNodes, node => node.loc.start)
+      const errorOffsets = _.map(errorNodes, (node) => node.loc.start)
 
       return errorOffsets
     },
 
     bundleJavaScriptSourcesWebpack(webpackOptions) {
       return new Promise((resolve, reject) => {
-        webpack(webpackOptions, (
-          /** @type {any} */
-          err,
-          stats
-        ) => {
-          /* istanbul ignore next - I believe this branch only be entered due to internal error in webpack */
-          if (err) {
-            console.error(err.stack || err)
-            if (err.details) {
-              console.error(err.details)
-              reject(err.details)
-            } else {
-              reject(err)
+        webpack(
+          webpackOptions,
+          (
+            /** @type {any} */
+            err,
+            stats
+          ) => {
+            /* istanbul ignore next - I believe this branch only be entered due to internal error in webpack */
+            if (err) {
+              console.error(err.stack || err)
+              if (err.details) {
+                console.error(err.details)
+                reject(err.details)
+              } else {
+                reject(err)
+              }
             }
+
+            const info = stats.toJson()
+
+            if (stats.hasErrors()) {
+              console.error(info.errors)
+              reject(info.errors.join("\n"))
+            }
+
+            if (stats.hasWarnings()) {
+              console.warn(info.warnings)
+            }
+
+            resolve()
           }
-
-          const info = stats.toJson()
-
-          if (stats.hasErrors()) {
-            console.error(info.errors)
-            reject(info.errors.join("\n"))
-          }
-
-          if (stats.hasWarnings()) {
-            console.warn(info.warnings)
-          }
-
-          resolve()
-        })
+        )
       })
     },
 
@@ -816,7 +823,7 @@ const bundling = {
       const metadata = metadataReader(pkgPath, pkgFile)
 
       const amdModulesAndPaths = []
-      _.forEach(metadata.pluginsMeta, plugin => {
+      _.forEach(metadata.pluginsMeta, (plugin) => {
         const relativePluginPath = `./${path.posix.relative(
           pkgPath,
           utils.backslashesToSlashes(plugin.baseURI)
@@ -837,13 +844,13 @@ const bundling = {
           addModuleAndPath(plugin.module)
         }
 
-        _.forEach(plugin.provides.services, service => {
+        _.forEach(plugin.provides.services, (service) => {
           addModuleAndPath(service.module)
         })
 
         _.forEach(
           plugin.configures.services["command:commands"],
-          commandConfig => {
+          (commandConfig) => {
             addModuleAndPath(commandConfig.service)
           }
         )
@@ -878,8 +885,8 @@ const bundling = {
       const pathAndFile = utils.splitPathAndFile(packageJsonFullPath)
       const pkgPath = pathAndFile.path
       fs.removeSync(`${pkgPath}/webpack.entry.js`)
-    }
-  }
+    },
+  },
 }
 
 module.exports = bundling

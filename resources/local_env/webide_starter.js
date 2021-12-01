@@ -9,8 +9,8 @@ var DEFAULT_FEATURE_CONFIG = {
   name: "rootFeature",
   bundledFeatures: {
     "sap.watt.uitools.di.hcp.feature":
-      "file:./resources/sap/watt/uitools/hcp-di/client/package.json"
-  }
+      "file:./resources/sap/watt/uitools/hcp-di/client/package.json",
+  },
 }
 
 DEFAULT_FEATURE_CONFIG.bundledFeatures[pkg.name] =
@@ -21,7 +21,7 @@ Object.freeze(DEFAULT_FEATURE_CONFIG.bundledFeatures)
 
 var DEFAULT_OPTIONS = {
   webappPath: "node_modules/webide/src/main/webapp/",
-  featureConfig: DEFAULT_FEATURE_CONFIG
+  featureConfig: DEFAULT_FEATURE_CONFIG,
 }
 
 Object.freeze(DEFAULT_OPTIONS)
@@ -65,12 +65,12 @@ var defaultFake = mockConf.getDefaultFake(false, actualOptions.webappPath)
 var WEBIDE_BACKEND_PRESETS = {
   DI: {
     add: [],
-    remove: []
+    remove: [],
   },
   IN_MEMORY: {
     add: defaultFake.plugins,
-    remove: defaultFake.remove
-  }
+    remove: defaultFake.remove,
+  },
 }
 
 var DEFAULT_UI5_URL =
@@ -85,7 +85,7 @@ var DEFAULT_START_WEBIDE_OPTIONS = {
   extra_url_params: {},
   backend: "IN_MEMORY",
   env: localEnvJson,
-  featureConfig: DEFAULT_FEATURE_CONFIG
+  featureConfig: DEFAULT_FEATURE_CONFIG,
 }
 
 Object.freeze(DEFAULT_START_WEBIDE_OPTIONS)
@@ -126,10 +126,10 @@ function startWebIDE(options) {
   const deferred = {
     promise: null,
     resolve: null,
-    reject: null
+    reject: null,
   }
 
-  deferred.promise = new Promise(function(resolve, reject) {
+  deferred.promise = new Promise(function (resolve, reject) {
     deferred.resolve = resolve
     deferred.reject = reject
   })
@@ -148,7 +148,7 @@ function startWebIDE(options) {
   if (actualOptions.dev_mode) {
     url += "&sap-ide-dev=true"
   }
-  _.forEach(actualOptions.extra_url_params, function(value, key) {
+  _.forEach(actualOptions.extra_url_params, function (value, key) {
     url += "&" + key + "=" + encodeURIComponent(value)
   })
 
@@ -170,7 +170,7 @@ function startWebIDE(options) {
 
   document.body.appendChild(iframe)
 
-  iframe.contentWindow.addEventListener("error", function(e) {
+  iframe.contentWindow.addEventListener("error", function (e) {
     // quickly fail a service test in case webide failed to load instead of waiting for a timeout.
     // note that if there is an issue with missing plugins the config.json must include "require":true
     deferred.reject(new Error(e.message)) // wrapping in an Error for better error message formatting.
@@ -178,7 +178,7 @@ function startWebIDE(options) {
 
   var transformDef = {
     add: [],
-    remove: []
+    remove: [],
   }
 
   function concatArraysInMergeCustomizer(objValue, srcValue) {
@@ -196,8 +196,8 @@ function startWebIDE(options) {
 
   // TODO: Duplicated in STF
   function transformPluginsCollection(plugins) {
-    var transformedPlugins = _.reject(plugins, function(currPlugin) {
-      return _.some(transformDef.remove, function(removePattern) {
+    var transformedPlugins = _.reject(plugins, function (currPlugin) {
+      return _.some(transformDef.remove, function (removePattern) {
         if (_.isString(removePattern)) {
           return removePattern === currPlugin.pluginName
         } else if (_.isRegExp(removePattern)) {
@@ -219,10 +219,10 @@ function startWebIDE(options) {
 
   iframe.contentWindow.WEB_IDE_ENV_JSON_OVERRIDE = actualOptions.env
 
-  return deferred.promise.then(function(PluginRegistry) {
+  return deferred.promise.then(function (PluginRegistry) {
     return {
       pluginRegistry: PluginRegistry,
-      contentWindow: iframe.contentWindow
+      contentWindow: iframe.contentWindow,
     }
   })
 }

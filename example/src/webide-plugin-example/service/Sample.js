@@ -16,39 +16,39 @@
  * The events subscription along with the handler methods must be defined in the plugin.json file.
  *
  */
-define(["./helloUtils"], function(utils) {
+define(["./helloUtils"], function (utils) {
   return {
     _iNotificationCount: null,
 
     modifyMe: "sample",
 
-    init: function() {
+    init: function () {
       this._iNotificationCount = 0
     },
 
-    sayHello: function(sName) {
+    sayHello: function (sName) {
       var that = this
       this._iNotificationCount++
       var sMessage = this.context.i18n.getText("i18n", "sample_helloMessage", [
-        sName
+        sName,
       ])
 
       var angryMessage = utils.addAngryMode(sMessage)
       // Display greeting notification and fire event
       return this.context.service.usernotification
         .info(angryMessage)
-        .then(function() {
+        .then(function () {
           return that.context.event.fireNotificationDisplayed({
-            notificationCount: that.getNotificationCount()
+            notificationCount: that.getNotificationCount(),
           })
         })
     },
 
-    getNotificationCount: function() {
+    getNotificationCount: function () {
       return this._iNotificationCount
     },
 
-    onAfterNotificationDisplayed: function(oEvent) {
+    onAfterNotificationDisplayed: function (oEvent) {
       var iCount = oEvent.params.notificationCount
       // Display log message to the SAP Web IDE console (accessed via 'View->Console' menu)
       // Log messages don't need to be translatable
@@ -61,13 +61,13 @@ define(["./helloUtils"], function(utils) {
         .done()
     },
 
-    modifyVar: function(sName) {
+    modifyVar: function (sName) {
       this.setModifyMe(sName)
       return this.modifyMe
     },
 
-    setModifyMe: function(sName) {
+    setModifyMe: function (sName) {
       this.modifyMe = sName + "ModifiedSample"
-    }
+    },
   }
 })
