@@ -4,7 +4,7 @@
   "license": "Apache-2.0",
   "main": "src/api.js",
   "dependencies": {
-    "@types/webpack": "5.28.0",
+    "@types/webpack": "4.4.17",
     "acorn": "8.6.0",
     "connect": "3.7.0",
     "fs-extra": "10.0.0",
