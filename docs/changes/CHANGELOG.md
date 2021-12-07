@@ -1,3 +1,9 @@
+## X.Y.Z (INSERT_DATE_HERE)
+
+#### Minor Changes
+
+- Updated runtime dependencies to modern versions, this includes security updates for relevant dependencies
+
 ## 3.1.2 (2020-4-07)
 
 #### Minor Changes
