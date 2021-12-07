@@ -621,10 +621,12 @@ describe("The, Exported bundling APIs", () => {
           const nestedDistFolder = path.resolve(__dirname, "resources/dist")
 
           it("won't go into endless loop", () =>
-            bundlingApi.bundleFeature(pkg, {
-              bundler,
-              outDir: nestedDistFolder,
-            }))
+            expect(
+              bundlingApi.bundleFeature(pkg, {
+                bundler,
+                outDir: nestedDistFolder,
+              })
+            ).to.be.rejectedWith("Cannot copy"))
 
           afterEach(() => {
             fs.removeSync(nestedDistFolder)
