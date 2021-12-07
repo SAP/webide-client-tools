@@ -378,6 +378,7 @@ describe("The, Exported bundling APIs", () => {
 
   function defineBundleFeatureSpecs(bundler) {
     describe(`bundleFeature API - ${bundler}`, () => {
+      const bundleTestTimeout = 10000
       const distFolder = path.resolve(__dirname, "dist")
       const expectedJSOutputFile = `${distFolder}/config-preload.js`
       const expectedMetadataOutputFile = `${distFolder}/config-preload.json`
@@ -389,22 +390,73 @@ describe("The, Exported bundling APIs", () => {
         fs.removeSync(distFolder)
       })
 
-      it("can perform full Feature bundling", () =>
-        bundlingApi
-          .bundleFeature(pkg, {
+      it(
+        "can perform full Feature bundling",
+        () =>
+          bundlingApi
+            .bundleFeature(pkg, {
+              outDir: distFolder,
+              enableCaching: false,
+              bundler,
+            })
+            .then((result) => {
+              const jsOutputContents = fs.readFileSync(
+                expectedJSOutputFile,
+                "UTF-8"
+              )
+              expect(jsOutputContents).to.include("FOO")
+
+              const metadataOutputContents = JSON.parse(
+                fs.readFileSync(expectedMetadataOutputFile, "UTF-8")
+              )
+              expect(metadataOutputContents.plugins).to.include.keys([
+                "../resources2/quickstart",
+                "slowstart",
+              ])
+
+              const i18nOutputContents = fs.readFileSync(
+                expectedI18nOutputFile,
+                "UTF-8"
+              )
+              expect(i18nOutputContents).to.include(
+                "quick_start_dialog_project_name_invalid"
+              )
+
+              expect(result.outDir).to.endsWith("dist")
+            }),
+        bundleTestTimeout
+      )
+
+      it(
+        "can perform full Feature bundling with caching capability",
+        () => {
+          const deferred = bundlingApi.bundleFeature(pkg, {
             outDir: distFolder,
-            enableCaching: false,
             bundler,
           })
-          .then((result) => {
+
+          deferred.then((result) => {
+            const foldersInDist = fs
+              .readdirSync(distFolder)
+              .filter((file) =>
+                fs.statSync(path.join(distFolder, file)).isDirectory()
+              )
+            // should only be one timestamp folder...
+            expect(foldersInDist.length).to.equal(1)
+            const timeStamp = foldersInDist[0]
+            const distTimeStamp = `${distFolder}/${timeStamp}`
+            const expectedJSOutputFileTimeStamp = `${distTimeStamp}/config-preload.js`
+            const expectedMetadataOutputFileTimeStamp = `${distTimeStamp}/config-preload.json`
+            const expectedI18nOutputFileTimeStamp = `${distTimeStamp}/i18n/config-preload.js`
+
             const jsOutputContents = fs.readFileSync(
-              expectedJSOutputFile,
+              expectedJSOutputFileTimeStamp,
               "UTF-8"
             )
             expect(jsOutputContents).to.include("FOO")
 
             const metadataOutputContents = JSON.parse(
-              fs.readFileSync(expectedMetadataOutputFile, "UTF-8")
+              fs.readFileSync(expectedMetadataOutputFileTimeStamp, "UTF-8")
             )
             expect(metadataOutputContents.plugins).to.include.keys([
               "../resources2/quickstart",
@@ -412,149 +464,118 @@ describe("The, Exported bundling APIs", () => {
             ])
 
             const i18nOutputContents = fs.readFileSync(
-              expectedI18nOutputFile,
+              expectedI18nOutputFileTimeStamp,
               "UTF-8"
             )
             expect(i18nOutputContents).to.include(
               "quick_start_dialog_project_name_invalid"
             )
 
-            expect(result.outDir).to.endsWith("dist")
-          }))
-
-      it("can perform full Feature bundling with caching capability", () => {
-        const deferred = bundlingApi.bundleFeature(pkg, {
-          outDir: distFolder,
-          bundler,
-        })
-
-        deferred.then((result) => {
-          const foldersInDist = fs
-            .readdirSync(distFolder)
-            .filter((file) =>
-              fs.statSync(path.join(distFolder, file)).isDirectory()
+            const wrapperPkgContents = JSON.parse(
+              fs.readFileSync(`${distFolder}/package.json`, "UTF-8")
             )
-          // should only be one timestamp folder...
-          expect(foldersInDist.length).to.equal(1)
-          const timeStamp = foldersInDist[0]
-          const distTimeStamp = `${distFolder}/${timeStamp}`
-          const expectedJSOutputFileTimeStamp = `${distTimeStamp}/config-preload.js`
-          const expectedMetadataOutputFileTimeStamp = `${distTimeStamp}/config-preload.json`
-          const expectedI18nOutputFileTimeStamp = `${distTimeStamp}/i18n/config-preload.js`
+            expect(wrapperPkgContents.name).to.equal("sample_extentsion")
 
-          const jsOutputContents = fs.readFileSync(
-            expectedJSOutputFileTimeStamp,
-            "UTF-8"
-          )
-          expect(jsOutputContents).to.include("FOO")
+            expect(
+              Object.keys(wrapperPkgContents.bundledFeatures).length
+            ).to.equal(1)
+            const wrappedPath =
+              wrapperPkgContents.bundledFeatures["sample_extentsion.cached"]
+            expect(wrappedPath).to.equal(`file:${timeStamp}/package.json`)
 
-          const metadataOutputContents = JSON.parse(
-            fs.readFileSync(expectedMetadataOutputFileTimeStamp, "UTF-8")
-          )
-          expect(metadataOutputContents.plugins).to.include.keys([
-            "../resources2/quickstart",
-            "slowstart",
-          ])
+            const cachedPkgContents = JSON.parse(
+              fs.readFileSync(`${distTimeStamp}/package.json`, "UTF-8")
+            )
+            expect(cachedPkgContents.name).to.equal("sample_extentsion.cached")
 
-          const i18nOutputContents = fs.readFileSync(
-            expectedI18nOutputFileTimeStamp,
-            "UTF-8"
-          )
-          expect(i18nOutputContents).to.include(
-            "quick_start_dialog_project_name_invalid"
-          )
-
-          const wrapperPkgContents = JSON.parse(
-            fs.readFileSync(`${distFolder}/package.json`, "UTF-8")
-          )
-          expect(wrapperPkgContents.name).to.equal("sample_extentsion")
-
-          expect(
-            Object.keys(wrapperPkgContents.bundledFeatures).length
-          ).to.equal(1)
-          const wrappedPath =
-            wrapperPkgContents.bundledFeatures["sample_extentsion.cached"]
-          expect(wrappedPath).to.equal(`file:${timeStamp}/package.json`)
-
-          const cachedPkgContents = JSON.parse(
-            fs.readFileSync(`${distTimeStamp}/package.json`, "UTF-8")
-          )
-          expect(cachedPkgContents.name).to.equal("sample_extentsion.cached")
-
-          expect(result.outDir).to.match(/dist\/v1.0.0_[0-9]+$/) // E.g. dist/v1.0.0_1509023563870
-        })
-        return deferred
-      })
-
-      it("can perform full Feature bundling when using backslashes in the path", () =>
-        bundlingApi
-          .bundleFeature(pkg.replace(/\//g, "\\"), {
-            outDir: distFolder,
-            enableCaching: false,
-            bundler,
+            expect(result.outDir).to.match(/dist\/v1.0.0_[0-9]+$/) // E.g. dist/v1.0.0_1509023563870
           })
-          .then(() => {
-            const jsOutputContents = fs.readFileSync(
-              expectedJSOutputFile,
-              "UTF-8"
-            )
-            expect(jsOutputContents).to.include("FOO")
+          return deferred
+        },
+        bundleTestTimeout
+      )
 
-            const metadataOutputContents = JSON.parse(
-              fs.readFileSync(expectedMetadataOutputFile, "UTF-8")
-            )
-            expect(metadataOutputContents.plugins).to.include.keys([
-              "../resources2/quickstart",
-              "slowstart",
-            ])
+      it(
+        "can perform full Feature bundling when using backslashes in the path",
+        () =>
+          bundlingApi
+            .bundleFeature(pkg.replace(/\//g, "\\"), {
+              outDir: distFolder,
+              enableCaching: false,
+              bundler,
+            })
+            .then(() => {
+              const jsOutputContents = fs.readFileSync(
+                expectedJSOutputFile,
+                "UTF-8"
+              )
+              expect(jsOutputContents).to.include("FOO")
 
-            const i18nOutputContents = fs.readFileSync(
-              expectedI18nOutputFile,
-              "UTF-8"
-            )
-            expect(i18nOutputContents).to.include(
-              "quick_start_dialog_project_name_invalid"
-            )
-          }))
+              const metadataOutputContents = JSON.parse(
+                fs.readFileSync(expectedMetadataOutputFile, "UTF-8")
+              )
+              expect(metadataOutputContents.plugins).to.include.keys([
+                "../resources2/quickstart",
+                "slowstart",
+              ])
+
+              const i18nOutputContents = fs.readFileSync(
+                expectedI18nOutputFile,
+                "UTF-8"
+              )
+              expect(i18nOutputContents).to.include(
+                "quick_start_dialog_project_name_invalid"
+              )
+            }),
+        bundleTestTimeout
+      )
 
       describe("cleanOutDir", () => {
         const tempOutFile = `${distFolder}/bamba.js`
 
-        it("will delete the target directory by default when doing full feature bundling by default", () => {
-          fs.ensureDirSync(distFolder)
-          fs.writeFileSync(tempOutFile, "foo()", "UTF-8")
+        it(
+          "will delete the target directory by default when doing full feature bundling by default",
+          () => {
+            fs.ensureDirSync(distFolder)
+            fs.writeFileSync(tempOutFile, "foo()", "UTF-8")
 
-          const deferred = bundlingApi.bundleFeature(pkg, {
-            outDir: distFolder,
-            bundler,
-          })
+            const deferred = bundlingApi.bundleFeature(pkg, {
+              outDir: distFolder,
+              bundler,
+            })
 
-          deferred.then(() => {
-            expect(fs.existsSync(tempOutFile)).to.be.false
-          })
+            deferred.then(() => {
+              expect(fs.existsSync(tempOutFile)).to.be.false
+            })
 
-          return deferred
-        })
+            return deferred
+          },
+          bundleTestTimeout
+        )
 
-        it("will NOT delete the target directory when doing full bundling if the cleanOutDir option was disabled", () => {
-          fs.ensureDirSync(distFolder)
-          fs.writeFileSync(tempOutFile, "foo()", "UTF-8")
+        it(
+          "will NOT delete the target directory when doing full bundling if the cleanOutDir option was disabled",
+          () => {
+            fs.ensureDirSync(distFolder)
+            fs.writeFileSync(tempOutFile, "foo()", "UTF-8")
 
-          fs.ensureDirSync(distFolder)
-          fs.writeFileSync(tempOutFile, "foo()", "UTF-8")
+            fs.ensureDirSync(distFolder)
+            fs.writeFileSync(tempOutFile, "foo()", "UTF-8")
 
-          const deferred = bundlingApi.bundleFeature(pkg, {
-            outDir: distFolder,
-            cleanOutDir: false,
-            bundler,
-          })
+            const deferred = bundlingApi.bundleFeature(pkg, {
+              outDir: distFolder,
+              cleanOutDir: false,
+              bundler,
+            })
 
-          deferred.then(() => {
-            expect(fs.existsSync(tempOutFile)).to.be.true
-          })
+            deferred.then(() => {
+              expect(fs.existsSync(tempOutFile)).to.be.true
+            })
 
-          return deferred
-        })
+            return deferred
+          },
+          bundleTestTimeout
+        )
       })
 
       if (bundler === "requirejs") {
