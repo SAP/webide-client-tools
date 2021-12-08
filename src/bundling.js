@@ -774,8 +774,10 @@ const bundling = {
               if (err.details) {
                 console.error(err.details)
                 reject(err.details)
+                return
               } else {
                 reject(err)
+                return
               }
             }
 
@@ -783,7 +785,8 @@ const bundling = {
 
             if (stats.hasErrors()) {
               console.error(info.errors)
-              reject(info.errors.join("\n"))
+              reject(info.errors)
+              return
             }
 
             if (stats.hasWarnings()) {
