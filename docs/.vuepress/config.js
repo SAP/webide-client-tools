@@ -29,7 +29,7 @@ module.exports = {
     docsBranch: "master",
     editLinks: true,
     editLinkText: "Edit this page on GitHub",
-    nav: [
+    navbar: [
       { text: "Home", link: "/" },
       { text: "Guide", link: "/guide/testing" },
       {

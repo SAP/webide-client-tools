@@ -759,7 +759,7 @@ describe("The, Exported bundling APIs", () => {
                 outDir: distFolder,
               })
             ).to.be.rejectedWith(
-              "Webpack has been initialised using a configuration object that does not match the API schema"
+              "Invalid configuration object. Webpack has been initialized using a configuration object that does not match the API schema."
             )
           })
 
@@ -775,9 +775,12 @@ describe("The, Exported bundling APIs", () => {
                   bundler,
                   outDir: distFolder,
                 })
-              ).to.be.rejectedWith(
-                "./rapidstart/service/b2.js\nModule not found: Error: Can't resolve 'bamba'"
-              )
+              ).to.be.rejectedWith([
+                {
+                  message: `Module not found: Error: Can't resolve 'bamba' in 'C:\\Users\\I051950\\repos\\webide-client-tools\\test\\resources\\webpack_error\\rapidstart\\service'`,
+                  moduleName: `./rapidstart/service/b2.js`,
+                },
+              ])
             })
 
             afterEach(() => {
