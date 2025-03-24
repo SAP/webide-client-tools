@@ -1,0 +1,10 @@
+version = 1
+SPDX-PackageName = "webide-client-tools"
+SPDX-PackageSupplier = "Rima Sirich <rima.sirich@sap.com>"
+SPDX-PackageDownloadLocation = "https://github.com/SAP/webide-client-tools"
+
+[[annotations]]
+path = "**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2018-2020 SAP SE or an SAP affiliate company and webide-client-tools contributors"
+SPDX-License-Identifier = "Apache-2.0"
