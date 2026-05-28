@@ -1,3 +1,6 @@
+> [!WARNING]
+> **This repository has moved to [SAP/app-studio-toolkit/packages/webide-client-tools](https://github.com/SAP/app-studio-toolkit/packages/webide-client-tools).**
+
 [![npm version](https://badge.fury.io/js/%40sap-webide%2Fwebide-client-tools.svg)](https://badge.fury.io/js/%40sap-webide%2Fwebide-client-tools)
 [![CircleCI](https://circleci.com/gh/SAP/webide-client-tools.svg?style=svg&circle-token=3b17f31fb0d03686ffbabab018fab13b24e1e581)](https://circleci.com/gh/SAP/webide-client-tools) [![Greenkeeper badge](https://badges.greenkeeper.io/SAP/webide-client-tools.svg)](https://greenkeeper.io/)
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP/webide-client-tools)](https://api.reuse.software/info/github.com/SAP/webide-client-tools)
